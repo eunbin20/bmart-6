@@ -5,6 +5,17 @@ const passport = require("passport");
 
 require("dotenv").config();
 
+const { sequelize } = require("./models");
+
+sequelize
+  .authenticate()
+  .then(() => console.log("🚀Connection Created!"))
+  .catch((err) => {
+    console.log(err);
+  });
+
+sequelize.sync({ force: true });
+
 const router = require("./routes");
 const app = express();
 
