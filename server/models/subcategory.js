@@ -17,6 +17,17 @@ class Subcategory extends Model {
       }
     );
   }
+
+  static associate(models) {
+    this.belongsTo(models.Category, {
+      foreignKey: "categoryId",
+      targetKey: "id",
+    });
+    this.hasMany(models.Product, {
+      foreignKey: "subcategoryId",
+      sourceKey: "id",
+    });
+  }
 }
 
 module.exports = Subcategory;
