@@ -16,6 +16,13 @@ class Category extends Model {
       }
     );
   }
+
+  static associate(models) {
+    this.hasMany(models.Subcategory, {
+      foreignKey: "categoryId",
+      sourceKey: "id",
+    });
+  }
 }
 
 module.exports = Category;
