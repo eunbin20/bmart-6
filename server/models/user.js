@@ -20,6 +20,20 @@ class User extends Model {
       }
     );
   }
+
+  static associate(models) {
+    this.belongsToMany(models.Product, {
+      foreignKey: "userId",
+      targetKey: "id",
+      otherKey: "productId",
+      through: models.UserProductRelation,
+      as: "likes",
+    });
+    this.hasMany(models.Order, {
+      foreignKey: "userId",
+      sourceKey: "id",
+    });
+  }
 }
 
 module.exports = User;
