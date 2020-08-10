@@ -12,6 +12,20 @@ class Order extends Model {
       }
     );
   }
+
+  static associate(models) {
+    this.belongsTo(models.User, {
+      foreignKey: "userId",
+      targetKey: "id",
+    });
+    this.belongsToMany(models.Product, {
+      foreignKey: "orderId",
+      targetKey: "id",
+      otherKey: "productId",
+      through: models.OrderProductRelation,
+      as: "orders",
+    });
+  }
 }
 
 module.exports = Order;
