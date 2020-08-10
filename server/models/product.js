@@ -29,6 +29,27 @@ class Product extends Model {
       }
     );
   }
+
+  static associate(models) {
+    this.belongsTo(models.Subcategory, {
+      foreignKey: "subcategoryId",
+      targetKey: "id",
+    });
+    this.belongsToMany(models.Order, {
+      foreignKey: "productId",
+      targetKey: "id",
+      otherKey: "orderId",
+      through: models.OrderProductRelation,
+      as: "orders",
+    });
+    this.belongsToMany(models.User, {
+      foreignKey: "productId",
+      targetKey: "id",
+      otherKey: "userId",
+      through: models.UserProductRelation,
+      as: "likes",
+    });
+  }
 }
 
 module.exports = Product;
