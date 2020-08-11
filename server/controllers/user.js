@@ -12,7 +12,7 @@ exports.login = async (req, res) => {
 
 exports.create = async (req, res) => {
   const { email, password } = req.body;
-  const result = User.findOne({ where: { email } });
+  const result = await User.findOne({ where: { email } });
   if (result) {
     res.status(409).send(""); // duplicate
     return;

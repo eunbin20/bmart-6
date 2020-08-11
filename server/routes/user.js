@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const userController = require("../controllers/user");
+const { validateCreateUser } = require("../middlewares/validator");
 
-router.post("/", userController.create); // 회원가입
+router.post("/", validateCreateUser, userController.create); // 회원가입
 router.post(
   "/login",
   passport.authenticate("local", { session: false }),
