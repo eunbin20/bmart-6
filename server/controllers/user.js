@@ -2,7 +2,7 @@ const User = require("../models/user");
 
 exports.create = async (req, res) => {
   const user = await User.create(req.body);
-  res.send(user);
+  res.status(201).send(user);
 };
 
 exports.update = async (req, res) => {
