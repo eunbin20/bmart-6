@@ -1,4 +1,4 @@
-const { Model } = require("sequelize");
+const { Model, Op } = require("sequelize");
 
 class Product extends Model {
   static init(sequelize, DataTypes) {
@@ -48,6 +48,38 @@ class Product extends Model {
       otherKey: "userId",
       through: models.UserProductRelation,
       as: "likes",
+    });
+  }
+
+  static getOrder(sortBy) {
+    switch (sortBy) {
+      case "priceup":
+      case "pricedown":
+      case "recent":
+      case "discount":
+      default:
+        return [["id", "DESC"]];
+    }
+  }
+
+  static findAll({
+    limit = 20,
+    offset = 0,
+    title,
+    subcategoryId,
+    isDiscounted,
+    sortBy,
+  }) {
+    return super.findAll({
+      limit: +limit,
+      offset: +offset,
+      where: {
+        ...(title && { title: { [Op.like]: `%${title}%` } }),
+        ...(subcategoryId && { subcategoryId: +subcategoryId }),
+        ...(isDiscounted && { isDiscounted: +isDiscounted }),
+        isDeleted: false,
+      },
+      order: this.getOrder(sortBy),
     });
   }
 }
