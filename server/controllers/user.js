@@ -1,13 +1,22 @@
+const JWT = require("jsonwebtoken");
 const User = require("../models/user");
 const { createPasswordHash } = require("../utils/salt");
 
 exports.login = async (req, res) => {
-  console.log(req.user);
-  res.status(200).json("");
+  const { user } = req;
+  const accessToken = JWT.sign({ userId: user.id }, process.env.JWT_SECRET, {
+    expiresIn: 60 * 60 * 24, // 1일
+  });
+  res.status(200).send({ accessToken });
 };
 
 exports.create = async (req, res) => {
-  const { password } = req.body;
+  const { email, password } = req.body;
+  const result = User.findOne({ where: { email } });
+  if (result) {
+    res.status(409).send(""); // duplicate
+    return;
+  }
   const passwordHash = await createPasswordHash(password);
   const user = await User.create({
     ...req.body,
