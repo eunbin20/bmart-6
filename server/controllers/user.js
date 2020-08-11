@@ -1,5 +1,9 @@
 const User = require("../models/user");
 
+exports.login = async (req, res) => {
+  res.status(200).json("");
+};
+
 exports.create = async (req, res) => {
   const user = await User.create(req.body);
   res.status(201).send(user);
