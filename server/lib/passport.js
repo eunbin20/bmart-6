@@ -15,11 +15,11 @@ module.exports = () => {
       },
       async (email, password, done) => {
         try {
-          const user = await User.findOne({ where: { email } });
-          console.log("user", user);
-          if (!user) {
+          const result = await User.findOne({ where: { email } });
+          if (!result) {
             return done(null, false, { message: "Not Found User" });
           }
+          const { dataValues: user } = result;
           if (await verifyPassword(password, user.password, user.salt)) {
             return done(null, user); // 로그인 성공!
           }

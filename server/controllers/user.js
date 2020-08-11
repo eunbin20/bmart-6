@@ -1,11 +1,19 @@
 const User = require("../models/user");
+const { createPasswordHash } = require("../utils/salt");
 
 exports.login = async (req, res) => {
+  console.log(req.user);
   res.status(200).json("");
 };
 
 exports.create = async (req, res) => {
-  const user = await User.create(req.body);
+  const { password } = req.body;
+  const passwordHash = await createPasswordHash(password);
+  const user = await User.create({
+    ...req.body,
+    password: passwordHash.password,
+    salt: passwordHash.salt,
+  });
   res.status(201).send(user);
 };
 
