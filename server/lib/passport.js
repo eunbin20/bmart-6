@@ -32,28 +32,24 @@ module.exports = () => {
   );
 
   // jwt strategy
-  // passport.use(
-  //   new JWTStrategy(
-  //     {
-  //       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  //       secretOrKey: process.env.JWT_SECRET,
-  //     },
-  //     async (payload, done) => {
-  //       console.log('JWT Strategy Success');
-  //       const connection = await pool.getConnection();
-  //       try {
-  //         const user = await User.getUserById(connection, payload.userId);
-  //         if (!user) {
-  //           connection.release();
-  //           return done(null, false, { message: 'invaliad token' });
-  //         }
-  //         connection.release();
-  //         return done(null, user);
-  //       } catch (e) {
-  //         connection.release();
-  //         return done(e);
-  //       }
-  //     },
-  //   ),
-  // );
+  passport.use(
+    new JWTStrategy(
+      {
+        jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+        secretOrKey: process.env.JWT_SECRET,
+      },
+      async (payload, done) => {
+        console.log("JWT Strategy Success");
+        try {
+          const result = await User.findOne({ where: { id: payload.userId } });
+          if (!result) {
+            return done(null, false, { message: "invaliad token" });
+          }
+          return done(null, result.dataValues);
+        } catch (e) {
+          return done(e);
+        }
+      }
+    )
+  );
 };
