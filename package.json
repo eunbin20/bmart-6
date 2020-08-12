@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "joi": "^17.2.0"
+    "joi": "^17.2.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
   }
 }

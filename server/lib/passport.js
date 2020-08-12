@@ -45,7 +45,8 @@ module.exports = () => {
           if (!result) {
             return done(null, false, { message: "invaliad token" });
           }
-          return done(null, result.dataValues);
+          const { dataValues: user } = result;
+          return done(null, user);
         } catch (e) {
           return done(e);
         }

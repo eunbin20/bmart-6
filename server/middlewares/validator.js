@@ -9,8 +9,11 @@ exports.validateCreateUser = (req, res, next) => {
   });
   const { error } = schema.validate(req.body);
   if (error) {
-    error.status = 400; // invalid request status
-    next(error);
+    res.status(400).send(error); // invalid request body
+    return;
   }
   next();
 };
+
+
+// 1. passport > 401 , 2. isAuthenticated로 따로 빼기, 3.validator 변수 따로뺴기
