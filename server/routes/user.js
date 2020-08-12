@@ -1,16 +1,12 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const passport = require("passport");
-const userController = require("../controllers/user");
-const { validateCreateUser } = require("../middlewares/validator");
+const userController = require('../controllers/user');
+const { validateCreateUser } = require('../middlewares/validator');
+const { isAuthenticated } = require('../middlewares/auth');
 
-router.post("/", validateCreateUser, userController.create); // 회원가입
-router.post(
-  "/login",
-  passport.authenticate("local", { session: false }),
-  userController.login
-);
-router.put("/", userController.update);
-router.delete("/:id", userController.delete);
+router.post('/', validateCreateUser, userController.create); // 회원가입
+router.post('/login', isAuthenticated, userController.login);
+router.put('/', userController.update);
+router.delete('/:id', userController.delete);
 
 module.exports = router;
