@@ -1,0 +1,2 @@
+export const ACTION_FETCH_PRODUCTS = 'FETCH_PRODUCTS';
+export const ACTION_ERROR = 'ERROR';
