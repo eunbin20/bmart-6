@@ -10,11 +10,21 @@ import { ACTION_FETCH_PRODUCTS } from '../../commons/constants/string';
 function SubCategory(): React.ReactElement {
   const [state, setState] = useProducts({ subcategoryId: 1 });
 
+  function changeSort(sortBy: ProductSort) {
+    setState({
+      type: ACTION_FETCH_PRODUCTS,
+      data: {
+        subcategoryId: 1,
+        ...(sortBy && { sortBy }),
+      },
+    });
+  }
+
   const { products } = state;
   if (!products || !products) {
     return (
       <SubcategoryTemplate
-        productCardGridHeader={<ProductCardGridHeader />}
+        productCardGridHeader={<ProductCardGridHeader changeSort={changeSort} />}
         productCardGrid={<></>}
       />
     );
@@ -23,7 +33,7 @@ function SubCategory(): React.ReactElement {
   return (
     <SubcategoryTemplate
       //   categoryBanner={<SubCategoryBanner />}
-      productCardGridHeader={<ProductCardGridHeader />}
+      productCardGridHeader={<ProductCardGridHeader changeSort={changeSort} />}
       productCardGrid={<ProductCardGrid products={products} />}
     />
   );
