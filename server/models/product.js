@@ -7,7 +7,8 @@ class Product extends Model {
         subcategoryId: DataTypes.INTEGER,
         title: DataTypes.STRING,
         price: DataTypes.INTEGER,
-        discountedPrice: DataTypes.STRING,
+        discountedPrice: DataTypes.INTEGER,
+        discountedRate: DataTypes.INTEGER,
         quantity: DataTypes.INTEGER,
         imageUrl: DataTypes.STRING,
         isDiscounted: {

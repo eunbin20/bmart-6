@@ -7,9 +7,9 @@ class OrderProductRelation extends Model {
         orderId: DataTypes.INTEGER,
         productId: DataTypes.INTEGER,
         title: DataTypes.STRING,
-        price: DataTypes.STRING,
-        discountedPrice: DataTypes.STRING,
-        quantity: DataTypes.STRING,
+        price: DataTypes.INTEGER,
+        discountedPrice: DataTypes.INTEGER,
+        quantity: DataTypes.INTEGER,
       },
       {
         freezeTableName: true,

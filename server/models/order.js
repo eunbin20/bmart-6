@@ -5,6 +5,9 @@ class Order extends Model {
     return super.init(
       {
         userId: DataTypes.INTEGER,
+        status: DataTypes.STRING,
+        totalPrice: DataTypes.INTEGER,
+        totalDiscountedPrice: DataTypes.INTEGER,
       },
       {
         freezeTableName: true,
