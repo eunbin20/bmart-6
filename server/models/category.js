@@ -1,4 +1,4 @@
-const { Model } = require("sequelize");
+const { Model } = require('sequelize');
 
 class Category extends Model {
   static init(sequelize, DataTypes) {
@@ -13,14 +13,14 @@ class Category extends Model {
       {
         freezeTableName: true,
         sequelize,
-      }
+      },
     );
   }
 
   static associate(models) {
     this.hasMany(models.Subcategory, {
-      foreignKey: "categoryId",
-      sourceKey: "id",
+      foreignKey: 'categoryId',
+      sourceKey: 'id',
     });
   }
 }

@@ -1,4 +1,4 @@
-const { Model } = require("sequelize");
+const { Model } = require('sequelize');
 
 class Order extends Model {
   static init(sequelize, DataTypes) {
@@ -9,21 +9,21 @@ class Order extends Model {
       {
         freezeTableName: true,
         sequelize,
-      }
+      },
     );
   }
 
   static associate(models) {
     this.belongsTo(models.User, {
-      foreignKey: "userId",
-      targetKey: "id",
+      foreignKey: 'userId',
+      targetKey: 'id',
     });
     this.belongsToMany(models.Product, {
-      foreignKey: "orderId",
-      targetKey: "id",
-      otherKey: "productId",
+      foreignKey: 'orderId',
+      targetKey: 'id',
+      otherKey: 'productId',
       through: models.OrderProductRelation,
-      as: "orders",
+      as: 'orders',
     });
   }
 }
