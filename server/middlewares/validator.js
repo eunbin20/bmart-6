@@ -23,11 +23,24 @@ exports.validateCreateUser = (req, res, next) => {
 };
 
 exports.validateUpdateUserInterest = (req, res, next) => {
-  console.log(req.params);
   const schema = Joi.object().keys({
     productId: PRODUCT_ID,
   });
 
   const { error } = schema.validate(req.params);
+  errorHandler(error, res, next);
+};
+
+/* Banner validation */
+exports.validateCreateBanner = (req, res, next) => {
+  const schema = Joi.object().keys({
+    imageUrl: Joi.string().required(),
+    redirectUrl: Joi.string().required(),
+    order: Joi.number().required(),
+    placement: Joi.string().required(),
+    expiredAt: Joi.string().required(),
+    startedAt: Joi.string().required(),
+  });
+  const { error } = schema.validate(req.body);
   errorHandler(error, res, next);
 };
