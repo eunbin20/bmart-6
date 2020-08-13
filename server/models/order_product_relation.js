@@ -1,4 +1,4 @@
-const { Model } = require("sequelize");
+const { Model } = require('sequelize');
 
 class OrderProductRelation extends Model {
   static init(sequelize, DataTypes) {
@@ -14,7 +14,7 @@ class OrderProductRelation extends Model {
       {
         freezeTableName: true,
         sequelize,
-      }
+      },
     );
   }
 }

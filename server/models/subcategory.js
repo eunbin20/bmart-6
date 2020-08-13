@@ -1,4 +1,4 @@
-const { Model } = require("sequelize");
+const { Model } = require('sequelize');
 
 class Subcategory extends Model {
   static init(sequelize, DataTypes) {
@@ -14,18 +14,18 @@ class Subcategory extends Model {
       {
         freezeTableName: true,
         sequelize,
-      }
+      },
     );
   }
 
   static associate(models) {
     this.belongsTo(models.Category, {
-      foreignKey: "categoryId",
-      targetKey: "id",
+      foreignKey: 'categoryId',
+      targetKey: 'id',
     });
     this.hasMany(models.Product, {
-      foreignKey: "subcategoryId",
-      sourceKey: "id",
+      foreignKey: 'subcategoryId',
+      sourceKey: 'id',
     });
   }
 }
