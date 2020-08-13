@@ -5,10 +5,12 @@ export interface User {
 }
 
 export interface Category {
+  id: number;
   name: string;
 }
 
-export interface SubCategory {
+export interface Subcategory {
+  id: number;
   categoryId: number;
   name: string;
 }
@@ -19,6 +21,7 @@ export interface Product {
   title: string;
   price: number;
   discountedPrice: number;
+  discountRate: number;
   quantity: number;
   imageUrl?: string;
   isDiscounted: boolean;
@@ -30,5 +33,7 @@ export interface ProductFilter {
   offset?: number;
   title?: string;
   subcategoryId?: number;
-  sortBy?: 'priceup' | 'pricedown' | 'recent' | 'discount';
+  sortBy?: ProductSort;
 }
+
+export type ProductSort = 'priceup' | 'pricedown' | 'recent' | 'discount';
