@@ -1,13 +1,29 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import './App.css';
-import ProductsProvider from './stores/productsStore/index';
+import Category from './pages/Subcategory';
 
 function App() {
   return (
     <div className="App">
-      <ProductsProvider></ProductsProvider>
+      <Router>
+        <Switch>
+          <PublicRoute exact path="/" component={Category} />{' '}
+        </Switch>
+      </Router>
     </div>
   );
+}
+
+function PublicRoute({ ...rest }: any): React.ReactElement {
+  // const { setLoginCallback } = useContext(AfterLoginAction);
+
+  // useEffect(() => {
+  //   setLoginCallback('/');
+  // }, [setLoginCallback]);
+
+  return <Route {...rest} />;
 }
 
 export default App;
