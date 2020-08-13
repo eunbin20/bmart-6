@@ -6,7 +6,7 @@ const { isValidJwtToken } = require('../middlewares/auth');
 
 router.post('/', isValidJwtToken, productController.create);
 router.get('/', productController.findAll);
-router.put('/', productController.update);
-router.delete('/:id', productController.delete);
+router.put('/', isValidJwtToken, productController.update);
+router.delete('/:id', isValidJwtToken, productController.delete);
 
 module.exports = router;

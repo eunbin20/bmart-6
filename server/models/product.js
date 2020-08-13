@@ -1,4 +1,4 @@
-const { Model, Op } = require("sequelize");
+const { Model, Op } = require('sequelize');
 
 class Product extends Model {
   static init(sequelize, DataTypes) {
@@ -26,50 +26,43 @@ class Product extends Model {
       {
         freezeTableName: true,
         sequelize,
-      }
+      },
     );
   }
 
   static associate(models) {
     this.belongsTo(models.Subcategory, {
-      foreignKey: "subcategoryId",
-      targetKey: "id",
+      foreignKey: 'subcategoryId',
+      targetKey: 'id',
     });
     this.belongsToMany(models.Order, {
-      foreignKey: "productId",
-      targetKey: "id",
-      otherKey: "orderId",
+      foreignKey: 'productId',
+      targetKey: 'id',
+      otherKey: 'orderId',
       through: models.OrderProductRelation,
-      as: "orders",
+      as: 'orders',
     });
     this.belongsToMany(models.User, {
-      foreignKey: "productId",
-      targetKey: "id",
-      otherKey: "userId",
+      foreignKey: 'productId',
+      targetKey: 'id',
+      otherKey: 'userId',
       through: models.UserProductRelation,
-      as: "likes",
+      as: 'likes',
     });
   }
 
   static getOrder(sortBy) {
     switch (sortBy) {
-      case "priceup":
-      case "pricedown":
-      case "recent":
-      case "discount":
+      case 'priceup':
+      case 'pricedown':
+      case 'recent':
+      case 'discount':
       default:
-        return [["id", "DESC"]];
+        return [['id', 'DESC']];
     }
   }
 
-  static findAll({
-    limit = 20,
-    offset = 0,
-    title,
-    subcategoryId,
-    isDiscounted,
-    sortBy,
-  }) {
+  static findAll({ limit = 20, offset = 0, title, subcategoryId, isDiscounted, sortBy }) {
     return super.findAll({
       limit: +limit,
       offset: +offset,

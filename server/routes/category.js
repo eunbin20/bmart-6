@@ -1,9 +1,10 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const categoryController = require("../controllers/category");
+const categoryController = require('../controllers/category');
+const { isValidJwtToken } = require('../middlewares/auth');
 
-router.post("/", categoryController.create);
-router.put("/", categoryController.update);
-router.delete("/:id", categoryController.delete);
+router.post('/', isValidJwtToken, categoryController.create);
+router.put('/', isValidJwtToken, categoryController.update);
+router.delete('/:id', isValidJwtToken, categoryController.delete);
 
 module.exports = router;

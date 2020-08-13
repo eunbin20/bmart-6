@@ -17,13 +17,13 @@ module.exports = () => {
         try {
           const result = await User.findOne({ where: { email } });
           if (!result) {
-            return done(null, false, { message: 'not found user' });
+            return done(null, false, '');
           }
           const { dataValues: user } = result;
           if (await verifyPassword(password, user.password, user.salt)) {
             return done(null, user); // 로그인 성공!
           }
-          return done(null, false, { message: 'invalid password' }); // 비번 틀림
+          return done(null, false, ''); // 비번 틀림
         } catch (e) {
           return done(e);
         }
@@ -43,7 +43,7 @@ module.exports = () => {
         try {
           const result = await User.findOne({ where: { id: payload.userId } });
           if (!result) {
-            return done(null, false, { message: 'invaliad token' });
+            return done(null, false, '');
           }
           const { dataValues: user } = result;
           return done(null, user);

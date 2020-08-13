@@ -1,4 +1,4 @@
-const Subcategory = require("../models/subcategory");
+const Subcategory = require('../models/subcategory');
 
 exports.create = async (req, res) => {
   const subcategory = await Subcategory.create(req.body);
