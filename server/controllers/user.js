@@ -1,4 +1,5 @@
 const JWT = require('jsonwebtoken');
+const UserProductRelation = require('../models/user_product_relation');
 const User = require('../models/user');
 const { createPasswordHash } = require('../utils/salt');
 
@@ -27,11 +28,29 @@ exports.create = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
-  await User.update(req.body, { where: { id: req.body.id } });
+  await User.update(req.body, { where: { id: req.user.id } });
   res.status(200).send({ completed: true });
 };
 
 exports.delete = async (req, res) => {
-  await User.update({ isDeleted: true }, { id: req.params.id });
+  await User.update({ isDeleted: true }, { id: req.user.id });
+  res.status(200).send({ completed: true });
+};
+
+exports.addInterestProduct = async (req, res) => {
+  const {
+    user,
+    params: { productId },
+  } = req;
+  await UserProductRelation.create({ userId: user.id, productId });
+  res.status(201).send({ completed: true });
+};
+
+exports.deleteInterestProduct = async (req, res) => {
+  const {
+    user,
+    params: { productId },
+  } = req;
+  await UserProductRelation.destroy({ where: { userId: user.id, productId } });
   res.status(200).send({ completed: true });
 };

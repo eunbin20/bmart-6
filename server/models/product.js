@@ -8,7 +8,7 @@ class Product extends Model {
         title: DataTypes.STRING,
         price: DataTypes.INTEGER,
         discountedPrice: DataTypes.STRING,
-        quantity: DataTypes.STRING,
+        quantity: DataTypes.INTEGER,
         imageUrl: DataTypes.STRING,
         isDiscounted: {
           type: DataTypes.BOOLEAN,
