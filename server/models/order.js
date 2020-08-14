@@ -16,6 +16,10 @@ class Order extends Model {
     );
   }
 
+  static async beginTransaction() {
+    return await this.sequelize.transaction();
+  }
+
   static associate(models) {
     this.belongsTo(models.User, {
       foreignKey: 'userId',

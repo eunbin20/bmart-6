@@ -13,7 +13,7 @@ const errorHandler = (error, res, next) => {
 /* User validation */
 exports.validateCreateUser = (req, res, next) => {
   const schema = Joi.object().keys({
-    email: Joi.string().required(),
+    email: Joi.string().email().required(),
     password: Joi.string().min(4).required(),
     name: Joi.string().min(2).required(),
     nickname: Joi.string().min(2).required(),
@@ -28,6 +28,16 @@ exports.validateUpdateUserInterest = (req, res, next) => {
   });
 
   const { error } = schema.validate(req.params);
+  errorHandler(error, res, next);
+};
+
+/* Order validation */
+exports.validateCreateOrder = (req, res, next) => {
+  const schema = Joi.object().keys({
+    productIds: Joi.array().items(Joi.number()),
+  });
+
+  const { error } = schema.validate(req.body);
   errorHandler(error, res, next);
 };
 
