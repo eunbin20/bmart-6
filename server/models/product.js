@@ -7,8 +7,9 @@ class Product extends Model {
         subcategoryId: DataTypes.INTEGER,
         title: DataTypes.STRING,
         price: DataTypes.INTEGER,
-        discountedPrice: DataTypes.STRING,
-        quantity: DataTypes.STRING,
+        discountedPrice: DataTypes.INTEGER,
+        discountedRate: DataTypes.INTEGER,
+        quantity: DataTypes.INTEGER,
         imageUrl: DataTypes.STRING,
         isDiscounted: {
           type: DataTypes.BOOLEAN,
@@ -62,8 +63,8 @@ class Product extends Model {
     }
   }
 
-  static findAll({ limit = 20, offset = 0, title, subcategoryId, isDiscounted, sortBy }) {
-    return super.findAll({
+  static filter({ limit = 20, offset = 0, title, subcategoryId, isDiscounted, sortBy }) {
+    return this.findAll({
       limit: +limit,
       offset: +offset,
       where: {
