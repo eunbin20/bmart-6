@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const { schema } = require('../models/order');
 
 const PRODUCT_ID = Joi.number().required();
 
@@ -38,6 +39,15 @@ exports.validateCreateOrder = (req, res, next) => {
   });
 
   const { error } = schema.validate(req.body);
+  errorHandler(error, res, next);
+};
+
+exports.validateGetOrderOne = (req, res, next) => {
+  const schema = Joi.object().keys({
+    orderId: Joi.number().required(),
+  });
+
+  const { error } = schema.validate(req.params);
   errorHandler(error, res, next);
 };
 

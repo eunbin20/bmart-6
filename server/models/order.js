@@ -1,4 +1,5 @@
 const { Model } = require('sequelize');
+const OrderProductRelation = require('./order_product_relation');
 
 class Order extends Model {
   static init(sequelize, DataTypes) {

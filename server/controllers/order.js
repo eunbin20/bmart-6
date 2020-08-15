@@ -22,3 +22,15 @@ exports.create = async (req, res) => {
   t.commit();
   res.status(200).send(result);
 };
+
+exports.findAll = async (req, res) => {
+  const { user } = req;
+  const orders = await Order.findAll({ where: { userId: user.id } });
+  res.status(200).send(orders);
+};
+
+exports.findOne = async (req, res) => {
+  const { orderId } = req.params;
+  const products = await OrderProductRelation.findAll({ where: { orderId } });
+  res.status(200).send(products);
+};
