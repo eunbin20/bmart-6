@@ -23,7 +23,7 @@ function ProductCard({
   const sampleImg =
     'https://thumbnail7.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/2020/04/10/16/9/26943073-90de-487a-bcf9-974a31db6607.jpg';
   return (
-    <S.LinkWrapper to={'home'} data-testid={'main-card'}>
+    <S.LinkWrapper to={'home'}>
       <S.ImgWrapper>
         <S.Image alt={'card'} src={sampleImg} />
       </S.ImgWrapper>
