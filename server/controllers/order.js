@@ -20,7 +20,7 @@ exports.create = async (req, res) => {
   const parsedProducts = OrderProductRelation.parseProductsForOrder(products, dataValues.id);
   const result = await OrderProductRelation.bulkCreate(parsedProducts);
   t.commit();
-  res.status(200).send(result);
+  res.status(201).send(result);
 };
 
 exports.findAll = async (req, res) => {

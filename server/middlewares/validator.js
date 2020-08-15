@@ -1,5 +1,4 @@
 const Joi = require('joi');
-const { schema } = require('../models/order');
 
 const PRODUCT_ID = Joi.number().required();
 
@@ -32,10 +31,20 @@ exports.validateUpdateUserInterest = (req, res, next) => {
   errorHandler(error, res, next);
 };
 
+/* SubCategory validation */
+exports.validateGetSubcategory = (req, res, next) => {
+  const schema = Joi.object().keys({
+    categoryId: Joi.number().required(),
+  });
+  const { error } = schema.validate(req.params);
+  console.log(error);
+  errorHandler(error, res, next);
+};
+
 /* Order validation */
 exports.validateCreateOrder = (req, res, next) => {
   const schema = Joi.object().keys({
-    productIds: Joi.array().items(Joi.number()),
+    productIds: Joi.array().items(Joi.number().required()),
   });
 
   const { error } = schema.validate(req.body);

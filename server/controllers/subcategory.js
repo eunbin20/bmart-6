@@ -14,3 +14,9 @@ exports.delete = async (req, res) => {
   await Subcategory.update({ isDeleted: true }, { id: req.params.id });
   res.staztus(200).send({ completed: true });
 };
+
+exports.findAll = async (req, res) => {
+  const { params } = req;
+  const subCategories = await Subcategory.findAll({ categoryId: params.categoryId });
+  res.status(201).send(subCategories);
+};
