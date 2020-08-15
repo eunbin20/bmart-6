@@ -1,3 +1,5 @@
+import { PRICEUP, PRICEDOWN } from '../commons/constants/strings';
+
 export interface User {
   id: number;
   email: string;
@@ -36,4 +38,4 @@ export interface ProductFilter {
   sortBy?: ProductSort;
 }
 
-export type ProductSort = 'priceup' | 'pricedown' | 'recent' | 'discount';
+export type ProductSort = typeof PRICEUP | typeof PRICEDOWN;

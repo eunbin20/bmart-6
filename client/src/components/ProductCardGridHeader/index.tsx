@@ -1,6 +1,7 @@
 import React from 'react';
 
 import * as S from './style';
+import { PRICEUP, PRICEDOWN } from '../../commons/constants/strings';
 
 export interface Props {
   changeSort: Function;
@@ -11,8 +12,8 @@ function ProductCardGridHeader({ changeSort }: Props): React.ReactElement {
     <>
       <S.CardGridHeaderContainer>
         <S.SortContainer onClick={() => changeSort()}>기본 정렬 순</S.SortContainer>
-        <S.SortContainer onClick={() => changeSort('priceup')}>높은 가격 순</S.SortContainer>
-        <S.SortContainer onClick={() => changeSort('pricedown')}>낮은 가격 순</S.SortContainer>
+        <S.SortContainer onClick={() => changeSort(PRICEUP)}>높은 가격 순</S.SortContainer>
+        <S.SortContainer onClick={() => changeSort(PRICEDOWN)}>낮은 가격 순</S.SortContainer>
       </S.CardGridHeaderContainer>
     </>
   );
