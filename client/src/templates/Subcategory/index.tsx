@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './style';
-import BasedTemplate from '../../BasedTemplate';
+import DefaultTemplate from '../Default';
 
 interface Props {
   // mainBanner: React.ReactNode;
@@ -13,11 +13,11 @@ function SubcategoryTemplate({
   productCardGrid,
 }: Props): React.ReactElement {
   return (
-    <BasedTemplate>
+    <DefaultTemplate>
       {/* <S.MainBannerContainer>{mainBanner}</S.MainBannerContainer> */}
       <S.ProductCardGridHeaderContainer>{productCardGridHeader}</S.ProductCardGridHeaderContainer>
       <S.ProductCardGridContainer>{productCardGrid}</S.ProductCardGridContainer>
-    </BasedTemplate>
+    </DefaultTemplate>
   );
 }
 

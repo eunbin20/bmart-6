@@ -9,7 +9,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-function BasedTemplate({
+function DefaultTemplate({
   children,
   loading = false,
   internalServerError = false,
@@ -34,4 +34,4 @@ function BasedTemplate({
   );
 }
 
-export default BasedTemplate;
+export default DefaultTemplate;
