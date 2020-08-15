@@ -17,6 +17,15 @@ class OrderProductRelation extends Model {
       },
     );
   }
+
+  static parseProductsForOrder(products, orderId) {
+    const res = [];
+    products.forEach((product) => {
+      const { id: productId, title, price, discountedPrice, quantity } = product;
+      res.push({ orderId, productId, title, price, discountedPrice, quantity });
+    });
+    return res;
+  }
 }
 
 module.exports = OrderProductRelation;

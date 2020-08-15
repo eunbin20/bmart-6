@@ -1,6 +1,6 @@
 const Order = require('../models/order');
 const Product = require('../models/product');
-const { sequelize } = require('../models');
+const OrderProductRelation = require('../models/order_product_relation');
 
 exports.create = async (req, res) => {
   const {
@@ -9,11 +9,16 @@ exports.create = async (req, res) => {
   } = req;
   const t = await Order.beginTransaction();
   const products = await Product.findAll({ where: { id: productIds } }, { transaction: t });
-  // bulk insert
-
-  // productIds 로 product 다 가져오고? totalPrice, totalDiscountedPrice 값 구하고
-  // order 테이블에 insert
-  // orderProductRelation에 insert
+  const { totalPrice, totalDiscountedPrice } = Order.getTotalPrice(products);
+  const orderParams = {
+    userId: user.id,
+    status: 'pending',
+    totalPrice,
+    totalDiscountedPrice,
+  };
+  const { dataValues } = await Order.create(orderParams);
+  const parsedProducts = OrderProductRelation.parseProductsForOrder(products, dataValues.id);
+  const result = await OrderProductRelation.bulkCreate(parsedProducts);
   t.commit();
-  res.status(200).send(products);
+  res.status(200).send(result);
 };

@@ -8,6 +8,10 @@ class Order extends Model {
         status: DataTypes.STRING,
         totalPrice: DataTypes.INTEGER,
         totalDiscountedPrice: DataTypes.INTEGER,
+        isDeleted: {
+          type: DataTypes.BOOLEAN,
+          defaultValue: 0,
+        },
       },
       {
         freezeTableName: true,
@@ -18,6 +22,15 @@ class Order extends Model {
 
   static async beginTransaction() {
     return await this.sequelize.transaction();
+  }
+
+  static getTotalPrice(products) {
+    return {
+      totalPrice: products.map(({ price }) => price).reduce((a, b) => a + b),
+      totalDiscountedPrice: products
+        .map(({ discountedPrice }) => discountedPrice)
+        .reduce((a, b) => a + b),
+    };
   }
 
   static associate(models) {
