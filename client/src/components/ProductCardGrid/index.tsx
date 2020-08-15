@@ -9,42 +9,14 @@ interface Props {
   products: Product[];
 }
 
-function ProductCardGrid({ products }: Props): React.ReactElement {
-  return (
-    <>
-      <S.CardGridContainer>
-        {!products || !products.length ? (
-          <></>
-        ) : (
-          products.map((product) => {
-            const {
-              id,
-              imageUrl,
-              title,
-              price,
-              discountedPrice,
-              discountRate,
-              isDiscounted,
-            } = product;
-
-            return (
-              <ProductCard
-                key={id}
-                imageUrl={imageUrl}
-                title={title}
-                price={price}
-                discountedPrice={discountedPrice}
-                discountRate={discountRate}
-                isDiscounted={isDiscounted}
-
-                // to={`${ROUTES.EVENT_DETAIL}/${id}`}
-              />
-            );
-          })
-        )}
-      </S.CardGridContainer>
-    </>
-  );
+function ProductCardGrid({ products }: Props) {
+  const generateProductCards = (products: Product[]) => {
+    if (!products || !products.length) {
+      return;
+    }
+    return products.map(({ id, ...rest }) => <ProductCard key={id} {...rest} />);
+  };
+  return <S.CardGridContainer>{generateProductCards(products)}</S.CardGridContainer>;
 }
 
 export default ProductCardGrid;
