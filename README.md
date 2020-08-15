@@ -64,7 +64,7 @@ npm install
 DB_HOST=데이터베이스 호스트
 DB_USER=데이터베이스 유저
 DB_NAME=데이터베이스 이름
-DB_PASS=데이터베이스 비밀번호
+DB_PW=데이터베이스 비밀번호
 
 JWT_SECRET=아무거나
 ```
