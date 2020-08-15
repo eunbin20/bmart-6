@@ -1,6 +1,11 @@
 const Joi = require('joi');
 
-const PRODUCT_ID = Joi.number().required();
+const EMAIL = Joi.string().email().required();
+const NUMBER = Joi.number();
+const NUMBER_REQUIRED = Joi.number().required();
+const STRING = Joi.string();
+const STRING_REQUIRED = Joi.string().required();
+const ARRAY = (type) => Joi.array().items(type);
 
 const errorHandler = (error, res, next) => {
   if (error) {
@@ -13,10 +18,10 @@ const errorHandler = (error, res, next) => {
 /* User validation */
 exports.validateCreateUser = (req, res, next) => {
   const schema = Joi.object().keys({
-    email: Joi.string().email().required(),
-    password: Joi.string().min(4).required(),
-    name: Joi.string().min(2).required(),
-    nickname: Joi.string().min(2).required(),
+    email: EMAIL,
+    password: STRING_REQUIRED,
+    name: STRING_REQUIRED,
+    nickname: STRING_REQUIRED,
   });
   const { error } = schema.validate(req.body);
   errorHandler(error, res, next);
@@ -24,7 +29,7 @@ exports.validateCreateUser = (req, res, next) => {
 
 exports.validateUpdateUserInterest = (req, res, next) => {
   const schema = Joi.object().keys({
-    productId: PRODUCT_ID,
+    productId: NUMBER_REQUIRED,
   });
 
   const { error } = schema.validate(req.params);
@@ -34,7 +39,7 @@ exports.validateUpdateUserInterest = (req, res, next) => {
 /* Category validation */
 exports.validateCreateCategory = (req, res, next) => {
   const schema = Joi.object().keys({
-    name: Joi.string().required(),
+    name: STRING_REQUIRED,
   });
   const { error } = schema.validate(req.body);
   errorHandler(error, res, next);
@@ -43,7 +48,7 @@ exports.validateCreateCategory = (req, res, next) => {
 /* SubCategory validation */
 exports.validateGetSubcategory = (req, res, next) => {
   const schema = Joi.object().keys({
-    categoryId: Joi.number().required(),
+    categoryId: NUMBER_REQUIRED,
   });
   const { error } = schema.validate(req.params);
   errorHandler(error, res, next);
@@ -51,8 +56,8 @@ exports.validateGetSubcategory = (req, res, next) => {
 
 exports.validateCreateSubCategory = (req, res, next) => {
   const schema = Joi.object().keys({
-    categoryId: Joi.number().required(),
-    name: Joi.string().required(),
+    categoryId: NUMBER_REQUIRED,
+    name: STRING_REQUIRED,
   });
   const { error } = schema.validate(req.body);
   errorHandler(error, res, next);
@@ -61,13 +66,13 @@ exports.validateCreateSubCategory = (req, res, next) => {
 /* Product validation */
 exports.validateCreateProduct = (req, res, next) => {
   const schema = Joi.object().keys({
-    subCategoryId: Joi.number().required(),
-    title: Joi.string().required(),
-    price: Joi.number().required(),
-    discountedPrice: Joi.number(),
-    discountedRate: Joi.number(),
-    quantity: Joi.number().required(),
-    imageUrl: Joi.string().required(),
+    subCategoryId: NUMBER_REQUIRED,
+    title: STRING_REQUIRED,
+    price: NUMBER_REQUIRED,
+    discountedPrice: NUMBER,
+    discountedRate: NUMBER,
+    quantity: NUMBER_REQUIRED,
+    imageUrl: STRING_REQUIRED,
   });
 
   const { error } = schema.validate(req.body);
@@ -77,7 +82,7 @@ exports.validateCreateProduct = (req, res, next) => {
 /* Order validation */
 exports.validateCreateOrder = (req, res, next) => {
   const schema = Joi.object().keys({
-    productIds: Joi.array().items(Joi.number().required()),
+    productIds: ARRAY(NUMBER),
   });
 
   const { error } = schema.validate(req.body);
@@ -86,7 +91,7 @@ exports.validateCreateOrder = (req, res, next) => {
 
 exports.validateGetOrderOne = (req, res, next) => {
   const schema = Joi.object().keys({
-    orderId: Joi.number().required(),
+    orderId: NUMBER_REQUIRED,
   });
 
   const { error } = schema.validate(req.params);
@@ -96,12 +101,12 @@ exports.validateGetOrderOne = (req, res, next) => {
 /* Banner validation */
 exports.validateCreateBanner = (req, res, next) => {
   const schema = Joi.object().keys({
-    imageUrl: Joi.string().required(),
-    redirectUrl: Joi.string().required(),
-    order: Joi.number().required(),
-    placement: Joi.string().required(),
-    expiredAt: Joi.string().required(),
-    startedAt: Joi.string().required(),
+    imageUrl: STRING_REQUIRED,
+    redirectUrl: STRING_REQUIRED,
+    order: NUMBER_REQUIRED,
+    placement: STRING_REQUIRED,
+    expiredAt: STRING_REQUIRED,
+    startedAt: STRING_REQUIRED,
   });
   const { error } = schema.validate(req.body);
   errorHandler(error, res, next);
@@ -109,7 +114,7 @@ exports.validateCreateBanner = (req, res, next) => {
 
 exports.validateDeleteBanner = (req, res, next) => {
   const schema = Joi.object().keys({
-    bannerId: Joi.number().required(),
+    bannerId: NUMBER_REQUIRED,
   });
   const { error } = schema.validate(req.params);
   errorHandler(error, res, next);
