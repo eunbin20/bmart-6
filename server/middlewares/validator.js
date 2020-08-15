@@ -31,13 +31,46 @@ exports.validateUpdateUserInterest = (req, res, next) => {
   errorHandler(error, res, next);
 };
 
+/* Category validation */
+exports.validateCreateCategory = (req, res, next) => {
+  const schema = Joi.object().keys({
+    name: Joi.string().required(),
+  });
+  const { error } = schema.validate(req.body);
+  errorHandler(error, res, next);
+};
+
 /* SubCategory validation */
 exports.validateGetSubcategory = (req, res, next) => {
   const schema = Joi.object().keys({
     categoryId: Joi.number().required(),
   });
   const { error } = schema.validate(req.params);
-  console.log(error);
+  errorHandler(error, res, next);
+};
+
+exports.validateCreateSubCategory = (req, res, next) => {
+  const schema = Joi.object().keys({
+    categoryId: Joi.number().required(),
+    name: Joi.string().required(),
+  });
+  const { error } = schema.validate(req.body);
+  errorHandler(error, res, next);
+};
+
+/* Product validation */
+exports.validateCreateProduct = (req, res, next) => {
+  const schema = Joi.object().keys({
+    subCategoryId: Joi.number().required(),
+    title: Joi.string().required(),
+    price: Joi.number().required(),
+    discountedPrice: Joi.number(),
+    discountedRate: Joi.number(),
+    quantity: Joi.number().required(),
+    imageUrl: Joi.string().required(),
+  });
+
+  const { error } = schema.validate(req.body);
   errorHandler(error, res, next);
 };
 
@@ -71,5 +104,13 @@ exports.validateCreateBanner = (req, res, next) => {
     startedAt: Joi.string().required(),
   });
   const { error } = schema.validate(req.body);
+  errorHandler(error, res, next);
+};
+
+exports.validateDeleteBanner = (req, res, next) => {
+  const schema = Joi.object().keys({
+    bannerId: Joi.number().required(),
+  });
+  const { error } = schema.validate(req.params);
   errorHandler(error, res, next);
 };
