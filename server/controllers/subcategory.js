@@ -1,22 +1,23 @@
 const Subcategory = require('../models/subcategory');
+const { HTTP_STATUS } = require('../utils/constants');
 
 exports.create = async (req, res) => {
   const subcategory = await Subcategory.create(req.body);
-  res.send(subcategory);
+  res.status(HTTP_STATUS.CREATE_SUCCESS).send(subcategory);
 };
 
 exports.update = async (req, res) => {
   await Subcategory.update(req.body, { where: { id: req.body.id } });
-  res.status(200).send({ completed: true });
+  res.status(HTTP_STATUS.SUCCESS).send({ completed: true });
 };
 
 exports.delete = async (req, res) => {
   await Subcategory.update({ isDeleted: true }, { id: req.params.id });
-  res.staztus(200).send({ completed: true });
+  res.staztus(HTTP_STATUS.SUCCESS).send({ completed: true });
 };
 
 exports.findAll = async (req, res) => {
   const { params } = req;
   const subCategories = await Subcategory.findAll({ categoryId: params.categoryId });
-  res.status(201).send(subCategories);
+  res.status(HTTP_STATUS.SUCCESS).send(subCategories);
 };

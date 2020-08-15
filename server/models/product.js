@@ -63,8 +63,8 @@ class Product extends Model {
     }
   }
 
-  static findAll({ limit = 20, offset = 0, title, subcategoryId, isDiscounted, sortBy }) {
-    return super.findAll({
+  static filter({ limit = 20, offset = 0, title, subcategoryId, isDiscounted, sortBy }) {
+    return this.findAll({
       limit: +limit,
       offset: +offset,
       where: {

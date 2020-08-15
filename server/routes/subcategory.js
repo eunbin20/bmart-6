@@ -4,9 +4,10 @@ const subcategoryController = require('../controllers/subcategory');
 const { isValidJwtToken } = require('../middlewares/auth');
 const { validateCreateSubCategory, validateGetSubcategory } = require('../middlewares/validator');
 
-router.post('/', validateCreateSubCategory, isValidJwtToken, subcategoryController.create);
 router.get('/:categoryId', validateGetSubcategory, subcategoryController.findAll);
-router.put('/', isValidJwtToken, subcategoryController.update);
-router.delete('/:id', isValidJwtToken, subcategoryController.delete);
+router.use(isValidJwtToken);
+router.post('/', validateCreateSubCategory, subcategoryController.create);
+router.put('/', subcategoryController.update);
+router.delete('/:id', subcategoryController.delete);
 
 module.exports = router;

@@ -5,7 +5,7 @@ const { validateCreateBanner, validateDeleteBanner } = require('../middlewares/v
 const { isValidJwtToken } = require('../middlewares/auth');
 
 router.get('/', bannerController.findAll);
-router.post('/', validateCreateBanner, isValidJwtToken, bannerController.create);
-router.delete('/:bannerId', validateDeleteBanner, isValidJwtToken, bannerController.delete);
+router.post('/', isValidJwtToken, validateCreateBanner, bannerController.create);
+router.delete('/:bannerId', isValidJwtToken, validateDeleteBanner, bannerController.delete);
 
 module.exports = router;

@@ -19,12 +19,10 @@ class OrderProductRelation extends Model {
   }
 
   static parseProductsForOrder(products, orderId) {
-    const res = [];
-    products.forEach((product) => {
+    return products.map((product) => {
       const { id: productId, title, price, discountedPrice, quantity } = product;
-      res.push({ orderId, productId, title, price, discountedPrice, quantity });
+      return { orderId, productId, title, price, discountedPrice, quantity };
     });
-    return res;
   }
 }
 

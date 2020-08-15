@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const { HTTP_STATUS } = require('../utils/constants');
 
 const EMAIL = Joi.string().email().required();
 const NUMBER = Joi.number();
@@ -9,7 +10,7 @@ const ARRAY = (type) => Joi.array().items(type);
 
 const errorHandler = (error, res, next) => {
   if (error) {
-    res.status(400).send(error);
+    res.status(HTTP_STATUS.BAD_REQUEST).send(error);
     return;
   }
   next();
@@ -66,7 +67,7 @@ exports.validateCreateSubCategory = (req, res, next) => {
 /* Product validation */
 exports.validateCreateProduct = (req, res, next) => {
   const schema = Joi.object().keys({
-    subCategoryId: NUMBER_REQUIRED,
+    subcategoryId: NUMBER_REQUIRED,
     title: STRING_REQUIRED,
     price: NUMBER_REQUIRED,
     discountedPrice: NUMBER,

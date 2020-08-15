@@ -4,8 +4,9 @@ const orderController = require('../controllers/order');
 const { isValidJwtToken } = require('../middlewares/auth');
 const { validateCreateOrder, validateGetOrderOne } = require('../middlewares/validator');
 
-router.post('/', validateCreateOrder, isValidJwtToken, orderController.create);
-router.get('/', isValidJwtToken, orderController.findAll);
-router.get('/:orderId', validateGetOrderOne, isValidJwtToken, orderController.findOne);
+router.use(isValidJwtToken);
+router.post('/', validateCreateOrder, orderController.create);
+router.get('/', orderController.findAll);
+router.get('/:orderId', validateGetOrderOne, orderController.findOne);
 
 module.exports = router;

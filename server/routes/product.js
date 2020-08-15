@@ -4,9 +4,10 @@ const productController = require('../controllers/product');
 const { validateCreateProduct } = require('../middlewares/validator');
 const { isValidJwtToken } = require('../middlewares/auth');
 
-router.post('/', validateCreateProduct, isValidJwtToken, productController.create);
-router.get('/', productController.findAll);
-router.put('/', isValidJwtToken, productController.update);
-router.delete('/:id', isValidJwtToken, productController.delete);
+router.get('/', productController.filter);
+router.use(isValidJwtToken);
+router.post('/', validateCreateProduct, productController.create);
+router.put('/', productController.update);
+router.delete('/:id', productController.delete);
 
 module.exports = router;

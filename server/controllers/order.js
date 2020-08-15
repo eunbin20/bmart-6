@@ -1,36 +1,22 @@
 const Order = require('../models/order');
 const Product = require('../models/product');
 const OrderProductRelation = require('../models/order_product_relation');
+const { HTTP_STATUS } = require('../utils/constants');
 
 exports.create = async (req, res) => {
-  const {
-    user,
-    body: { productIds },
-  } = req;
-  const t = await Order.beginTransaction();
-  const products = await Product.findAll({ where: { id: productIds } }, { transaction: t });
-  const { totalPrice, totalDiscountedPrice } = Order.getTotalPrice(products);
-  const orderParams = {
-    userId: user.id,
-    status: 'pending',
-    totalPrice,
-    totalDiscountedPrice,
-  };
-  const { dataValues } = await Order.create(orderParams);
-  const parsedProducts = OrderProductRelation.parseProductsForOrder(products, dataValues.id);
-  const result = await OrderProductRelation.bulkCreate(parsedProducts);
-  t.commit();
-  res.status(201).send(result);
+  const products = await Product.findAll({ where: { id: req.body.productIds } });
+  const order = await Order.createOrder(products, req.user.id);
+  res.status(HTTP_STATUS.CREATE_SUCCESS).send(order);
 };
 
 exports.findAll = async (req, res) => {
   const { user } = req;
   const orders = await Order.findAll({ where: { userId: user.id } });
-  res.status(200).send(orders);
+  res.status(HTTP_STATUS.SUCCESS).send(orders);
 };
 
 exports.findOne = async (req, res) => {
   const { orderId } = req.params;
   const products = await OrderProductRelation.findAll({ where: { orderId } });
-  res.status(200).send(products);
+  res.status(HTTP_STATUS.SUCCESS).send(products);
 };
