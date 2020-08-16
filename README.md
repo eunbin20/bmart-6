@@ -6,13 +6,14 @@
 - 정진혁(26)
 - 홍동욱(27)
 
-## 📖 Wiki
+## 📖 Activity
 
 - [Ground Rule](https://github.com/woowa-techcamp-2020/bmart-6/wiki/Ground-Rule)
 - [Convention](https://github.com/woowa-techcamp-2020/bmart-6/wiki/Convetion)
 
 - [ERD](https://github.com/woowa-techcamp-2020/bmart-6/wiki/ERD)
 - [API Documentation](https://github.com/woowa-techcamp-2020/bmart-6/wiki/API-Documentation)
+- [Figma](https://www.figma.com/file/8PheL4eBFXz8IEEgtjZsR2/%EC%9A%B0%EC%95%84%ED%95%9C%ED%85%8C%ED%81%AC%EC%BA%A0%ED%94%843%EA%B8%B0-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?node-id=171%3A78)
 
 ## 🏅 Skills
 
