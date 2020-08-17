@@ -7,35 +7,34 @@ import { ACTION_FETCH_PRODUCTS, ACTION_ERROR } from './types';
 import useApiRequest, { REQUEST, SUCCESS, FAILURE } from '../../hooks/useApiRequests';
 import { getProducts } from '../../apis';
 import { productsReducer } from './reducer';
-import { ProductFetch } from './types';
+import { ProductAction } from './types';
+import { Action } from './actions';
 
 const defaultProductsState: ProductsState = {
   products: [],
   status: 0,
 };
 
-export default function useProducts(
-  data: ProductFilter,
-): [ProductsState, React.Dispatch<React.SetStateAction<ProductFetch>>] {
+export default function useProducts(data: ProductFilter): [ProductsState, React.Dispatch<Action>] {
   const [productsState, productsDispatcher] = useReducer(productsReducer, defaultProductsState);
-  const [productFetch, setProductFetch] = useState<ProductFetch>({
+  const [productAction, setProductAction] = useState<ProductAction>({
     type: ACTION_FETCH_PRODUCTS,
     data: data ?? {},
   });
   const [apiResponse, apiRequestDispatcher] = useApiRequest<Product[]>(getProducts);
 
   useEffect(() => {
-    switch (productFetch.type) {
+    switch (productAction.type) {
       case ACTION_FETCH_PRODUCTS:
         apiRequestDispatcher({
           type: REQUEST,
-          body: productFetch.data,
+          body: productAction.data,
         });
         break;
       default:
         return;
     }
-  }, [productFetch, apiRequestDispatcher]);
+  }, [productAction, apiRequestDispatcher]);
 
   useEffect(() => {
     const { type, data, err } = apiResponse;
@@ -45,7 +44,7 @@ export default function useProducts(
       case SUCCESS:
         if (!data) return;
         productsDispatcher({
-          type: productFetch.type,
+          type: productAction.type,
           value: {
             products: data,
             status: OK,
@@ -68,6 +67,6 @@ export default function useProducts(
             },
           });
     }
-  }, [apiResponse, productFetch.type]);
-  return [productsState, setProductFetch];
+  }, [apiResponse, productAction.type]);
+  return [productsState, setProductAction];
 }
