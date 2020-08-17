@@ -38,13 +38,19 @@ export const Input = styled.input.attrs((props: InputProps) => ({
   padding-bottom: 16px;
 `;
 
-export const PushButton = styled.button`
+interface PushButton {
+  className: string;
+}
+
+export const PushButton = styled.button.attrs({
+  className: 'f7-icons',
+})`
   background: ${C.GRAY_1};
   border: none;
   width: 60px;
   height: 60px;
   border-radius: 7px;
-  color: #eeeeee;
+  color: #ffffffff;
   position: absolute;
   bottom: 50px;
   right: 28px;

@@ -12,7 +12,7 @@ function JoinTemplate() {
         <S.Input type="nickname" name="nickname" placeholder="닉네임" />
         <S.Input type="password" name="password" placeholder="비밀번호" />
       </S.InputContainer>
-      <S.PushButton>></S.PushButton>
+      <S.PushButton>arrow_right</S.PushButton>
       <S.Footer />
     </DefaultTemplate>
   );
