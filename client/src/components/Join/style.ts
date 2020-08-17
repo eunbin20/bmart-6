@@ -57,9 +57,15 @@ export const InputError = styled.div`
   display: ${(props: InputErrorProps) => (props.visible ? 'block' : 'none')};
 `;
 
-export const PushButton = styled.button.attrs({
+interface PushButtonProps {
+  onSubmit: (args: any) => void;
+}
+
+export const PushButton = styled.button.attrs((props: PushButtonProps) => ({
+  type: 'submit',
   className: 'f7-icons',
-})`
+  onSubmit: props.onSubmit,
+}))`
   background: ${C.GRAY_1};
   border: none;
   width: 60px;
