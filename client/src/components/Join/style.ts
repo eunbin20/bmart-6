@@ -13,9 +13,16 @@ export const Header = styled.header`
 export const InputContainer = styled.section`
   width: 100%;
   padding: 0 28px;
-  > input + input {
+  > .input-wrapper + .input-wrapper {
     margin-top: 32px;
   }
+`;
+
+export const InputWrapper = styled.div.attrs({
+  className: 'input-wrapper',
+})`
+  width: 100%;
+  min-height: 54px;
 `;
 
 interface InputProps {
@@ -35,7 +42,19 @@ export const Input = styled.input.attrs((props: InputProps) => ({
   font-size: 20px;
   color: ${C.GRAY_2};
   border-bottom: 1px solid ${C.GRAY_2};
-  padding-bottom: 16px;
+  padding-bottom: 14px;
+`;
+
+interface InputErrorProps {
+  visible: boolean;
+}
+
+export const InputError = styled.div`
+  width: 100%;
+  height: 15px;
+  padding-top: 5px;
+  color: red;
+  display: ${(props: InputErrorProps) => (props.visible ? 'block' : 'none')};
 `;
 
 export const PushButton = styled.button.attrs({

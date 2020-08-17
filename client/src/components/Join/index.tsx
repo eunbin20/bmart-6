@@ -6,10 +6,22 @@ export default function Join() {
     <>
       <S.Header>Bmart</S.Header>
       <S.InputContainer>
-        <S.Input type="email" name="email" placeholder="이메일" />
-        <S.Input type="text" name="name" placeholder="이름" />
-        <S.Input type="nickname" name="nickname" placeholder="닉네임" />
-        <S.Input type="password" name="password" placeholder="비밀번호" />
+        <S.InputWrapper>
+          <S.Input type="email" name="email" placeholder="이메일" />
+          <S.InputError visible={true}>123</S.InputError>
+        </S.InputWrapper>
+        <S.InputWrapper>
+          <S.Input type="text" name="name" placeholder="이름" />
+          <S.InputError visible={false} />
+        </S.InputWrapper>
+        <S.InputWrapper>
+          <S.Input type="nickname" name="nickname" placeholder="닉네임" />
+          <S.InputError visible={false} />
+        </S.InputWrapper>
+        <S.InputWrapper>
+          <S.Input type="password" name="password" placeholder="비밀번호" />
+          <S.InputError visible={false} />
+        </S.InputWrapper>
       </S.InputContainer>
       <S.PushButton>arrow_right</S.PushButton>
       <S.Footer />
