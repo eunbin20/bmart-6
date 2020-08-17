@@ -9,6 +9,7 @@ export interface User {
 export interface UserJoin extends User {
   name: string;
   password: string;
+  passwordConfirm: string;
 }
 
 export interface Category {

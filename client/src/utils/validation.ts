@@ -37,11 +37,16 @@ export const createUserValidation = (values: UserJoin) => {
   } else if (checkName(values.nickname)) {
     errors.nickname = ERROR_MESSAGE.COMMON_TYPE;
   }
-
   if (isEmpty(values.password)) {
     errors.password = ERROR_MESSAGE.PASSWORD_EMPTY;
   } else if (checkPassword(values.password)) {
     errors.password = ERROR_MESSAGE.PASSWORD_TYPE;
+  }
+
+  if (isEmpty(values.passwordConfirm)) {
+    errors.passwordConfirm = ERROR_MESSAGE.PASSWORD_CONFIRM_EMPTY;
+  } else if (checkPassword(values.passwordConfirm) || values.passwordConfirm !== values.password) {
+    errors.passwordConfirm = ERROR_MESSAGE.PASSWORD_CONFIRM_EQUAL;
   }
 
   return errors;
