@@ -3,7 +3,7 @@ import { OK, NOT_FOUND, INTERNAL_SERVER_ERROR } from 'http-status';
 
 import { Product, ProductFilter } from '../../types/Data';
 import { ProductsState } from '../../types/States';
-import { ACTION_FETCH_PRODUCTS, ACTION_ERROR } from './types';
+import { ACTION_GET_PRODUCTS, ACTION_ERROR } from './types';
 import useApiRequest, { REQUEST, SUCCESS, FAILURE } from '../../hooks/useApiRequests';
 import { getProducts } from '../../apis';
 import { productsReducer } from './reducer';
@@ -16,25 +16,25 @@ const defaultProductsState: ProductsState = {
 };
 
 export default function useProducts(data: ProductFilter): [ProductsState, React.Dispatch<Action>] {
-  const [productsState, productsDispatcher] = useReducer(productsReducer, defaultProductsState);
-  const [productAction, setProductAction] = useState<ProductAction>({
-    type: ACTION_FETCH_PRODUCTS,
+  const [state, dispatch] = useReducer(productsReducer, defaultProductsState);
+  const [action, setAction] = useState<ProductAction>({
+    type: ACTION_GET_PRODUCTS,
     data: data ?? {},
   });
-  const [apiResponse, apiRequestDispatcher] = useApiRequest<Product[]>(getProducts);
+  const [apiResponse, getProductsDispatch] = useApiRequest<Product[]>(getProducts);
 
   useEffect(() => {
-    switch (productAction.type) {
-      case ACTION_FETCH_PRODUCTS:
-        apiRequestDispatcher({
+    switch (action.type) {
+      case ACTION_GET_PRODUCTS:
+        getProductsDispatch({
           type: REQUEST,
-          body: productAction.data,
+          body: action.data,
         });
         break;
       default:
         return;
     }
-  }, [productAction, apiRequestDispatcher]);
+  }, [action, getProductsDispatch]);
 
   useEffect(() => {
     const { type, data, err } = apiResponse;
@@ -43,8 +43,8 @@ export default function useProducts(data: ProductFilter): [ProductsState, React.
         break;
       case SUCCESS:
         if (!data) return;
-        productsDispatcher({
-          type: productAction.type,
+        dispatch({
+          type: action.type,
           value: {
             products: data,
             status: OK,
@@ -53,20 +53,20 @@ export default function useProducts(data: ProductFilter): [ProductsState, React.
         break;
       case FAILURE:
         if (err && err.response && err.response.status === NOT_FOUND)
-          productsDispatcher({
+          dispatch({
             type: ACTION_ERROR,
             value: {
               status: NOT_FOUND,
             },
           });
         else if (err)
-          productsDispatcher({
+          dispatch({
             type: ACTION_ERROR,
             value: {
               status: INTERNAL_SERVER_ERROR,
             },
           });
     }
-  }, [apiResponse, productAction.type]);
-  return [productsState, setProductAction];
+  }, [apiResponse, action.type]);
+  return [state, setAction];
 }

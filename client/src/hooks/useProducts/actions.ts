@@ -1,14 +1,14 @@
-import { ACTION_FETCH_PRODUCTS, ACTION_FETCH_MORE_PRODUCTS } from './types';
+import { ACTION_GET_PRODUCTS, ACTION_GET_MORE_PRODUCTS } from './types';
 import { ProductFilter } from '../../types/Data';
 
-export const fetchProducts = (data: ProductFilter) => ({
-  type: ACTION_FETCH_PRODUCTS,
+export const getProducts = (data: ProductFilter) => ({
+  type: ACTION_GET_PRODUCTS,
   data: data,
 });
 
-export const fetchMoreProducts = (data: ProductFilter) => ({
-  type: ACTION_FETCH_MORE_PRODUCTS,
+export const getMoreProducts = (data: ProductFilter) => ({
+  type: ACTION_GET_MORE_PRODUCTS,
   data: data,
 });
 
-export type Action = ReturnType<typeof fetchProducts> | ReturnType<typeof fetchMoreProducts>;
+export type Action = ReturnType<typeof getProducts> | ReturnType<typeof getMoreProducts>;
