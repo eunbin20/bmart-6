@@ -1,9 +1,14 @@
-import { PRICEUP, PRICEDOWN } from '../commons/constants/strings';
+import { PRICEUP, PRICEDOWN } from '../utils/constants';
 
 export interface User {
   id: number;
   email: string;
   nickname: string;
+}
+
+export interface UserJoin extends User {
+  name: string;
+  password: string;
 }
 
 export interface Category {
