@@ -55,11 +55,13 @@ class Product extends Model {
   static getOrder(sortBy) {
     switch (sortBy) {
       case 'priceup':
+        return [['price', 'DESC']];
       case 'pricedown':
+        return [['price', 'ASC']];
       case 'recent':
       case 'discount':
       default:
-        return [['id', 'DESC']];
+        return [['id', 'ASC']];
     }
   }
 

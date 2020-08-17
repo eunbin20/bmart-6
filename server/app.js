@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const passport = require('passport');
+const cors = require('cors');
 const passportConfig = require('./lib/passport');
 const { errorMiddleware } = require('./middlewares/error');
 
@@ -20,6 +21,7 @@ sequelize.sync({ force: false });
 const router = require('./routes');
 const app = express();
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

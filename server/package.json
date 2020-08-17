@@ -8,6 +8,7 @@
     "prod": "pm2 start ./bin/www"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "debug": "2.6.9",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.3",
