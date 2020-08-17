@@ -2,6 +2,7 @@ import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import JoinTemplate from '../../templates/Join';
 import LoginTemplate from '../../templates/Login';
+import Join from '../../components/Join';
 
 type SubPath = 'join' | 'login';
 interface Params {
@@ -14,17 +15,17 @@ function User(props: RouteComponentProps<Params>) {
     history,
   } = props;
 
-  const renderBySubpath = (subPath: SubPath) => {
+  const renderBySubPath = (subPath: SubPath) => {
     if (subPath !== 'login' && subPath !== 'join') {
       return history.push('/');
     }
     if (subPath === 'join') {
-      return <JoinTemplate />;
+      return <JoinTemplate Join={<Join />} />;
     }
     return <LoginTemplate />;
   };
 
-  return <>{renderBySubpath(params.subPath)}</>;
+  return <>{renderBySubPath(params.subPath)}</>;
 }
 
 export default User;
