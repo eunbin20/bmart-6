@@ -1,14 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import * as S from './style';
+import { Product } from '../../types/data';
 
-export interface Props {
-  imageUrl?: string;
-  title: string;
-  price: number;
-  discountedPrice?: number;
-  discountRate?: number;
-  isDiscounted: boolean;
+export interface Props extends Product {
+  isLiked?: boolean;
   //   to: string;
   //   setRef?: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
 }
@@ -18,18 +14,25 @@ function ProductCard({
   title,
   price,
   discountedPrice,
+  discountedRate,
   isDiscounted,
 }: Props): React.ReactElement {
-  const sampleImg =
-    'https://thumbnail7.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/2020/04/10/16/9/26943073-90de-487a-bcf9-974a31db6607.jpg';
   return (
     <S.LinkWrapper to={'home'}>
       <S.ImgWrapper>
-        <S.Image alt={'card'} src={sampleImg} />
+        <S.Image alt={'card'} src={imageUrl} />
       </S.ImgWrapper>
       <S.ContentContainer>
         <S.Title>{title}</S.Title>
-        <S.PriceWrapper>{price}원</S.PriceWrapper>
+        <S.PriceWrapper>
+          {isDiscounted && (
+            <>
+              <S.DiscountedRate>{discountedRate}%</S.DiscountedRate>
+              <S.DiscountedPrice>{discountedPrice}원</S.DiscountedPrice>
+            </>
+          )}
+          <S.Price>{price}원</S.Price>
+        </S.PriceWrapper>
       </S.ContentContainer>
     </S.LinkWrapper>
   );
