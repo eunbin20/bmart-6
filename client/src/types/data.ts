@@ -18,12 +18,12 @@ export interface Subcategory {
 }
 
 export interface Product {
-  id: number;
+  id?: number;
   subcategoryId: number;
   title: string;
   price: number;
   discountedPrice: number;
-  discountRate: number;
+  discountedRate: number;
   quantity: number;
   imageUrl?: string;
   isDiscounted: boolean;
