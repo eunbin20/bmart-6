@@ -2,11 +2,13 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { createUserValidation } from '../../utils/validation';
 import * as S from './style';
+import { UserJoin } from '../../types/Data';
 
-export default function Join() {
-  const onSubmit = () => {
-    console.log('123');
-  };
+interface Props {
+  onSubmit: (values: UserJoin) => void;
+}
+
+export default function Join({ onSubmit }: Props) {
   return (
     <>
       <S.Header>Bmart</S.Header>
