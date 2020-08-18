@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './style';
-import DefaultTemplate from '../Default';
+import DefaultTemplate from '../../pages/Default';
 
 interface Props {
   // mainBanner: React.ReactNode;

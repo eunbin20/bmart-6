@@ -3,7 +3,7 @@ import React from 'react';
 import * as S from './style';
 import ProductCard from '../ProductCard';
 // import ROUTES from 'commons/constants/routes';
-import { Product } from '../../types/Data';
+import { Product } from '../../types/data';
 
 interface Props {
   products: Product[];
