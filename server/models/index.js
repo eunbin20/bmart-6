@@ -11,7 +11,7 @@ const { DB_HOST, DB_NAME, DB_USER, DB_PW, IS_DEMO } = process.env;
 const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PW, {
   host: DB_HOST,
   dialect: 'mysql',
-  logging: false,
+  logging: true,
   pool: {
     waitForConnections: true,
     connectionLimit: 10,
