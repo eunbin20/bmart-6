@@ -1,4 +1,4 @@
-import { Product } from './Data';
+import { Product } from './data';
 
 export interface ProductsState {
   products?: Product[];

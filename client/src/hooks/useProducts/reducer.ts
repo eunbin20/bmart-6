@@ -1,6 +1,6 @@
-import { ProductsState } from '../../types/States';
-import { ProductsAction } from '../../types/Actions';
-import { ACTION_GET_PRODUCTS, ACTION_GET_MORE_PRODUCTS, ACTION_ERROR } from './types';
+import { ProductsState } from '../../types/states';
+import { ProductsAction } from '../../types/actions';
+import { ACTION_GET_PRODUCTS, ACTION_GET_MORE_PRODUCTS, ACTION_ERROR } from './actions';
 
 export function productsReducer(state: ProductsState, action: ProductsAction): ProductsState {
   switch (action.type) {
