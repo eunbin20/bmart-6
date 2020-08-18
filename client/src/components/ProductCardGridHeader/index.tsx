@@ -1,7 +1,7 @@
 import React from 'react';
 
 import * as S from './style';
-import { PRICEUP, PRICEDOWN } from '../../utils/constants';
+import { PRICEUP, PRICEDOWN } from '../../common/constants';
 
 export interface Props {
   changeSort: Function;

@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE } from '../utils/constants';
+import { ERROR_MESSAGE } from '../common/constants';
 import { UserJoin } from '../types/Data';
 
 const regEx = {
