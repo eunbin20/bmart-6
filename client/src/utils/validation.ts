@@ -1,5 +1,5 @@
 import { ERROR_MESSAGE } from '../common/constants';
-import { UserJoin } from '../types/Data';
+import { UserJoin } from '../types/data';
 
 const regEx = {
   english: /[A-Za-z]/,

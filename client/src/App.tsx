@@ -1,16 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
-import { User, SubCategory } from './pages';
+import { SubcategoryPage, UserPage } from './pages';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/user/:subPath" component={User} />
-          <Redirect path="*" to="/" />
-          {/* <PublicRoute exact path="/" component={Category} />{' '} */}
+          <Route exact path="/" component={SubcategoryPage} />
+          <Route exact path="/user/:subPath" component={UserPage} />
         </Switch>
       </Router>
     </div>
@@ -18,11 +17,11 @@ function App() {
 }
 
 // function PublicRoute({ ...rest }: any): React.ReactElement {
-//   // const { setLoginCallback } = useContext(AfterLoginAction);
+//   const { setLoginCallback } = useContext(AfterLoginAction);
 
-//   // useEffect(() => {
-//   //   setLoginCallback('/');
-//   // }, [setLoginCallback]);
+//   useEffect(() => {
+//     setLoginCallback('/');
+//   }, [setLoginCallback]);
 
 //   return <Route {...rest} />;
 // }

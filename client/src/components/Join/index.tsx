@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { createUserValidation } from '../../utils/validation';
 import * as S from './style';
-import { UserJoin } from '../../types/Data';
+import { UserJoin } from '../../types/data';
 
 interface Props {
   onSubmit: (values: UserJoin) => void;

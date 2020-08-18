@@ -1,16 +1,14 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import JoinTemplate from '../../templates/Join';
-import LoginTemplate from '../../templates/Login';
 import Join from '../../components/Join';
-import { UserJoin } from '../../types/Data';
+import { UserJoin } from '../../types/data';
 
 type SubPath = 'join' | 'login';
 interface Params {
   subPath: SubPath;
 }
 
-function User({ match: { params }, history }: RouteComponentProps<Params>) {
+function UserPage({ match: { params }, history }: RouteComponentProps<Params>) {
   const onSubmitJoin = (values: UserJoin) => {
     console.log(values);
   };
@@ -20,12 +18,12 @@ function User({ match: { params }, history }: RouteComponentProps<Params>) {
       return history.push('/');
     }
     if (subPath === 'join') {
-      return <JoinTemplate Join={<Join onSubmit={onSubmitJoin} />} />;
+      return <Join onSubmit={onSubmitJoin} />;
     }
-    return <LoginTemplate />;
+    return <></>;
   };
 
   return <>{renderBySubPath(params.subPath)}</>;
 }
 
-export default User;
+export default UserPage;

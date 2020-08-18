@@ -1,4 +1,4 @@
-import { ProductsState } from './States';
+import { ProductsState } from './states';
 
 export interface ProductsAction {
   type: string;
