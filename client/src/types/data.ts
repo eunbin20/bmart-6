@@ -1,4 +1,4 @@
-import { PRICEUP, PRICEDOWN } from '../commons/constants/strings';
+import { PRICEUP, PRICEDOWN } from '../commons/constants';
 
 export interface User {
   id: number;

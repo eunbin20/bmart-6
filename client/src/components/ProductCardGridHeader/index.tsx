@@ -1,7 +1,7 @@
 import React from 'react';
 
 import * as S from './style';
-import { SORTOPTIONS } from '../../commons/constants/strings';
+import { SORTOPTIONS } from '../../commons/constants';
 
 interface Props {
   changeSort: Function;
