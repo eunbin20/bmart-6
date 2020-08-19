@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import Join from '../../components/Join';
+import { useAuthContext } from '../../contexts/user';
 import { UserJoin } from '../../types/data';
+import { createUser } from '../../apis/user';
 
 type SubPath = 'join' | 'login';
 interface Params {
@@ -9,8 +11,19 @@ interface Params {
 }
 
 function UserPage({ match: { params }, history }: RouteComponentProps<Params>) {
-  const onSubmitJoin = (values: UserJoin) => {
-    console.log(values);
+  const userContext = useAuthContext();
+
+  const onSubmitJoin = async (values: UserJoin) => {
+    if (userContext === null) {
+      return;
+    }
+    try {
+      delete values.passwordConfirm;
+      await createUser(values);
+      history.push('/user/login');
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const renderBySubPath = (subPath: SubPath) => {
@@ -22,6 +35,13 @@ function UserPage({ match: { params }, history }: RouteComponentProps<Params>) {
     }
     return <></>;
   };
+
+  useEffect(() => {
+    if (userContext === null) {
+      return;
+    }
+    const { state } = userContext;
+  }, [userContext]);
 
   return <>{renderBySubPath(params.subPath)}</>;
 }
