@@ -1,13 +1,31 @@
 import React, { useState } from 'react';
 
-import { TwoColumnCard, ThreeColumnCard } from './style';
-import { Product } from '../../types/data';
+import { TwoColumnCard, ThreeColumnCard, TwoHalfColumnCard } from './style';
+import { Product, ProductGridColumns } from '../../types/data';
 
 interface Props extends Product {
-  columns: 2 | 3;
+  columns: ProductGridColumns;
   isLiked?: boolean;
   //   to: string;
   //   setRef?: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
+}
+
+export const generateProductCards = (products: Product[], columns: ProductGridColumns) => {
+  return (
+    products &&
+    products.map(({ id, ...rest }) => <ProductCard key={id} {...{ columns, ...rest }} />)
+  );
+};
+
+function selectStyle(columns: ProductGridColumns) {
+  switch (columns) {
+    case 2:
+      return TwoColumnCard;
+    case 2.5:
+      return TwoHalfColumnCard;
+    case 3:
+      return ThreeColumnCard;
+  }
 }
 
 function ProductCard({
@@ -20,7 +38,7 @@ function ProductCard({
   discountedRate,
   isDiscounted,
 }: Props): React.ReactElement {
-  const S = columns === 2 ? TwoColumnCard : ThreeColumnCard;
+  const S = selectStyle(columns);
   const [liked, setLiked] = useState(isLiked);
 
   const likeIconToggler = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {

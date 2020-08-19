@@ -21,15 +21,6 @@ const fadeIn = keyframes`
 //   DiscountedRate: React.FunctionComponent;
 // }
 
-const LinkWrapper = styled(Link)`
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  animation: ${fadeIn} 1s;
-  text-decoration: none;
-  color: var(--black);
-`;
-
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -51,11 +42,19 @@ const PriceWrapper = styled.div`
 `;
 
 export const TwoColumnCard = {
-  LinkWrapper,
   ContentContainer,
   LikeIcon,
   Image,
   PriceWrapper,
+  LinkWrapper: styled(Link)`
+    width: 165px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    animation: ${fadeIn} 1s;
+    text-decoration: none;
+    color: var(--black);
+  `,
   ImgWrapper: styled.div`
     width: 100%;
     height: 165px;
@@ -119,8 +118,90 @@ export const TwoColumnCard = {
   `,
 };
 
+export const TwoHalfColumnCard = {
+  LinkWrapper: styled(Link)`
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    animation: ${fadeIn} 1s;
+    text-decoration: none;
+    color: var(--black);
+  `,
+  ContentContainer,
+  LikeIcon,
+  Image,
+  PriceWrapper,
+  ImgWrapper: styled.div`
+    width: 100%;
+    height: 120px;
+    margin-bottom: 7px;
+  `,
+  LikeIconWrapper: styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+    position: relative;
+
+    bottom: 33px;
+    right: 7px;
+    height: 26px;
+    width: 26px;
+
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+  `,
+  Title: styled.div`
+    font-family: Nanum Gothic;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+    letter-spacing: -0.05em;
+  `,
+  DiscountedRate: styled.div`
+    font-family: Nanum Gothic;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: -0.1em;
+
+    color: var(--red);
+  `,
+  DiscountedPrice: styled.div`
+    font-family: Nanum Gothic;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 9px;
+    line-height: 10px;
+    letter-spacing: -0.1em;
+    text-decoration-line: line-through;
+    margin-right: 1px;
+
+    color: var(--gray);
+  `,
+  Price: styled.div`
+    font-family: Nanum Gothic;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 13px;
+    letter-spacing: -0.1em;
+  `,
+};
+
 export const ThreeColumnCard = {
-  LinkWrapper,
+  LinkWrapper: styled(Link)`
+    width: 106px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    animation: ${fadeIn} 1s;
+    text-decoration: none;
+    color: var(--black);
+  `,
   ContentContainer,
   LikeIcon,
   Image,
