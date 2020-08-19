@@ -39,3 +39,4 @@ export interface ProductFilter {
 }
 
 export type ProductSort = typeof PRICEUP | typeof PRICEDOWN;
+export type ProductGridColumns = 2 | 2.5 | 3;
