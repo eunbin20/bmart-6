@@ -4,6 +4,7 @@ import Join from '../../components/Join';
 import { useAuthContext } from '../../contexts/user';
 import { UserJoin } from '../../types/data';
 import { createUser } from '../../apis/user';
+import UserPageHeader from '../../components/UserPageHeader';
 
 type SubPath = 'join' | 'login';
 interface Params {
@@ -43,7 +44,12 @@ function UserPage({ match: { params }, history }: RouteComponentProps<Params>) {
     const { state } = userContext;
   }, [userContext]);
 
-  return <>{renderBySubPath(params.subPath)}</>;
+  return (
+    <>
+      <UserPageHeader subPath={params.subPath} />
+      {renderBySubPath(params.subPath)}
+    </>
+  );
 }
 
 export default UserPage;
