@@ -1,7 +1,6 @@
 import { PRICEUP, PRICEDOWN } from '../common/constants';
 
 export interface User {
-  id: number;
   email: string;
   nickname: string;
 }
