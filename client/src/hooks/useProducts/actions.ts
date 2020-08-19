@@ -13,10 +13,10 @@ export interface ProductAction {
 
 export const getProducts = (data: ProductFilter) => ({
   type: ACTION_GET_PRODUCTS,
-  data: data,
+  data,
 });
 
 export const getMoreProducts = (data: ProductFilter) => ({
   type: ACTION_GET_MORE_PRODUCTS,
-  data: data,
+  data,
 });

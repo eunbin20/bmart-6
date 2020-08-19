@@ -1,22 +1,22 @@
 import React from 'react';
 
 import * as S from './style';
-import { PRICEUP, PRICEDOWN } from '../../commons/constants/strings';
+import { SORTOPTIONS } from '../../commons/constants';
 
-export interface Props {
+interface Props {
   changeSort: Function;
 }
 
+const generateSortOptions = (changeSort: Function) => {
+  return Object.entries(SORTOPTIONS).map(([title, option], index) => (
+    <S.SortContainer key={index} onClick={() => changeSort(option)}>
+      {title}
+    </S.SortContainer>
+  ));
+};
+
 function ProductCardGridHeader({ changeSort }: Props): React.ReactElement {
-  return (
-    <>
-      <S.CardGridHeaderContainer>
-        <S.SortContainer onClick={() => changeSort()}>기본 정렬 순</S.SortContainer>
-        <S.SortContainer onClick={() => changeSort(PRICEUP)}>높은 가격 순</S.SortContainer>
-        <S.SortContainer onClick={() => changeSort(PRICEDOWN)}>낮은 가격 순</S.SortContainer>
-      </S.CardGridHeaderContainer>
-    </>
-  );
+  return <S.CardGridHeaderContainer>{generateSortOptions(changeSort)}</S.CardGridHeaderContainer>;
 }
 
 export default ProductCardGridHeader;

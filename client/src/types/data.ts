@@ -1,4 +1,4 @@
-import { PRICEUP, PRICEDOWN } from '../commons/constants/strings';
+import { PRICEUP, PRICEDOWN } from '../commons/constants';
 
 export interface User {
   id: number;
@@ -18,12 +18,12 @@ export interface Subcategory {
 }
 
 export interface Product {
-  id: number;
+  id?: number;
   subcategoryId: number;
   title: string;
   price: number;
   discountedPrice: number;
-  discountRate: number;
+  discountedRate: number;
   quantity: number;
   imageUrl?: string;
   isDiscounted: boolean;
@@ -39,3 +39,4 @@ export interface ProductFilter {
 }
 
 export type ProductSort = typeof PRICEUP | typeof PRICEDOWN;
+export type ProductGridColumns = 2 | 2.5 | 3;

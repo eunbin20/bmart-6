@@ -10,44 +10,180 @@ const fadeIn = keyframes`
   }
 `;
 
-export const LinkWrapper = styled(Link)`
+// interface ColumnCard {
+//   LinkWrapper: React.FunctionComponent;
+//   ContentContainer: React.FunctionComponent;
+//   ImgWrapper: React.FunctionComponent;
+//   Image: React.FunctionComponent;
+//   LikeIconWrapper: React.FunctionComponent;
+//   LikeIcon: React.FunctionComponent;
+//   Title: React.FunctionComponent;
+//   DiscountedRate: React.FunctionComponent;
+// }
+
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Image = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const PriceWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  color: var(--black);
+`;
+
+const LinkWrapper = styled(Link)`
+  width: 165px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   animation: ${fadeIn} 1s;
   text-decoration: none;
-  color: #000;
+  color: var(--black);
 `;
 
-export const ContentContainer = styled.div`
+const LikeIconWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  float: right;
+
+  bottom: 36px;
+  right: 10px;
+  height: 26px;
+  width: 26px;
+
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
 `;
 
-export const ImgWrapper = styled.div`
+const ImgWrapper = styled.div`
   width: 100%;
   height: 165px;
-  object-fit: cover;
-  margin-bottom: 6px;
+  margin-bottom: 7px;
 `;
 
-export const Title = styled.div`
-  font-style: normal;
-  font-weight: bold;
-  font-size: 11px;
-  line-height: 13px;
+const Title = styled.div`
+  font-size: 10px;
+  line-height: 12px;
   margin-bottom: 5px;
 `;
 
-export const PriceWrapper = styled.div`
-  font-style: normal;
+const DiscountedRate = styled.div`
+  font-weight: bold;
+  font-size: 9px;
+  line-height: 10px;
+  letter-spacing: -0.1em;
+  margin-right: 1px;
+
+  color: var(--red);
+`;
+
+const DiscountedPrice = styled.div`
+  font-size: 8px;
+  line-height: 9px;
+  letter-spacing: -0.1em;
+  text-decoration-line: line-through;
+  margin-right: 1px;
+
+  color: var(--gray);
+`;
+
+const Price = styled.div`
   font-weight: bold;
   font-size: 10px;
   line-height: 12px;
+
+  letter-spacing: -0.1em;
 `;
 
-export const Image = styled.img`
-  width: 100%;
-  height: 165px;
-  object-fit: cover;
-`;
+export const TwoColumnCard = {
+  ContentContainer,
+  Image,
+  PriceWrapper,
+  LinkWrapper,
+  ImgWrapper,
+  LikeIconWrapper,
+  Title,
+  DiscountedRate,
+  DiscountedPrice,
+  Price,
+};
+
+export const TwoHalfColumnCard = {
+  ContentContainer,
+  Image,
+  PriceWrapper,
+  LinkWrapper: styled(LinkWrapper)`
+    width: 120px;
+  `,
+  ImgWrapper: styled(ImgWrapper)`
+    height: 120px;
+    margin-bottom: 7px;
+  `,
+  LikeIconWrapper: styled(LikeIconWrapper)`
+    bottom: 33px;
+    right: 7px;
+    height: 26px;
+    width: 26px;
+  `,
+  Title: styled(Title)`
+    font-size: 11px;
+    line-height: 13px;
+  `,
+  DiscountedRate: styled(DiscountedRate)`
+    font-size: 10px;
+    line-height: 12px;
+  `,
+  DiscountedPrice: styled(DiscountedPrice)`
+    font-size: 9px;
+    line-height: 10px;
+    margin-right: 1px;
+  `,
+  Price: styled(Price)`
+    font-size: 11px;
+    line-height: 13px;
+  `,
+};
+
+export const ThreeColumnCard = {
+  ContentContainer,
+  Image,
+  PriceWrapper,
+  LinkWrapper: styled(LinkWrapper)`
+    width: 106px;
+  `,
+  ImgWrapper: styled(ImgWrapper)`
+    height: 106px;
+    margin-bottom: 6px;
+  `,
+  LikeIconWrapper: styled(LikeIconWrapper)`
+    bottom: 33px;
+    right: 7px;
+    height: 26px;
+    width: 26px;
+  `,
+  Title: styled(Title)`
+    font-size: 10px;
+    line-height: 12px;
+  `,
+  DiscountedRate: styled(DiscountedRate)`
+    font-size: 9px;
+    line-height: 10px;
+  `,
+  DiscountedPrice: styled(DiscountedPrice)`
+    margin-right: 1px;
+  `,
+  Price: styled(Price)`
+    font-size: 10px;
+    line-height: 12px;
+  `,
+};

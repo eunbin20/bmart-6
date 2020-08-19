@@ -1,22 +1,20 @@
 import React from 'react';
 
 import * as S from './style';
-import ProductCard from '../ProductCard';
-// import ROUTES from 'commons/constants/routes';
-import { Product } from '../../types/data';
+import { Product, ProductGridColumns } from '../../types/data';
+import { generateProductCards } from '../ProductCard';
 
 interface Props {
   products: Product[];
+  columns: ProductGridColumns;
 }
 
-function ProductCardGrid({ products }: Props) {
-  const generateProductCards = (products: Product[]) => {
-    if (!products || !products.length) {
-      return;
-    }
-    return products.map(({ id, ...rest }) => <ProductCard key={id} {...rest} />);
-  };
-  return <S.CardGridContainer>{generateProductCards(products)}</S.CardGridContainer>;
+function ProductCardGrid({ products, columns }: Props) {
+  return (
+    <S.CardGridContainer theme={{ columns }}>
+      {generateProductCards(products, columns)}
+    </S.CardGridContainer>
+  );
 }
 
 export default ProductCardGrid;
