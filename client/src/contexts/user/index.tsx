@@ -1,8 +1,10 @@
-import React, { useEffect, createContext, Dispatch, useReducer, useContext } from 'react';
+import React, { useEffect, createContext, Dispatch, useReducer, useContext, useState } from 'react';
 import { User, UserJoin } from '../../types/data';
+import * as apis from '../../apis/user';
+import useApiRequest, { REQUEST, SUCCESS, FAILURE } from '../../hooks/useApiRequests';
 
 const ACTION_USER_JOIN = 'ACTION_USER_JOIN' as const;
-const requestUserJoin = (values: UserJoin) => ({ type: ACTION_USER_JOIN, payload: values });
+const requestUserJoin = (values: UserJoin) => ({ type: ACTION_USER_JOIN, data: values });
 type Action = ReturnType<typeof requestUserJoin>;
 type UserDispatch = Dispatch<Action>;
 
@@ -12,7 +14,7 @@ interface UserState extends User {
 
 interface UserContextType {
   state: UserState;
-  dispatch: UserDispatch;
+  setAction: UserDispatch;
 }
 
 const initialState = {
@@ -36,10 +38,28 @@ const UserContext = createContext<UserContextType | null>(null);
 
 export function userProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [action, setAction] = useState<Action | null>(null);
+  const [apiResponse, createUserDispatch] = useApiRequest<UserJoin>(apis.createUser);
+
   const userModel = {
     state,
-    dispatch,
+    setAction,
   };
+
+  useEffect(() => {
+    if (!action) {
+      return;
+    }
+    switch (action.type) {
+      case ACTION_USER_JOIN:
+        createUserDispatch({
+          type: REQUEST,
+          body: action.data,
+        });
+      default:
+        throw new Error('Unhandled Case');
+    }
+  }, [action, createUserDispatch]);
 
   return <UserContext.Provider value={userModel}>{children}</UserContext.Provider>;
 }
