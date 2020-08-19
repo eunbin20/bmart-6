@@ -1,20 +1,13 @@
 import React from 'react';
 
 import * as S from './style';
-import ProductCard from '../ProductCard';
-import { Product } from '../../types/data';
+import { Product, ProductGridColumns } from '../../types/data';
+import { generateProductCards } from '../ProductCard';
 
 interface Props {
   products: Product[];
-  columns: 2 | 3;
+  columns: ProductGridColumns;
 }
-
-const generateProductCards = (products: Product[], columns: 2 | 3) => {
-  return (
-    products &&
-    products.map(({ id, ...rest }) => <ProductCard key={id} {...{ columns, ...rest }} />)
-  );
-};
 
 function ProductCardGrid({ products, columns }: Props) {
   return (
