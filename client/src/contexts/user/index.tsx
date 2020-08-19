@@ -10,7 +10,7 @@ interface UserState extends User {
   isAuthorized: boolean;
 }
 
-interface UserContext {
+interface UserContextType {
   state: UserState;
   dispatch: UserDispatch;
 }
@@ -32,18 +32,19 @@ function reducer(state: UserState = initialState, action: Action) {
       return state;
   }
 }
-const AuthStateContext = createContext<UserContext | null>(null);
+const UserContext = createContext<UserContextType | null>(null);
 
-function AuthModel({ children }: { children: React.ReactNode }) {
+export function userProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const userModel = {
     state,
     dispatch,
   };
 
-  return <AuthStateContext.Provider value={userModel}>{children}</AuthStateContext.Provider>;
+  return <UserContext.Provider value={userModel}>{children}</UserContext.Provider>;
 }
+
 export const useAuthContext = () => {
-  const userModel = useContext(AuthStateContext);
+  const userModel = useContext(UserContext);
   return userModel;
 };
