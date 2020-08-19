@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './styles/reset.scss';
 import './styles/fonts.scss';
+import './styles/reactModal.scss';
 import './styles/globalstyle.scss';
 
 import SubcategoryPage from './pages/SubcategoryPage';
