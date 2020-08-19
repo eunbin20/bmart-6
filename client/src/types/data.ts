@@ -35,8 +35,7 @@ export interface ProductFilter {
   offset?: number;
   title?: string;
   subcategoryId?: number;
-  sortBy?: ProductSort;
+  sortBy?: string;
 }
 
-export type ProductSort = typeof PRICEUP | typeof PRICEDOWN;
 export type ProductGridColumns = 2 | 2.5 | 3;
