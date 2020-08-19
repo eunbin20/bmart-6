@@ -6,7 +6,7 @@ export const Header = styled.header`
   padding: 50px 28px;
   font-size: 40px;
   font-weight: bold;
-  color: ${C.WOOWA_COLOR};
+  /* color: ${C.WOOWA_COLOR}; */
   text-align: left;
 `;
 
@@ -16,45 +16,6 @@ export const InputContainer = styled.section`
   > .input-wrapper + .input-wrapper {
     margin-top: 32px;
   }
-`;
-
-export const InputWrapper = styled.div.attrs({
-  className: 'input-wrapper',
-})`
-  width: 100%;
-  min-height: 54px;
-`;
-
-interface InputProps {
-  name: string;
-  type: string;
-  placeholder: string;
-}
-
-export const Input = styled.input.attrs((props: InputProps) => ({
-  name: props.name,
-  type: props.type,
-  placeholder: props.placeholder,
-}))`
-  width: 100%;
-  outline: none;
-  border: none;
-  font-size: 20px;
-  color: ${C.GRAY_2};
-  border-bottom: 1px solid ${C.GRAY_2};
-  padding-bottom: 14px;
-`;
-
-interface InputErrorProps {
-  visible: boolean;
-}
-
-export const InputError = styled.div`
-  width: 100%;
-  height: 15px;
-  padding-top: 5px;
-  color: red;
-  display: ${(props: InputErrorProps) => (props.visible ? 'block' : 'none')};
 `;
 
 interface PushButtonProps {

@@ -23,11 +23,14 @@ interface NavigationProps {
   isActive: boolean;
 }
 
-export const Navigation = styled(Link).attrs({
+export const NavigationBox = styled.div.attrs({
   className: 'onboard-navi',
 })`
+  border-bottom: 2px solid ${(props: NavigationProps) => (props.isActive ? C.GRAY_2 : '#ffffff')};
+`;
+
+export const Navigation = styled(Link)`
   font-size: 15px;
   text-decoration: none;
   padding-bottom: 5px;
-  border-bottom: 2px solid ${(props: NavigationProps) => (props.isActive ? C.GRAY_2 : '#ffffff')};
 `;
