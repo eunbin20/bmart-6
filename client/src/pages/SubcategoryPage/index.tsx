@@ -26,7 +26,7 @@ function SubcategoryPage(): React.ReactElement {
         {<ProductCardGridHeader changeSort={changeSort} />}
       </S.ProductCardGridHeaderContainer>
       <S.ProductCardGridContainer>
-        {products && <ProductCardGrid products={products} />}
+        {products && <ProductCardGrid products={products} columns={3} />}
       </S.ProductCardGridContainer>
     </DefaultTemplate>
   );

@@ -2,21 +2,26 @@ import React from 'react';
 
 import * as S from './style';
 import ProductCard from '../ProductCard';
-// import ROUTES from 'commons/constants/routes';
 import { Product } from '../../types/data';
 
 interface Props {
   products: Product[];
+  columns: 2 | 3;
 }
 
-function ProductCardGrid({ products }: Props) {
-  const generateProductCards = (products: Product[]) => {
-    if (!products || !products.length) {
-      return;
-    }
-    return products.map(({ id, ...rest }) => <ProductCard key={id} {...rest} />);
-  };
-  return <S.CardGridContainer>{generateProductCards(products)}</S.CardGridContainer>;
+const generateProductCards = (products: Product[], columns: 2 | 3) => {
+  return (
+    products &&
+    products.map(({ id, ...rest }) => <ProductCard key={id} {...{ columns, ...rest }} />)
+  );
+};
+
+function ProductCardGrid({ products, columns }: Props) {
+  return (
+    <S.CardGridContainer theme={{ columns }}>
+      {generateProductCards(products, columns)}
+    </S.CardGridContainer>
+  );
 }
 
 export default ProductCardGrid;

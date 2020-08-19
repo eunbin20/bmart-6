@@ -1,33 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-import * as S from './style';
+import { TwoColumnCard, ThreeColumnCard } from './style';
 import { Product } from '../../types/data';
 
-export interface Props extends Product {
+interface Props extends Product {
+  columns: 2 | 3;
   isLiked?: boolean;
   //   to: string;
   //   setRef?: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
 }
 
 function ProductCard({
+  columns,
+  isLiked = false,
   imageUrl,
   title,
   price,
   discountedPrice,
   discountedRate,
   isDiscounted,
-  isLiked = false,
 }: Props): React.ReactElement {
-  const [liked, toggleLiked] = useState(isLiked);
+  const S = columns === 2 ? TwoColumnCard : ThreeColumnCard;
+  const [liked, setLiked] = useState(isLiked);
+
+  const likeIconToggler = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+    e.preventDefault();
+    setLiked((liked) => !liked);
+  };
 
   const LikeIcon = (
     <>
       <S.LikeIcon
-        onClick={(e) => {
-          e.preventDefault();
-          //TODO: 여기에 Like Action을 추가해야함
-          toggleLiked((liked) => !liked);
-        }}
+        onClick={(event) => likeIconToggler(event)}
         width="20"
         height="20"
         viewBox="0 0 20 20"
@@ -49,7 +53,6 @@ function ProductCard({
       </S.LikeIcon>
     </>
   );
-
   return (
     <S.LinkWrapper to={'home'}>
       <S.ImgWrapper>
