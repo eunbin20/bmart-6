@@ -8,8 +8,10 @@ interface Props {
 }
 
 const generateSortOptions = (changeSort: Function) => {
-  return Object.entries(SORTOPTIONS).map(([title, option]) => (
-    <S.SortContainer onClick={() => changeSort(option)}>{title}</S.SortContainer>
+  return Object.entries(SORTOPTIONS).map(([title, option], index) => (
+    <S.SortContainer key={index} onClick={() => changeSort(option)}>
+      {title}
+    </S.SortContainer>
   ));
 };
 

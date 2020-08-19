@@ -26,8 +26,6 @@ const ContentContainer = styled.div`
   flex-direction: column;
 `;
 
-const LikeIcon = styled.svg``;
-
 const Image = styled.img`
   display: block;
   width: 100%;
@@ -41,228 +39,151 @@ const PriceWrapper = styled.div`
   color: var(--black);
 `;
 
+const LinkWrapper = styled(Link)`
+  width: 165px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  animation: ${fadeIn} 1s;
+  text-decoration: none;
+  color: var(--black);
+`;
+
+const LikeIconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  float: right;
+
+  bottom: 36px;
+  right: 10px;
+  height: 26px;
+  width: 26px;
+
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+`;
+
+const ImgWrapper = styled.div`
+  width: 100%;
+  height: 165px;
+  margin-bottom: 7px;
+`;
+
+const Title = styled.div`
+  font-size: 10px;
+  line-height: 12px;
+  margin-bottom: 5px;
+`;
+
+const DiscountedRate = styled.div`
+  font-weight: bold;
+  font-size: 9px;
+  line-height: 10px;
+  letter-spacing: -0.1em;
+  margin-right: 1px;
+
+  color: var(--red);
+`;
+
+const DiscountedPrice = styled.div`
+  font-size: 8px;
+  line-height: 9px;
+  letter-spacing: -0.1em;
+  text-decoration-line: line-through;
+  margin-right: 1px;
+
+  color: var(--gray);
+`;
+
+const Price = styled.div`
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 12px;
+
+  letter-spacing: -0.1em;
+`;
+
 export const TwoColumnCard = {
   ContentContainer,
-  LikeIcon,
   Image,
   PriceWrapper,
-  LinkWrapper: styled(Link)`
-    width: 165px;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    animation: ${fadeIn} 1s;
-    text-decoration: none;
-    color: var(--black);
-  `,
-  ImgWrapper: styled.div`
-    width: 100%;
-    height: 165px;
-    margin-bottom: 7px;
-  `,
-  LikeIconWrapper: styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    float: right;
-
-    bottom: 36px;
-    right: 10px;
-    height: 26px;
-    width: 26px;
-
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 50%;
-  `,
-  Title: styled.div`
-    font-family: Nanum Gothic;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 10px;
-    line-height: 12px;
-    letter-spacing: -0.05em;
-    margin-bottom: 5px;
-  `,
-  DiscountedRate: styled.div`
-    font-family: Nanum Gothic;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 9px;
-    line-height: 10px;
-    letter-spacing: -0.1em;
-    margin-right: 1px;
-
-    color: var(--red);
-  `,
-  DiscountedPrice: styled.div`
-    font-family: Nanum Gothic;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 8px;
-    line-height: 9px;
-    letter-spacing: -0.1em;
-    text-decoration-line: line-through;
-    margin-right: 1px;
-
-    color: var(--gray);
-  `,
-  Price: styled.div`
-    font-family: Nanum Gothic;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 10px;
-    line-height: 12px;
-
-    letter-spacing: -0.1em;
-  `,
+  LinkWrapper,
+  ImgWrapper,
+  LikeIconWrapper,
+  Title,
+  DiscountedRate,
+  DiscountedPrice,
+  Price,
 };
 
 export const TwoHalfColumnCard = {
-  LinkWrapper: styled(Link)`
-    width: 120px;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    animation: ${fadeIn} 1s;
-    text-decoration: none;
-    color: var(--black);
-  `,
   ContentContainer,
-  LikeIcon,
   Image,
   PriceWrapper,
-  ImgWrapper: styled.div`
-    width: 100%;
+  LinkWrapper: styled(LinkWrapper)`
+    width: 120px;
+  `,
+  ImgWrapper: styled(ImgWrapper)`
     height: 120px;
     margin-bottom: 7px;
   `,
-  LikeIconWrapper: styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    float: right;
-    position: relative;
-
+  LikeIconWrapper: styled(LikeIconWrapper)`
     bottom: 33px;
     right: 7px;
     height: 26px;
     width: 26px;
-
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 50%;
   `,
-  Title: styled.div`
-    font-family: Nanum Gothic;
-    font-style: normal;
-    font-weight: normal;
+  Title: styled(Title)`
     font-size: 11px;
     line-height: 13px;
-    letter-spacing: -0.05em;
   `,
-  DiscountedRate: styled.div`
-    font-family: Nanum Gothic;
-    font-style: normal;
-    font-weight: bold;
+  DiscountedRate: styled(DiscountedRate)`
     font-size: 10px;
     line-height: 12px;
-    letter-spacing: -0.1em;
-
-    color: var(--red);
   `,
-  DiscountedPrice: styled.div`
-    font-family: Nanum Gothic;
-    font-style: normal;
-    font-weight: normal;
+  DiscountedPrice: styled(DiscountedPrice)`
     font-size: 9px;
     line-height: 10px;
-    letter-spacing: -0.1em;
-    text-decoration-line: line-through;
     margin-right: 1px;
-
-    color: var(--gray);
   `,
-  Price: styled.div`
-    font-family: Nanum Gothic;
-    font-style: normal;
-    font-weight: bold;
+  Price: styled(Price)`
     font-size: 11px;
     line-height: 13px;
-    letter-spacing: -0.1em;
   `,
 };
 
 export const ThreeColumnCard = {
-  LinkWrapper: styled(Link)`
-    width: 106px;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    animation: ${fadeIn} 1s;
-    text-decoration: none;
-    color: var(--black);
-  `,
   ContentContainer,
-  LikeIcon,
   Image,
   PriceWrapper,
-  ImgWrapper: styled.div`
-    width: 100%;
+  LinkWrapper: styled(LinkWrapper)`
+    width: 106px;
+  `,
+  ImgWrapper: styled(ImgWrapper)`
     height: 106px;
     margin-bottom: 6px;
   `,
-  LikeIconWrapper: styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    float: right;
-    position: relative;
-
+  LikeIconWrapper: styled(LikeIconWrapper)`
     bottom: 33px;
     right: 7px;
     height: 26px;
     width: 26px;
-
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 50%;
   `,
-  Title: styled.div`
-    font-family: Nanum Gothic;
-    font-style: normal;
-    font-weight: normal;
+  Title: styled(Title)`
     font-size: 10px;
     line-height: 12px;
-    letter-spacing: -0.05em;
-    margin-bottom: 5px;
   `,
-  DiscountedRate: styled.div`
-    font-family: Nanum Gothic;
-    font-style: normal;
-    font-weight: bold;
+  DiscountedRate: styled(DiscountedRate)`
     font-size: 9px;
     line-height: 10px;
-    letter-spacing: -0.1em;
-
-    color: var(--red);
   `,
-  DiscountedPrice: styled.div`
-    font-family: Nanum Gothic;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 8px;
-    line-height: 9px;
-    letter-spacing: -0.1em;
-    text-decoration-line: line-through;
+  DiscountedPrice: styled(DiscountedPrice)`
     margin-right: 1px;
-
-    color: var(--gray);
   `,
-  Price: styled.div`
-    font-family: Nanum Gothic;
-    font-style: normal;
-    font-weight: bold;
+  Price: styled(Price)`
     font-size: 10px;
     line-height: 12px;
-    letter-spacing: -0.1em;
   `,
 };
