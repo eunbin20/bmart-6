@@ -36,18 +36,12 @@ const customStyle = {
 };
 
 const SortModal = ({ selectedOption, changeSort, isModalOpen, onModalClose }: Props) => {
-  const [fadeType, setFadeType] = useState(isModalOpen && 'in');
-
-  useEffect(() => {
-    onModalClose();
-  }, [fadeType]);
-
   return (
     <>
       <Modal isOpen={isModalOpen} onRequestClose={() => onModalClose()} style={customStyle}>
         <S.Header>
           <S.Title>정렬</S.Title>
-          <S.CloseButton onClick={() => setFadeType('close')}>닫기</S.CloseButton>
+          <S.CloseButton onClick={() => onModalClose()}>닫기</S.CloseButton>
         </S.Header>
         <S.SortCardList>
           {Object.entries(SORTOPTIONS).map(([title], index) => (
@@ -55,7 +49,7 @@ const SortModal = ({ selectedOption, changeSort, isModalOpen, onModalClose }: Pr
               key={index}
               onClick={() => {
                 changeSort(title);
-                setFadeType('close');
+                onModalClose();
               }}
               theme={{ selected: title === selectedOption }}
             >
