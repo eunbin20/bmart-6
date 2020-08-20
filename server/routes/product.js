@@ -5,6 +5,7 @@ const { validateCreateProduct } = require('../middlewares/validator');
 const { isValidJwtToken } = require('../middlewares/auth');
 
 router.get('/', productController.filter);
+router.get('/:id', productController.findOne);
 router.use(isValidJwtToken);
 router.post('/', validateCreateProduct, productController.create);
 router.put('/', productController.update);
