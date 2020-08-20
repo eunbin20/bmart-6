@@ -1,7 +1,7 @@
 import React from 'react';
 
 import * as S from './style';
-import { generateProductCards } from '../../smalls/ProductCard';
+import { generateProductCards } from '../../small/ProductCard';
 import { Product, ProductGridColumns } from '../../../types/data';
 
 interface Props {

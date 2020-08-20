@@ -1,6 +1,6 @@
 import React from 'react';
 import DefaultTemplate from '../Default';
-import SectionDivider from '../../components/smalls/SectionDivider';
+import SectionDivider from '../../components/small/SectionDivider';
 import {
   PageHeader,
   EatNowSection,
@@ -9,7 +9,7 @@ import {
   BestSellerSection,
   CategoryProductSection,
 } from '../../components';
-import CategoryIconGrid from '../../components/mediums/CategoryIconGrid';
+import CategoryIconGrid from '../../components/medium/CategoryIconGrid';
 
 function MainPage(): React.ReactElement {
   return (
