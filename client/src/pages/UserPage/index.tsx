@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import Join from '../../components/Join';
+import Join from '../../components/user/JoinForm';
 import { useAuthContext } from '../../contexts/user';
-import { UserJoin } from '../../types/data';
+import { UserJoin, UserLogin } from '../../types/data';
 import { createUser } from '../../apis/user';
-import UserPageHeader from '../../components/UserPageHeader';
+import UserPageHeader from '../../components/user/UserHeader';
+import LoginForm from '../../components/user/LoginForm';
 
 type SubPath = 'join' | 'login';
 interface Params {
@@ -27,6 +28,10 @@ function UserPage({ match: { params }, history }: RouteComponentProps<Params>) {
     }
   };
 
+  const onSubmitLogin = async (values: UserLogin) => {
+    console.log(123);
+  };
+
   const renderBySubPath = (subPath: SubPath) => {
     if (subPath !== 'login' && subPath !== 'join') {
       return history.push('/');
@@ -34,7 +39,7 @@ function UserPage({ match: { params }, history }: RouteComponentProps<Params>) {
     if (subPath === 'join') {
       return <Join onSubmit={onSubmitJoin} />;
     }
-    return <></>;
+    return <LoginForm onSubmit={onSubmitLogin} />;
   };
 
   useEffect(() => {

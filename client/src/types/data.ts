@@ -10,6 +10,11 @@ export interface UserJoin extends User {
   passwordConfirm: string;
 }
 
+export interface UserLogin {
+  email: string;
+  password: string;
+}
+
 export interface Category {
   id: number;
   name: string;

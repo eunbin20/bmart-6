@@ -3,7 +3,7 @@ import * as S from './style';
 
 type SubPath = 'login' | 'join';
 
-export default function UserPageHeader({ subPath }: { subPath: SubPath }) {
+export default function UserHeader({ subPath }: { subPath: SubPath }) {
   return (
     <S.Wrapper>
       <S.NavigationWrapper>

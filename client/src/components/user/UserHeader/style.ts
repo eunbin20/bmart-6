@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import * as C from '../../styles/common'; // C is Common
+import * as C from '../../../styles/common'; // C is Common
 import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`

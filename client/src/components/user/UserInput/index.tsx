@@ -9,7 +9,7 @@ interface Props {
   placeholder: '이메일' | '이름' | '닉네임' | '비밀번호' | '비밀번호 확인';
 }
 
-export default function UserPageInput({ input, meta, type, placeholder }: Props) {
+export default function UserInput({ input, meta, type, placeholder }: Props) {
   return (
     <S.InputWrapper>
       <S.Input {...input} type={type} placeholder={placeholder} />

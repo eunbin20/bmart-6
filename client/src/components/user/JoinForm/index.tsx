@@ -3,16 +3,17 @@ import { Form, Field } from 'react-final-form';
 import { createUserValidation } from '../../../utils/validation';
 import * as S from './style';
 import { UserJoin } from '../../../types/data';
-import UserPageInput from '../UserPageInput';
+import UserPageTitle from '../UserTitle';
+import UserPageInput from '../UserInput';
 
 interface Props {
   onSubmit: (values: UserJoin) => void;
 }
 
-export default function Join({ onSubmit }: Props) {
+export default function JoinForm({ onSubmit }: Props) {
   return (
     <>
-      <S.Header>Bmart</S.Header>
+      <UserPageTitle title="Bmart" />
       <S.InputContainer>
         <Form
           onSubmit={onSubmit}
