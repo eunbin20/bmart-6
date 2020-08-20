@@ -12,3 +12,6 @@ export const SORTOPTIONS = {
   '신규 상품순': NEW,
   '할인율 순': DISCOUNTEDRATE,
 };
+
+export const BANNER_SCROLL_INTERVAL = 3500;
+export const BANNER_SCROLL_PREVENT_TOUCH_INTERVAL = 600;
