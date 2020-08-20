@@ -1,5 +1,5 @@
 import { ERROR_MESSAGE } from '../common/constants';
-import { UserJoin } from '../types/data';
+import { UserJoin, UserLogin } from '../types/data';
 
 const regEx = {
   english: /[A-Za-z]/,
@@ -47,6 +47,23 @@ export const createUserValidation = (values: UserJoin) => {
     errors.passwordConfirm = ERROR_MESSAGE.PASSWORD_CONFIRM_EMPTY;
   } else if (checkPassword(values.passwordConfirm) || values.passwordConfirm !== values.password) {
     errors.passwordConfirm = ERROR_MESSAGE.PASSWORD_CONFIRM_EQUAL;
+  }
+
+  return errors;
+};
+
+export const loginValidation = (values: UserLogin) => {
+  const errors = {} as UserJoin;
+  if (isEmpty(values.email)) {
+    errors.email = ERROR_MESSAGE.EMAIL_EMPTY;
+  } else if (checkEmail(values.email)) {
+    errors.email = ERROR_MESSAGE.EMAIL_TYPE;
+  }
+
+  if (isEmpty(values.password)) {
+    errors.password = ERROR_MESSAGE.PASSWORD_EMPTY;
+  } else if (checkPassword(values.password)) {
+    errors.password = ERROR_MESSAGE.PASSWORD_TYPE;
   }
 
   return errors;

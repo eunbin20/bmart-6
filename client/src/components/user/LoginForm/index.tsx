@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
-import { createUserValidation } from '../../../utils/validation';
+import { loginValidation } from '../../../utils/validation';
 import * as S from './style';
 import { UserLogin } from '../../../types/data';
 import UserPageTitle from '../UserTitle';
@@ -17,7 +17,7 @@ export default function LoginForm({ onSubmit }: Props) {
       <S.InputContainer>
         <Form
           onSubmit={onSubmit}
-          validate={createUserValidation}
+          validate={loginValidation}
           render={({ handleSubmit }) => (
             <>
               <Field name="email">
