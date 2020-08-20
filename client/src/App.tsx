@@ -6,6 +6,7 @@ import './styles/reactModal.scss';
 import './styles/globalstyle.scss';
 
 import SubcategoryPage from './pages/SubcategoryPage';
+import BannerPage from './pages/BannerPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={SubcategoryPage} />
+          <Route exact path="/banner" component={BannerPage} />
         </Switch>
       </Router>
     </div>
