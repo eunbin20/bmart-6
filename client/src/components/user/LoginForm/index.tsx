@@ -43,7 +43,6 @@ export default function LoginForm({ onSubmit }: Props) {
           )}
         />
       </S.InputContainer>
-      <S.Footer />
     </>
   );
 }

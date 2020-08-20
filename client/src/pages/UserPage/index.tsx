@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import JoinForm from '../../components/user/JoinForm';
 import { useAuthContext } from '../../contexts/user';
 import { UserJoin, UserLogin } from '../../types/data';
 import * as userApis from '../../apis/user';
-import * as userActions from '../../contexts/user';
+import * as userActions from '../../contexts/user/actions';
 import UserPageHeader from '../../components/user/UserHeader';
 import LoginForm from '../../components/user/LoginForm';
+import UserFooter from '../../components/user/UserFooter';
 import { ERROR_STATUS, ERROR_MESSAGE } from '../../common/constants';
 import { FORM_ERROR } from 'final-form';
 
@@ -38,6 +39,7 @@ function UserPage({ match: { params }, history }: RouteComponentProps<Params>) {
       history.push('/');
     } catch (e) {
       if (e.response.status === ERROR_STATUS.UNAUTHORIZED) {
+        // 비밀번호 틀림
         return { [FORM_ERROR]: ERROR_MESSAGE.LOGIN_FAILED };
       }
     }
@@ -53,17 +55,11 @@ function UserPage({ match: { params }, history }: RouteComponentProps<Params>) {
     return <LoginForm onSubmit={onSubmitLogin} />;
   };
 
-  useEffect(() => {
-    if (userContext === null) {
-      return;
-    }
-    const { state } = userContext;
-  }, [userContext]);
-
   return (
     <>
       <UserPageHeader subPath={params.subPath} />
       {renderBySubPath(params.subPath)}
+      <UserFooter />
     </>
   );
 }

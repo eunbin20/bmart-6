@@ -55,7 +55,6 @@ export default function JoinForm({ onSubmit }: Props) {
           )}
         />
       </S.InputContainer>
-      <S.Footer />
     </>
   );
 }

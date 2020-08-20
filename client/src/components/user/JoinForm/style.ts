@@ -29,11 +29,3 @@ export const PushButton = styled.button.attrs((props: PushButtonProps) => ({
   right: 28px;
   z-index: 5;
 `;
-
-export const Footer = styled.footer`
-  background-color: ${C.WOOWA_COLOR};
-  height: 80px;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-`;
