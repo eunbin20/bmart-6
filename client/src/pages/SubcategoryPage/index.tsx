@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import * as S from './style';
-import ProductCardGrid from '../../components/ProductCardGrid';
-import ProductCardGridHeader from '../../components/ProductCardGridHeader';
+import DefaultTemplate from '../Default';
+import { ProductCardGridHeader, ProductCardGrid } from '../../components';
 import useProducts from '../../hooks/useProducts';
 import { getProducts } from '../../hooks/useProducts/actions';
-import DefaultTemplate from '../Default';
 import { SORTOPTIONS } from '../../commons/constants';
 
 function SubcategoryPage(): React.ReactElement {
