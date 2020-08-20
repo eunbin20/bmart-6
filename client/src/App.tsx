@@ -7,13 +7,15 @@ import './styles/globalstyle.scss';
 
 import SubcategoryPage from './pages/SubcategoryPage';
 import BannerPage from './pages/BannerPage';
+import MainPage from './pages/MainPage';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/" component={SubcategoryPage} />
+          <Route exact path="/" component={MainPage} />
+          <Route exact path="/subcategory" component={SubcategoryPage} />
           <Route exact path="/banner" component={BannerPage} />
         </Switch>
       </Router>

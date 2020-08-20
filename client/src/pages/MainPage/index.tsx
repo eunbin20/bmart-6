@@ -3,28 +3,59 @@ import DefaultTemplate from '../Default';
 import SectionDivider from '../../components/small/SectionDivider';
 import {
   PageHeader,
-  EatNowSection,
   HotDealSection,
-  ForYouSection,
-  BestSellerSection,
+  ProductSection,
   CategoryProductSection,
 } from '../../components';
 import CategoryIconGrid from '../../components/medium/CategoryIconGrid';
+import useProducts from '../../hooks/useProducts';
+import BannerSlider from '../../components/medium/BannerSlider';
+import { BANNERS } from '../../commons/constants';
 
 function MainPage(): React.ReactElement {
+  const [{ products: eatNowProducts }] = useProducts({ subcategoryId: 1, limit: 6 });
+  const [{ products: forYouProducts }] = useProducts({ subcategoryId: 1, limit: 5 });
+  const [{ products: bestSellerProducts }] = useProducts({ subcategoryId: 1, limit: 5 });
   return (
     <DefaultTemplate>
       <PageHeader />
-      {/* <Banner /> */}
+      <BannerSlider banners={BANNERS} />
       <CategoryIconGrid />
       <SectionDivider />
-      <EatNowSection />
+      <ProductSection
+        {...{
+          products: eatNowProducts ?? [],
+          viewType: 'grid',
+          columns: 3,
+          header: {
+            title: '지금 뭐먹지?',
+          },
+        }}
+      />
       <SectionDivider />
       <HotDealSection />
       <SectionDivider />
-      <ForYouSection />
+      <ProductSection
+        {...{
+          products: forYouProducts ?? [],
+          viewType: 'listview',
+          columns: 2.5,
+          header: {
+            title: '관형님을 위해 준비한 상품',
+          },
+        }}
+      />
       <SectionDivider />
-      <BestSellerSection />
+      <ProductSection
+        {...{
+          products: bestSellerProducts ?? [],
+          viewType: 'listview',
+          columns: 2.5,
+          header: {
+            title: '요즘 잘 팔려요',
+          },
+        }}
+      />
       <SectionDivider />
       <CategoryProductSection />
     </DefaultTemplate>
