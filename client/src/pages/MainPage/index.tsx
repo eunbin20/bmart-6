@@ -1,27 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import DefaultTemplate from '../Default';
 import SectionDivider from '../../components/small/SectionDivider';
 import {
   PageHeader,
-  HotDealSection,
+  // HotDealSection,
   ProductSection,
+  CategoryIconGrid,
   CategoryProductSection,
 } from '../../components';
-import CategoryIconGrid from '../../components/medium/CategoryIconGrid';
 import useProducts from '../../hooks/useProducts';
 import BannerSlider from '../../components/medium/BannerSlider';
-import { BANNERS } from '../../commons/constants';
+import { BANNERS, CATEGORIES } from '../../commons/constants';
+import useApiRequest, { REQUEST } from '../../hooks/useApiRequests';
+import { getCategories } from '../../apis/category';
 
 function MainPage(): React.ReactElement {
-  const [{ products: eatNowProducts }] = useProducts({ subcategoryId: 1, limit: 6 });
-  const [{ products: forYouProducts }] = useProducts({ subcategoryId: 1, limit: 5 });
-  const [{ products: bestSellerProducts }] = useProducts({ subcategoryId: 1, limit: 5 });
+  const [{ products: eatNowProducts }] = useProducts({ limit: 6 });
+  const [{ products: forYouProducts }] = useProducts({ limit: 5 });
+  const [{ products: bestSellerProducts }] = useProducts({ limit: 5 });
+  const [{ products: dummy }] = useProducts({ limit: 4 });
+
+  const dummyPr = CATEGORIES.map((category, index) => ({
+    category: { id: index + 1, name: category },
+    products: dummy ?? [],
+  }));
+
   return (
     <DefaultTemplate>
       <PageHeader isHome={true} />
       <BannerSlider banners={BANNERS} />
-      {/* <CategoryIconGrid />
-      <SectionDivider /> */}
+      <CategoryIconGrid />
+      <SectionDivider />
       <ProductSection
         {...{
           products: eatNowProducts ?? [],
@@ -59,7 +68,7 @@ function MainPage(): React.ReactElement {
       />
       <SectionDivider />
       <BannerSlider banners={BANNERS} />
-      <CategoryProductSection />
+      <CategoryProductSection categoryProducts={dummyPr} />
     </DefaultTemplate>
   );
 }

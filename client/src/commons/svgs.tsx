@@ -54,8 +54,8 @@ export const Logo = () => (
       fill="#2AC1BC"
     />
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M28.2301 6.74342H35.2065V15.4605H28.2301V6.74342ZM30.177 13.4868V8.88157H33.2596V13.4868H30.177Z"
       fill="#2AC1BC"
     />
@@ -64,8 +64,8 @@ export const Logo = () => (
       stroke="#2AC1BC"
     />
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M28.2301 6.74342H35.2065V15.4605H28.2301V6.74342ZM30.177 13.4868V8.88157H33.2596V13.4868H30.177Z"
       stroke="#2AC1BC"
     />

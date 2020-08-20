@@ -13,6 +13,10 @@ export const TitleContainer = styled.div`
   font-size: 16px;
   line-height: 18px;
   margin-right: 4px;
+  &.category {
+    font-size: 14px;
+    line-height: 16px;
+  }
 `;
 
 export const DescriptionContainer = styled.div`
