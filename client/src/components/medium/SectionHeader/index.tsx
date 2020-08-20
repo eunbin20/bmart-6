@@ -8,8 +8,8 @@ function SectionHeader({ title, description, trailing }: Props): React.ReactElem
   return (
     <S.SectionHeader>
       <S.TitleContainer>{title}</S.TitleContainer>
-      <S.DescriptionContainer>description</S.DescriptionContainer>
-      <S.TrailingContainer>trailing</S.TrailingContainer>
+      {description && <S.DescriptionContainer>{description}</S.DescriptionContainer>}
+      {trailing && <S.TrailingContainer>{trailing}</S.TrailingContainer>}
     </S.SectionHeader>
   );
 }
