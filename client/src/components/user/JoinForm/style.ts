@@ -6,7 +6,7 @@ export const Header = styled.header`
   padding: 50px 28px;
   font-size: 40px;
   font-weight: bold;
-  /* color: ${C.WOOWA_COLOR}; */
+  color: ${C.WOOWA_COLOR};
   text-align: left;
 `;
 

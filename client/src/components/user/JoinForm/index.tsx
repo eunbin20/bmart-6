@@ -1,8 +1,8 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
-import { createUserValidation } from '../../utils/validation';
+import { createUserValidation } from '../../../utils/validation';
 import * as S from './style';
-import { UserJoin } from '../../types/data';
+import { UserJoin } from '../../../types/data';
 import UserPageInput from '../UserPageInput';
 
 interface Props {
