@@ -48,6 +48,6 @@ export interface Banner {
 
 export interface Header {
   title?: string;
-  description?: React.ReactElement;
+  description?: string | React.ReactElement;
   trailing?: React.ReactElement;
 }
