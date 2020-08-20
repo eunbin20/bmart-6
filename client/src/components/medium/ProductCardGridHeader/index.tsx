@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 
 import * as S from './style';
-import { SORTOPTIONS } from '../../commons/constants';
-import { DropIcon } from '../../commons/svgs';
-import SortModal from '../SortModal';
+import { DropIcon } from '../../../commons/svgs';
+import SortModal from '../ProductSortModal';
 
 interface Props {
   sortBy: string;

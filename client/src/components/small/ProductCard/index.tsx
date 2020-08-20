@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 import { TwoColumnCard, ThreeColumnCard, TwoHalfColumnCard } from './style';
-import { Product, ProductGridColumns } from '../../types/data';
-import { LikeIcon } from '../../commons/svgs';
+import { Product, ProductGridColumns } from '../../../types/data';
+import { LikeIcon } from '../../../commons/svgs';
 
 interface Props extends Product {
   columns: ProductGridColumns;

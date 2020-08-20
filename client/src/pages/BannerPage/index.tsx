@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './style';
-import BannerSlider from '../../components/BannerSlider';
+import BannerSlider from '../../components/medium/BannerSlider';
 import DefaultTemplate from '../Default';
 import { Banner } from '../../types/data';
 

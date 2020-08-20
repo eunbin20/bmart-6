@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Modal from 'react-modal';
 
 import * as S from './style';
-import { SORTOPTIONS } from '../../commons/constants';
+import { SORTOPTIONS } from '../../../commons/constants';
 
 interface Props {
   selectedOption: string;
@@ -35,7 +35,7 @@ const customStyle = {
   },
 };
 
-const SortModal = ({ selectedOption, changeSort, isModalOpen, onModalClose }: Props) => {
+const ProductSortModal = ({ selectedOption, changeSort, isModalOpen, onModalClose }: Props) => {
   return (
     <>
       <Modal isOpen={isModalOpen} onRequestClose={() => onModalClose()} style={customStyle}>
@@ -61,4 +61,4 @@ const SortModal = ({ selectedOption, changeSort, isModalOpen, onModalClose }: Pr
     </>
   );
 };
-export default SortModal;
+export default ProductSortModal;
