@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as S from './style';
-import { Banner } from '../../types/data';
+import { Banner } from '../../../types/data';
 import {
   BANNER_SCROLL_INTERVAL,
   BANNER_SCROLL_PREVENT_TOUCH_INTERVAL,
-} from '../../commons/constants';
-import Indicator from './Indicator';
+} from '../../../commons/constants';
+import Indicator from '../../smalls/BannerIndicator';
 
 interface Props {
   banners: Banner[];

@@ -6,7 +6,7 @@ interface Props {
   totalCount: number;
 }
 
-function Indicator({ currentIndex, totalCount }: Props): React.ReactElement {
+function BannerIndicator({ currentIndex, totalCount }: Props): React.ReactElement {
   return (
     <S.IndicatorContainer>
       {Array(totalCount)
@@ -18,4 +18,4 @@ function Indicator({ currentIndex, totalCount }: Props): React.ReactElement {
   );
 }
 
-export default Indicator;
+export default BannerIndicator;
