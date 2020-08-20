@@ -30,6 +30,7 @@ export default function useProducts(data: ProductFilter): [ProductsState, React.
           body: action.data,
         });
         break;
+
       default:
         return;
     }
@@ -67,5 +68,6 @@ export default function useProducts(data: ProductFilter): [ProductsState, React.
           });
     }
   }, [apiResponse, action.type]);
+
   return [state, setAction];
 }

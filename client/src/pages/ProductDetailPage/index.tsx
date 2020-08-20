@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
+import useProducts from '../../hooks/useProducts';
 
 const parseQuery = (queryString: string) => {
   // ?id=1&someting=2
@@ -12,7 +13,8 @@ const parseQuery = (queryString: string) => {
 
 export default function ProductDetailPage({ history, location }: RouteComponentProps) {
   const { search } = location;
-
+  const [state, setAction] = useProducts({ limit: 1, id: Number(parseQuery(search)[0].id) });
+  console.log(state);
   useEffect(() => {
     if (!search) {
       history.push('/');
