@@ -45,3 +45,9 @@ export interface Banner {
   redirectUrl: string;
   imageUrl: string;
 }
+
+export interface Header {
+  title?: string;
+  description?: React.ReactElement;
+  trailing?: React.ReactElement;
+}
