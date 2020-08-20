@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import DefaultTemplate from '../Default';
 import SectionDivider from '../../components/small/SectionDivider';
 import {
@@ -11,8 +11,6 @@ import {
 import useProducts from '../../hooks/useProducts';
 import BannerSlider from '../../components/medium/BannerSlider';
 import { BANNERS, CATEGORIES } from '../../commons/constants';
-import useApiRequest, { REQUEST } from '../../hooks/useApiRequests';
-import { getCategories } from '../../apis/category';
 
 function MainPage(): React.ReactElement {
   const [{ products: eatNowProducts }] = useProducts({ limit: 6 });
