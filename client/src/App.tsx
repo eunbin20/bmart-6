@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { SubcategoryPage, UserPage } from './pages';
+import { SubcategoryPage, UserPage, ProductDetailPage } from './pages';
 import './styles/reset.scss';
 import './styles/fonts.scss';
 import './styles/reactModal.scss';
@@ -15,6 +15,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={SubcategoryPage} />
           <Route exact path="/user/:subPath" component={UserPage} />
+          <Route exact path="/detail" component={ProductDetailPage} />
           <Route exact path="/banner" component={BannerPage} />
           <Redirect path="*" to="/" />
         </Switch>
