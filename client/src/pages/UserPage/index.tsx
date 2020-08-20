@@ -1,15 +1,12 @@
 import React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
-import JoinForm from '../../components/user/JoinForm';
-import { useAuthContext } from '../../contexts/user';
-import { UserJoin, UserLogin } from '../../types/data';
-import * as userApis from '../../apis/user';
-import * as userActions from '../../contexts/user/actions';
-import UserPageHeader from '../../components/user/UserHeader';
-import LoginForm from '../../components/user/LoginForm';
-import UserFooter from '../../components/user/UserFooter';
-import { ERROR_STATUS, ERROR_MESSAGE } from '../../commons/constants';
 import { FORM_ERROR } from 'final-form';
+import { RouteComponentProps } from 'react-router-dom';
+import { UserJoin, UserLogin } from '../../types/data';
+import { useAuthContext } from '../../contexts/user';
+import * as userActions from '../../contexts/user/actions';
+import * as userApis from '../../apis/user';
+import { JoinSection, LoginSection, UserFooter, UserHeader } from '../../components';
+import { ERROR_STATUS, ERROR_MESSAGE } from '../../commons/constants';
 
 type SubPath = 'join' | 'login';
 interface Params {
@@ -50,14 +47,14 @@ function UserPage({ match: { params }, history }: RouteComponentProps<Params>) {
       return history.push('/');
     }
     if (subPath === 'join') {
-      return <JoinForm onSubmit={onSubmitJoin} />;
+      return <JoinSection onSubmit={onSubmitJoin} />;
     }
-    return <LoginForm onSubmit={onSubmitLogin} />;
+    return <LoginSection onSubmit={onSubmitLogin} />;
   };
 
   return (
     <>
-      <UserPageHeader subPath={params.subPath} />
+      <UserHeader subPath={params.subPath} />
       {renderBySubPath(params.subPath)}
       <UserFooter />
     </>

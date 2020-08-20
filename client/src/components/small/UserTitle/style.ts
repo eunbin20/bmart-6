@@ -5,6 +5,6 @@ export const Title = styled.header`
   padding: 50px 28px;
   font-size: 40px;
   font-weight: bold;
-  color: var(--green)
+  color: var(--green);
   text-align: left;
 `;

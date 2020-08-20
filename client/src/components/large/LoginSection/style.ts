@@ -17,7 +17,7 @@ export const PushButton = styled.button.attrs((props: PushButtonProps) => ({
   className: 'f7-icons',
   onSubmit: props.onSubmit,
 }))`
-  background: var(--light-gray);
+  background: var(--gray);
   border: none;
   width: 60px;
   height: 60px;

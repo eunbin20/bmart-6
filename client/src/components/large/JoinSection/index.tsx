@@ -1,10 +1,10 @@
 import React from 'react';
+import * as S from './style';
 import { Form, Field } from 'react-final-form';
 import { createUserValidation } from '../../../utils/validation';
-import * as S from './style';
 import { UserJoin } from '../../../types/data';
-import UserPageTitle from '../UserTitle';
-import UserPageInput from '../UserInput';
+import UserPageTitle from '../../small/UserTitle';
+import UserPageInput from '../../small/UserInput';
 
 interface Props {
   onSubmit: (values: UserJoin) => void;

@@ -1,10 +1,10 @@
 import React from 'react';
+import * as S from './style';
 import { Form, Field } from 'react-final-form';
 import { loginValidation } from '../../../utils/validation';
-import * as S from './style';
 import { UserLogin } from '../../../types/data';
-import UserPageTitle from '../UserTitle';
-import UserPageInput from '../UserInput';
+import UserPageTitle from '../../small/UserTitle';
+import UserPageInput from '../../small/UserInput';
 
 interface Props {
   onSubmit: (values: UserLogin) => void;
