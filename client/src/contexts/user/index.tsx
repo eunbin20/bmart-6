@@ -9,8 +9,15 @@ interface UserContextType {
   setAction: UserDispatch;
 }
 
+const checkIsAuthorized = () => {
+  if (process.env.NODE_ENV === 'development') {
+    return true;
+  }
+  return window.localStorage.getItem('accessToken') ? true : false;
+};
+
 const initialState = {
-  isAuthorized: false,
+  isAuthorized: checkIsAuthorized(),
   nickname: '',
   email: '',
   status: 0, //

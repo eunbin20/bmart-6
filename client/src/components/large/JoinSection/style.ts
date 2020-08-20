@@ -22,7 +22,7 @@ export const PushButton = styled.button.attrs((props: PushButtonProps) => ({
   width: 60px;
   height: 60px;
   border-radius: 7px;
-  color: #ffffffff;
+  color: var(--white);
   position: absolute;
   bottom: 50px;
   right: 28px;

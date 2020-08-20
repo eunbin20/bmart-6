@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FORM_ERROR } from 'final-form';
 import { RouteComponentProps } from 'react-router-dom';
 import { UserJoin, UserLogin } from '../../types/data';
@@ -7,6 +7,7 @@ import * as userActions from '../../contexts/user/actions';
 import * as userApis from '../../apis/user';
 import { JoinSection, LoginSection, UserFooter, UserHeader } from '../../components';
 import { ERROR_STATUS, ERROR_MESSAGE } from '../../commons/constants';
+import { storage } from '../../utils/storage';
 
 type SubPath = 'join' | 'login';
 interface Params {
@@ -15,12 +16,15 @@ interface Params {
 
 function UserPage({ match: { params }, history }: RouteComponentProps<Params>) {
   const userContext = useAuthContext();
+  if (userContext?.state.isAuthorized) {
+    history.push('/');
+    // 로그인한 경우
+  }
 
   const onSubmitJoin = async (values: UserJoin) => {
     if (userContext === null) {
       return;
     }
-
     delete values.passwordConfirm;
     try {
       await userApis.createUser(values);
@@ -37,7 +41,8 @@ function UserPage({ match: { params }, history }: RouteComponentProps<Params>) {
       return;
     }
     try {
-      await userApis.loginUser(values);
+      const { data } = await userApis.loginUser(values);
+      storage.set('accessToken', data.accessToken);
       userContext.setAction(userActions.setLoginSuccess());
       history.push('/');
     } catch (e) {
