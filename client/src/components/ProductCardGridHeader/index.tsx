@@ -1,22 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import * as S from './style';
 import { SORTOPTIONS } from '../../commons/constants';
+import { DropIcon } from '../../commons/svgs';
+import SortModal from '../SortModal';
 
 interface Props {
+  sortBy: string;
   changeSort: Function;
 }
 
-const generateSortOptions = (changeSort: Function) => {
-  return Object.entries(SORTOPTIONS).map(([title, option], index) => (
-    <S.SortContainer key={index} onClick={() => changeSort(option)}>
-      {title}
-    </S.SortContainer>
-  ));
-};
+function ProductCardGridHeader({ sortBy, changeSort }: Props): React.ReactElement {
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
-function ProductCardGridHeader({ changeSort }: Props): React.ReactElement {
-  return <S.CardGridHeaderContainer>{generateSortOptions(changeSort)}</S.CardGridHeaderContainer>;
+  return (
+    <>
+      <S.CardGridHeaderContainer>
+        <S.SortContainer onClick={() => setIsModalOpen(true)}>
+          {sortBy} {DropIcon()}
+        </S.SortContainer>
+      </S.CardGridHeaderContainer>
+      <SortModal
+        selectedOption={sortBy}
+        changeSort={changeSort}
+        isModalOpen={isModalOpen}
+        onModalClose={() => setIsModalOpen(false)}
+      />
+    </>
+  );
 }
 
 export default ProductCardGridHeader;

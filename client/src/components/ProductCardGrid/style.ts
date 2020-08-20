@@ -6,6 +6,7 @@ export const CardGridContainer = styled.div`
       ? `
         display: grid;
         width: 100%;
+        margin-top: 16px;
         grid-template-columns: repeat(2, 1fr);
         column-gap: 12px;
         row-gap: 15px;
@@ -13,6 +14,7 @@ export const CardGridContainer = styled.div`
       : `
         display: grid;
         width: 100%;
+        margin-top: 16px;
         grid-template-columns: repeat(3, 1fr);
         column-gap: 8px;
         row-gap: 14px;

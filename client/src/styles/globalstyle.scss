@@ -4,6 +4,7 @@
   --green: #2ac1bc;
   --red: #db2f20;
   --gray: #bbbbbb;
+  --light-gray: #f6f6f6;
 }
 
 // @media (prefers-color-scheme: dark) {
@@ -40,6 +41,9 @@ body {
 .App {
   justify-self: center;
   width: 375px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media only screen and (max-width: 700px) {

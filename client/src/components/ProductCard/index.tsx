@@ -56,10 +56,10 @@ function ProductCard({
           {isDiscounted && (
             <>
               <S.DiscountedRate>{discountedRate}%</S.DiscountedRate>
-              <S.DiscountedPrice>{discountedPrice}원</S.DiscountedPrice>
+              <S.DiscountedPrice>{price}원</S.DiscountedPrice>
             </>
           )}
-          <S.Price>{price}원</S.Price>
+          <S.Price>{discountedPrice}원</S.Price>
         </S.PriceWrapper>
       </S.ContentContainer>
     </S.LinkWrapper>
