@@ -4,7 +4,7 @@ export const PageHeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 0 15px;
+  padding: 0 15px;
 `;
 export const PageHeader = styled.div`
   display: flex;
@@ -15,9 +15,15 @@ export const PageHeader = styled.div`
 `;
 
 export const SearchBar = styled.div`
-  border: 1px solid #999999;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 38px;
+  padding: 0 14px;
+  margin-bottom: 13px;
+  border: 1px solid var(--gray);
   border-radius: 10px;
   font-size: 12px;
   line-height: 14px;
-  color: #222222;
+  color: var(--dark-gray);
 `;

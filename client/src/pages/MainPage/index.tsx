@@ -18,7 +18,7 @@ function MainPage(): React.ReactElement {
   const [{ products: bestSellerProducts }] = useProducts({ subcategoryId: 1, limit: 5 });
   return (
     <DefaultTemplate>
-      <PageHeader />
+      <PageHeader isHome={true} />
       <BannerSlider banners={BANNERS} />
       {/* <CategoryIconGrid />
       <SectionDivider /> */}

@@ -2,10 +2,19 @@ import React from 'react';
 import * as S from './style';
 import { Logo } from '../../../commons/svgs';
 
-function PageHeader(): React.ReactElement {
+interface Props {
+  isHome: boolean;
+}
+
+function PageHeader({ isHome }: Props): React.ReactElement {
   return (
     <S.PageHeaderContainer>
-      <S.PageHeader>{Logo()}</S.PageHeader>
+      <S.PageHeader>
+        {Logo()}
+        {'search'}
+        {'user'}
+      </S.PageHeader>
+      {isHome && <S.SearchBar>이곳에서 검색하세요!</S.SearchBar>}
     </S.PageHeaderContainer>
   );
 }
