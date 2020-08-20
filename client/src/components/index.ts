@@ -1,16 +1,16 @@
-export { default as ProductCard } from './smalls/ProductCard';
-export { default as SectionDivider } from './smalls/SectionDivider';
-export { default as SectionHeader } from './smalls/SectionHeader';
+export { default as ProductCard } from './small/ProductCard';
+export { default as SectionDivider } from './small/SectionDivider';
+export { default as SectionHeader } from './small/SectionHeader';
 
-export { default as CategoryIconGrid } from './mediums/CategoryIconGrid';
-export { default as ProductCardGrid } from './mediums/ProductCardGrid';
-export { default as ProductCardGridHeader } from './mediums/ProductCardGridHeader';
-export { default as ProductCardListView } from './mediums/ProductCardListView';
-export { default as ProductSortModal } from './mediums/ProductSortModal';
+export { default as CategoryIconGrid } from './medium/CategoryIconGrid';
+export { default as ProductCardGrid } from './medium/ProductCardGrid';
+export { default as ProductCardGridHeader } from './medium/ProductCardGridHeader';
+export { default as ProductCardListView } from './medium/ProductCardListView';
+export { default as ProductSortModal } from './medium/ProductSortModal';
 
-export { default as BestSellerSection } from './larges/BestSellerSection';
-export { default as CategoryProductSection } from './larges/CategoryProductSection';
-export { default as EatNowSection } from './larges/EatNowSection';
-export { default as ForYouSection } from './larges/ForYouSection';
-export { default as PageHeader } from './larges/PageHeader';
-export { default as HotDealSection } from './larges/BestSellerSection';
+export { default as BestSellerSection } from './large/BestSellerSection';
+export { default as CategoryProductSection } from './large/CategoryProductSection';
+export { default as EatNowSection } from './large/EatNowSection';
+export { default as ForYouSection } from './large/ForYouSection';
+export { default as PageHeader } from './large/PageHeader';
+export { default as HotDealSection } from './large/BestSellerSection';
