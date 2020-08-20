@@ -22,8 +22,14 @@ function UserPage({ match: { params }, history }: RouteComponentProps<Params>) {
     }
 
     delete values.passwordConfirm;
-    await userApis.createUser(values);
-    history.push('/user/login');
+    try {
+      await userApis.createUser(values);
+      history.push('/user/login');
+    } catch (e) {
+      if (e.response.status === ERROR_STATUS.DUPLICATED) {
+        return { [FORM_ERROR]: ERROR_MESSAGE.DUPLICATED_EMAIL };
+      }
+    }
   };
 
   const onSubmitLogin = async (values: UserLogin) => {

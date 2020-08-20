@@ -18,11 +18,17 @@ export default function JoinForm({ onSubmit }: Props) {
         <Form
           onSubmit={onSubmit}
           validate={createUserValidation}
-          render={({ handleSubmit }) => (
+          render={({ handleSubmit, submitError }) => (
             <>
               <Field name="email">
                 {({ input, meta }) => (
-                  <UserPageInput input={input} meta={meta} type="email" placeholder="이메일" />
+                  <UserPageInput
+                    input={input}
+                    meta={meta}
+                    submitError={submitError}
+                    type="email"
+                    placeholder="이메일"
+                  />
                 )}
               </Field>
               <Field name="name">
