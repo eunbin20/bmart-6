@@ -5,10 +5,10 @@ import { UserState } from '../../types/states';
 import * as apis from '../../apis/user';
 import useApiRequest, { REQUEST, SUCCESS, FAILURE } from '../../hooks/useApiRequests';
 
-const ACTION_USER_JOIN = 'USER_JOIN' as const;
+const ACTION_LOGIN_SUCCESS = 'LOGIN_SUCCESS' as const;
+export const setLoginSuccess = () => ({ type: ACTION_LOGIN_SUCCESS });
 const ACTION_ERROR = 'ERROR' as const;
-export const requestUserJoin = (values: UserJoin) => ({ type: ACTION_USER_JOIN, data: values });
-type Action = ReturnType<typeof requestUserJoin>;
+type Action = ReturnType<typeof setLoginSuccess>;
 type UserDispatch = Dispatch<Action>;
 
 interface UserContextType {
@@ -25,7 +25,7 @@ const initialState = {
 
 function reducer(state: UserState = initialState, action: Action) {
   switch (action.type) {
-    case ACTION_USER_JOIN:
+    case ACTION_LOGIN_SUCCESS:
       return {
         ...state,
         isAuthorized: true,
@@ -39,7 +39,7 @@ const UserContext = createContext<UserContextType | null>(null);
 export function UserProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [action, setAction] = useState<Action | null>(null);
-  const [apiResponse, createUserDispatch] = useApiRequest<UserJoin>(apis.createUser);
+  // const [apiResponse, createUserDispatch] = useApiRequest<UserJoin>(apis.createUser);
 
   const userModel = {
     state,
@@ -51,16 +51,13 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
       return;
     }
     switch (action.type) {
-      case ACTION_USER_JOIN:
-        createUserDispatch({
-          type: REQUEST,
-          body: action.data,
-        });
-        return;
+      case ACTION_LOGIN_SUCCESS:
+        dispatch({ type: ACTION_LOGIN_SUCCESS });
+        break;
       default:
         throw new Error('Unhandled Case');
     }
-  }, [action, createUserDispatch]);
+  }, [action, dispatch]);
 
   return <UserContext.Provider value={userModel}>{children}</UserContext.Provider>;
 }

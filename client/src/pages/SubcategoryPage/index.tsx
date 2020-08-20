@@ -9,6 +9,7 @@ import DefaultTemplate from '../Default';
 
 function SubcategoryPage(): React.ReactElement {
   const [productsState, productDispatch] = useProducts({ subcategoryId: 1 });
+
   const { products } = productsState;
 
   function changeSort(sortBy: ProductSort) {

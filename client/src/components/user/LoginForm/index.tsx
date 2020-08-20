@@ -18,7 +18,7 @@ export default function LoginForm({ onSubmit }: Props) {
         <Form
           onSubmit={onSubmit}
           validate={loginValidation}
-          render={({ handleSubmit }) => (
+          render={({ handleSubmit, submitError }) => (
             <>
               <Field name="email">
                 {({ input, meta }) => (
@@ -28,7 +28,13 @@ export default function LoginForm({ onSubmit }: Props) {
 
               <Field name="password">
                 {({ input, meta }) => (
-                  <UserPageInput input={input} meta={meta} type="password" placeholder="비밀번호" />
+                  <UserPageInput
+                    input={input}
+                    meta={meta}
+                    submitError={submitError}
+                    type="password"
+                    placeholder="비밀번호"
+                  />
                 )}
               </Field>
 
