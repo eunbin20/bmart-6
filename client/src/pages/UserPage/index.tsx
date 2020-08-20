@@ -8,7 +8,7 @@ import * as userActions from '../../contexts/user/actions';
 import UserPageHeader from '../../components/user/UserHeader';
 import LoginForm from '../../components/user/LoginForm';
 import UserFooter from '../../components/user/UserFooter';
-import { ERROR_STATUS, ERROR_MESSAGE } from '../../common/constants';
+import { ERROR_STATUS, ERROR_MESSAGE } from '../../commons/constants';
 import { FORM_ERROR } from 'final-form';
 
 type SubPath = 'join' | 'login';

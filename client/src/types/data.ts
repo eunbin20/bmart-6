@@ -1,4 +1,4 @@
-import { PRICEUP, PRICEDOWN } from '../common/constants';
+import { PRICEUP, PRICEDOWN } from '../commons/constants';
 
 export interface User {
   email: string;
