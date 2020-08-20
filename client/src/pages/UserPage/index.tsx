@@ -16,10 +16,6 @@ interface Params {
 
 function UserPage({ match: { params }, history }: RouteComponentProps<Params>) {
   const userContext = useAuthContext();
-  if (userContext?.state.isAuthorized) {
-    history.push('/');
-    // 로그인한 경우
-  }
 
   const onSubmitJoin = async (values: UserJoin) => {
     if (userContext === null) {
