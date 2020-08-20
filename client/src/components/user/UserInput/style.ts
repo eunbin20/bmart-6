@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import * as C from '../../../styles/common'; // C is Common
 
 export const InputWrapper = styled.div.attrs({
   className: 'input-wrapper',
@@ -23,8 +22,8 @@ export const Input = styled.input.attrs((props: InputProps) => ({
   outline: none;
   border: none;
   font-size: 20px;
-  color: ${C.GRAY_2};
-  border-bottom: 1px solid ${C.GRAY_2};
+  color: var(--gray);
+  border-bottom: 1px solid var(--gray);
   padding-bottom: 14px;
 `;
 

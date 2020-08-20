@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import * as C from '../../../styles/common'; // C is Common
 import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
@@ -26,7 +25,8 @@ interface NavigationProps {
 export const NavigationBox = styled.div.attrs({
   className: 'onboard-navi',
 })`
-  border-bottom: 2px solid ${(props: NavigationProps) => (props.isActive ? C.GRAY_2 : '#ffffff')};
+  border-bottom: 2px solid
+    ${(props: NavigationProps) => (props.isActive ? 'var(--gray)' : '#ffffff')};
 `;
 
 export const Navigation = styled(Link)`

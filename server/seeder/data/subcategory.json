@@ -1,0 +1,218 @@
+[
+  {
+    "id": 1,
+    "categoryId": 1,
+    "name": "제철과일",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:04",
+    "updatedAt": "2020-08-11 05:21:04"
+  },
+  {
+    "id": 2,
+    "categoryId": 1,
+    "name": "국산과일",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:11",
+    "updatedAt": "2020-08-11 05:21:11"
+  },
+  {
+    "id": 3,
+    "categoryId": 1,
+    "name": "수입과일",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:14",
+    "updatedAt": "2020-08-11 05:21:14"
+  },
+  {
+    "id": 4,
+    "categoryId": 1,
+    "name": "기본채소",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 5,
+    "categoryId": 1,
+    "name": "쌈·샐러드·간편채소",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 6,
+    "categoryId": 2,
+    "name": "소고기",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 7,
+    "categoryId": 2,
+    "name": "돼지고기",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 8,
+    "categoryId": 2,
+    "name": "계란류",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 9,
+    "categoryId": 2,
+    "name": "닭·오리고기",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 10,
+    "categoryId": 2,
+    "name": "생선류",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 11,
+    "categoryId": 2,
+    "name": "오징어·낙지·문어",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 12,
+    "categoryId": 2,
+    "name": "새우·게·랍스터",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 13,
+    "categoryId": 3,
+    "name": "샐러드·도시락",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 14,
+    "categoryId": 4,
+    "name": "우유·두유·요거트",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 15,
+    "categoryId": 4,
+    "name": "치즈",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 16,
+    "categoryId": 5,
+    "name": "식빵·빵류",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 17,
+    "categoryId": 5,
+    "name": "케이크·파이·디저트",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 18,
+    "categoryId": 5,
+    "name": "선식·시리얼·그래놀라",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 19,
+    "categoryId": 5,
+    "name": "잼·버터·스프레드",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 20,
+    "categoryId": 6,
+    "name": "만두·튀김·떡볶이",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 21,
+    "categoryId": 6,
+    "name": "간편식·냉동식품",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 22,
+    "categoryId": 7,
+    "name": "간식·과자·쿠키",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 23,
+    "categoryId": 7,
+    "name": "초콜릿·젤리·캔디",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 24,
+    "categoryId": 8,
+    "name": "아이스크림",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 25,
+    "categoryId": 9,
+    "name": "바디·제모",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 26,
+    "categoryId": 9,
+    "name": "헤어케어",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  },
+  {
+    "id": 27,
+    "categoryId": 9,
+    "name": "구강·면도",
+    "isDeleted": 0,
+    "createdAt": "2020-08-11 05:21:20",
+    "updatedAt": "2020-08-11 05:21:20"
+  }
+]

@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
@@ -8,6 +9,7 @@ const passportConfig = require('./lib/passport');
 const { errorMiddleware } = require('./middlewares/error');
 
 const { sequelize } = require('./models');
+const { seed } = require('./seeder');
 
 sequelize
   .authenticate()
@@ -16,7 +18,9 @@ sequelize
     console.log(err);
   });
 
-sequelize.sync({ force: false });
+process.env.IS_DEMO === 'true'
+  ? sequelize.sync({ force: true }).then(() => seed())
+  : sequelize.sync({ force: false });
 
 const router = require('./routes');
 const app = express();

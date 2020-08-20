@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import * as C from '../../../styles/common'; // C is Common
 
 export const InputContainer = styled.section`
   width: 100%;
@@ -18,7 +17,7 @@ export const PushButton = styled.button.attrs((props: PushButtonProps) => ({
   className: 'f7-icons',
   onSubmit: props.onSubmit,
 }))`
-  background: ${C.GRAY_1};
+  background: var(--light-gray);
   border: none;
   width: 60px;
   height: 60px;

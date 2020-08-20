@@ -1,5 +1,8 @@
+export const POPULAR = 'mostpopular';
 export const PRICEUP = 'priceup';
 export const PRICEDOWN = 'pricedown';
+export const NEW = 'new';
+export const DISCOUNTEDRATE = 'discountedRate';
 
 export const ERROR_MESSAGE = {
   COMMON_TYPE: '입력이 올바르지 않습니다.',
@@ -22,3 +25,18 @@ export const ERROR_STATUS = {
   NOT_FOUND: 404,
   DUPLICATED: 409,
 };
+
+
+export const SORTOPTIONS: {
+  [key: string]: string | undefined;
+} = {
+  '기본 정렬순': undefined,
+  '인기 상품순': POPULAR,
+  '높은 가격순': PRICEUP,
+  '낮은 가격순': PRICEDOWN,
+  '신규 상품순': NEW,
+  '할인율 순': DISCOUNTEDRATE,
+};
+
+export const BANNER_SCROLL_INTERVAL = 3500;
+export const BANNER_SCROLL_PREVENT_TOUCH_INTERVAL = 600;
