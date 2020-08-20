@@ -1,8 +1,8 @@
 import React from 'react';
 
 import * as S from './style';
-import { generateProductCards } from '../ProductCard';
-import { Product, ProductGridColumns } from '../../types/data';
+import { generateProductCards } from '../../smalls/ProductCard';
+import { Product, ProductGridColumns } from '../../../types/data';
 
 interface Props {
   products: Product[];
