@@ -4,15 +4,21 @@ import * as S from './style';
 type SubPath = 'login' | 'join';
 
 export default function UserHeader({ subPath }: { subPath: SubPath }) {
+  const setStyle = (type: SubPath) => {
+    if (subPath !== type) {
+      return {};
+    }
+    return { borderBottom: '2px solid var(--gray)' };
+  };
   return (
     <S.Wrapper>
       <S.NavigationWrapper>
-        <S.NavigationBox isActive={subPath === 'login'}>
-          <S.Navigation to="/user/login">Sign In</S.Navigation>
-        </S.NavigationBox>
-        <S.NavigationBox isActive={subPath === 'join'}>
-          <S.Navigation to="/user/join">Sign Up</S.Navigation>
-        </S.NavigationBox>
+        <S.Navigation to="/user/login" activeStyle={setStyle('login')}>
+          Sign In
+        </S.Navigation>
+        <S.Navigation to="/user/join" activeStyle={setStyle('join')}>
+          Sign Up
+        </S.Navigation>
       </S.NavigationWrapper>
     </S.Wrapper>
   );

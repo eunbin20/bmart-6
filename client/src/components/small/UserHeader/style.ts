@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -18,18 +18,9 @@ export const NavigationWrapper = styled.div`
   }
 `;
 
-interface NavigationProps {
-  isActive: boolean;
-}
-
-export const NavigationBox = styled.div.attrs({
+export const Navigation = styled(NavLink).attrs({
   className: 'onboard-navi',
 })`
-  border-bottom: 2px solid
-    ${(props: NavigationProps) => (props.isActive ? 'var(--gray)' : '#ffffff')};
-`;
-
-export const Navigation = styled(Link)`
   font-size: 15px;
   text-decoration: none;
   padding-bottom: 5px;

@@ -16,7 +16,7 @@ function App() {
           <Route exact path="/" component={SubcategoryPage} />
           <Route exact path="/user/:subPath" component={UserPage} />
           <Route exact path="/banner" component={BannerPage} />
-          <Redirect path="*" to="/"/> 
+          <Redirect path="*" to="/" />
         </Switch>
       </Router>
     </div>

@@ -4,6 +4,8 @@ export const PRICEDOWN = 'pricedown';
 export const NEW = 'new';
 export const DISCOUNTEDRATE = 'discountedRate';
 
+export const ACCESS_TOKEN = 'accessToken';
+
 export const ERROR_MESSAGE = {
   COMMON_TYPE: '입력이 올바르지 않습니다.',
   EMAIL_EMPTY: '이메일을 입력해주세요.',

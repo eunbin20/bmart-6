@@ -18,7 +18,6 @@ const errorHandler = (error, res, next) => {
 
 /* User validation */
 exports.validateCreateUser = (req, res, next) => {
-  console.log(req.body);
   const schema = Joi.object().keys({
     email: EMAIL,
     password: STRING_REQUIRED,

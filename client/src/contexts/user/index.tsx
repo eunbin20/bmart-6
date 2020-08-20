@@ -2,6 +2,8 @@ import React, { useEffect, createContext, Dispatch, useReducer, useContext, useS
 import { UserState } from '../../types/states';
 import { Action, ACTION_LOGIN_SUCCESS } from './actions';
 import reducer from './reducer';
+import { storage } from '../../utils/storage';
+import { ACCESS_TOKEN } from '../../commons/constants';
 
 export type UserDispatch = Dispatch<Action>;
 interface UserContextType {
@@ -13,7 +15,7 @@ const checkIsAuthorized = () => {
   if (process.env.NODE_ENV === 'development') {
     return true;
   }
-  return window.localStorage.getItem('accessToken') ? true : false;
+  return storage.get(ACCESS_TOKEN) ? true : false;
 };
 
 const initialState = {
