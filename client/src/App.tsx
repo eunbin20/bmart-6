@@ -1,13 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { MainPage, SubcategoryPage, UserPage, BannerPage } from './pages';
 import './styles/reset.scss';
 import './styles/fonts.scss';
 import './styles/reactModal.scss';
 import './styles/globalstyle.scss';
-
-import SubcategoryPage from './pages/SubcategoryPage';
-import BannerPage from './pages/BannerPage';
-import MainPage from './pages/MainPage';
 
 function App() {
   return (
@@ -16,7 +13,9 @@ function App() {
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route exact path="/subcategory" component={SubcategoryPage} />
+          <Route exact path="/user/:subPath" component={UserPage} />
           <Route exact path="/banner" component={BannerPage} />
+          <Redirect path="*" to="/" />
         </Switch>
       </Router>
     </div>

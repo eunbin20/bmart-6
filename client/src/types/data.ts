@@ -1,7 +1,16 @@
 export interface User {
-  id: number;
   email: string;
   nickname: string;
+}
+export interface UserJoin extends User {
+  name: string;
+  password: string;
+  passwordConfirm: string;
+}
+
+export interface UserLogin {
+  email: string;
+  password: string;
 }
 
 export interface Category {
@@ -9,10 +18,8 @@ export interface Category {
   name: string;
 }
 
-export interface Subcategory {
-  id: number;
+export interface Subcategory extends Category {
   categoryId: number;
-  name: string;
 }
 
 export interface Product {
