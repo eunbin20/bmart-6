@@ -20,20 +20,21 @@ function MainPage(): React.ReactElement {
     <DefaultTemplate>
       <PageHeader />
       <BannerSlider banners={BANNERS} />
-      <CategoryIconGrid />
-      <SectionDivider />
+      {/* <CategoryIconGrid />
+      <SectionDivider /> */}
       <ProductSection
         {...{
           products: eatNowProducts ?? [],
           viewType: 'grid',
-          columns: 3,
+          columns: 2,
           header: {
             title: '지금 뭐먹지?',
+            description: '#간식시간',
           },
         }}
       />
-      <SectionDivider />
-      <HotDealSection />
+      {/* <SectionDivider />
+      <HotDealSection /> */}
       <SectionDivider />
       <ProductSection
         {...{
@@ -57,6 +58,7 @@ function MainPage(): React.ReactElement {
         }}
       />
       <SectionDivider />
+      <BannerSlider banners={BANNERS} />
       <CategoryProductSection />
     </DefaultTemplate>
   );
