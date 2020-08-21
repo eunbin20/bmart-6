@@ -1,19 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { SubcategoryPage, UserPage } from './pages';
+import { MainPage, SubcategoryPage, UserPage, BannerPage } from './pages';
 import './styles/reset.scss';
 import './styles/fonts.scss';
 import './styles/reactModal.scss';
 import './styles/globalstyle.scss';
-
-import BannerPage from './pages/BannerPage';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/" component={SubcategoryPage} />
+          <Route exact path="/" component={MainPage} />
+          <Route exact path="/subcategory" component={SubcategoryPage} />
           <Route exact path="/user/:subPath" component={UserPage} />
           <Route exact path="/banner" component={BannerPage} />
           <Redirect path="*" to="/" />
