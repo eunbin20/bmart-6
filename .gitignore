@@ -107,3 +107,4 @@ dist
 .tern-port
 
 settings.json
+.DS_Store
