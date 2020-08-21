@@ -67,12 +67,13 @@ class Product extends Model {
     }
   }
 
-  static filter({ limit = 20, offset = 0, title, subcategoryId, isDiscounted, sortBy }) {
+  static filter({ limit = 20, offset = 0, title, subcategoryId, isDiscounted, sortBy, id }) {
     return this.findAll({
       limit: +limit,
       offset: +offset,
       where: {
         ...(title && { title: { [Op.like]: `%${title}%` } }),
+        ...(id && { id: +id }),
         ...(subcategoryId && { subcategoryId: +subcategoryId }),
         ...(isDiscounted && { isDiscounted: +isDiscounted }),
         isDeleted: false,

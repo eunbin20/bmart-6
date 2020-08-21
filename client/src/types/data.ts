@@ -40,6 +40,7 @@ export interface ProductFilter {
   offset?: number;
   title?: string;
   subcategoryId?: number;
+  id?: number;
   sortBy?: string;
 }
 
