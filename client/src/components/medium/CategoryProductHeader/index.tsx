@@ -51,7 +51,9 @@ function CategoryProductHeader({
       setSticky();
       changeSelectedChip();
     };
-    return (window.onscroll = function () {});
+    return () => {
+      window.onscroll = function () {};
+    };
   });
 
   return (
