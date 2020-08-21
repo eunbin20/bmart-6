@@ -2,7 +2,6 @@ import { Product, User } from './data';
 
 export interface ProductsState {
   products?: Product[];
-  product?: Product | null;
   status: number;
 }
 
