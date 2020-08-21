@@ -1,10 +1,7 @@
 import React, { useRef } from 'react';
-import CategoryProductHeader from '../../medium/CategoryProductHeader';
-import { CategoryProducts } from '../../../types/data';
-import ProductSection from '../ProductSection';
-// import ProductCardGrid from '../../medium/ProductCardGrid';
-import { SectionDivider /* SectionHeader */ } from '../..';
 import * as S from './style';
+import { CategoryProducts } from '../../../types/data';
+import { CategoryProductHeader, ProductSection, SectionDivider /* SectionHeader */ } from '../..';
 
 interface Props {
   categoryProducts: CategoryProducts[];

@@ -7,7 +7,7 @@ function CategoryIconGrid(): React.ReactElement {
       {Array(10)
         .fill(0)
         .map((category, index) => (
-          <S.CategoryIconWrapper key={index + 1} to={`/category/${index + 1}`}>
+          <S.CategoryIconWrapper key={index + 1} to={`/subcategory/${index + 1}`}>
             <S.CategoryIcon
               src={`assets/category-${index + 1}.png`}
               alt={`Category-${index + 1}`}
