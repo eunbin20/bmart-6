@@ -37,19 +37,43 @@ const ProductDetailModal = (props: Props) => {
 
   return (
     <Modal isOpen={true} style={customStyle}>
-      <S.Image src={imageUrl} />
-      <S.TopContainer>
-        <S.TitleWrapper>
-          <S.Title>{title}</S.Title>
-          <S.TitleDescription>설명 입니당..</S.TitleDescription>
-        </S.TitleWrapper>
-        <S.PriceWrapper>
-          <S.PriceRate>{discountedRate}%</S.PriceRate>
-          <S.OriginalPrice>{makeComma(price)}원</S.OriginalPrice>
-          <S.DiscountedPrice>{makeComma(discountedPrice)}원</S.DiscountedPrice>
-        </S.PriceWrapper>
-      </S.TopContainer>
-      <SectionDivider />
+      <S.ModalContentContainer>
+        <S.Image src={imageUrl} />
+        <S.SectionContainer>
+          <S.TitleWrapper>
+            <S.Title>{title}</S.Title>
+            <S.TitleDescription>6시간 안에 배송해드리는 상품입니다~</S.TitleDescription>
+          </S.TitleWrapper>
+          <S.PriceWrapper>
+            <S.PriceRate>{discountedRate}%</S.PriceRate>
+            <S.OriginalPrice>{makeComma(price)}원</S.OriginalPrice>
+            <S.DiscountedPrice>{makeComma(discountedPrice)}원</S.DiscountedPrice>
+          </S.PriceWrapper>
+        </S.SectionContainer>
+        <SectionDivider />
+        <S.SectionContainer>
+          <S.DescriptionWrapper>
+            <S.DescriptionTerm>판매단위</S.DescriptionTerm>
+            <S.DescriptionData>3박스</S.DescriptionData>
+          </S.DescriptionWrapper>
+          <S.DescriptionWrapper>
+            <S.DescriptionTerm>중량/용량</S.DescriptionTerm>
+            <S.DescriptionData>30g x 6개</S.DescriptionData>
+          </S.DescriptionWrapper>
+          <S.DescriptionWrapper>
+            <S.DescriptionTerm>배송구분</S.DescriptionTerm>
+            <S.DescriptionData>택배배송/직접배달</S.DescriptionData>
+          </S.DescriptionWrapper>
+          <S.DescriptionWrapper>
+            <S.DescriptionTerm>포장타입</S.DescriptionTerm>
+            <S.DescriptionData>상온/종이포장</S.DescriptionData>
+          </S.DescriptionWrapper>
+        </S.SectionContainer>
+        <S.CartButtonContainer>
+          나만 보고 있는 특별한 상품!
+          <S.CartButton>장바구니 담기</S.CartButton>
+        </S.CartButtonContainer>
+      </S.ModalContentContainer>
     </Modal>
   );
 };
