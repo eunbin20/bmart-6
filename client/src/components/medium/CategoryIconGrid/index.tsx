@@ -9,7 +9,7 @@ function CategoryIconGrid(): React.ReactElement {
         .map((category, index) => (
           <S.CategoryIconWrapper key={index + 1} to={`/category/${index + 1}`}>
             <S.CategoryIcon
-              src={require(`../../../assets/category-${index + 1}.png`)}
+              src={`assets/category-${index + 1}.png`}
               alt={`Category-${index + 1}`}
             ></S.CategoryIcon>
           </S.CategoryIconWrapper>
