@@ -1,5 +1,3 @@
-import { PRICEUP, PRICEDOWN } from '../commons/constants';
-
 export interface User {
   email: string;
   nickname: string;
@@ -52,4 +50,16 @@ export interface Banner {
   id: number;
   redirectUrl: string;
   imageUrl: string;
+}
+
+export interface Header {
+  title?: string;
+  description?: string | React.ReactElement;
+  trailing?: React.ReactElement;
+  isCategoryProductHeader?: boolean;
+}
+
+export interface CategoryProducts {
+  category: Category;
+  products: Product[];
 }

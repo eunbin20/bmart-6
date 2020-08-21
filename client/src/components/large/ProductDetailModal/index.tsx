@@ -32,7 +32,7 @@ const customStyle = {
 
 const ProductDetailModal = (props: Props) => {
   const {
-    product: { imageUrl, title, discountedRate, price, discountedPrice },
+    product: { imageUrl, title, discountedRate, price, discountedPrice, isDiscounted },
   } = props;
 
   return (
@@ -45,9 +45,9 @@ const ProductDetailModal = (props: Props) => {
             <S.TitleDescription>6시간 안에 배송해드리는 상품입니다~</S.TitleDescription>
           </S.TitleWrapper>
           <S.PriceWrapper>
-            <S.PriceRate>{discountedRate}%</S.PriceRate>
+            {isDiscounted && <S.PriceRate>{discountedRate}%</S.PriceRate>}
             <S.OriginalPrice>{makeComma(price)}원</S.OriginalPrice>
-            <S.DiscountedPrice>{makeComma(discountedPrice)}원</S.DiscountedPrice>
+            {isDiscounted && <S.DiscountedPrice>{makeComma(discountedPrice)}원</S.DiscountedPrice>}
           </S.PriceWrapper>
         </S.SectionContainer>
         <SectionDivider />
