@@ -10,7 +10,7 @@ interface Props {
 }
 
 function ProductCardGridHeader({ sortBy, changeSort }: Props): React.ReactElement {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { MainPage, SubcategoryPage, UserPage, ProductDetailPage, BannerPage } from './pages';
+import { MainPage, SubcategoryPage, UserPage, ProductDetailPage } from './pages';
 import './styles/reset.scss';
 import './styles/fonts.scss';
 import './styles/reactModal.scss';
@@ -12,10 +12,9 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={MainPage} />
-          <Route exact path="/subcategory" component={SubcategoryPage} />
+          <Route exact path="/subcategory/:subcategoryId" component={SubcategoryPage} />
           <Route exact path="/user/:subPath" component={UserPage} />
           <Route exact path="/detail" component={ProductDetailPage} />
-          <Route exact path="/banner" component={BannerPage} />
           <Redirect path="*" to="/" />
         </Switch>
       </Router>
