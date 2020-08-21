@@ -6,6 +6,7 @@ export const PageHeaderContainer = styled.div`
   width: 100%;
   padding: 0 15px;
 `;
+
 export const PageHeader = styled.div`
   display: flex;
   width: 100%;
@@ -39,3 +40,7 @@ export const SearchBar = styled.div`
     margin-right: 12px;
   }
 `;
+
+export const LogoContainer = styled.span.attrs((props) => ({
+  onClick: props.onClick,
+}))``;

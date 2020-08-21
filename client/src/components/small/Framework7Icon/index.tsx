@@ -5,19 +5,20 @@ interface Props {
   iconName: string;
   fontSize?: string;
   color?: string;
-  onClick?: Function;
+  onClick?: () => void;
 }
 
 const Icon = styled.div.attrs((props) => ({
-  onClick: props.onClick ?? '',
+  onClick: props.onClick,
 }))`
   font-size: ${(props) => props?.style?.fontSize ?? '18px'};
   color: ${(props) => props?.style?.color ?? 'var(--black)'};
 `;
 
 function Framework7Icon({ iconName, color, fontSize, onClick }: Props): React.ReactElement {
+  const basicOnClick = () => {};
   return (
-    <Icon style={{ fontSize, color }} className={'f7-icons'} onClick={onClick}>
+    <Icon style={{ fontSize, color }} className={'f7-icons'} onClick={onClick ?? basicOnClick}>
       {iconName}
     </Icon>
   );

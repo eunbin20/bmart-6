@@ -10,15 +10,17 @@ interface Props {
 
 function PageHeader({ isHome }: Props): React.ReactElement {
   const history = useHistory();
-  const routeLoginPage = () => {
-    history.push('/user/login');
-  };
+  const routePage = (url: string) => history.push(url);
+
   return (
     <S.PageHeaderContainer>
       <S.PageHeader>
         <Framework7Icon iconName={'bars'} />
-        {Logo()}
-        <Framework7Icon iconName={'person_alt_circle_fill'} onClick={routeLoginPage} />
+        <S.LogoContainer onClick={() => routePage('/')}>{Logo()}</S.LogoContainer>
+        <Framework7Icon
+          iconName={'person_alt_circle_fill'}
+          onClick={() => routePage('/user/login')}
+        />
       </S.PageHeader>
       {isHome && (
         <S.SearchBar>
