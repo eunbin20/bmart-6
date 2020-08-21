@@ -1,10 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-<<<<<<< HEAD
-import { SubcategoryPage, UserPage, ProductDetailPage } from './pages';
-=======
-import { MainPage, SubcategoryPage, UserPage, BannerPage } from './pages';
->>>>>>> 024b8ba75d92f687464007fdfa32b6e8dd25e554
+import { MainPage, SubcategoryPage, UserPage, ProductDetailPage, BannerPage } from './pages';
 import './styles/reset.scss';
 import './styles/fonts.scss';
 import './styles/reactModal.scss';

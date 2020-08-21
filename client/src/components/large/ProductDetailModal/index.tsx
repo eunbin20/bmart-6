@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import * as S from './style';
 import SectionDivider from '../../small/SectionDivider';
+import PageHeader from '../../medium/PageHeader';
 import { Product } from '../../../types/data';
 import { makeComma } from '../../../utils/functions';
 
@@ -20,7 +21,7 @@ const customStyle = {
 
   content: {
     width: '375px',
-    height: 'calc(100% - 52px)',
+    height: '100%',
     top: 'auto',
     right: 'auto',
     left: 'auto',
@@ -37,6 +38,7 @@ const ProductDetailModal = (props: Props) => {
 
   return (
     <Modal isOpen={true} style={customStyle}>
+      <PageHeader isHome={false} />
       <S.ModalContentContainer>
         <S.Image src={imageUrl} />
         <S.SectionContainer>

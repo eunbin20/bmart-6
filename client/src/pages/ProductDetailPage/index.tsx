@@ -16,6 +16,7 @@ export default function ProductDetailPage({ history, location }: RouteComponentP
   const { search } = location;
   const [state, setAction] = useProducts({ limit: 1, id: Number(parseQuery(search)[0].id) });
   const { products } = state;
+
   useEffect(() => {
     if (!search) {
       history.push('/');
