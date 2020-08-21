@@ -34,4 +34,8 @@ export const SearchBar = styled.div`
   font-size: 12px;
   line-height: 14px;
   color: var(--dark-gray);
+
+  & > .f7-icons {
+    margin-right: 12px;
+  }
 `;

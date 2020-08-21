@@ -15,7 +15,12 @@ function PageHeader({ isHome }: Props): React.ReactElement {
         {Logo()}
         <Framework7Icon iconName={'person_alt_circle_fill'} />
       </S.PageHeader>
-      {isHome && <S.SearchBar>이곳에서 검색하세요!</S.SearchBar>}
+      {isHome && (
+        <S.SearchBar>
+          <Framework7Icon iconName={'search'} fontSize={'16px'} />
+          이곳에서 검색하세요!
+        </S.SearchBar>
+      )}
     </S.PageHeaderContainer>
   );
 }
