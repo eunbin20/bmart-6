@@ -12,7 +12,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={MainPage} />
-          <Route exact path="/subcategory" component={SubcategoryPage} />
+          <Route exact path="/subcategory/:subcategoryId" component={SubcategoryPage} />
           <Route exact path="/user/:subPath" component={UserPage} />
           <Route exact path="/banner" component={BannerPage} />
           <Redirect path="*" to="/" />
