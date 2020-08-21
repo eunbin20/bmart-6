@@ -1,7 +1,9 @@
 import React from 'react';
 import Modal from 'react-modal';
 import * as S from './style';
+import SectionDivider from '../../small/SectionDivider';
 import { Product } from '../../../types/data';
+import { makeComma } from '../../../utils/functions';
 
 interface Props {
   product: Product;
@@ -24,7 +26,6 @@ const customStyle = {
     left: 'auto',
     bottom: 0,
     background: 'var(--white)',
-    // borderRadius: '15px 15px 0px 0px',
     padding: 0,
   },
 };
@@ -44,10 +45,11 @@ const ProductDetailModal = (props: Props) => {
         </S.TitleWrapper>
         <S.PriceWrapper>
           <S.PriceRate>{discountedRate}%</S.PriceRate>
-          <S.OriginalPrice>{price}</S.OriginalPrice>
-          <S.DiscountedPrice>{discountedPrice}</S.DiscountedPrice>
+          <S.OriginalPrice>{makeComma(price)}원</S.OriginalPrice>
+          <S.DiscountedPrice>{makeComma(discountedPrice)}원</S.DiscountedPrice>
         </S.PriceWrapper>
       </S.TopContainer>
+      <SectionDivider />
     </Modal>
   );
 };
