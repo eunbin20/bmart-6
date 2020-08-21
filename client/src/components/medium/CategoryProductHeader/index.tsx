@@ -27,17 +27,21 @@ function CategoryProductHeader({
       }
     };
 
-    const changeSelectedChip = function () {
-      const nextTab = categoryRefs.current[selectedChipId + 1];
-      const nextOffsetTop = nextTab && nextTab.offsetTop;
+    const getScrollPoint = function (tab: HTMLDivElement): number {
+      return tab && tab.offsetTop + tab.offsetHeight - 70;
+    };
 
-      if (nextOffsetTop && nextOffsetTop < window.pageYOffset) {
+    const changeSelectedChip = function () {
+      const currentTab = categoryRefs.current[selectedChipId];
+      const currentTabScrollPoint = getScrollPoint(currentTab);
+
+      if (currentTabScrollPoint && currentTabScrollPoint < window.pageYOffset) {
         setSelectedChipId(selectedChipId + 1);
       }
-      const prevTab = selectedChipId - 1 != 0 && categoryRefs.current[selectedChipId - 1];
-      const prevOffsetBottom = prevTab && prevTab.offsetTop + prevTab.offsetHeight;
+      const prevTab = categoryRefs?.current[selectedChipId - 1];
+      const prevTabScrollPoint = getScrollPoint(prevTab);
 
-      if (prevOffsetBottom && prevOffsetBottom > window.pageYOffset) {
+      if (prevTabScrollPoint && prevTabScrollPoint > window.pageYOffset) {
         setSelectedChipId(selectedChipId - 1);
       }
     };
