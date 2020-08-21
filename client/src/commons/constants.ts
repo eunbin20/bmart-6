@@ -1,8 +1,10 @@
-export const POPULAR = 'mostpopular';
-export const PRICEUP = 'priceup';
-export const PRICEDOWN = 'pricedown';
-export const NEW = 'new';
-export const DISCOUNTEDRATE = 'discountedRate';
+export const SORT_BY = {
+  POPULAR: 'mostpopular',
+  PRICEUP: 'priceup',
+  PRICEDOWN: 'pricedown',
+  NEW: 'new',
+  DISCOUNTEDRATE: 'discountedRate',
+};
 
 export const ACCESS_TOKEN = 'accessToken';
 
@@ -33,11 +35,11 @@ export const SORTOPTIONS: {
   [key: string]: string | undefined;
 } = {
   '기본 정렬순': undefined,
-  '인기 상품순': POPULAR,
-  '높은 가격순': PRICEUP,
-  '낮은 가격순': PRICEDOWN,
-  '신규 상품순': NEW,
-  '할인율 순': DISCOUNTEDRATE,
+  '인기 상품순': SORT_BY.POPULAR,
+  '높은 가격순': SORT_BY.PRICEUP,
+  '낮은 가격순': SORT_BY.PRICEDOWN,
+  '신규 상품순': SORT_BY.NEW,
+  '할인율 순': SORT_BY.DISCOUNTEDRATE,
 };
 
 export const BANNER_SCROLL_INTERVAL = 3500;
