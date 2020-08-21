@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const PageHeaderContainer = styled.div`
   display: flex;
@@ -21,6 +22,8 @@ export const PageHeaderTrailing = styled.div`
     margin-left: 18px;
   }
 `;
+
+export const LogoContainer = styled(Link)``;
 
 export const SearchBar = styled.div`
   display: flex;
