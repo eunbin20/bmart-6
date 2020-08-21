@@ -4,15 +4,16 @@ import {
   SectionDivider,
   BannerSlider,
   PageHeader,
-  // HotDealSection,
+  HotDealSection,
   ProductSection,
-  CategoryIconGrid,
   CategoryProductSection,
+  CategoryIconGrid,
 } from '../../components';
 import useProducts from '../../hooks/useProducts';
-import { BANNERS, CATEGORIES } from '../../commons/constants';
+import { BANNERS, CATEGORIES, SORT_BY } from '../../commons/constants';
 
 function MainPage(): React.ReactElement {
+  const [{ products: hotDealProducts }] = useProducts({ limit: 4, sortBy: SORT_BY.DISCOUNTEDRATE });
   const [{ products: eatNowProducts }] = useProducts({ limit: 6 });
   const [{ products: forYouProducts }] = useProducts({ limit: 5 });
   const [{ products: bestSellerProducts }] = useProducts({ limit: 5 });
@@ -33,15 +34,20 @@ function MainPage(): React.ReactElement {
         {...{
           products: eatNowProducts ?? [],
           viewType: 'grid',
-          columns: 2,
+          columns: 3,
           header: {
             title: '지금 뭐먹지?',
             description: '#간식시간',
           },
         }}
       />
-      {/* <SectionDivider />
-      <HotDealSection /> */}
+      <SectionDivider />
+      <HotDealSection
+        {...{
+          products: hotDealProducts ?? [],
+          expiredDate: '2020-08-22 11:00:00',
+        }}
+      />
       <SectionDivider />
       <ProductSection
         {...{

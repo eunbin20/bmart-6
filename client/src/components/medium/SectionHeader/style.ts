@@ -11,7 +11,6 @@ export const TitleContainer = styled.div`
   flex: none;
   font-weight: bold;
   font-size: 16px;
-  line-height: 18px;
   margin-right: 4px;
   &.category {
     font-size: 14px;
@@ -23,7 +22,7 @@ export const DescriptionContainer = styled.div`
   flex: none;
   font-weight: bold;
   font-size: 13px;
-  line-height: 15px;
+  vertical-align: bottom;
   color: var(--green);
 `;
 
