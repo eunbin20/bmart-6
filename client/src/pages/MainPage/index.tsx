@@ -1,7 +1,8 @@
 import React from 'react';
 import DefaultTemplate from '../Default';
-import SectionDivider from '../../components/small/SectionDivider';
 import {
+  SectionDivider,
+  BannerSlider,
   PageHeader,
   // HotDealSection,
   ProductSection,
@@ -9,7 +10,6 @@ import {
   CategoryProductSection,
 } from '../../components';
 import useProducts from '../../hooks/useProducts';
-import BannerSlider from '../../components/medium/BannerSlider';
 import { BANNERS, CATEGORIES } from '../../commons/constants';
 
 function MainPage(): React.ReactElement {
@@ -18,7 +18,7 @@ function MainPage(): React.ReactElement {
   const [{ products: bestSellerProducts }] = useProducts({ limit: 5 });
   const [{ products: dummy }] = useProducts({ limit: 4 });
 
-  const dummyPr = CATEGORIES.map((category, index) => ({
+  const dummyProducts = CATEGORIES.map((category, index) => ({
     category: { id: index + 1, name: category },
     products: dummy ?? [],
   }));
@@ -66,7 +66,7 @@ function MainPage(): React.ReactElement {
       />
       <SectionDivider />
       <BannerSlider banners={BANNERS} />
-      <CategoryProductSection categoryProducts={dummyPr} />
+      <CategoryProductSection categoryProducts={dummyProducts} />
     </DefaultTemplate>
   );
 }
