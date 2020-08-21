@@ -12,7 +12,7 @@ function PageHeader({ isHome }: Props): React.ReactElement {
     <S.PageHeaderContainer>
       <S.PageHeader>
         <Framework7Icon iconName={'bars'} />
-        {Logo()}
+        <S.LogoContainer to="/">{Logo()}</S.LogoContainer>
         <Framework7Icon iconName={'person_alt_circle_fill'} />
       </S.PageHeader>
       {isHome && (

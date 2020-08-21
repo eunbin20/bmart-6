@@ -20,6 +20,7 @@ function CategoryProductHeader({
     const headerOffsetTop = headerRef.current.offsetTop == 0 ? 1758 : headerRef.current.offsetTop;
     const setSticky = function () {
       const header = headerRef.current;
+      if (!header) return;
       if (window.pageYOffset > headerOffsetTop) {
         header.classList.add('sticky');
       } else {
@@ -50,6 +51,7 @@ function CategoryProductHeader({
       setSticky();
       changeSelectedChip();
     };
+    return (window.onscroll = function () {});
   });
 
   return (
