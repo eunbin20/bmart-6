@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import DefaultTemplate from '../Default';
 import {
   SectionDivider,
@@ -11,8 +11,11 @@ import {
 } from '../../components';
 import useProducts from '../../hooks/useProducts';
 import { BANNERS, CATEGORIES, SORT_BY } from '../../commons/constants';
+import { getCategories } from '../../apis';
+import { Category } from '../../types/data';
 
 function MainPage(): React.ReactElement {
+  const [categories, setCategories] = useState<Category[]>([]);
   const [{ products: hotDealProducts }] = useProducts({ limit: 4, sortBy: SORT_BY.DISCOUNTEDRATE });
   const [{ products: eatNowProducts }] = useProducts({ limit: 6 });
   const [{ products: forYouProducts }] = useProducts({ limit: 5 });
@@ -24,11 +27,18 @@ function MainPage(): React.ReactElement {
     products: dummy ?? [],
   }));
 
+  useEffect(() => {
+    getCategories().then((categories) => {
+      console.log(categories.data);
+      setCategories(categories.data);
+    });
+  }, []);
+
   return (
     <DefaultTemplate>
       <PageHeader isHome={true} />
       <BannerSlider banners={BANNERS} />
-      <CategoryIconGrid />
+      <CategoryIconGrid categories={categories} />
       <SectionDivider />
       <ProductSection
         {...{
