@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import * as S from './style';
 import DefaultTemplate from '../Default';
-import { ProductCardGridHeader, ProductCardGrid, PageHeader } from '../../components';
+import {
+  ProductCardGridHeader,
+  SubcategoryCardGrid,
+  ProductCardGrid,
+  PageHeader,
+  BannerSlider,
+  SectionDivider,
+  ProductSection,
+} from '../../components';
 import useProducts from '../../hooks/useProducts';
 import { getProducts } from '../../hooks/useProducts/actions';
-import { SORTOPTIONS } from '../../commons/constants';
+import { SORTOPTIONS, BANNERS } from '../../commons/constants';
 import { RouteComponentProps } from 'react-router-dom';
 import { getSubcategories } from '../../apis/category';
 
@@ -19,7 +27,7 @@ function CategoryPage({ match: { params } }: RouteComponentProps<Params>): React
 
   useEffect(() => {
     getSubcategories(+params.categoryId).then((res) => setSubcategories(res.data));
-  }, []);
+  }, [params.categoryId]);
 
   function changeSort(sortBy: string) {
     productDispatch(
@@ -34,6 +42,20 @@ function CategoryPage({ match: { params } }: RouteComponentProps<Params>): React
   return (
     <DefaultTemplate>
       <PageHeader isHome={false} />
+      <BannerSlider banners={BANNERS} />
+      <SubcategoryCardGrid subcategories={subcategories} />
+      <SectionDivider />
+      <ProductSection
+        {...{
+          header: {
+            title: '이 상품 어때요?',
+          },
+          products: products ?? [],
+          viewType: 'listview',
+          columns: 2.5,
+        }}
+      />
+      <SectionDivider />
       <S.ProductCardGridHeaderContainer>
         {<ProductCardGridHeader sortBy={sortBy} changeSort={changeSort} />}
       </S.ProductCardGridHeaderContainer>
