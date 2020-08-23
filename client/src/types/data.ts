@@ -41,6 +41,7 @@ export interface ProductFilter {
   title?: string;
   categoryId?: number;
   subcategoryId?: number;
+  id?: number;
   sortBy?: string;
 }
 

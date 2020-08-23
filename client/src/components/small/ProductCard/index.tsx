@@ -12,7 +12,7 @@ interface Props extends Product {
 }
 
 export const generateProductCards = (products: Product[], columns: ProductGridColumns) => {
-  return products.map(({ id, ...rest }) => <ProductCard key={id} {...{ columns, ...rest }} />);
+  return products.map(({ id, ...rest }) => <ProductCard key={id} {...{ id, columns, ...rest }} />);
 };
 
 function selectStyle(columns: ProductGridColumns) {
@@ -29,6 +29,7 @@ function selectStyle(columns: ProductGridColumns) {
 function ProductCard({
   columns,
   isLiked = false,
+  id,
   imageUrl,
   title,
   price,
@@ -45,7 +46,7 @@ function ProductCard({
   };
 
   return (
-    <S.LinkWrapper to={'home'}>
+    <S.LinkWrapper to={`/detail?id=${id}`}>
       <S.ImgWrapper>
         <S.Image alt={'card'} src={imageUrl} />
         <S.LikeIconWrapper>{LikeIcon(liked, likeIconToggler)}</S.LikeIconWrapper>

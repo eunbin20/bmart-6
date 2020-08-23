@@ -68,6 +68,7 @@ class Product extends Model {
   }
 
   static async filter({
+    id,
     limit = 20,
     offset = 0,
     title,
@@ -81,6 +82,7 @@ class Product extends Model {
       offset: +offset,
       where: {
         ...(title && { title: { [Op.like]: `%${title}%` } }),
+        ...(id && { id: +id }),
         ...(subcategoryId && { subcategoryId: +subcategoryId }),
         ...(subcategoryIds && { subcategoryId: subcategoryIds }),
         ...(isDiscounted && { isDiscounted: +isDiscounted }),

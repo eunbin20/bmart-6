@@ -31,3 +31,8 @@ exports.filter = async (req, res) => {
   const products = await Product.filter({ subcategoryIds, ...req.query });
   res.status(HTTP_STATUS.SUCCESS).send(products);
 };
+
+exports.findOne = async (req, res) => {
+  const product = await Product.findOne({ where: { id: req.params.id } });
+  res.status(HTTP_STATUS.SUCCESS).send(product);
+};

@@ -1,5 +1,6 @@
 import React from 'react';
 import * as S from './style';
+import { useHistory } from 'react-router-dom';
 import { Logo } from '../../../commons/svgs';
 import { Framework7Icon } from '../..';
 
@@ -8,12 +9,18 @@ interface Props {
 }
 
 function PageHeader({ isHome }: Props): React.ReactElement {
+  const history = useHistory();
+  const routePage = (url: string) => history.push(url);
+
   return (
     <S.PageHeaderContainer>
       <S.PageHeader>
         <Framework7Icon iconName={'bars'} />
-        <S.LogoContainer to="/">{Logo()}</S.LogoContainer>
-        <Framework7Icon iconName={'person_alt_circle_fill'} />
+        <S.LogoContainer onClick={() => routePage('/')}>{Logo()}</S.LogoContainer>
+        <Framework7Icon
+          iconName={'person_alt_circle_fill'}
+          onClick={() => routePage('/user/login')}
+        />
       </S.PageHeader>
       {isHome && (
         <S.SearchBar>

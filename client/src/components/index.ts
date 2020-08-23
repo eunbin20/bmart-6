@@ -21,3 +21,4 @@ export { default as HotDealSection } from './large/HotDealSection';
 export { default as ProductSection } from './large/ProductSection';
 export { default as JoinSection } from './large/JoinSection';
 export { default as LoginSection } from './large/LoginSection';
+export { default as ProductDetailModal } from './large/ProductDetailModal';
