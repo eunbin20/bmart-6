@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import * as S from './style';
 import { Product } from '../../../types/data';
 import { makeComma } from '../../../utils/functions';
+import { getDefaultProductCount } from '../../../utils/storage';
 import { SectionDivider, QuantityCoutner } from '../../../components';
 
 const customStyle = {
@@ -32,17 +33,19 @@ interface Props {
   product: Product;
   isOpen: boolean;
   onCartModalVisible: () => void;
+  onAddCart: (id: number, quantity: number) => void;
 }
 function AddCartModal(props: Props) {
-  const [count, setCount] = useState(0);
-  const { product, isOpen, onCartModalVisible } = props;
-  const { title, imageUrl, quantity, price } = product;
+  const { product, isOpen, onCartModalVisible, onAddCart } = props;
+  const { id, title, imageUrl, quantity, price } = product;
+  console.log('renderd', id);
+  const [count, setCount] = useState(getDefaultProductCount(id ?? 1));
 
   const handleCount = (type: 'plus' | 'minus') => {
     if (type === 'plus') {
       return count !== quantity && setCount(count + 1);
     }
-    return count !== 0 && setCount(count - 1);
+    return count !== 1 && setCount(count - 1);
   };
 
   return (
@@ -66,7 +69,7 @@ function AddCartModal(props: Props) {
         </S.DescriptionContainer>
         <QuantityCoutner count={count} setCount={handleCount} />
       </S.MainContainer>
-      <S.CardAddButton>장바구니 담기</S.CardAddButton>
+      <S.CardAddButton onClick={() => onAddCart(id ?? 0, count)}>장바구니 담기</S.CardAddButton>
     </Modal>
   );
 }

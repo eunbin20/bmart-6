@@ -42,6 +42,7 @@ export const Image = styled.img.attrs((props) => ({
   width: 70px;
   height: 70px;
   border-radius: 5px;
+  object-fit: cover;
 `;
 
 export const DescriptionContainer = styled.div`

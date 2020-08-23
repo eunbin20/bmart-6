@@ -17,6 +17,7 @@ export const Image = styled.img.attrs((props: ImageProps) => ({
   width: 100%;
   height: 320px;
   background-color: var(--gray);
+  object-fit: cover;
 `;
 
 export const SectionContainer = styled.div`
