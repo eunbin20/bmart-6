@@ -25,35 +25,39 @@ export const CloseButton = styled.button`
 
 export const MainContainer = styled.div`
   display: flex;
+  align-items: center;
   padding: 14px;
+
+  & > .quantity-counter {
+    margin-left: auto;
+  }
 `;
 
 export const Image = styled.img.attrs((props) => ({
   src: props.src,
   alt: 'product-image',
 }))`
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 5px;
 `;
 
 export const DescriptionContainer = styled.div`
   margin-left: 14px;
-  margin-top: 3px;
   & > div + div {
-    margin-top: 14px;
+    margin-top: 11px;
   }
 `;
 
 export const DesciptionTitle = styled.div`
-  font-size: 17px;
+  font-size: 16px;
 `;
 
 export const DesciptionQuantity = styled.div`
-  font-size: 16px;
+  font-size: 15px;
   color: var(--gray);
 `;
 
 export const DescriptionPrice = styled.div`
-  font-size: 14px;
+  font-size: 13px;
 `;

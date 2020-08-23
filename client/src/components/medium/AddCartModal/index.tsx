@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import * as S from './style';
 import { Product } from '../../../types/data';
 import { makeComma } from '../../../utils/functions';
-import SectionDivider from '../SectionDivider';
+import { SectionDivider, QuantityCoutner } from '../../../components';
 
 const customStyle = {
   overlay: {
@@ -55,6 +55,7 @@ function AddCartModal(props: Props) {
           <S.DesciptionQuantity>최대 구매수량 {quantity} 개</S.DesciptionQuantity>
           <S.DescriptionPrice>{makeComma(price)} 원</S.DescriptionPrice>
         </S.DescriptionContainer>
+        <QuantityCoutner />
       </S.MainContainer>
     </Modal>
   );
