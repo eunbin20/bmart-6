@@ -8,6 +8,7 @@ import {
   ProductSection,
   CategoryProductSection,
   CategoryIconGrid,
+  CartBadge,
 } from '../../components';
 import useProducts from '../../hooks/useProducts';
 import { BANNERS, CATEGORIES, SORT_BY } from '../../commons/constants';
@@ -73,6 +74,7 @@ function MainPage(): React.ReactElement {
       <SectionDivider />
       <BannerSlider banners={BANNERS} />
       <CategoryProductSection categoryProducts={dummyProducts} />
+      <CartBadge />
     </DefaultTemplate>
   );
 }

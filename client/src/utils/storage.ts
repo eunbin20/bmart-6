@@ -21,12 +21,12 @@ export const storage = {
         ];
         this.set(CARTS, JSON.stringify(newCarts));
         return;
-      }
+      } // 이미 장바구니에 있는거 Update
       carts.push({ productId: id, quantity });
-      this.set(CARTS, JSON.stringify(carts));
+      this.set(CARTS, JSON.stringify(carts)); // 장바구니는 담은 물품이지만 새로움 아이템 추가
       return;
     }
-    this.set(CARTS, JSON.stringify([{ productId: id, quantity }]));
+    this.set(CARTS, JSON.stringify([{ productId: id, quantity }])); // 장바구니 비어서 장바구니 만들고 추가
   },
 };
 
