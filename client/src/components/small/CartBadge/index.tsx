@@ -1,10 +1,14 @@
 import React from 'react';
 import * as S from './style';
 
-export default function CartBadge() {
+interface Props {
+  count: number;
+}
+
+export default function CartBadge({ count }: Props) {
   return (
-    <S.Circle>
-      <S.Count>3</S.Count>
+    <S.Circle to="/">
+      <S.Count>{count}</S.Count>
       <S.Image src="/assets/cart.png" />
     </S.Circle>
   );

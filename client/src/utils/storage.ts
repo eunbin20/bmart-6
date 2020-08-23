@@ -9,6 +9,13 @@ export const storage = {
   get(key: string) {
     return window.localStorage.getItem(key);
   },
+  getCartTotal() {
+    const carts = this.get(CARTS);
+    if (!carts) {
+      return 0;
+    }
+    return JSON.parse(carts).length;
+  },
   addCart(id: number, quantity: number) {
     if (this.get(CARTS)) {
       const carts = JSON.parse(this.get(CARTS) as string);

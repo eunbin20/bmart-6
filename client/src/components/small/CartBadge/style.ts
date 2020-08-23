@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const Circle = styled.div`
+export const Circle = styled(Link)`
   width: 70px;
   height: 70px;
   border-radius: 50%;
