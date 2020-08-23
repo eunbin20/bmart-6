@@ -104,7 +104,9 @@ export const CartButtonContainer = styled.div`
   font-weight: bold;
 `;
 
-export const CartButton = styled.button`
+export const CartButton = styled.button.attrs((props) => ({
+  onClick: props.onClick,
+}))`
   border: none;
   outline: none;
   color: var(--white);

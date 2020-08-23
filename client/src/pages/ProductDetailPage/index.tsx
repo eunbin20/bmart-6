@@ -17,6 +17,8 @@ export default function ProductDetailPage({ history, location }: RouteComponentP
   const [state, setAction] = useProducts({ limit: 1, id: Number(parseQuery(search)[0].id) });
   const { products } = state;
 
+  const onAddCart = (id: number) => {};
+
   useEffect(() => {
     if (!search) {
       history.push('/');
@@ -29,5 +31,11 @@ export default function ProductDetailPage({ history, location }: RouteComponentP
       return;
     }
   }, []);
-  return <>{products && products.length && <ProductDetailModal product={products[0]} />}</>;
+  return (
+    <>
+      {products && products.length && (
+        <ProductDetailModal product={products[0]} onAddCart={onAddCart} />
+      )}
+    </>
+  );
 }
