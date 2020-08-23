@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 import * as S from './style';
 import { Product } from '../../../types/data';
@@ -17,7 +17,7 @@ const customStyle = {
 
   content: {
     width: '100%',
-    height: '250px',
+    height: '240px',
     top: 'auto',
     right: 'auto',
     left: 'auto',
@@ -34,18 +34,27 @@ interface Props {
   onCartModalVisible: () => void;
 }
 function AddCartModal(props: Props) {
+  const [count, setCount] = useState(0);
   const { product, isOpen, onCartModalVisible } = props;
   const { title, imageUrl, quantity, price } = product;
+
+  const handleCount = (type: 'plus' | 'minus') => {
+    if (type === 'plus') {
+      return count !== quantity && setCount(count + 1);
+    }
+    return count !== 0 && setCount(count - 1);
+  };
+
   return (
     <Modal
-      isOpen={true}
+      isOpen={isOpen}
       closeTimeoutMS={500}
       style={customStyle}
       onRequestClose={onCartModalVisible}
     >
       <S.TitleContainer>
         <S.Title>{title}</S.Title>
-        <S.CloseButton>닫기</S.CloseButton>
+        <S.CloseButton onClick={onCartModalVisible}>닫기</S.CloseButton>
       </S.TitleContainer>
       <SectionDivider />
       <S.MainContainer>
@@ -55,8 +64,9 @@ function AddCartModal(props: Props) {
           <S.DesciptionQuantity>최대 구매수량 {quantity} 개</S.DesciptionQuantity>
           <S.DescriptionPrice>{makeComma(price)} 원</S.DescriptionPrice>
         </S.DescriptionContainer>
-        <QuantityCoutner />
+        <QuantityCoutner count={count} setCount={handleCount} />
       </S.MainContainer>
+      <S.CardAddButton>장바구니 담기</S.CardAddButton>
     </Modal>
   );
 }

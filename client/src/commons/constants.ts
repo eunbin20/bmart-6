@@ -6,7 +6,9 @@ export const SORT_BY = {
   DISCOUNTEDRATE: 'discountedRate',
 };
 
+// localStorage
 export const ACCESS_TOKEN = 'accessToken';
+export const CARTS = 'carts';
 
 export const ERROR_MESSAGE = {
   COMMON_TYPE: '입력이 올바르지 않습니다.',

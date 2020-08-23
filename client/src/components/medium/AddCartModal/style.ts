@@ -11,7 +11,9 @@ export const TitleContainer = styled.div`
 export const Title = styled.h1`
   font-size: 16px;
 `;
-export const CloseButton = styled.button`
+export const CloseButton = styled.button.attrs((props) => ({
+  onClick: props.onClick,
+}))`
   position: absolute;
   top: 12px;
   right: 14px;
@@ -60,4 +62,22 @@ export const DesciptionQuantity = styled.div`
 
 export const DescriptionPrice = styled.div`
   font-size: 13px;
+`;
+
+export const CardAddButton = styled.button.attrs((props) => ({
+  onClick: props.onClick,
+}))`
+  border: none;
+  outline: none;
+  width: 100%;
+  min-height: 50px;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--green);
+  font-size: 16px;
+  color: var(--white);
+  font-weight: 600;
 `;
