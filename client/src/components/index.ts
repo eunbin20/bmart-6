@@ -5,6 +5,7 @@ export { default as UserHeader } from './small/UserHeader';
 export { default as UserFooter } from './small/UserFooter';
 export { default as HotDealTimer } from './small/HotDealTimer';
 export { default as HotDealBigProductCard } from './small/HotDealBigProductCard';
+export { default as AddCartModal } from './small/AddCartModal';
 
 export { default as PageHeader } from './medium/PageHeader';
 export { default as SectionHeader } from './medium/SectionHeader';

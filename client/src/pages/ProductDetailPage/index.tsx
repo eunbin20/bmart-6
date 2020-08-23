@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import useProducts from '../../hooks/useProducts';
-import { ProductDetailModal } from '../../components';
+import { ProductDetailModal, AddCartModal } from '../../components';
 
 const parseQuery = (queryString: string) => {
   // ?id=1&someting=2
@@ -14,10 +14,13 @@ const parseQuery = (queryString: string) => {
 
 export default function ProductDetailPage({ history, location }: RouteComponentProps) {
   const { search } = location;
+  const [cartModalVisible, setCartModalVisible] = useState<boolean>(false);
   const [state, setAction] = useProducts({ limit: 1, id: Number(parseQuery(search)[0].id) });
   const { products } = state;
 
-  const onAddCart = (id: number) => {};
+  const onCartModalVisible = () => {
+    setCartModalVisible(!cartModalVisible);
+  };
 
   useEffect(() => {
     if (!search) {
@@ -31,11 +34,16 @@ export default function ProductDetailPage({ history, location }: RouteComponentP
       return;
     }
   }, []);
+
+  if (!products || !products.length) return null;
   return (
     <>
-      {products && products.length && (
-        <ProductDetailModal product={products[0]} onAddCart={onAddCart} />
-      )}
+      <ProductDetailModal product={products[0]} onCartModalVisible={onCartModalVisible} />
+      <AddCartModal
+        product={products[0]}
+        onCartModalVisible={onCartModalVisible}
+        isOpen={cartModalVisible}
+      />
     </>
   );
 }

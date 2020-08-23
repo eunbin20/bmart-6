@@ -38,7 +38,12 @@ const customStyle = {
 const ProductSortModal = ({ selectedOption, changeSort, isModalOpen, onModalClose }: Props) => {
   return (
     <>
-      <Modal isOpen={isModalOpen} onRequestClose={() => onModalClose()} style={customStyle}>
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={() => onModalClose()}
+        closeTimeoutMS={500}
+        style={customStyle}
+      >
         <S.Header>
           <S.Title>정렬</S.Title>
           <S.CloseButton onClick={() => onModalClose()}>닫기</S.CloseButton>

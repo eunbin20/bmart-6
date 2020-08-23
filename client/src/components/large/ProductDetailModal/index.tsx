@@ -8,7 +8,7 @@ import { makeComma } from '../../../utils/functions';
 
 interface Props {
   product: Product;
-  onAddCart: (id: number) => void;
+  onCartModalVisible: () => void;
 }
 
 const customStyle = {
@@ -33,10 +33,18 @@ const customStyle = {
 };
 
 const ProductDetailModal = (props: Props) => {
-  console.log(props.product);
   const {
-    product: { id, imageUrl, title, discountedRate, price, discountedPrice, isDiscounted },
-    onAddCart,
+    product: {
+      id,
+      imageUrl,
+      title,
+      discountedRate,
+      price,
+      discountedPrice,
+      isDiscounted,
+      quantity,
+    },
+    onCartModalVisible,
   } = props;
 
   return (
@@ -59,13 +67,13 @@ const ProductDetailModal = (props: Props) => {
         </S.SectionContainer>
         <SectionDivider />
         <S.SectionContainer>
-          <S.DescriptionWrapper>
+          {/* <S.DescriptionWrapper>
             <S.DescriptionTerm>판매단위</S.DescriptionTerm>
             <S.DescriptionData>3박스</S.DescriptionData>
-          </S.DescriptionWrapper>
+          </S.DescriptionWrapper> */}
           <S.DescriptionWrapper>
-            <S.DescriptionTerm>중량/용량</S.DescriptionTerm>
-            <S.DescriptionData>30g x 6개</S.DescriptionData>
+            <S.DescriptionTerm>수량</S.DescriptionTerm>
+            <S.DescriptionData>{quantity} 개</S.DescriptionData>
           </S.DescriptionWrapper>
           <S.DescriptionWrapper>
             <S.DescriptionTerm>배송구분</S.DescriptionTerm>
@@ -78,7 +86,7 @@ const ProductDetailModal = (props: Props) => {
         </S.SectionContainer>
         <S.CartButtonContainer>
           나만 보고 있는 특별한 상품!
-          <S.CartButton onClick={() => onAddCart(id ?? 0)}>장바구니 담기</S.CartButton>
+          <S.CartButton onClick={onCartModalVisible}>장바구니 담기</S.CartButton>
         </S.CartButtonContainer>
       </S.ModalContentContainer>
     </Modal>
