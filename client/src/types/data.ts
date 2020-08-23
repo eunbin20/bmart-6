@@ -39,6 +39,7 @@ export interface ProductFilter {
   limit?: number;
   offset?: number;
   title?: string;
+  categoryId?: number;
   subcategoryId?: number;
   sortBy?: string;
 }

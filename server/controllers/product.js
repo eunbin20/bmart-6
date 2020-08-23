@@ -1,4 +1,5 @@
 const Product = require('../models/product');
+const Subcategory = require('../models/subcategory');
 const { HTTP_STATUS } = require('../utils/constants');
 
 exports.create = async (req, res) => {
@@ -17,6 +18,16 @@ exports.delete = async (req, res) => {
 };
 
 exports.filter = async (req, res) => {
-  const products = await Product.filter(req.query);
+  const { categoryId } = req.query;
+  const subcategoryIds =
+    categoryId &&
+    (
+      await Subcategory.findAll({
+        attributes: ['id'],
+        where: { categoryId: +categoryId },
+      })
+    ).map((subcategory) => subcategory.id);
+
+  const products = await Product.filter({ subcategoryIds, ...req.query });
   res.status(HTTP_STATUS.SUCCESS).send(products);
 };
