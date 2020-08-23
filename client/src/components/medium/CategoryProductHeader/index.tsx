@@ -17,7 +17,7 @@ function CategoryProductHeader({
   const [selectedChipId, setSelectedChipId] = useState(selectedId);
 
   useEffect(() => {
-    const headerOffsetTop = headerRef.current.offsetTop == 0 ? 1758 : headerRef.current.offsetTop;
+    const headerOffsetTop = headerRef.current.offsetTop === 0 ? 1758 : headerRef.current.offsetTop;
     const setSticky = function () {
       const header = headerRef.current;
       if (!header) return;
