@@ -17,7 +17,7 @@ exports.delete = async (req, res) => {
 };
 
 exports.findAll = async (req, res) => {
-  const { params } = req;
-  const subCategories = await Subcategory.findAll({ categoryId: params.categoryId });
+  const { categoryId } = req.params;
+  const subCategories = await Subcategory.findAll({ where: { categoryId } });
   res.status(HTTP_STATUS.SUCCESS).send(subCategories);
 };
