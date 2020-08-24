@@ -1,0 +1,36 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches: [ develop ]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+    - name: Install Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
+
+    - name: Install Dependencies
+      run: |
+        yarn --cwd ./client install
+        yarn --cwd ./server install
+    
+    - name: Build client
+      run: yarn --cwd ./client build
+    
+    - name: Create .env
+      run: |
+        cd server
+        echo ${{ secrets.ENV }} > .env
+        
