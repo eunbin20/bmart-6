@@ -26,11 +26,13 @@ jobs:
         yarn --cwd ./client install
         yarn --cwd ./server install
     
+    # 임시방편으로, CI 환경변수 비활성화
     - name: Build client
-      run: yarn --cwd ./client build
+      run: CI=false yarn --cwd ./client build
     
     - name: Create .env
       run: |
         cd server
         echo ${{ secrets.ENV }} > .env
+        ls -al
         
