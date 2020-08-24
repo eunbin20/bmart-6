@@ -61,4 +61,4 @@ jobs:
         --file-exists-behavior OVERWRITE \
         --deployment-config-name CodeDeployDefault.OneAtATime \
         --deployment-group-name ec2-instance-web \
-        --s3-location bucket=bmart6,key=$ACTION_NAME/$GITHUB_SHA.tgz,bundleType=tgz
+        --s3-location bucket=bmart-6,key=$ACTION_NAME/$GITHUB_SHA.tgz,bundleType=tgz
