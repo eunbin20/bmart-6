@@ -8,6 +8,9 @@ defaults:
   run:
     shell: bash
 
+env:
+  ACTION_NAME: action_deploy
+
 jobs:
   build:
     runs-on: ubuntu-18.04
@@ -34,5 +37,27 @@ jobs:
       run: |
         cd server
         echo ${{ secrets.ENV }} > .env
-        ls -al
         
+    - name: Archive sources
+      run: tar -cpvzf ./$GITHUB_SHA.tgz *
+    
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-northeast-2
+ 
+    - name: Upload to S3
+      run: |
+        aws s3 cp \
+          --region ap-northeast-2 \
+          ./$GITHUB_SHA.tgz s3://bmart-6/$ACTION_NAME/$GITHUB_SHA.tgz
+
+    - name: Code Deploy
+      run: aws deploy create-deployment \
+        --application-name bmart-6-codedeploy \
+        --file-exists-behavior OVERWRITE \
+        --deployment-config-name CodeDeployDefault.OneAtATime \
+        --deployment-group-name ec2-instance-web \
+        --s3-location bucket=bmart6,key=$ACTION_NAME/$GITHUB_SHA.tgz,bundleType=tgz
