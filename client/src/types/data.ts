@@ -18,6 +18,11 @@ export interface Category {
   name: string;
 }
 
+export interface Search {
+  title: string;
+  createdAt: string;
+}
+
 export interface Subcategory extends Category {
   categoryId: number;
 }
