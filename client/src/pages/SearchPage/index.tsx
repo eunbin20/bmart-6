@@ -24,6 +24,16 @@ export default function SearchPage(props: RouteComponentProps) {
     localStorage.setItem(RECENT_SEARCH, JSON.stringify(updatedSearches));
   }
 
+  function createSearch(newSearch: Search) {
+    const index = searches.findIndex((search) => search.title === newSearch.title);
+    const newSearches = [...searches];
+    if (index !== -1) newSearches[index] = newSearch;
+    else newSearches.push(newSearch);
+
+    setSearches(newSearches);
+    localStorage.setItem(RECENT_SEARCH, JSON.stringify(newSearches));
+  }
+
   useEffect(() => {
     const searchHistory = localStorage.getItem(RECENT_SEARCH);
     if (searchHistory) setSearches(JSON.parse(searchHistory));
