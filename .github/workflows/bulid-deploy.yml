@@ -55,7 +55,8 @@ jobs:
           ./$GITHUB_SHA.tgz s3://bmart-6/$ACTION_NAME/$GITHUB_SHA.tgz
 
     - name: Code Deploy
-      run: aws deploy create-deployment \
+      run: |
+        aws deploy create-deployment \
         --application-name bmart-6-codedeploy \
         --file-exists-behavior OVERWRITE \
         --deployment-config-name CodeDeployDefault.OneAtATime \
