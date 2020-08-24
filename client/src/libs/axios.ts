@@ -2,7 +2,7 @@ import axios from 'axios';
 import { storage } from '../utils/storage';
 import { ACCESS_TOKEN } from '../commons/constants';
 
-const REACT_APP_SERVER_URL = `//${document.domain}:4000`;
+const REACT_APP_SERVER_URL = document.URL;
 const accessToken = storage.get(ACCESS_TOKEN);
 
 export const Axios = axios.create({
