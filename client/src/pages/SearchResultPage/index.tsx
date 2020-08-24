@@ -40,10 +40,16 @@ function SearchResultPage({
       <S.ProductCardGridHeaderContainer>
         {<ProductCardGridHeader sortBy={sortBy} changeSort={changeSort} />}
       </S.ProductCardGridHeaderContainer>
-
-      <S.ProductCardGridContainer>
-        <ProductCardGrid products={products} columns={2} />
-      </S.ProductCardGridContainer>
+      {!products || products.length === 0 ? (
+        <S.ImageContainer>
+          <S.NoProductImage src={'/assets/sad.png'} alt={'no-products'}></S.NoProductImage>
+          <S.NoProductTitle>검색 결과가 없어요!</S.NoProductTitle>
+        </S.ImageContainer>
+      ) : (
+        <S.ProductCardGridContainer>
+          <ProductCardGrid products={products} columns={2} />
+        </S.ProductCardGridContainer>
+      )}
     </S.SearchResultPage>
   );
 }
