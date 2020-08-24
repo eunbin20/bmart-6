@@ -36,7 +36,7 @@ jobs:
     - name: Create .env
       run: |
         cd server
-        echo ${{ secrets.ENV }} > .env
+        echo $secrets.ENV > .env
         
     - name: Archive sources
       run: tar -cpvzf ./$GITHUB_SHA.tgz *
