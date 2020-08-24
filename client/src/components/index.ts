@@ -16,10 +16,14 @@ export { default as ProductCardListView } from './medium/ProductCardListView';
 export { default as ProductSortModal } from './medium/ProductSortModal';
 export { default as CategoryProductHeader } from './medium/CategoryProductHeader';
 export { default as SubcategoryCardGrid } from './medium/SubcategoryCardGrid';
+export { default as RecentSearchHeader } from './medium/RecentSearchHeader';
+export { default as RecentSearchListView } from './medium/RecentSearchListView';
+export { default as SearchBar } from './medium/SearchBar';
 
 export { default as CategoryProductSection } from './large/CategoryProductSection';
 export { default as HotDealSection } from './large/HotDealSection';
 export { default as ProductSection } from './large/ProductSection';
 export { default as JoinSection } from './large/JoinSection';
 export { default as LoginSection } from './large/LoginSection';
+export { default as RecentSearchSection } from './large/RecentSearchSection';
 export { default as ProductDetailModal } from './large/ProductDetailModal';

@@ -10,7 +10,7 @@ import {
   CategoryIconGrid,
 } from '../../components';
 import useProducts from '../../hooks/useProducts';
-import { BANNERS, CATEGORIES, SORT_BY } from '../../commons/constants';
+import { BANNERS, SORT_BY } from '../../commons/constants';
 import { getCategories } from '../../apis';
 import { Category } from '../../types/data';
 
@@ -22,14 +22,13 @@ function MainPage(): React.ReactElement {
   const [{ products: bestSellerProducts }] = useProducts({ limit: 5 });
   const [{ products: dummy }] = useProducts({ limit: 4 });
 
-  const dummyProducts = CATEGORIES.map((category, index) => ({
-    category: { id: index + 1, name: category },
+  const dummyProducts = categories.map((category, index) => ({
+    category,
     products: dummy ?? [],
   }));
 
   useEffect(() => {
     getCategories().then((categories) => {
-      console.log(categories.data);
       setCategories(categories.data);
     });
   }, []);
