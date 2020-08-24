@@ -14,8 +14,9 @@ function ProductSection({ header, products, viewType, columns }: Props): React.R
   return (
     <S.ProductSection>
       <S.HeaderContainer>{<SectionHeader {...header} />}</S.HeaderContainer>
-
-      {viewType === 'grid' ? (
+      {products.length === 0 ? (
+        <S.ProductGridContainer>검색 결과가 없습니다.😭</S.ProductGridContainer>
+      ) : viewType === 'grid' ? (
         <S.ProductGridContainer>
           {<ProductCardGrid products={products} columns={columns} />}
         </S.ProductGridContainer>
