@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import * as S from './style';
 import { CategoryProducts } from '../../../types/data';
 import { CategoryProductHeader, ProductSection, SectionDivider /* SectionHeader */ } from '../..';
+import { VIEW_TYPE_GRID } from '../../../commons/constants';
 
 interface Props {
   categoryProducts: CategoryProducts[];
@@ -28,7 +29,7 @@ function CategoryProductSection({ categoryProducts }: Props): React.ReactElement
           <ProductSection
             header={{ title: categoryProduct.category.name, isCategoryProductHeader: true }}
             products={categoryProduct.products}
-            viewType={'grid'}
+            viewType={VIEW_TYPE_GRID}
             columns={2}
           />
           <SectionDivider />

@@ -11,7 +11,7 @@ interface Props {
 function SearchBar({ presetTitle, history, createSearch }: Props): React.ReactElement {
   const [title, setTitle] = useState(presetTitle ?? '');
   function onSearchIconClick() {
-    if (title.length == 0) return;
+    if (title.length === 0) return;
 
     createSearch({
       title,

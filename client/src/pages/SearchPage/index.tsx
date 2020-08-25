@@ -8,14 +8,13 @@ import { RouteComponentProps } from 'react-router-dom';
 export default function SearchPage(props: RouteComponentProps) {
   const [searches, setSearches] = useState<Search[]>([]);
 
-  function deleteSearch(title?: string) {
-    // deleteAll
-    if (!title) {
-      localStorage.removeItem(RECENT_SEARCH);
-      setSearches([]);
-      return;
-    }
+  function deleteAllSearch() {
+    localStorage.removeItem(RECENT_SEARCH);
+    setSearches([]);
+    return;
+  }
 
+  function deleteSearch(title?: string) {
     const index = searches.findIndex((search) => search.title === title);
     const updatedSearches = [...searches];
     updatedSearches.splice(index, 1);
@@ -42,7 +41,11 @@ export default function SearchPage(props: RouteComponentProps) {
     <S.SearchPage>
       <SearchBar history={props.history} createSearch={createSearch} />
       <SectionDivider />
-      <RecentSearchSection searches={searches} deleteSearch={deleteSearch} />
+      <RecentSearchSection
+        searches={searches}
+        deleteAllSearch={deleteAllSearch}
+        deleteSearch={deleteSearch}
+      />
     </S.SearchPage>
   );
 }

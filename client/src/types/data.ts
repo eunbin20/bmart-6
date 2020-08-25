@@ -51,6 +51,7 @@ export interface ProductFilter {
 }
 
 export type ProductGridColumns = 2 | 2.5 | 3;
+export type ProductViewType = 'grid' | 'listview';
 
 export interface Banner {
   id: number;

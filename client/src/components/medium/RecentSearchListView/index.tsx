@@ -16,8 +16,8 @@ function RecentSearchListView({ searches, deleteSearch }: Props): React.ReactEle
         .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1))
         .map((search, index) => {
           const createdAt = new Date(search.createdAt);
-          const month = addLeadingZeros(createdAt.getMonth() + 1, 2);
-          const date = addLeadingZeros(createdAt.getDate() + 1, 2);
+          const month = createdAt.getMonth().toString().padStart(2, '0');
+          const date = createdAt.getDate().toString().padStart(2, '0');
           return (
             <S.RecentSearchCard to={`/search/${search.title}`} key={index}>
               <S.SearchTitle>{search.title}</S.SearchTitle>

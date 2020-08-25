@@ -43,8 +43,14 @@ export const SORTOPTIONS: {
   '할인율 순': SORT_BY.DISCOUNTEDRATE,
 };
 
+export const DEFAULT_SORT_OPTION = '기본 정렬순';
+
+export const DEFAULT_HEADER_OFFSET_TOP = 1758;
 export const BANNER_SCROLL_INTERVAL = 3500;
 export const BANNER_SCROLL_PREVENT_TOUCH_INTERVAL = 600;
+
+export const VIEW_TYPE_LISTVIEW = 'listview';
+export const VIEW_TYPE_GRID = 'grid';
 
 export const BANNERS = [
   {

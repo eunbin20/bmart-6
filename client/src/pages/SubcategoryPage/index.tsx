@@ -9,7 +9,7 @@ import {
 } from '../../components';
 import useProducts from '../../hooks/useProducts';
 import { getProducts } from '../../hooks/useProducts/actions';
-import { SORTOPTIONS } from '../../commons/constants';
+import { SORTOPTIONS, DEFAULT_SORT_OPTION } from '../../commons/constants';
 import { RouteComponentProps } from 'react-router-dom';
 
 interface Params {
@@ -18,7 +18,7 @@ interface Params {
 
 function SubcategoryPage({ match: { params } }: RouteComponentProps<Params>): React.ReactElement {
   const [{ products }, productDispatch] = useProducts({ subcategoryId: +params.subcategoryId });
-  const [sortBy, setSortBy] = useState('기본 정렬순');
+  const [sortBy, setSortBy] = useState(DEFAULT_SORT_OPTION);
 
   function changeSort(sortBy: string) {
     productDispatch(

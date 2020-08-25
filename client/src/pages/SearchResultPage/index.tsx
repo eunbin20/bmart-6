@@ -6,7 +6,7 @@ import {
   ProductCardGrid,
   ProductCardGridHeader,
 } from '../../components';
-import { SORTOPTIONS } from '../../commons/constants';
+import { SORTOPTIONS, DEFAULT_SORT_OPTION } from '../../commons/constants';
 import { RouteComponentProps } from 'react-router-dom';
 import useProducts from '../../hooks/useProducts';
 import { getProducts } from '../../hooks/useProducts/actions';
@@ -20,7 +20,7 @@ function SearchResultPage({
   history,
 }: RouteComponentProps<Params>): React.ReactElement {
   const [{ products }, productDispatch] = useProducts({ title: params.title });
-  const [sortBy, setSortBy] = useState('기본 정렬순');
+  const [sortBy, setSortBy] = useState(DEFAULT_SORT_OPTION);
 
   function changeSort(sortBy: string) {
     productDispatch(

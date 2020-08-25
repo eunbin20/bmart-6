@@ -2,14 +2,14 @@ import React from 'react';
 import * as S from './style';
 
 interface Props {
-  deleteSearch: Function;
+  deleteAllSearch: Function;
 }
 
-function RecentSearchHeader({ deleteSearch }: Props): React.ReactElement {
+function RecentSearchHeader({ deleteAllSearch }: Props): React.ReactElement {
   return (
     <S.RecentSearchHeader>
       <S.TitleContainer>최근 검색어</S.TitleContainer>
-      <S.TrailingContainer onClick={() => deleteSearch()}>
+      <S.TrailingContainer onClick={() => deleteAllSearch()}>
         <S.DeleteAllButton>전체삭제</S.DeleteAllButton>
       </S.TrailingContainer>
     </S.RecentSearchHeader>

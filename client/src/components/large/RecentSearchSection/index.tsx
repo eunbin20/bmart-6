@@ -6,12 +6,17 @@ import { RecentSearchHeader, RecentSearchListView } from '../..';
 interface Props {
   searches: Search[];
   deleteSearch: Function;
+  deleteAllSearch: Function;
 }
 
-function RecentSearchSection({ searches, deleteSearch }: Props): React.ReactElement {
+function RecentSearchSection({
+  searches,
+  deleteSearch,
+  deleteAllSearch,
+}: Props): React.ReactElement {
   return (
     <S.RecentSearchSection>
-      <RecentSearchHeader deleteSearch={deleteSearch} />
+      <RecentSearchHeader deleteAllSearch={deleteAllSearch} />
       <RecentSearchListView {...{ searches, deleteSearch }} />
     </S.RecentSearchSection>
   );
