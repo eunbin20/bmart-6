@@ -8,9 +8,11 @@ interface Props {
   banners: Banner[];
 }
 
+const INTERVAL_ID_NONE = -1;
+
 function BannerSlider({ banners }: Props): React.ReactElement {
   const listRef = useRef() as React.MutableRefObject<HTMLUListElement>;
-  const intervalId = useRef<number>(-1);
+  const intervalId = useRef<number>(INTERVAL_ID_NONE);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const totalCount = banners.length;
 
@@ -24,11 +26,12 @@ function BannerSlider({ banners }: Props): React.ReactElement {
   };
 
   const stopAutoScroll = () => {
-    if (intervalId.current === -1) {
+    if (intervalId.current === INTERVAL_ID_NONE) {
       return;
     }
 
     window.clearInterval(intervalId.current);
+    intervalId.current = INTERVAL_ID_NONE;
   };
 
   const startAutoScroll = () => {
@@ -40,10 +43,11 @@ function BannerSlider({ banners }: Props): React.ReactElement {
     listRef.current.scrollLeft = listRef.current.offsetWidth;
   };
 
-  const updateIndicator = () => {
+  const scrollHandler = () => {
     const listElement = listRef.current;
     const { scrollLeft, scrollWidth, offsetWidth } = listElement;
 
+    // 더미 제외 마지막 배너 위치를 넘어갈 때
     if (scrollWidth - offsetWidth - scrollLeft <= 0) {
       listElement.style.scrollBehavior = 'initial';
       listElement.scrollLeft = offsetWidth;
@@ -72,7 +76,7 @@ function BannerSlider({ banners }: Props): React.ReactElement {
     listRef.current.addEventListener('mouseleave', startAutoScroll);
     listRef.current.addEventListener('touchstart', stopAutoScroll);
     listRef.current.addEventListener('touchend', startAutoScroll);
-    listRef.current.addEventListener('scroll', updateIndicator);
+    listRef.current.addEventListener('scroll', scrollHandler);
 
     return () => {
       stopAutoScroll();
@@ -80,7 +84,7 @@ function BannerSlider({ banners }: Props): React.ReactElement {
       listRef.current.removeEventListener('mouseleave', startAutoScroll);
       listRef.current.removeEventListener('touchstart', stopAutoScroll);
       listRef.current.removeEventListener('touchend', startAutoScroll);
-      listRef.current.removeEventListener('scroll', updateIndicator);
+      listRef.current.removeEventListener('scroll', scrollHandler);
     };
   }, []);
 
