@@ -5,19 +5,12 @@ import { ProductDetailModal, AddCartModal } from '../../components';
 import { storage } from '../../utils/storage';
 import { delay } from '../../utils/functions';
 
-const parseQuery = (queryString: string) => {
-  // ?id=1&someting=2
-  return queryString
-    .slice(1)
-    .split('&')
-    .map((element) => element.split('='))
-    .map(([key, value]) => ({ [key]: value }));
-};
-
-export default function ProductDetailPage({ history, location }: RouteComponentProps) {
-  const { search } = location;
+export default function ProductDetailPage({
+  history,
+  match: { params },
+}: RouteComponentProps<{ productId: string }>) {
   const [cartModalVisible, setCartModalVisible] = useState<boolean>(false);
-  const [state, setAction] = useProducts({ limit: 1, id: Number(parseQuery(search)[0].id) });
+  const [state, setAction] = useProducts({ limit: 1, id: Number(params?.productId) });
   const { products } = state;
 
   const onCartModalVisible = () => {
@@ -33,13 +26,7 @@ export default function ProductDetailPage({ history, location }: RouteComponentP
   };
 
   useEffect(() => {
-    if (!search) {
-      history.push('/');
-      return;
-    }
-    const query = parseQuery(search);
-    const productId = query[0]['id'];
-    if (!productId) {
+    if (!params?.productId) {
       history.push('/');
       return;
     }
