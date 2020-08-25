@@ -15,11 +15,14 @@ export default function CartSection() {
   };
 
   return (
-    <>
+    <React.Fragment>
       <S.SelectManageContainer>
-        <S.CheckBoxAll background={generateImageByActive(isAllActive)} />
-        <S.CheckAllText onClick={() => toggleActive('all')}>선택해제</S.CheckAllText>
+        <S.ChekBoxContainer>
+          <S.CheckBoxAll background={generateImageByActive(isAllActive)} />
+          <S.CheckAllText onClick={() => toggleActive('all')}>선택해제</S.CheckAllText>
+        </S.ChekBoxContainer>
+        <S.Text>선택 비우기</S.Text>
       </S.SelectManageContainer>
-    </>
+    </React.Fragment>
   );
 }
