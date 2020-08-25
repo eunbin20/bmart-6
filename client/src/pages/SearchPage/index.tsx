@@ -1,42 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import * as S from './style';
 import { SearchBar, RecentSearchSection, SectionDivider } from '../../components';
-import { STORAGE_KEY } from '../../commons/constants';
-import { Search } from '../../types/data';
+import { storage } from '../../utils/storage';
+import { Searches } from '../../types/data';
 import { RouteComponentProps } from 'react-router-dom';
 
 export default function SearchPage(props: RouteComponentProps) {
-  const [searches, setSearches] = useState<Search[]>([]);
+  const [searches, setSearches] = useState<Searches>(storage.getSearches());
 
   function deleteAllSearch() {
-    localStorage.removeItem(STORAGE_KEY.RECENT_SEARCH);
-    setSearches([]);
-    return;
+    storage.removeSearches();
+    setSearches({});
   }
 
-  function deleteSearch(title?: string) {
-    const index = searches.findIndex((search) => search.title === title);
-    const updatedSearches = [...searches];
-    updatedSearches.splice(index, 1);
-
-    setSearches(updatedSearches);
-    localStorage.setItem(STORAGE_KEY.RECENT_SEARCH, JSON.stringify(updatedSearches));
-  }
-
-  function createSearch(newSearch: Search) {
-    const index = searches.findIndex((search) => search.title === newSearch.title);
-    const newSearches = [...searches];
-    if (index !== -1) newSearches[index] = newSearch;
-    else newSearches.push(newSearch);
-
+  function deleteSearch(title: string) {
+    const newSearches = { ...searches };
+    delete newSearches[title];
+    storage.setSearches(newSearches);
     setSearches(newSearches);
-    localStorage.setItem(STORAGE_KEY.RECENT_SEARCH, JSON.stringify(newSearches));
   }
 
-  useEffect(() => {
-    const searchHistory = localStorage.getItem(STORAGE_KEY.RECENT_SEARCH);
-    if (searchHistory) setSearches(JSON.parse(searchHistory));
-  }, [localStorage.getItem(STORAGE_KEY.RECENT_SEARCH)]);
+  function createSearch(title: string) {
+    const newSearches = { ...searches, [title]: new Date().toString() };
+    storage.setSearches(newSearches);
+    setSearches(newSearches);
+  }
+
   return (
     <S.SearchPage>
       <SearchBar history={props.history} createSearch={createSearch} />
