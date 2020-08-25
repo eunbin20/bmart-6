@@ -24,7 +24,7 @@ export const storage = {
       if (targetIndex !== -1) {
         const newCarts = [
           ...carts.slice(0, targetIndex),
-          { productId: id, quantity },
+          { productId: id, quantity: carts[targetIndex].quantity + quantity },
           ...carts.slice(targetIndex + 1, carts.length),
         ];
         this.set(CARTS, JSON.stringify(newCarts));

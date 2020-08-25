@@ -3,7 +3,6 @@ import Modal from 'react-modal';
 import * as S from './style';
 import { Product } from '../../../types/data';
 import { makeComma } from '../../../utils/functions';
-import { getDefaultProductCount } from '../../../utils/storage';
 import { COUNTER_KEY } from '../../../commons/constants';
 import { SectionDivider, QuantityCoutner } from '../../../components';
 
@@ -39,7 +38,7 @@ interface Props {
 function AddCartModal(props: Props) {
   const { product, isOpen, onCartModalVisible, onAddCart } = props;
   const { id, title, imageUrl, quantity, price } = product;
-  const [count, setCount] = useState(getDefaultProductCount(id ?? 1));
+  const [count, setCount] = useState(1);
 
   const handleCount = (type: 'plus' | 'minus') => {
     if (type === COUNTER_KEY.PLUS) {
