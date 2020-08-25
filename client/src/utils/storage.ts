@@ -1,15 +1,20 @@
 import { STORAGE_KEY } from '../commons/constants';
-const { CARTS } = STORAGE_KEY;
+import { Searches } from '../types/data';
+const { CARTS, RECENT_SEARCH } = STORAGE_KEY;
 
 type ProductInCart = { productId: number; quantity: number };
 
 export const storage = {
   set(key: string, value: string) {
-    window.localStorage.setItem(key, value);
+    localStorage.setItem(key, value);
   },
   get(key: string) {
-    return window.localStorage.getItem(key);
+    return localStorage.getItem(key);
   },
+  remove(key: string) {
+    return localStorage.removeItem(key);
+  },
+
   getProductTotalCount() {
     const carts = this.get(CARTS);
     if (!carts) {
@@ -35,6 +40,15 @@ export const storage = {
       return;
     }
     this.set(CARTS, JSON.stringify([{ productId: id, quantity }])); // 장바구니 비어서 장바구니 만들고 추가
+  },
+  getSearches() {
+    return this.get(RECENT_SEARCH) ? JSON.parse(this.get(RECENT_SEARCH) as string) : [];
+  },
+  removeSearches() {
+    this.remove(RECENT_SEARCH);
+  },
+  setSearches(searches: Searches) {
+    this.set(RECENT_SEARCH, JSON.stringify(searches));
   },
 };
 

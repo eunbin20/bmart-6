@@ -1,10 +1,10 @@
 import React from 'react';
 import * as S from './style';
-import { Search } from '../../../types/data';
+import { Searches } from '../../../types/data';
 import { RecentSearchHeader, RecentSearchListView } from '../..';
 
 interface Props {
-  searches: Search[];
+  searches: Searches;
   deleteSearch: Function;
   deleteAllSearch: Function;
 }
