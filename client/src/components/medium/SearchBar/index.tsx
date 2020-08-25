@@ -3,26 +3,35 @@ import * as S from './style';
 import { Framework7Icon } from '../..';
 
 interface Props {
-  createSearch: Function;
-  history?: any;
+  isSearchPage?: boolean;
   presetTitle?: string;
+  history: any;
+  createSearch: Function;
 }
 
-function SearchBar({ presetTitle, history, createSearch }: Props): React.ReactElement {
+function SearchBar({
+  isSearchPage = true,
+  presetTitle,
+  history,
+  createSearch,
+}: Props): React.ReactElement {
   const [title, setTitle] = useState(presetTitle ?? '');
-  function onSearchIconClick() {
-    if (title.length === 0) return;
+  const isFromSearchPage = history[history.length - 2]?.location === '/search';
 
-    createSearch({
-      title,
-      createdAt: new Date().toString(),
-    });
-    history?.push(`/search/${title}`);
+  function onSearchIconClick() {
+    if (title.length === 0 || !isSearchPage) return;
+    createSearch(title);
+    history.push(`/search/${title}`);
   }
 
   return (
-    <S.SearchBar>
-      <S.IconContainer onClick={() => history?.goBack()}>
+    <S.SearchBar
+      onClick={() => {
+        if (isSearchPage) return;
+        isFromSearchPage ? history.goBack() : history.push('/search');
+      }}
+    >
+      <S.IconContainer onClick={() => isSearchPage && history.goBack()}>
         <Framework7Icon iconName="arrow_left" fontSize={'20px'} />
       </S.IconContainer>
       <S.Input
