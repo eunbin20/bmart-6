@@ -30,3 +30,4 @@ export { default as JoinSection } from './large/JoinSection';
 export { default as LoginSection } from './large/LoginSection';
 export { default as RecentSearchSection } from './large/RecentSearchSection';
 export { default as ProductDetailModal } from './large/ProductDetailModal';
+export { default as CartSection } from './large/CartSection';
