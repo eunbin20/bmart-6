@@ -1,4 +1,5 @@
-import { CARTS } from '../commons/constants';
+import { STORAGE_KEY } from '../commons/constants';
+const { CARTS } = STORAGE_KEY;
 
 type ProductInCart = { productId: number; quantity: number };
 
@@ -9,7 +10,7 @@ export const storage = {
   get(key: string) {
     return window.localStorage.getItem(key);
   },
-  getCartTotal() {
+  getProductTotalCount() {
     const carts = this.get(CARTS);
     if (!carts) {
       return 0;

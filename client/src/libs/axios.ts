@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { storage } from '../utils/storage';
-import { ACCESS_TOKEN } from '../commons/constants';
+import { STORAGE_KEY } from '../commons/constants';
 
 const REACT_APP_SERVER_URL = `//${document.domain}:4000`;
-const accessToken = storage.get(ACCESS_TOKEN);
+const accessToken = storage.get(STORAGE_KEY.ACCESS_TOKEN);
 
 export const Axios = axios.create({
   baseURL: `${REACT_APP_SERVER_URL}/api`,

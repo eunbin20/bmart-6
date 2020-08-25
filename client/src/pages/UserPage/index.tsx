@@ -6,7 +6,7 @@ import { useAuthContext } from '../../contexts/user';
 import * as userActions from '../../contexts/user/actions';
 import * as userApis from '../../apis/user';
 import { JoinSection, LoginSection, UserFooter, UserHeader } from '../../components';
-import { ERROR_STATUS, ERROR_MESSAGE, ACCESS_TOKEN } from '../../commons/constants';
+import { ERROR_STATUS, ERROR_MESSAGE, STORAGE_KEY } from '../../commons/constants';
 import { storage } from '../../utils/storage';
 
 type SubPath = 'join' | 'login';
@@ -38,7 +38,7 @@ function UserPage({ match: { params }, history }: RouteComponentProps<Params>) {
     }
     try {
       const { data } = await userApis.loginUser(values);
-      storage.set(ACCESS_TOKEN, data.accessToken);
+      storage.set(STORAGE_KEY.ACCESS_TOKEN, data.accessToken);
       userContext.setAction(userActions.setLoginSuccess());
       history.push('/');
     } catch (e) {

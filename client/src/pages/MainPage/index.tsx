@@ -20,7 +20,7 @@ function MainPage(): React.ReactElement {
   const [{ products: forYouProducts }] = useProducts({ limit: 5 });
   const [{ products: bestSellerProducts }] = useProducts({ limit: 5 });
   const [{ products: dummy }] = useProducts({ limit: 4 });
-  const [cartCount, setCartCount] = useState(storage.getCartTotal()); // 장바구니에 렌더할 Product Count 개수
+  const [cartCount, setCartCount] = useState(storage.getProductTotalCount()); // 장바구니에 렌더할 Product Count 개수
 
   const dummyProducts = CATEGORIES.map((category, index) => ({
     category: { id: index + 1, name: category },

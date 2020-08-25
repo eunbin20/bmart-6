@@ -49,14 +49,12 @@ export default function ProductDetailPage({ history, location }: RouteComponentP
   return (
     <>
       <ProductDetailModal product={products[0]} onCartModalVisible={onCartModalVisible} />
-      (
       <AddCartModal
         product={products[0]}
         isOpen={cartModalVisible}
         onCartModalVisible={onCartModalVisible}
         onAddCart={onAddCart}
       />
-      , )
     </>
   );
 }
