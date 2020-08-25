@@ -1,8 +1,10 @@
 import { STORAGE_KEY } from '../commons/constants';
-import { Searches } from '../types/data';
+import { Searches, Product } from '../types/data';
 const { CARTS, RECENT_SEARCH } = STORAGE_KEY;
 
-type ProductInCart = { productId: number; quantity: number };
+interface ProductInCart extends Product {
+  count: number; // 수량
+}
 
 export const storage = {
   set(key: string, value: string) {
@@ -22,24 +24,25 @@ export const storage = {
     }
     return JSON.parse(carts).length;
   },
-  addCart(id: number, quantity: number) {
+  addCart(product: Product, count: number) {
+    const { id } = product;
     if (this.get(CARTS)) {
       const carts = JSON.parse(this.get(CARTS) as string);
-      const targetIndex = carts.findIndex((product: ProductInCart) => product.productId === id);
+      const targetIndex = carts.findIndex((product: ProductInCart) => product.id === id);
       if (targetIndex !== -1) {
         const newCarts = [
           ...carts.slice(0, targetIndex),
-          { productId: id, quantity: carts[targetIndex].quantity + quantity },
+          { ...carts[targetIndex], count: carts[targetIndex].count + count },
           ...carts.slice(targetIndex + 1, carts.length),
         ];
         this.set(CARTS, JSON.stringify(newCarts));
         return;
       } // 이미 장바구니에 있는거 Update
-      carts.push({ productId: id, quantity });
+      carts.push({ ...product, count });
       this.set(CARTS, JSON.stringify(carts)); // 장바구니는 담은 물품이지만 새로움 아이템 추가
       return;
     }
-    this.set(CARTS, JSON.stringify([{ productId: id, quantity }])); // 장바구니 비어서 장바구니 만들고 추가
+    this.set(CARTS, JSON.stringify([{ ...product, count }])); // 장바구니 비어서 장바구니 만들고 추가
   },
   getSearches() {
     return this.get(RECENT_SEARCH) ? JSON.parse(this.get(RECENT_SEARCH) as string) : [];
@@ -58,7 +61,7 @@ export const getDefaultProductCount = (id: number) => {
     return 1;
   }
   const carts = JSON.parse(stringCarts);
-  const target = carts.find(({ productId }: { productId: number }) => productId === id);
+  const target = carts.find((product: ProductInCart) => product.id === id);
   if (target) {
     return target.quantity;
   }
