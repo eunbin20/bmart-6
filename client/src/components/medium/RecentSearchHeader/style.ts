@@ -25,4 +25,5 @@ export const DeleteAllButton = styled.div`
   padding: 7px 10px;
   background: var(--light-gray);
   border-radius: 15px;
+  cursor: pointer;
 `;

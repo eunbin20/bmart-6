@@ -9,6 +9,7 @@ export const SearchBar = styled.div`
 
 export const IconContainer = styled.div`
   padding: 0 14px;
+  cursor: pointer;
 `;
 
 export const Input = styled.input`
