@@ -2,7 +2,6 @@ import React from 'react';
 import * as S from './style';
 import { Search } from '../../../types/data';
 import Framework7Icon from '../../small/Framework7Icon';
-import { addLeadingZeros } from '../../../utils/functions';
 
 interface Props {
   searches: Search[];
