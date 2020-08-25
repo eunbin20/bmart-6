@@ -10,6 +10,7 @@ import { SORTOPTIONS, DEFAULT_SORT_OPTION } from '../../commons/constants';
 import { RouteComponentProps } from 'react-router-dom';
 import useProducts from '../../hooks/useProducts';
 import { getProducts } from '../../hooks/useProducts/actions';
+import { ERROR_STATUS } from '../../commons/constants';
 
 interface Params {
   title: string;
@@ -19,7 +20,7 @@ function SearchResultPage({
   match: { params },
   history,
 }: RouteComponentProps<Params>): React.ReactElement {
-  const [{ products }, productDispatch] = useProducts({ title: params.title });
+  const [{ products, status }, productDispatch] = useProducts({ title: params.title });
   const [sortBy, setSortBy] = useState(DEFAULT_SORT_OPTION);
 
   function changeSort(sortBy: string) {
@@ -31,23 +32,29 @@ function SearchResultPage({
     );
     setSortBy(sortBy);
   }
+
   return (
     <S.SearchResultPage>
-      <S.SearchBarContainer onClick={() => history.goBack()}>
-        <SearchBar history={history} createSearch={() => {}} presetTitle={params.title} />
+      <S.SearchBarContainer>
+        <SearchBar
+          isSearchPage={false}
+          history={history}
+          createSearch={() => {}}
+          presetTitle={params.title}
+        />
       </S.SearchBarContainer>
       <SectionDivider />
       <S.ProductCardGridHeaderContainer>
         {<ProductCardGridHeader sortBy={sortBy} changeSort={changeSort} />}
       </S.ProductCardGridHeaderContainer>
-      {!products || products.length === 0 ? (
+      {status === ERROR_STATUS.SUCCESS && (!products || products.length === 0) ? (
         <S.ImageContainer>
           <S.NoProductImage src={'/assets/sad.png'} alt={'no-products'}></S.NoProductImage>
           <S.NoProductTitle>검색 결과가 없어요!</S.NoProductTitle>
         </S.ImageContainer>
       ) : (
         <S.ProductCardGridContainer>
-          <ProductCardGrid products={products} columns={2} />
+          {products && <ProductCardGrid products={products} columns={2} />}
         </S.ProductCardGridContainer>
       )}
     </S.SearchResultPage>
