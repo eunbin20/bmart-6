@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
+export const CartWrapper = styled.div`
+  width: 100%;
+`;
+
 export const Text = styled.div`
   font-size: 14px;
   margin-top: 3px;
+  min-width: 61px;
 `;
 
 export const SelectManageContainer = styled.div`
@@ -11,6 +16,7 @@ export const SelectManageContainer = styled.div`
   align-items: center;
   padding: 16px 14px;
   border-bottom: 3px solid var(--border-gray);
+  width: 100%;
 `;
 
 interface CheckBoxAllProps {
@@ -20,6 +26,7 @@ interface CheckBoxAllProps {
 export const ChekBoxContainer = styled.div`
   display: flex;
   align-items: center;
+  width: 100%;
 `;
 
 export const CheckBoxAll = styled.input.attrs({
@@ -39,4 +46,37 @@ export const CheckAllText = styled.label.attrs((props) => ({
   margin-left: 8px;
   font-weight: 600;
   font-size: 14px;
+`;
+
+export const MainContainer = styled.div`
+  padding: 24px 14px;
+`;
+
+export const Title = styled.span`
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--green);
+  border-bottom: 2px solid var(--green);
+  padding-bottom: 2px;
+`;
+
+export const ItemContainer = styled.div`
+  padding: 24px 14px;
+`;
+
+export const EmptyContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: calc(100vh - 52px);
+`;
+
+export const EmptyImage = styled.img.attrs((props) => ({
+  src: props.src,
+}))``;
+
+export const EmptyText = styled.div`
+  font-size: 16px;
+  margin-top: 20px;
 `;
