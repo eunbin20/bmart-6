@@ -4,6 +4,7 @@ import activeImage from './aseets/checkbox-active.png';
 import defaultImage from './aseets/checkbox-default.png';
 import { STORAGE_KEY } from '../../../commons/constants';
 import { storage } from '../../../utils/storage';
+import { Empty } from '../../../components';
 
 export default function CartSection() {
   const [carts, setCarts] = useState(storage.get(STORAGE_KEY.CARTS));
@@ -33,10 +34,7 @@ export default function CartSection() {
           </S.MainContainer>
         </>
       ) : (
-        <S.EmptyContainer>
-          <S.EmptyImage src="/assets/cart-empty.png" />
-          <S.EmptyText>장바구니가 텅 비어있어요🤔🤔🤔🤔</S.EmptyText>
-        </S.EmptyContainer>
+        <Empty text="장바구니가 텅 비어있어요🤔🤔🤔🤔" />
       )}
     </S.CartWrapper>
   );
