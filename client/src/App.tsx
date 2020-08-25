@@ -25,7 +25,7 @@ function App() {
           <Route exact path="/category/:categoryId" component={CategoryPage} />
           <Route exact path="/subcategory/:subcategoryId" component={SubcategoryPage} />
           <Route exact path="/user/:subPath" component={UserPage} />
-          <Route exact path="/detail" component={ProductDetailPage} />
+          <Route exact path="/detail/:productId" component={ProductDetailPage} />
           <Redirect path="*" to="/" />
         </Switch>
       </Router>

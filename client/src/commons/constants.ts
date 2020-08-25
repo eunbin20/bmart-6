@@ -1,3 +1,5 @@
+export const DEVELOPMENT_PORT = '4000';
+
 export const SORT_BY = {
   POPULAR: 'mostpopular',
   PRICEUP: 'priceup',
@@ -6,8 +8,16 @@ export const SORT_BY = {
   DISCOUNTEDRATE: 'discountedRate',
 };
 
-export const ACCESS_TOKEN = 'accessToken';
-export const RECENT_SEARCH = 'recentSearch';
+export const STORAGE_KEY = {
+  ACCESS_TOKEN: 'accessToken',
+  CARTS: 'carts',
+  RECENT_SEARCH: 'recentSearch',
+};
+
+export const COUNTER_KEY = {
+  PLUS: 'plus' as 'plus',
+  MINUS: 'minus' as 'minus',
+};
 
 export const ERROR_MESSAGE = {
   COMMON_TYPE: '입력이 올바르지 않습니다.',
