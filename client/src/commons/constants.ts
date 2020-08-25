@@ -1,3 +1,5 @@
+export const DEVELOPMENT_PORT = '4000';
+
 export const SORT_BY = {
   POPULAR: 'mostpopular',
   PRICEUP: 'priceup',
