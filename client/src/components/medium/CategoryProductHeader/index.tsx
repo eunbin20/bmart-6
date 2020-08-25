@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as S from './style';
 import { Category } from '../../../types/data';
+import { DEFAULT_HEADER_OFFSET_TOP } from '../../../commons/constants';
 
 interface Props {
   categories: Category[];
@@ -17,7 +18,8 @@ function CategoryProductHeader({
   const [selectedChipId, setSelectedChipId] = useState(selectedId);
 
   useEffect(() => {
-    const headerOffsetTop = headerRef.current.offsetTop == 0 ? 1758 : headerRef.current.offsetTop;
+    const headerOffsetTop =
+      headerRef.current.offsetTop === 0 ? DEFAULT_HEADER_OFFSET_TOP : headerRef.current.offsetTop;
     const setSticky = function () {
       const header = headerRef.current;
       if (!header) return;

@@ -1,12 +1,13 @@
 import React from 'react';
 import * as S from './style';
-import { Product, Header, ProductGridColumns } from '../../../types/data';
+import { Product, Header, ProductGridColumns, ProductViewType } from '../../../types/data';
 import { SectionHeader, ProductCardGrid, ProductCardListView } from '../..';
+import { VIEW_TYPE_GRID } from '../../../commons/constants';
 
 interface Props {
   header: Header;
   products: Product[];
-  viewType: 'grid' | 'listview';
+  viewType: ProductViewType;
   columns: ProductGridColumns;
 }
 
@@ -14,8 +15,9 @@ function ProductSection({ header, products, viewType, columns }: Props): React.R
   return (
     <S.ProductSection>
       <S.HeaderContainer>{<SectionHeader {...header} />}</S.HeaderContainer>
-
-      {viewType === 'grid' ? (
+      {products.length === 0 ? (
+        <S.ProductGridContainer>검색 결과가 없습니다.😭</S.ProductGridContainer>
+      ) : viewType === VIEW_TYPE_GRID ? (
         <S.ProductGridContainer>
           {<ProductCardGrid products={products} columns={columns} />}
         </S.ProductGridContainer>

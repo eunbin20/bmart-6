@@ -1,4 +1,4 @@
-import { ProductFilter, Product } from '../../types/data';
+import { ProductFilter } from '../../types/data';
 
 export const ACTION_GET_PRODUCTS = 'GET_PRODUCTS';
 export const ACTION_GET_MORE_PRODUCTS = 'GET_MORE_PRODUCTS';

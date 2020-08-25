@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
 export const PageHeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -24,7 +23,7 @@ export const PageHeaderTrailing = styled.div`
   }
 `;
 
-export const SearchBar = styled.div`
+export const SearchBar = styled(Link)`
   display: flex;
   align-items: center;
   width: 100%;
@@ -36,6 +35,7 @@ export const SearchBar = styled.div`
   font-size: 12px;
   line-height: 14px;
   color: var(--dark-gray);
+  text-decoration: none;
 
   & > .f7-icons {
     margin-right: 12px;

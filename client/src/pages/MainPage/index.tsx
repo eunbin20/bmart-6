@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DefaultTemplate from '../Default';
 import {
   SectionDivider,
@@ -11,10 +11,13 @@ import {
   CartBadge,
 } from '../../components';
 import useProducts from '../../hooks/useProducts';
-import { BANNERS, CATEGORIES, SORT_BY } from '../../commons/constants';
+import { BANNERS, SORT_BY, VIEW_TYPE_GRID, VIEW_TYPE_LISTVIEW } from '../../commons/constants';
+import { getCategories } from '../../apis';
+import { Category } from '../../types/data';
 import { storage } from '../../utils/storage';
 
 function MainPage(): React.ReactElement {
+  const [categories, setCategories] = useState<Category[]>([]);
   const [{ products: hotDealProducts }] = useProducts({ limit: 4, sortBy: SORT_BY.DISCOUNTEDRATE });
   const [{ products: eatNowProducts }] = useProducts({ limit: 6 });
   const [{ products: forYouProducts }] = useProducts({ limit: 5 });
@@ -22,21 +25,27 @@ function MainPage(): React.ReactElement {
   const [{ products: dummy }] = useProducts({ limit: 4 });
   const [cartCount, setCartCount] = useState(storage.getProductTotalCount()); // 장바구니에 렌더할 Product Count 개수
 
-  const dummyProducts = CATEGORIES.map((category, index) => ({
-    category: { id: index + 1, name: category },
+  const dummyProducts = categories.map((category, index) => ({
+    category,
     products: dummy ?? [],
   }));
+
+  useEffect(() => {
+    getCategories().then((categories) => {
+      setCategories(categories.data);
+    });
+  }, []);
 
   return (
     <DefaultTemplate>
       <PageHeader isHome={true} />
       <BannerSlider banners={BANNERS} />
-      <CategoryIconGrid />
+      <CategoryIconGrid categories={categories} />
       <SectionDivider />
       <ProductSection
         {...{
           products: eatNowProducts ?? [],
-          viewType: 'grid',
+          viewType: VIEW_TYPE_GRID,
           columns: 3,
           header: {
             title: '지금 뭐먹지?',
@@ -55,7 +64,7 @@ function MainPage(): React.ReactElement {
       <ProductSection
         {...{
           products: forYouProducts ?? [],
-          viewType: 'listview',
+          viewType: VIEW_TYPE_LISTVIEW,
           columns: 2.5,
           header: {
             title: '관형님을 위해 준비한 상품',
@@ -66,7 +75,7 @@ function MainPage(): React.ReactElement {
       <ProductSection
         {...{
           products: bestSellerProducts ?? [],
-          viewType: 'listview',
+          viewType: VIEW_TYPE_LISTVIEW,
           columns: 2.5,
           header: {
             title: '요즘 잘 팔려요',

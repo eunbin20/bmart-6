@@ -23,7 +23,7 @@ function PageHeader({ isHome }: Props): React.ReactElement {
         />
       </S.PageHeader>
       {isHome && (
-        <S.SearchBar>
+        <S.SearchBar to={'/search'}>
           <Framework7Icon iconName={'search'} fontSize={'16px'} />
           이곳에서 검색하세요!
         </S.SearchBar>

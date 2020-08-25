@@ -1,7 +1,4 @@
 import { Axios } from '../libs/axios';
 
-export const getCategories = () => {
-  return Axios.get('/category', {
-    headers: { Accept: 'application/json' },
-  });
-};
+export const getCategories = () => Axios.get('/category');
+export const getSubcategories = (categoryId: number) => Axios.get(`/subcategory/${categoryId}`);

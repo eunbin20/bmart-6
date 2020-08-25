@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import * as S from './style';
 import DefaultTemplate from '../Default';
-import { ProductCardGridHeader, ProductCardGrid, PageHeader } from '../../components';
+import {
+  ProductCardGridHeader,
+  ProductCardGrid,
+  PageHeader,
+  SectionDivider,
+} from '../../components';
 import useProducts from '../../hooks/useProducts';
 import { getProducts } from '../../hooks/useProducts/actions';
-import { SORTOPTIONS } from '../../commons/constants';
+import { SORTOPTIONS, DEFAULT_SORT_OPTION } from '../../commons/constants';
 import { RouteComponentProps } from 'react-router-dom';
 
 interface Params {
@@ -12,10 +17,8 @@ interface Params {
 }
 
 function SubcategoryPage({ match: { params } }: RouteComponentProps<Params>): React.ReactElement {
-  const [productsState, productDispatch] = useProducts({ subcategoryId: +params.subcategoryId });
-  const [sortBy, setSortBy] = useState('기본 정렬순');
-
-  const { products } = productsState;
+  const [{ products }, productDispatch] = useProducts({ subcategoryId: +params.subcategoryId });
+  const [sortBy, setSortBy] = useState(DEFAULT_SORT_OPTION);
 
   function changeSort(sortBy: string) {
     productDispatch(
@@ -30,6 +33,7 @@ function SubcategoryPage({ match: { params } }: RouteComponentProps<Params>): Re
   return (
     <DefaultTemplate>
       <PageHeader isHome={false} />
+      <SectionDivider />
       <S.ProductCardGridHeaderContainer>
         {<ProductCardGridHeader sortBy={sortBy} changeSort={changeSort} />}
       </S.ProductCardGridHeaderContainer>

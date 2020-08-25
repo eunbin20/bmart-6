@@ -18,6 +18,8 @@ export interface Category {
   name: string;
 }
 
+export type Searches = { [key: string]: string };
+
 export interface Subcategory extends Category {
   categoryId: number;
 }
@@ -39,12 +41,14 @@ export interface ProductFilter {
   limit?: number;
   offset?: number;
   title?: string;
+  categoryId?: number;
   subcategoryId?: number;
   id?: number;
   sortBy?: string;
 }
 
 export type ProductGridColumns = 2 | 2.5 | 3;
+export type ProductViewType = 'grid' | 'listview';
 
 export interface Banner {
   id: number;

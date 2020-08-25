@@ -67,7 +67,16 @@ class Product extends Model {
     }
   }
 
-  static filter({ limit = 20, offset = 0, title, subcategoryId, isDiscounted, sortBy, id }) {
+  static async filter({
+    id,
+    limit = 20,
+    offset = 0,
+    title,
+    subcategoryId,
+    subcategoryIds,
+    isDiscounted,
+    sortBy,
+  }) {
     return this.findAll({
       limit: +limit,
       offset: +offset,
@@ -75,6 +84,7 @@ class Product extends Model {
         ...(title && { title: { [Op.like]: `%${title}%` } }),
         ...(id && { id: +id }),
         ...(subcategoryId && { subcategoryId: +subcategoryId }),
+        ...(subcategoryIds && { subcategoryId: subcategoryIds }),
         ...(isDiscounted && { isDiscounted: +isDiscounted }),
         isDeleted: false,
       },
