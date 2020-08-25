@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as S from './style';
 import { Banner } from '../../../types/data';
-import {
-  BANNER_SCROLL_INTERVAL,
-  BANNER_SCROLL_PREVENT_TOUCH_INTERVAL,
-} from '../../../commons/constants';
+import { BANNER_SCROLL_INTERVAL } from '../../../commons/constants';
 import Indicator from '../../small/BannerIndicator';
 
 interface Props {
@@ -13,78 +10,87 @@ interface Props {
 
 function BannerSlider({ banners }: Props): React.ReactElement {
   const listRef = useRef() as React.MutableRefObject<HTMLUListElement>;
-  const bannerRefs = useRef([]) as React.MutableRefObject<Array<HTMLLIElement>>;
-  const intervalId = useRef<number>(0);
-  const isAutoScroll = useRef<boolean>(false);
+  const intervalId = useRef<number>(-1);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const totalCount = banners.length;
-  const bindBannerRef = (ref: HTMLLIElement | null, index: number) => {
-    if (ref !== null) {
-      bannerRefs.current[index] = ref;
+
+  const autoScroll = () => {
+    const { scrollLeft, offsetWidth } = listRef.current;
+
+    listRef.current.scrollTo({
+      left: scrollLeft + offsetWidth,
+      behavior: 'smooth',
+    });
+  };
+
+  const stopAutoScroll = () => {
+    if (intervalId.current === -1) {
+      return;
+    }
+
+    window.clearInterval(intervalId.current);
+  };
+
+  const startAutoScroll = () => {
+    stopAutoScroll();
+    intervalId.current = window.setInterval(autoScroll, BANNER_SCROLL_INTERVAL);
+  };
+
+  const initSlider = () => {
+    listRef.current.scrollLeft = listRef.current.offsetWidth;
+  };
+
+  const updateIndicator = () => {
+    const listElement = listRef.current;
+    const { scrollLeft, scrollWidth, offsetWidth } = listElement;
+
+    if (scrollWidth - offsetWidth - scrollLeft <= 0) {
+      listElement.style.scrollBehavior = 'initial';
+      listElement.scrollLeft = offsetWidth;
+      listElement.style.scrollBehavior = 'smooth';
+    }
+
+    // 좌측 스크롤 끝에 도달했을 때
+    if (scrollLeft <= 0) {
+      listElement.style.scrollBehavior = 'initial';
+      listElement.scrollLeft = scrollWidth - 2 * offsetWidth;
+      listElement.style.scrollBehavior = 'smooth';
+    }
+
+    const newCurrentIndex = Math.round(listElement.scrollLeft / offsetWidth) - 1;
+    if (newCurrentIndex < 0 || newCurrentIndex > totalCount - 1) {
+      setCurrentIndex(totalCount - 1);
+    } else {
+      setCurrentIndex(newCurrentIndex);
     }
   };
 
   useEffect(() => {
-    const tick = () => {
-      setCurrentIndex((index: number) => {
-        const firstItem = bannerRefs.current[0];
-        const nextItem = bannerRefs.current[index + 1] || firstItem;
-
-        isAutoScroll.current = true;
-        listRef.current.scrollTo({
-          left: nextItem.offsetLeft - firstItem.offsetLeft,
-          behavior: 'smooth',
-        });
-
-        setTimeout(() => {
-          isAutoScroll.current = false;
-        }, BANNER_SCROLL_PREVENT_TOUCH_INTERVAL);
-
-        index += 1;
-        if (index >= totalCount) {
-          index = 0;
-        }
-        return index;
-      });
-    };
-
-    const resetInterval = (e: MouseEvent | TouchEvent) => {
-      if (isAutoScroll.current) {
-        e.preventDefault();
-      }
-
-      clearInterval(intervalId.current);
-      intervalId.current = 0;
-    };
-
-    const revertInterval = () => {
-      if (intervalId.current === 0) {
-        intervalId.current = setInterval(tick, BANNER_SCROLL_INTERVAL);
-      }
-    };
-
-    const updateIndicator = () => {
-      setCurrentIndex(Math.round(listRef.current.scrollLeft / listRef.current.offsetWidth));
-    };
-
-    listRef.current.addEventListener('mouseenter', resetInterval);
-    listRef.current.addEventListener('mouseleave', revertInterval);
-    listRef.current.addEventListener('touchstart', resetInterval);
-    listRef.current.addEventListener('touchend', revertInterval);
+    initSlider();
+    startAutoScroll();
+    listRef.current.addEventListener('mouseenter', stopAutoScroll);
+    listRef.current.addEventListener('mouseleave', startAutoScroll);
+    listRef.current.addEventListener('touchstart', stopAutoScroll);
+    listRef.current.addEventListener('touchend', startAutoScroll);
     listRef.current.addEventListener('scroll', updateIndicator);
 
-    intervalId.current = setInterval(tick, BANNER_SCROLL_INTERVAL);
     return () => {
-      clearInterval(intervalId.current);
+      stopAutoScroll();
+      listRef.current.removeEventListener('mouseenter', stopAutoScroll);
+      listRef.current.removeEventListener('mouseleave', startAutoScroll);
+      listRef.current.removeEventListener('touchstart', stopAutoScroll);
+      listRef.current.removeEventListener('touchend', startAutoScroll);
+      listRef.current.removeEventListener('scroll', updateIndicator);
     };
-  }, [totalCount]);
+  }, []);
 
+  const slides = totalCount > 1 ? [banners[totalCount - 1], ...banners, banners[0]] : banners;
   return (
     <S.SliderContainer>
       <S.BannerList ref={listRef}>
-        {banners.map((banner, i) => {
+        {slides.map((banner, i) => {
           return (
-            <S.BannerItem key={banner.id} ref={(ref) => bindBannerRef(ref, i)}>
+            <S.BannerItem data-hello={i} key={i}>
               <S.BannerLink to={banner.redirectUrl}>
                 <S.BannerImage src={banner.imageUrl} draggable="false" />
               </S.BannerLink>
@@ -92,7 +98,7 @@ function BannerSlider({ banners }: Props): React.ReactElement {
           );
         })}
       </S.BannerList>
-      {banners && <Indicator currentIndex={currentIndex} totalCount={totalCount} />}
+      {slides && <Indicator currentIndex={currentIndex} totalCount={totalCount} />}
     </S.SliderContainer>
   );
 }
