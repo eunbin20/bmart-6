@@ -19,6 +19,7 @@ export const BannerList = styled.ul`
   flex-direction: row;
   user-select: none;
   scroll-snap-type: x mandatory;
+  scroll-snap-align: start;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
