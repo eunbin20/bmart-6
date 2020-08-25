@@ -90,7 +90,7 @@ function BannerSlider({ banners }: Props): React.ReactElement {
       <S.BannerList ref={listRef}>
         {slides.map((banner, i) => {
           return (
-            <S.BannerItem data-hello={i} key={i}>
+            <S.BannerItem key={i}>
               <S.BannerLink to={banner.redirectUrl}>
                 <S.BannerImage src={banner.imageUrl} draggable="false" />
               </S.BannerLink>
