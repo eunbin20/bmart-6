@@ -81,4 +81,12 @@ export const CardAddButton = styled.button.attrs((props) => ({
   font-size: 16px;
   color: var(--white);
   font-weight: 600;
+  display: flex;
+`;
+
+export const TotalPrice = styled.span`
+  position: absolute;
+  top: 18px;
+  right: 25px;
+  font-size: 14px;
 `;
