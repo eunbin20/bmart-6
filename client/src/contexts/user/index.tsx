@@ -3,7 +3,7 @@ import { UserState } from '../../types/states';
 import { Action, ACTION_LOGIN_SUCCESS } from './actions';
 import reducer from './reducer';
 import { storage } from '../../utils/storage';
-import { ACCESS_TOKEN } from '../../commons/constants';
+import { STORAGE_KEY } from '../../commons/constants';
 
 export type UserDispatch = Dispatch<Action>;
 interface UserContextType {
@@ -15,7 +15,7 @@ const checkIsAuthorized = () => {
   if (process.env.NODE_ENV === 'development') {
     return true;
   }
-  return storage.get(ACCESS_TOKEN) ? true : false;
+  return storage.get(STORAGE_KEY.ACCESS_TOKEN) ? true : false;
 };
 
 const initialState = {

@@ -46,7 +46,7 @@ function ProductCard({
   };
 
   return (
-    <S.LinkWrapper to={`/detail?id=${id}`}>
+    <S.LinkWrapper to={`/detail/${id}`}>
       <S.ImgWrapper>
         <S.Image alt={'card'} src={imageUrl} />
         <S.LikeIconWrapper>{LikeIcon(liked, likeIconToggler)}</S.LikeIconWrapper>
