@@ -73,12 +73,20 @@ export default function CartSection() {
     if (!isAuthenticated) {
       history.push('/user/login');
     }
-    const productIds = carts
+
+    interface CreateOrderBody {
+      products: {
+        id: number;
+        quantity: number;
+      }[];
+    }
+
+    const products = carts
       .filter((cart: ProductInCart) => cart.isActive)
-      .map((cart: ProductInCart) => cart.id) as number[];
+      .map((cart: ProductInCart) => ({ id: cart.id, quantity: cart.count }));
 
     try {
-      await createOrder(productIds);
+      await createOrder({ products } as CreateOrderBody);
       storage.set(STORAGE_KEY.CARTS, '[]');
       alert('일단 주문 완료'); // 여기랑 밑에 수정해야함 (페이지 나오면)
       history.push('/');
