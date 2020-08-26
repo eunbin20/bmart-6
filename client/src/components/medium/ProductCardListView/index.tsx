@@ -7,7 +7,7 @@ import { Product, ProductGridColumns } from '../../../types/data';
 interface Props {
   products: Product[];
   columns: ProductGridColumns;
-  onLikeIconClick: Function;
+  onLikeIconClick?: Function;
 }
 
 function ProductCardListView({ products, columns, onLikeIconClick }: Props) {
