@@ -4,6 +4,7 @@ import {
   MainPage,
   JoinPage,
   LoginPage,
+  MenuPage,
   SearchPage,
   SearchResultPage,
   CategoryPage,
@@ -22,6 +23,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={MainPage} />
+          <Route exact path="/menu" component={MenuPage} />
           <Route exact path="/search" component={SearchPage} />
           <Route exact path="/search/:title" component={SearchResultPage} />
           <Route exact path="/category/:categoryId" component={CategoryPage} />
