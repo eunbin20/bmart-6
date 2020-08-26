@@ -13,7 +13,6 @@ function getProductsAfterLike(products: Product[], productId: number, isLiked: b
   const newProducts = [...products];
   const index = newProducts.findIndex((product) => product.id === productId);
   newProducts[index].isLiked = isLiked;
-  console.log(newProducts);
   return newProducts;
 }
 
@@ -35,9 +34,6 @@ export function productsReducer(state: ProductsState, action: ProductsAction): P
 
     case ACTION_LIKE_PRODUCT:
       if (!state.products || !action.value.productId) return state;
-      console.log('hi');
-      console.log(state);
-      console.log(action.value);
       return {
         products: getProductsAfterLike(state.products, action.value.productId, true),
         status: action.value.status,
