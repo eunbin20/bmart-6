@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import {
   MainPage,
   UserPage,
+  UserLikedPage,
   SearchPage,
   SearchResultPage,
   CategoryPage,
@@ -24,6 +25,8 @@ function App() {
           <Route exact path="/search/:title" component={SearchResultPage} />
           <Route exact path="/category/:categoryId" component={CategoryPage} />
           <Route exact path="/subcategory/:subcategoryId" component={SubcategoryPage} />
+          <Route exact path="/subcategory/:subcategoryId" component={SubcategoryPage} />
+          <Route exact path="/user/liked" component={UserLikedPage} />
           <Route exact path="/user/:subPath" component={UserPage} />
           <Route exact path="/detail/:productId" component={ProductDetailPage} />
           <Redirect path="*" to="/" />
