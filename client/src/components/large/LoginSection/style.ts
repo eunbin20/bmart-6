@@ -16,17 +16,15 @@ interface PushButtonProps {
 
 export const PushButton = styled.button.attrs((props: PushButtonProps) => ({
   type: 'submit',
-  className: 'f7-icons',
   onSubmit: props.onSubmit,
 }))`
   background: var(--green);
+  margin-top: 10px;
   border: none;
-  width: 60px;
-  height: 60px;
+  width: 100%;
+  height: 45px;
   border-radius: 7px;
   color: #ffffffff;
-  position: absolute;
-  bottom: 50px;
-  right: 28px;
-  z-index: 5;
+  font-size: 18px;
+  font-weight: 700;
 `;

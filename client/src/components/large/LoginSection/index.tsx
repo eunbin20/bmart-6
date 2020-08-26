@@ -13,7 +13,7 @@ interface Props {
 export default function LoginForm({ onSubmit }: Props) {
   return (
     <>
-      <S.LogoContainer>{Logo(200, 100)}</S.LogoContainer>
+      <S.LogoContainer>{Logo(140, 50)}</S.LogoContainer>
       <S.InputContainer>
         <Form
           onSubmit={onSubmit}
@@ -38,7 +38,7 @@ export default function LoginForm({ onSubmit }: Props) {
                 )}
               </Field>
 
-              <S.PushButton onClick={handleSubmit}>arrow_right</S.PushButton>
+              <S.PushButton onClick={handleSubmit}>로그인</S.PushButton>
             </>
           )}
         />
