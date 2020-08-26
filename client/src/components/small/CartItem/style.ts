@@ -1,5 +1,21 @@
 import styled from 'styled-components';
 
+interface CheckBoxProps {
+  id: string;
+  background: string;
+  onClick: (target: number | 'all') => void;
+}
+
+export const CheckBox = styled.input.attrs((props) => ({
+  id: props.id,
+  onClick: props.onClick,
+  type: 'checkbox',
+}))`
+  background-image: ${(props: CheckBoxProps) => `url(${props.background})`};
+  width: 20px;
+  height: 20px;
+`;
+
 export const ItemWrapper = styled.div``;
 
 export const HeaderBox = styled.div`

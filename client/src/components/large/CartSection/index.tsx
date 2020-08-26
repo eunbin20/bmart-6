@@ -12,7 +12,7 @@ export default function CartSection() {
 
   const generateImageByActive = (isActive: boolean) => (isActive ? activeImage : defaultImage);
 
-  const toggleActive = (target: number | 'all') => {
+  const toggleCheckBoxActive = (target: number | 'all') => {
     if (target === 'all') {
       setIsAllActive(!isAllActive);
       return;
@@ -21,7 +21,13 @@ export default function CartSection() {
 
   const generateCarts = (carts: ProductInCart[]) => {
     return carts.map((cart: ProductInCart) => {
-      return <CartItem cart={cart} />;
+      return (
+        <CartItem
+          cart={cart}
+          toggleCheckBoxActive={toggleCheckBoxActive}
+          generateImageByActive={generateImageByActive}
+        />
+      );
     });
   };
 
@@ -33,11 +39,11 @@ export default function CartSection() {
           <S.SelectManageContainer>
             <S.ChekBoxContainer>
               <S.CheckBox
-                onClick={() => toggleActive('all')}
+                onClick={() => toggleCheckBoxActive('all')}
                 id="cart-checkobx-all"
                 background={generateImageByActive(isAllActive)}
               />
-              <S.CheckAllText onClick={() => toggleActive('all')}>선택해제</S.CheckAllText>
+              <S.CheckAllText onClick={() => toggleCheckBoxActive('all')}>선택해제</S.CheckAllText>
             </S.ChekBoxContainer>
             <S.Text>선택 비우기</S.Text>
           </S.SelectManageContainer>
