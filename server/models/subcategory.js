@@ -28,6 +28,14 @@ class Subcategory extends Model {
       sourceKey: 'id',
     });
   }
+
+  static async findByCategoryId(categoryId) {
+    if (!categoryId) return;
+    return await this.findAll({
+      attributes: ['id'],
+      where: { caetegoryId },
+    }).map((subcategory) => subcategory.id);
+  }
 }
 
 module.exports = Subcategory;

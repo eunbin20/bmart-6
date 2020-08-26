@@ -7,3 +7,6 @@ export const getProducts = (params: ProductFilter) => {
     headers: { Accept: 'application/json' },
   });
 };
+
+export const likeProduct = (productId: number) => Axios.get(`/user/product/${productId}`);
+export const unlikeProduct = (productId: number) => Axios.delete(`/user/product/${productId}`);

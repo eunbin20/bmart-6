@@ -8,7 +8,7 @@ import {
 } from '../../components';
 import { SORTOPTIONS, DEFAULT_SORT_OPTION } from '../../commons/constants';
 import { RouteComponentProps } from 'react-router-dom';
-import useProducts from '../../hooks/useProducts';
+import useProducts, { toggleProductIsLikedDispatcher } from '../../hooks/useProducts';
 import { getProducts } from '../../hooks/useProducts/actions';
 import { ERROR_STATUS } from '../../commons/constants';
 
@@ -54,7 +54,13 @@ function SearchResultPage({
         </S.ImageContainer>
       ) : (
         <S.ProductCardGridContainer>
-          {products && <ProductCardGrid products={products} columns={2} />}
+          {products && (
+            <ProductCardGrid
+              products={products}
+              columns={2}
+              onLikeIconClick={toggleProductIsLikedDispatcher(productDispatch)}
+            />
+          )}
         </S.ProductCardGridContainer>
       )}
     </S.SearchResultPage>

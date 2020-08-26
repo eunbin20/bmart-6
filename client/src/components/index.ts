@@ -1,4 +1,5 @@
 export { default as Framework7Icon } from './small/Framework7Icon';
+export { default as ProductLikeIcon } from './small/ProductLikeIcon';
 export { default as ProductCard } from './small/ProductCard';
 export { default as SectionDivider } from './small/SectionDivider';
 export { default as UserHeader } from './small/UserHeader';

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FORM_ERROR } from 'final-form';
 import { RouteComponentProps } from 'react-router-dom';
 import { UserJoin, UserLogin } from '../../types/data';

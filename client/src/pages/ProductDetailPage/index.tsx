@@ -10,7 +10,7 @@ export default function ProductDetailPage({
   match: { params },
 }: RouteComponentProps<{ productId: string }>) {
   const [cartModalVisible, setCartModalVisible] = useState<boolean>(false);
-  const [state, setAction] = useProducts({ limit: 1, id: Number(params?.productId) });
+  const [state] = useProducts({ limit: 1, id: Number(params?.productId) });
   const { products } = state;
 
   const onCartModalVisible = () => {
