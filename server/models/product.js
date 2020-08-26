@@ -1,5 +1,4 @@
-const { Model, Op } = require('sequelize');
-
+const { Model, Op, literal } = require('sequelize');
 class Product extends Model {
   static init(sequelize, DataTypes) {
     return super.init(
@@ -67,8 +66,18 @@ class Product extends Model {
     }
   }
 
+  static addIsLikedAttribute(userId = -1) {
+    return [
+      literal(
+        `(SELECT COUNT(*) FROM UserProductRelation WHERE userId = ${userId} and productId = Product.id)`,
+      ),
+      'isLiked',
+    ];
+  }
+
   static async filter({
     id,
+    userId,
     limit = 20,
     offset = 0,
     title,
@@ -80,6 +89,10 @@ class Product extends Model {
     return this.findAll({
       limit: +limit,
       offset: +offset,
+      attributes: {
+        include: [this.addIsLikedAttribute(userId)],
+      },
+
       where: {
         ...(title && { title: { [Op.like]: `%${title}%` } }),
         ...(id && { id: +id }),
