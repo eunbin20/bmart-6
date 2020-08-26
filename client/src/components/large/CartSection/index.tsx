@@ -5,7 +5,13 @@ import defaultImage from './aseets/checkbox-default.png';
 import { ProductInCart } from '../../../types/data';
 import { storage } from '../../../utils/storage';
 import { STORAGE_KEY } from '../../../commons/constants';
-import { Empty, CartItem, CartDeleteModal } from '../../../components';
+import {
+  Empty,
+  CartItem,
+  CartDeleteModal,
+  TotalCartMoney,
+  SectionDivider,
+} from '../../../components';
 
 export default function CartSection() {
   const [carts, setCarts] = useState<ProductInCart[]>(storage.getCarts());
@@ -99,6 +105,7 @@ export default function CartSection() {
             <S.Title>장바구니</S.Title>
             <S.ItemContainer>{generateCarts(carts)}</S.ItemContainer>
           </S.MainContainer>
+          <TotalCartMoney />
           <CartDeleteModal
             visible={modalVisible}
             onVisible={onModalVisible}
