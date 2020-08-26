@@ -2,11 +2,13 @@ import styled from 'styled-components';
 
 export const InputContainer = styled.section`
   width: 100%;
-  padding: 0 28px;
+  padding: 45px 28px;
   > .input-wrapper + .input-wrapper {
     margin-top: 32px;
   }
 `;
+
+export const LogoContainer = styled.div``;
 
 interface PushButtonProps {
   onSubmit: (args: any) => void;
@@ -17,7 +19,7 @@ export const PushButton = styled.button.attrs((props: PushButtonProps) => ({
   className: 'f7-icons',
   onSubmit: props.onSubmit,
 }))`
-  background: var(--gray);
+  background: var(--green);
   border: none;
   width: 60px;
   height: 60px;

@@ -33,7 +33,7 @@ function LoginPage({ history }: RouteComponentProps) {
     <>
       <UserHeader />
       <LoginSection onSubmit={onSubmitLogin} />
-      <UserFooter />
+      {/* <UserFooter /> */}
     </>
   );
 }

@@ -3,8 +3,8 @@ import * as S from './style';
 import { Form, Field } from 'react-final-form';
 import { loginValidation } from '../../../utils/validation';
 import { UserLogin } from '../../../types/data';
-import UserPageTitle from '../../small/UserTitle';
 import UserPageInput from '../../small/UserInput';
+import { Logo } from '../../../commons/svgs';
 
 interface Props {
   onSubmit: (values: UserLogin) => void;
@@ -13,7 +13,7 @@ interface Props {
 export default function LoginForm({ onSubmit }: Props) {
   return (
     <>
-      <UserPageTitle title="Welcome" />
+      <S.LogoContainer>{Logo(200, 100)}</S.LogoContainer>
       <S.InputContainer>
         <Form
           onSubmit={onSubmit}
