@@ -24,6 +24,8 @@ export { default as RecentSearchListView } from './medium/RecentSearchListView';
 export { default as SearchBar } from './medium/SearchBar';
 export { default as AddCartModal } from './medium/AddCartModal';
 export { default as SinglePageHeader } from './medium/SinglePageHeader';
+export { default as MenuListGrid } from './medium/MenuListGrid';
+export { default as MenuListGridHeader } from './medium/MenuListGridHeader';
 
 export { default as CategoryProductSection } from './large/CategoryProductSection';
 export { default as HotDealSection } from './large/HotDealSection';
