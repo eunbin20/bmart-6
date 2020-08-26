@@ -2,6 +2,8 @@ import { ProductFilter } from '../../types/data';
 
 export const ACTION_GET_PRODUCTS = 'GET_PRODUCTS';
 export const ACTION_GET_MORE_PRODUCTS = 'GET_MORE_PRODUCTS';
+export const ACTION_LIKE_PRODUCT = 'LIKE_PRODUCT';
+export const ACTION_UNLIKE_PRODUCT = 'UNLIKE_PRODUCT';
 export const ACTION_ERROR = 'ERROR';
 
 export interface ProductAction {
@@ -15,8 +17,16 @@ export const getProducts = (data: ProductFilter) => ({
 });
 
 export const getMoreProducts = (data: ProductFilter) => ({
-  type: ACTION_GET_MORE_PRODUCTS,
+  type: ACTION_LIKE_PRODUCT,
   data,
 });
 
-export type Action = ReturnType<typeof getProducts> | ReturnType<typeof getMoreProducts>;
+export const unlikeProduct = (productId: number) => ({
+  type: ACTION_UNLIKE_PRODUCT,
+  data: { id: productId },
+});
+
+export const likeProduct = (productId: number) => ({
+  type: ACTION_LIKE_PRODUCT,
+  data: { id: productId },
+});

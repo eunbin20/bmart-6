@@ -7,12 +7,13 @@ import { generateProductCards } from '../../small/ProductCard';
 interface Props {
   products: Product[];
   columns: ProductGridColumns;
+  onLikeIconClick: Function;
 }
 
-function ProductCardGrid({ products, columns }: Props) {
+function ProductCardGrid({ products, columns, onLikeIconClick }: Props) {
   return (
     <S.CardGridContainer theme={{ columns }}>
-      {generateProductCards(products, columns)}
+      {generateProductCards(products, columns, onLikeIconClick)}
     </S.CardGridContainer>
   );
 }

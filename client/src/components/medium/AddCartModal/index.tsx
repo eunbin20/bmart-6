@@ -33,7 +33,7 @@ interface Props {
   product: Product;
   isOpen: boolean;
   onCartModalVisible: () => void;
-  onAddCart: (id: number, quantity: number) => void;
+  onAddCart: (product: Product, count: number) => void;
 }
 function AddCartModal(props: Props) {
   const { product, isOpen, onCartModalVisible, onAddCart } = props;
@@ -46,6 +46,8 @@ function AddCartModal(props: Props) {
     }
     return count !== 1 && setCount(count - 1);
   };
+
+  const calculateTotalPrice = (count: number) => makeComma(count * price) + '원';
 
   return (
     <Modal
@@ -68,7 +70,9 @@ function AddCartModal(props: Props) {
         </S.DescriptionContainer>
         <QuantityCoutner count={count} setCount={handleCount} />
       </S.MainContainer>
-      <S.CardAddButton onClick={() => onAddCart(id ?? 0, count)}>장바구니 담기</S.CardAddButton>
+      <S.CardAddButton onClick={() => onAddCart(product, count)}>
+        장바구니 담기 <S.TotalPrice>{calculateTotalPrice(count)}</S.TotalPrice>
+      </S.CardAddButton>
     </Modal>
   );
 }

@@ -30,7 +30,7 @@ export interface Subcategory extends Category {
 }
 
 export interface Product {
-  id?: number;
+  id: number;
   subcategoryId: number;
   title: string;
   price: number;
@@ -40,6 +40,12 @@ export interface Product {
   imageUrl?: string;
   isDiscounted: boolean;
   isSold: boolean;
+  isLiked: boolean;
+}
+
+export interface ProductInCart extends Product {
+  count: number; // 수량
+  isActive?: boolean; // 선택 여부
 }
 
 export interface ProductFilter {
@@ -50,6 +56,7 @@ export interface ProductFilter {
   subcategoryId?: number;
   id?: number;
   sortBy?: string;
+  isLiked?: boolean;
 }
 
 export type ProductGridColumns = 2 | 2.5 | 3;

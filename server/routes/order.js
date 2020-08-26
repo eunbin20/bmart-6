@@ -7,6 +7,6 @@ const { validateCreateOrder, validateGetOrderOne } = require('../middlewares/val
 router.use(isValidJwtToken);
 router.post('/', validateCreateOrder, orderController.create);
 router.get('/', orderController.findAll);
-router.get('/:orderId', validateGetOrderOne, orderController.findOne);
+router.get('/:orderId', orderController.findOne);
 
 module.exports = router;

@@ -10,7 +10,7 @@ import {
   SectionDivider,
   ProductSection,
 } from '../../components';
-import useProducts from '../../hooks/useProducts';
+import useProducts, { toggleProductIsLikedDispatcher } from '../../hooks/useProducts';
 import { getProducts } from '../../hooks/useProducts/actions';
 import {
   SORTOPTIONS,
@@ -58,6 +58,7 @@ function CategoryPage({ match: { params } }: RouteComponentProps<Params>): React
           products: products ?? [],
           viewType: VIEW_TYPE_LISTVIEW,
           columns: 2.5,
+          onLikeIconClick: toggleProductIsLikedDispatcher(productDispatch),
         }}
       />
       <SectionDivider />
@@ -65,7 +66,13 @@ function CategoryPage({ match: { params } }: RouteComponentProps<Params>): React
         {<ProductCardGridHeader sortBy={sortBy} changeSort={changeSort} />}
       </S.ProductCardGridHeaderContainer>
       <S.ProductCardGridContainer>
-        {products && <ProductCardGrid products={products} columns={2} />}
+        {products && (
+          <ProductCardGrid
+            products={products}
+            columns={2}
+            onLikeIconClick={toggleProductIsLikedDispatcher(productDispatch)}
+          />
+        )}
       </S.ProductCardGridContainer>
     </DefaultTemplate>
   );

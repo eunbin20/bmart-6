@@ -4,9 +4,18 @@ import { OK, NOT_FOUND, INTERNAL_SERVER_ERROR } from 'http-status';
 import useApiRequest, { REQUEST, SUCCESS, FAILURE } from '../../hooks/useApiRequests';
 import { Product, ProductFilter } from '../../types/data';
 import { ProductsState } from '../../types/states';
-import { getProducts } from '../../apis';
 
-import { Action, ProductAction, ACTION_GET_PRODUCTS, ACTION_ERROR } from './actions';
+import * as apis from '../../apis';
+
+import {
+  ProductAction,
+  ACTION_GET_PRODUCTS,
+  ACTION_ERROR,
+  ACTION_LIKE_PRODUCT,
+  ACTION_UNLIKE_PRODUCT,
+  likeProduct,
+  unlikeProduct,
+} from './actions';
 import { productsReducer } from './reducer';
 
 const defaultProductsState: ProductsState = {
@@ -14,13 +23,21 @@ const defaultProductsState: ProductsState = {
   status: 0,
 };
 
-export default function useProducts(data: ProductFilter): [ProductsState, React.Dispatch<Action>] {
+export const toggleProductIsLikedDispatcher = (
+  productDispatch: (value: ProductAction) => void,
+): Function => (productId: number, isLiked: boolean) => {
+  productDispatch(isLiked ? likeProduct(productId) : unlikeProduct(productId));
+};
+
+export default function useProducts(
+  data: ProductFilter,
+): [ProductsState, React.Dispatch<ProductAction>] {
   const [state, dispatch] = useReducer(productsReducer, defaultProductsState);
   const [action, setAction] = useState<ProductAction>({
     type: ACTION_GET_PRODUCTS,
     data: data ?? {},
   });
-  const [apiResponse, getProductsDispatch] = useApiRequest<Product[]>(getProducts);
+  const [getProductsResponse, getProductsDispatch] = useApiRequest<Product[]>(apis.getProducts);
 
   useEffect(() => {
     switch (action.type) {
@@ -31,13 +48,39 @@ export default function useProducts(data: ProductFilter): [ProductsState, React.
         });
         break;
 
+      case ACTION_LIKE_PRODUCT:
+        if (!action.data.id) break;
+        apis.likeProduct(action.data.id).then(() =>
+          dispatch({
+            type: action.type,
+            value: {
+              productId: action.data.id,
+              status: OK,
+            },
+          }),
+        );
+        break;
+
+      case ACTION_UNLIKE_PRODUCT:
+        if (!action.data.id) break;
+        apis.unlikeProduct(action.data.id).then(() =>
+          dispatch({
+            type: action.type,
+            value: {
+              productId: action.data.id,
+              status: OK,
+            },
+          }),
+        );
+        break;
+
       default:
         return;
     }
   }, [action, getProductsDispatch]);
 
   useEffect(() => {
-    const { type, data, err } = apiResponse;
+    const { type, data, err } = getProductsResponse;
     switch (type) {
       case REQUEST:
         break;
@@ -67,7 +110,7 @@ export default function useProducts(data: ProductFilter): [ProductsState, React.
             },
           });
     }
-  }, [apiResponse, action.type]);
+  }, [getProductsResponse, action.type]);
 
   return [state, setAction];
 }

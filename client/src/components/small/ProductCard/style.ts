@@ -50,19 +50,11 @@ const LinkWrapper = styled(Link)`
 `;
 
 const LikeIconWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
   float: right;
 
   bottom: 36px;
   right: 10px;
-  height: 26px;
-  width: 26px;
-
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 50%;
 `;
 
 const ImgWrapper = styled.div`
@@ -132,8 +124,6 @@ export const TwoHalfColumnCard = {
   LikeIconWrapper: styled(LikeIconWrapper)`
     bottom: 33px;
     right: 7px;
-    height: 26px;
-    width: 26px;
   `,
   Title: styled(Title)`
     font-size: 11px;
@@ -168,8 +158,6 @@ export const ThreeColumnCard = {
   LikeIconWrapper: styled(LikeIconWrapper)`
     bottom: 33px;
     right: 7px;
-    height: 26px;
-    width: 26px;
   `,
   Title: styled(Title)`
     font-size: 10px;
