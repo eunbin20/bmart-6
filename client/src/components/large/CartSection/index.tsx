@@ -5,7 +5,7 @@ import defaultImage from './aseets/checkbox-default.png';
 import { ProductInCart } from '../../../types/data';
 import { storage } from '../../../utils/storage';
 import { STORAGE_KEY } from '../../../commons/constants';
-import { Empty, CartItem } from '../../../components';
+import { Empty, CartItem, CartDeleteModal } from '../../../components';
 
 export default function CartSection() {
   const [carts, setCarts] = useState<ProductInCart[]>(storage.getCarts());
@@ -96,6 +96,7 @@ export default function CartSection() {
             <S.Title>장바구니</S.Title>
             <S.ItemContainer>{generateCarts(carts)}</S.ItemContainer>
           </S.MainContainer>
+          <CartDeleteModal />
         </>
       ) : (
         <Empty text="장바구니가 텅 비어있어요🤔🤔🤔🤔" />
