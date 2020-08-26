@@ -3,7 +3,6 @@ export { default as ProductLikeIcon } from './small/ProductLikeIcon';
 export { default as ProductCard } from './small/ProductCard';
 export { default as SectionDivider } from './small/SectionDivider';
 export { default as UserHeader } from './small/UserHeader';
-export { default as UserFooter } from './small/UserFooter';
 export { default as HotDealTimer } from './small/HotDealTimer';
 export { default as HotDealBigProductCard } from './small/HotDealBigProductCard';
 export { default as QuantityCoutner } from './small/QuantityCoutner';

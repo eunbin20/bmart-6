@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { UserJoin } from '../../types/data';
 import { useAuthContext } from '../../contexts/user';
 import * as userApis from '../../apis/user';
-import { JoinSection, UserFooter, UserHeader } from '../../components';
+import { JoinSection, UserHeader } from '../../components';
 import { ERROR_STATUS, ERROR_MESSAGE } from '../../commons/constants';
 
 function JoinPage({ history }: RouteComponentProps) {
@@ -29,7 +29,6 @@ function JoinPage({ history }: RouteComponentProps) {
     <>
       <UserHeader />
       <JoinSection onSubmit={onSubmitJoin} />
-      <UserFooter />
     </>
   );
 }

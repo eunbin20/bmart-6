@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const InputContainer = styled.section`
   width: 100%;
@@ -27,4 +28,17 @@ export const PushButton = styled.button.attrs((props: PushButtonProps) => ({
   color: #ffffffff;
   font-size: 18px;
   font-weight: 700;
+`;
+
+export const Text = styled.div`
+  padding-top: 20px;
+  text-align: right;
+  font-size: 14px;
+  color: var(--gray);
+`;
+
+export const JoinButton = styled(Link)`
+  color: var(--gray);
+  /* text-decoration: none; */
+  font-size: 14px;
 `;

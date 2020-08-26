@@ -37,8 +37,10 @@ export default function LoginForm({ onSubmit }: Props) {
                   />
                 )}
               </Field>
-
               <S.PushButton onClick={handleSubmit}>로그인</S.PushButton>
+              <S.Text>
+                혹시, B마트가 처음이신가요? <S.JoinButton to="/user/join">회원가입</S.JoinButton>
+              </S.Text>
             </>
           )}
         />

@@ -5,7 +5,7 @@ import { UserLogin } from '../../types/data';
 import { useAuthContext } from '../../contexts/user';
 import * as userActions from '../../contexts/user/actions';
 import * as userApis from '../../apis/user';
-import { LoginSection, UserFooter, UserHeader } from '../../components';
+import { LoginSection, UserHeader } from '../../components';
 import { ERROR_STATUS, ERROR_MESSAGE, STORAGE_KEY } from '../../commons/constants';
 import { storage } from '../../utils/storage';
 
