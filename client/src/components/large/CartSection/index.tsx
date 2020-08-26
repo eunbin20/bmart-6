@@ -5,7 +5,7 @@ import activeImage from './aseets/checkbox-active.png';
 import defaultImage from './aseets/checkbox-default.png';
 import { ProductInCart } from '../../../types/data';
 import { storage } from '../../../utils/storage';
-import { STORAGE_KEY } from '../../../commons/constants';
+import { STORAGE_KEY, ERROR_STATUS } from '../../../commons/constants';
 import { Empty, CartItem, CartDeleteModal, TotalCartMoney } from '../../../components';
 import { createOrder } from '../../../apis';
 
@@ -91,7 +91,9 @@ export default function CartSection() {
       alert('일단 주문 완료'); // 여기랑 밑에 수정해야함 (페이지 나오면)
       history.push('/');
     } catch (e) {
-      console.error(e);
+      if (e.response.status === ERROR_STATUS.UNAUTHORIZED) {
+        history.push('/user/login?prevPage=cart');
+      }
     }
   };
 
