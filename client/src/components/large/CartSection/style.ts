@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const CartWrapper = styled.div`
   width: 100%;
+  overflow: scroll;
 `;
 
 export const Text = styled.div.attrs((props) => ({
@@ -70,4 +71,23 @@ export const ItemContainer = styled.div`
   & > .cart-item-wrapper + .cart-item-wrapper {
     margin-top: 21px;
   }
+`;
+
+interface SubmitButton {
+  onClick: () => void;
+  canSubmit: boolean;
+}
+
+export const SubmitButton = styled.button.attrs((props) => ({
+  onClick: props.onClick,
+}))`
+  position: fixed;
+  bottom: 0;
+  border: none;
+  font-size: 15px;
+  padding: 14px;
+  z-index: 10;
+  width: 100%;
+  background: ${(props: SubmitButton) => (props.canSubmit ? 'var(--green)' : 'var(--gray)')};
+  color: var(--white);
 `;

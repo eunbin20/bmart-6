@@ -52,6 +52,14 @@ export default function CartSection() {
     updateCarts(nextCarts);
   };
 
+  const checkHasActiveAndShowModal = () => {
+    const activeCarts = carts.filter((cart: ProductInCart) => cart.isActive);
+    if (!activeCarts.length) {
+      return;
+    }
+    onModalVisible();
+  };
+
   const onCounter = () => {
     const nextCarts = storage.getCarts();
     setCarts(nextCarts);
@@ -92,7 +100,7 @@ export default function CartSection() {
   }, [carts]);
 
   return (
-    <S.CartWrapper>
+    <S.CartWrapper className="test">
       {carts.length ? (
         <>
           <S.SelectManageContainer>
@@ -106,13 +114,16 @@ export default function CartSection() {
                 {isAllActive ? '선택 해제' : '모두 선택'}
               </S.CheckAllText>
             </S.ChekBoxContainer>
-            <S.Text onClick={onModalVisible}>선택 비우기</S.Text>
+            <S.Text onClick={checkHasActiveAndShowModal}>선택 비우기</S.Text>
           </S.SelectManageContainer>
           <S.MainContainer>
             <S.Title>장바구니</S.Title>
             <S.ItemContainer>{generateCarts(carts)}</S.ItemContainer>
           </S.MainContainer>
           <TotalCartMoney totalMoney={totalMoney} />
+          <S.SubmitButton onClick={() => {}} canSubmit={totalMoney >= 5000}>
+            {totalMoney >= 5000 ? '주문하기' : '최소주문금액을 채워주세요.'}
+          </S.SubmitButton>
           <CartDeleteModal
             visible={modalVisible}
             onVisible={onModalVisible}

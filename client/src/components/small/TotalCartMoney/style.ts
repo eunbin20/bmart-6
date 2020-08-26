@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  position: fixed;
-  bottom: 0;
+  /* bottom: 0; */
   width: 100%;
+  margin-bottom: 45px;
+`;
+
+export const PriceTotalBox = styled.div`
   padding: 35px 14px 24px 14px;
   border-top: 1px solid var(--border-gray);
   & > .cart-money-content + .cart-money-content {
@@ -37,4 +40,19 @@ export const EventText = styled.div<{ hasMargin?: boolean }>`
   font-size: 15px;
   font-weight: 500;
   margin-top: ${(props) => (props.hasMargin ? '24px' : '5px')};
+`;
+
+export const DiscriptionBox = styled.div`
+  padding: 14px;
+  background: var(--light-gray);
+  & > .money-total-des + .money-total-des {
+    margin-top: 10px;
+  }
+`;
+
+export const DiscriptionText = styled.div.attrs({
+  className: 'money-total-des',
+})`
+  font-size: 12px;
+  line-height: 15px;
 `;
