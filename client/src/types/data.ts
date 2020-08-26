@@ -18,6 +18,11 @@ export interface Category {
   name: string;
 }
 
+export interface Menu {
+  name: string;
+  path: string;
+}
+
 export type Searches = { [key: string]: string };
 
 export interface Subcategory extends Category {
