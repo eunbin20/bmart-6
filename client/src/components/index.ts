@@ -8,6 +8,7 @@ export { default as HotDealBigProductCard } from './small/HotDealBigProductCard'
 export { default as QuantityCoutner } from './small/QuantityCoutner';
 export { default as CartBadge } from './small/CartBadge';
 export { default as Empty } from './small/Empty';
+export { default as CartItem } from './small/CartItem';
 
 export { default as PageHeader } from './medium/PageHeader';
 export { default as SectionHeader } from './medium/SectionHeader';

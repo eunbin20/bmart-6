@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import * as S from './style';
 import activeImage from './aseets/checkbox-active.png';
 import defaultImage from './aseets/checkbox-default.png';
-import { STORAGE_KEY } from '../../../commons/constants';
+import { ProductInCart } from '../../../types/data';
 import { storage } from '../../../utils/storage';
-import { Empty } from '../../../components';
-import QuantityCounter from '../../small/QuantityCoutner';
+import { Empty, CartItem } from '../../../components';
 
 export default function CartSection() {
-  const [carts, setCarts] = useState(storage.get(STORAGE_KEY.CARTS));
+  const [carts, setCarts] = useState<ProductInCart[]>(storage.getCarts());
   const [isAllActive, setIsAllActive] = useState(true);
 
   const generateImageByActive = (isActive: boolean) => (isActive ? activeImage : defaultImage);
@@ -20,11 +19,16 @@ export default function CartSection() {
     }
   };
 
-  const setCount = () => {};
+  const generateCarts = (carts: ProductInCart[]) => {
+    return carts.map((cart: ProductInCart) => {
+      return <CartItem cart={cart} />;
+    });
+  };
 
+  const setCount = () => {};
   return (
     <S.CartWrapper>
-      {carts ? (
+      {carts.length ? (
         <>
           <S.SelectManageContainer>
             <S.ChekBoxContainer>
@@ -39,32 +43,7 @@ export default function CartSection() {
           </S.SelectManageContainer>
           <S.MainContainer>
             <S.Title>장바구니</S.Title>
-            <S.ItemContainer>
-              <S.ItemWrapper>
-                <S.HeaderBox>
-                  <S.CheckBox
-                    onClick={() => toggleActive('all')}
-                    id="cart-checkobx-1"
-                    background={generateImageByActive(isAllActive)}
-                  />
-                  <S.HeaderText id="cart-checkobx-1">CJ 유부초밥 맛있고 짠 초밥</S.HeaderText>
-                </S.HeaderBox>
-                <S.ContentBox>
-                  <S.ContentImage src="" />
-                  <S.ContentPriceBox>
-                    <S.Price>(3,000원)</S.Price>
-                    <S.DiscountedPriceWrapper>
-                      <S.StrikePrice>3,000원</S.StrikePrice>
-                      <S.DiscountedPrice>4,900원</S.DiscountedPrice>
-                    </S.DiscountedPriceWrapper>
-                    <S.QuantityCounterWrapper>
-                      <QuantityCounter count={1} setCount={setCount} />
-                    </S.QuantityCounterWrapper>
-                  </S.ContentPriceBox>
-                  <S.ItemDeleteButton onClick={() => {}}>삭제</S.ItemDeleteButton>
-                </S.ContentBox>
-              </S.ItemWrapper>
-            </S.ItemContainer>
+            <S.ItemContainer>{generateCarts(carts)}</S.ItemContainer>
           </S.MainContainer>
         </>
       ) : (

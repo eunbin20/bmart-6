@@ -37,6 +37,10 @@ export interface Product {
   isSold: boolean;
 }
 
+export interface ProductInCart extends Product {
+  count: number; // 수량
+}
+
 export interface ProductFilter {
   limit?: number;
   offset?: number;

@@ -1,10 +1,7 @@
 import { STORAGE_KEY } from '../commons/constants';
-import { Searches, Product } from '../types/data';
-const { CARTS, RECENT_SEARCH } = STORAGE_KEY;
+import { Searches, Product, ProductInCart } from '../types/data';
 
-interface ProductInCart extends Product {
-  count: number; // 수량
-}
+const { CARTS, RECENT_SEARCH } = STORAGE_KEY;
 
 export const storage = {
   set(key: string, value: string) {
@@ -16,7 +13,13 @@ export const storage = {
   remove(key: string) {
     return localStorage.removeItem(key);
   },
-
+  getCarts() {
+    const carts = this.get(CARTS);
+    if (carts) {
+      return JSON.parse(carts);
+    }
+    return [];
+  },
   getProductTotalCount() {
     const carts = this.get(CARTS);
     if (!carts) {
@@ -43,6 +46,12 @@ export const storage = {
       return;
     }
     this.set(CARTS, JSON.stringify([{ ...product, count }])); // 장바구니 비어서 장바구니 만들고 추가
+  },
+  updateCart(id: number, count: number) {
+    const carts = this.getCarts();
+    const targetIndex = carts.findIndex((cart: ProductInCart) => cart.id === id);
+    const newCarts = [...carts.slice(0, targetIndex), { ...carts[targetIndex], count }];
+    this.set(CARTS, JSON.stringify(newCarts));
   },
   getSearches() {
     return this.get(RECENT_SEARCH) ? JSON.parse(this.get(RECENT_SEARCH) as string) : [];
