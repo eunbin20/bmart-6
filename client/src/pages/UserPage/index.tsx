@@ -61,7 +61,7 @@ function UserPage({ match: { params }, history }: RouteComponentProps<Params>) {
 
   return (
     <>
-      <UserHeader subPath={params.subPath} />
+      <UserHeader/>
       {renderBySubPath(params.subPath)}
       <UserFooter />
     </>
