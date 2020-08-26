@@ -10,7 +10,7 @@ router.post('/login', isAuthenticated, userController.login);
 router.use(isValidJwtToken);
 router.put('/', userController.update);
 router.delete('/:id', userController.delete);
-router.post('/like/:productId', validateLikeProduct, userController.likeProduct);
-router.delete('/like/:productId', validateLikeProduct, userController.unlikeProduct);
+router.get('/product/:productId', validateLikeProduct, userController.likeProduct);
+router.delete('/product/:productId', validateLikeProduct, userController.unlikeProduct);
 
 module.exports = router;

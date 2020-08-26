@@ -39,11 +39,15 @@ exports.delete = async (req, res) => {
 };
 
 exports.likeProduct = async (req, res) => {
-  await UserProductRelation.create({ userId: req.user.id, productId: req.params.productId });
-  res.status(HTTP_STATUS.CREATE_SUCCESS).send({ completed: true });
+  const userId = req.user.id;
+  const productId = +req.params.productId;
+  await UserProductRelation.create({ userId, productId });
+  res.status(HTTP_STATUS.CREATE_SUCCESS).send({ productId });
 };
 
 exports.unlikeProduct = async (req, res) => {
-  await UserProductRelation.destroy({ userId: req.user.id, productId: req.params.productId });
-  res.status(HTTP_STATUS.SUCCESS).send({ completed: true });
+  const userId = req.user.id;
+  const productId = +req.params.productId;
+  await UserProductRelation.destroy({ where: { userId, productId } });
+  res.status(HTTP_STATUS.CREATE_SUCCESS).send({ productId });
 };
