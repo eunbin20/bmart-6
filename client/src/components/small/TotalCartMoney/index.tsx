@@ -1,12 +1,17 @@
 import React from 'react';
 import * as S from './style';
+import { makeComma } from '../../../utils/functions';
 
-export default function TotalCartMoney() {
+interface Props {
+  totalMoney: number;
+}
+
+export default function TotalCartMoney({ totalMoney }: Props) {
   return (
     <S.Wrapper>
       <S.Content>
         <S.Text>주문 금액</S.Text>
-        <S.Text>5,500원</S.Text>
+        <S.Text>{makeComma(totalMoney)}원</S.Text>
       </S.Content>
       <S.Content>
         <S.Text>배달팁</S.Text>

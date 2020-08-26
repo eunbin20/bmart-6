@@ -13,10 +13,11 @@ interface Props {
   toggleCheckBox: (id: number, isActive: boolean) => void;
   generateImageByActive: (isActive: boolean) => string;
   deleteCartItem: (id: number) => void;
+  onCounter: () => void;
 }
 
 export default function CartItem(props: Props) {
-  const { cart, toggleCheckBox, generateImageByActive, deleteCartItem } = props;
+  const { cart, toggleCheckBox, generateImageByActive, deleteCartItem, onCounter } = props;
   const {
     id,
     title,
@@ -28,17 +29,18 @@ export default function CartItem(props: Props) {
     isDiscounted,
     isActive,
   } = cart;
-  const [storageQuantity, setStorageQuantity] = useState<number>(count);
+  // const [storageQuantity, setStorageQuantity] = useState<number>(count);
 
   const onStorageCount = (type: 'minus' | 'plus') => {
     let nextCount = 0;
     if (type === COUNTER_KEY.PLUS) {
-      nextCount = storageQuantity === quantity ? storageQuantity : storageQuantity + 1;
+      nextCount = count === quantity ? count : count + 1;
     } else if (type === COUNTER_KEY.MINUS) {
-      nextCount = storageQuantity - 1 === 1 ? 1 : storageQuantity - 1;
+      nextCount = count - 1 === 0 ? 1 : count - 1;
     }
-    setStorageQuantity(nextCount);
     storage.updateCartCount(id ?? 0, nextCount);
+    // setStorageQuantity(nextCount);
+    onCounter(); // 상위 컴포넌트의 carts state update
   };
 
   return (
@@ -62,7 +64,7 @@ export default function CartItem(props: Props) {
             </S.DiscountedPrice>
           </S.DiscountedPriceWrapper>
           <S.QuantityCounterWrapper>
-            <QuantityCoutner count={storageQuantity} setCount={onStorageCount} />
+            <QuantityCoutner count={count} setCount={onStorageCount} />
           </S.QuantityCounterWrapper>
         </S.ContentPriceBox>
         <S.ItemDeleteButton onClick={() => deleteCartItem(id ?? 0)}>삭제</S.ItemDeleteButton>

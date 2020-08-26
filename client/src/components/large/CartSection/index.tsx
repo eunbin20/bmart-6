@@ -1,22 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import * as S from './style';
 import activeImage from './aseets/checkbox-active.png';
 import defaultImage from './aseets/checkbox-default.png';
 import { ProductInCart } from '../../../types/data';
 import { storage } from '../../../utils/storage';
-import { STORAGE_KEY } from '../../../commons/constants';
-import {
-  Empty,
-  CartItem,
-  CartDeleteModal,
-  TotalCartMoney,
-  SectionDivider,
-} from '../../../components';
+import { STORAGE_KEY, COUNTER_KEY } from '../../../commons/constants';
+import { Empty, CartItem, CartDeleteModal, TotalCartMoney } from '../../../components';
 
 export default function CartSection() {
   const [carts, setCarts] = useState<ProductInCart[]>(storage.getCarts());
   const [isAllActive, setIsAllActive] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
+  const totalMoney = useMemo(
+    () =>
+      carts.reduce((acc, cur) => {
+        return acc + (cur.isDiscounted ? cur.discountedPrice : cur.price) * cur.count;
+      }, 0),
+    [carts],
+  );
 
   const generateImageByActive = (isActive: boolean) => (isActive ? activeImage : defaultImage);
 
@@ -51,6 +52,11 @@ export default function CartSection() {
     updateCarts(nextCarts);
   };
 
+  const onCounter = () => {
+    const nextCarts = storage.getCarts();
+    setCarts(nextCarts);
+  }; // QuantityCounter 클릭
+
   const generateCarts = (carts: ProductInCart[]) => {
     return carts.map((cart: ProductInCart) => {
       return (
@@ -60,6 +66,7 @@ export default function CartSection() {
           toggleCheckBox={toggleCheckBox}
           generateImageByActive={generateImageByActive}
           deleteCartItem={deleteCartItem}
+          onCounter={onCounter}
         />
       );
     });
@@ -69,7 +76,7 @@ export default function CartSection() {
 
   useEffect(() => {
     const cartsWithIsActive = carts.map((cart: ProductInCart) => ({ ...cart, isActive: true }));
-    setCarts(cartsWithIsActive);
+    updateCarts(cartsWithIsActive);
   }, []); // 처음 렌더링 > 모두 active
 
   useEffect(() => {
@@ -105,7 +112,7 @@ export default function CartSection() {
             <S.Title>장바구니</S.Title>
             <S.ItemContainer>{generateCarts(carts)}</S.ItemContainer>
           </S.MainContainer>
-          <TotalCartMoney />
+          <TotalCartMoney totalMoney={totalMoney} />
           <CartDeleteModal
             visible={modalVisible}
             onVisible={onModalVisible}
