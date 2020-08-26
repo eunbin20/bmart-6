@@ -122,7 +122,7 @@ export default function CartSection() {
   }, [carts]);
 
   return (
-    <S.CartWrapper className="test">
+    <S.CartWrapper>
       {carts.length ? (
         <>
           <S.SelectManageContainer>

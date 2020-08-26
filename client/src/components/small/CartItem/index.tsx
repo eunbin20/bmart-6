@@ -56,7 +56,7 @@ export default function CartItem(props: Props) {
       <S.ContentBox>
         <S.ContentImage src={imageUrl} />
         <S.ContentPriceBox>
-          <S.Price>({makeComma(price)}) 원</S.Price>
+          {isDiscounted && <S.Price>({makeComma(price)})원</S.Price>}
           <S.DiscountedPriceWrapper>
             {isDiscounted && <S.StrikePrice>{makeComma(price)}원</S.StrikePrice>}
             <S.DiscountedPrice>
