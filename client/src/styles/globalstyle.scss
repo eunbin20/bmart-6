@@ -46,7 +46,7 @@ body {
 
 .App {
   justify-self: center;
-  width: 375px;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,4 +67,17 @@ body {
 .ReactModal__Content--before-close {
   transition: all 500ms ease-in-out;
   transform: translateY(100%);
+}
+
+.strike {
+  position: relative;
+  display: inline-block;
+}
+.strike::before {
+  content: '';
+  border-bottom: 2px solid black;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 35%;
 }

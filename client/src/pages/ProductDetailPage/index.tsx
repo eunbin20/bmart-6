@@ -4,6 +4,7 @@ import useProducts from '../../hooks/useProducts';
 import { ProductDetailModal, AddCartModal } from '../../components';
 import { storage } from '../../utils/storage';
 import { delay } from '../../utils/functions';
+import { Product } from '../../types/data';
 
 export default function ProductDetailPage({
   history,
@@ -18,8 +19,8 @@ export default function ProductDetailPage({
     setCartModalVisible(!cartModalVisible);
   };
 
-  const onAddCart = async (id: number, quantity: number) => {
-    storage.addCart(id, quantity);
+  const onAddCart = async (product: Product, quantity: number) => {
+    storage.addCart(product, quantity);
     onCartModalVisible(); // modal off
     await delay(500); // 부드러운 ux를 위에 추가
     history.goBack(); // 뒤로가기
