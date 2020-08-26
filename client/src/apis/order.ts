@@ -1,3 +1,10 @@
 import { Axios } from '../libs/axios';
 
-export const createOrder = (productIds: number[]) => Axios.post('/api/order', { productIds });
+interface CreateOrderBody {
+  products: {
+    id: number;
+    quantity: number;
+  }[];
+}
+
+export const createOrder = (body: CreateOrderBody) => Axios.post('/order', body);
