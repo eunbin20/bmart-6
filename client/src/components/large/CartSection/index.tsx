@@ -23,6 +23,7 @@ export default function CartSection() {
     return carts.map((cart: ProductInCart) => {
       return (
         <CartItem
+          key={cart.id}
           cart={cart}
           toggleCheckBoxActive={toggleCheckBoxActive}
           generateImageByActive={generateImageByActive}

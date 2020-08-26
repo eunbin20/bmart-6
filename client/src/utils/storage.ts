@@ -50,7 +50,11 @@ export const storage = {
   updateCart(id: number, count: number) {
     const carts = this.getCarts();
     const targetIndex = carts.findIndex((cart: ProductInCart) => cart.id === id);
-    const newCarts = [...carts.slice(0, targetIndex), { ...carts[targetIndex], count }];
+    const newCarts = [
+      ...carts.slice(0, targetIndex),
+      { ...carts[targetIndex], count },
+      ...carts.slice(targetIndex + 1, carts.length),
+    ];
     this.set(CARTS, JSON.stringify(newCarts));
   },
   getSearches() {

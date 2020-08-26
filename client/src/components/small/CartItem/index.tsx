@@ -17,14 +17,17 @@ export default function CartItem(props: Props) {
   const { cart, toggleCheckBoxActive, generateImageByActive } = props;
   const { id, count, quantity } = cart;
   const [isCheckBoxActive, setIsCheckBoxActive] = useState<boolean>(true);
-  const [quantityCount, setQuantityCount] = useState<number>(count);
+  const [storageQuantity, setStorageQuantity] = useState<number>(count);
 
-  const onQuantityCount = (type: 'minus' | 'plus') => {
+  const onStorageCount = (type: 'minus' | 'plus') => {
+    let nextCount = 0;
     if (type === COUNTER_KEY.PLUS) {
-      setQuantityCount(count + 1 === quantity ? count : count + 1);
-      storage.updateCart(id ?? 0, count);
-      return;
+      nextCount = storageQuantity === quantity ? storageQuantity : storageQuantity + 1;
+    } else if (type === COUNTER_KEY.MINUS) {
+      nextCount = storageQuantity - 1 === 1 ? 1 : storageQuantity - 1;
     }
+    setStorageQuantity(nextCount);
+    storage.updateCart(id ?? 0, nextCount);
   };
 
   return (
@@ -46,7 +49,7 @@ export default function CartItem(props: Props) {
             <S.DiscountedPrice>4,900원</S.DiscountedPrice>
           </S.DiscountedPriceWrapper>
           <S.QuantityCounterWrapper>
-            <QuantityCoutner count={quantityCount} setCount={onQuantityCount} />
+            <QuantityCoutner count={storageQuantity} setCount={onStorageCount} />
           </S.QuantityCounterWrapper>
         </S.ContentPriceBox>
         <S.ItemDeleteButton onClick={() => {}}>삭제</S.ItemDeleteButton>

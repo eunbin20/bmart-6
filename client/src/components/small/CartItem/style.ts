@@ -41,7 +41,7 @@ interface ContentImage {
   src: string;
 }
 
-export const ContentImage = styled.image.attrs((props: ContentImage) => ({
+export const ContentImage = styled.img.attrs((props: ContentImage) => ({
   src: props.src,
   alt: 'content-image',
 }))`
