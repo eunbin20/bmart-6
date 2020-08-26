@@ -15,7 +15,7 @@ function PageHeader({ isHome }: Props): React.ReactElement {
   return (
     <S.PageHeaderContainer>
       <S.PageHeader>
-        <Framework7Icon iconName={'bars'} />
+        <Framework7Icon iconName={'bars'} onClick={() => routePage('/menu')} />
         <S.LogoContainer onClick={() => routePage('/')}>{Logo()}</S.LogoContainer>
         <Framework7Icon
           iconName={'person_alt_circle_fill'}
