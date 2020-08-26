@@ -38,20 +38,12 @@ exports.delete = async (req, res) => {
   res.status(HTTP_STATUS.SUCCESS).send({ completed: true });
 };
 
-exports.addInterestProduct = async (req, res) => {
-  const {
-    user,
-    params: { productId },
-  } = req;
-  await UserProductRelation.create({ userId: user.id, productId });
+exports.likeProduct = async (req, res) => {
+  await UserProductRelation.create({ userId: req.user.id, productId: req.params.productId });
   res.status(HTTP_STATUS.CREATE_SUCCESS).send({ completed: true });
 };
 
-exports.deleteInterestProduct = async (req, res) => {
-  const {
-    user,
-    params: { productId },
-  } = req;
-  await UserProductRelation.destroy({ where: { userId: user.id, productId } });
+exports.unlikeProduct = async (req, res) => {
+  await UserProductRelation.destroy({ userId: req.user.id, productId: req.params.productId });
   res.status(HTTP_STATUS.SUCCESS).send({ completed: true });
 };

@@ -28,7 +28,7 @@ exports.validateCreateUser = (req, res, next) => {
   errorHandler(error, res, next);
 };
 
-exports.validateUpdateUserInterest = (req, res, next) => {
+exports.validateLikeProduct = (req, res, next) => {
   const schema = Joi.object().keys({
     productId: NUMBER_REQUIRED,
   });
