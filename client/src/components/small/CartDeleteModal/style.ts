@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const GrayBg = styled.div`
+export const GrayBg = styled.div.attrs((props) => ({
+  onClick: props.onClick,
+}))`
   position: fixed;
   top: 0;
   left: 0;

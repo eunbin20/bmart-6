@@ -10,6 +10,7 @@ import { Empty, CartItem, CartDeleteModal } from '../../../components';
 export default function CartSection() {
   const [carts, setCarts] = useState<ProductInCart[]>(storage.getCarts());
   const [isAllActive, setIsAllActive] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const generateImageByActive = (isActive: boolean) => (isActive ? activeImage : defaultImage);
 
@@ -58,6 +59,8 @@ export default function CartSection() {
     });
   };
 
+  const onModalVisible = () => setModalVisible(!modalVisible);
+
   useEffect(() => {
     const cartsWithIsActive = carts.map((cart: ProductInCart) => ({ ...cart, isActive: true }));
     setCarts(cartsWithIsActive);
@@ -90,13 +93,17 @@ export default function CartSection() {
                 {isAllActive ? '선택 해제' : '모두 선택'}
               </S.CheckAllText>
             </S.ChekBoxContainer>
-            <S.Text onClick={deleteCartsByIsActive}>선택 비우기</S.Text>
+            <S.Text onClick={onModalVisible}>선택 비우기</S.Text>
           </S.SelectManageContainer>
           <S.MainContainer>
             <S.Title>장바구니</S.Title>
             <S.ItemContainer>{generateCarts(carts)}</S.ItemContainer>
           </S.MainContainer>
-          <CartDeleteModal />
+          <CartDeleteModal
+            visible={modalVisible}
+            onVisible={onModalVisible}
+            onDelete={deleteCartsByIsActive}
+          />
         </>
       ) : (
         <Empty text="장바구니가 텅 비어있어요🤔🤔🤔🤔" />
