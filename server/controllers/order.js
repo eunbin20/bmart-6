@@ -4,7 +4,6 @@ const OrderProductRelation = require('../models/order_product_relation');
 const { HTTP_STATUS } = require('../utils/constants');
 
 exports.create = async (req, res) => {
-  console.log(req.body);
   const orderProducts = await Promise.all(
     req.body.products.map(async ({ id, quantity }) => {
       const product = await Product.findOne({ where: { id } });
@@ -17,7 +16,6 @@ exports.create = async (req, res) => {
   );
 
   const order = await Order.createOrder(orderProducts, req.user.id);
-  console.log(order);
   res.status(HTTP_STATUS.CREATE_SUCCESS).send(order);
 };
 

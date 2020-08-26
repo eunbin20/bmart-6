@@ -83,7 +83,12 @@ exports.validateCreateProduct = (req, res, next) => {
 /* Order validation */
 exports.validateCreateOrder = (req, res, next) => {
   const schema = Joi.object().keys({
-    productIds: ARRAY(NUMBER),
+    products: ARRAY(
+      Joi.object().keys({
+        id: NUMBER_REQUIRED,
+        quantity: NUMBER_REQUIRED,
+      }),
+    ),
   });
 
   const { error } = schema.validate(req.body);
