@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const productController = require('../controllers/product');
 const { validateCreateProduct } = require('../middlewares/validator');
-const { isValidJwtToken } = require('../middlewares/auth');
+const { isValidJwtToken, hasJwtToken } = require('../middlewares/auth');
 
-router.get('/', productController.filter);
-router.get('/:id', productController.findOne);
+router.get('/', hasJwtToken, productController.filter);
+router.get('/:id', hasJwtToken, productController.findOne);
 router.use(isValidJwtToken);
 router.post('/', validateCreateProduct, productController.create);
 router.put('/', productController.update);
