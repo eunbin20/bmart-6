@@ -49,7 +49,7 @@ function LoginPage({ history, location }: RouteComponentProps) {
   return (
     <>
       <UserHeader />
-      <LoginSection onSubmit={onSubmitLogin} />
+      <LoginSection onSubmit={onSubmitLogin} prevPage={prevPage} />
     </>
   );
 }

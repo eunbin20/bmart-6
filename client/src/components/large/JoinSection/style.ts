@@ -19,7 +19,7 @@ export const PushButton = styled.button.attrs((props: PushButtonProps) => ({
   onSubmit: props.onSubmit,
 }))`
   background: var(--green);
-  margin-top: 10px;
+  margin-top: 20px;
   border: none;
   width: 100%;
   height: 45px;

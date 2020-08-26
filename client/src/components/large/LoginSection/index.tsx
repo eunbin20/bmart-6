@@ -8,9 +8,18 @@ import { Logo } from '../../../commons/svgs';
 
 interface Props {
   onSubmit: (values: UserLogin) => void;
+  prevPage: string | null;
 }
 
-export default function LoginForm({ onSubmit }: Props) {
+export default function LoginForm({ onSubmit, prevPage }: Props) {
+  const getRouteUrl = () => {
+    let returnValue = '/user/join';
+    if (prevPage !== null) {
+      returnValue += `?prevPage=${prevPage}`;
+    }
+    return returnValue;
+  };
+
   return (
     <>
       <S.LogoContainer>{Logo(140, 50)}</S.LogoContainer>
@@ -39,7 +48,7 @@ export default function LoginForm({ onSubmit }: Props) {
               </Field>
               <S.PushButton onClick={handleSubmit}>로그인</S.PushButton>
               <S.Text>
-                혹시, B마트가 처음이신가요? <S.JoinButton to="/user/join">회원가입</S.JoinButton>
+                혹시, B마트가 처음이신가요? <S.JoinButton to={getRouteUrl}>회원가입</S.JoinButton>
               </S.Text>
             </>
           )}
