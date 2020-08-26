@@ -29,8 +29,8 @@ class Subcategory extends Model {
     });
   }
 
-  static findByCategoryId(categoryId) {
-    if(!categoryId) return;
+  static async findByCategoryId(categoryId) {
+    if (!categoryId) return;
     return await this.findAll({
       attributes: ['id'],
       where: { caetegoryId },
