@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from './style';
 import activeImage from './aseets/checkbox-active.png';
 import defaultImage from './aseets/checkbox-default.png';
@@ -15,6 +15,9 @@ export default function CartSection() {
   const toggleCheckBoxActive = (target: number | 'all') => {
     if (target === 'all') {
       setIsAllActive(!isAllActive);
+      const nextCarts = carts.map((cart: ProductInCart) => ({ ...cart, isActive: !isAllActive }));
+      setCarts(nextCarts);
+
       return;
     }
   };
@@ -39,7 +42,11 @@ export default function CartSection() {
     });
   };
 
-  const setCount = () => {};
+  useEffect(() => {
+    const cartsWithIsActive = carts.map((cart: ProductInCart) => ({ ...cart, isActive: true }));
+    setCarts(cartsWithIsActive);
+  }, []);
+
   return (
     <S.CartWrapper>
       {carts.length ? (
@@ -51,7 +58,9 @@ export default function CartSection() {
                 id="cart-checkobx-all"
                 background={generateImageByActive(isAllActive)}
               />
-              <S.CheckAllText onClick={() => toggleCheckBoxActive('all')}>선택해제</S.CheckAllText>
+              <S.CheckAllText onClick={() => toggleCheckBoxActive('all')}>
+                {isAllActive ? '선택 해제' : '모두 선택'}
+              </S.CheckAllText>
             </S.ChekBoxContainer>
             <S.Text>선택 비우기</S.Text>
           </S.SelectManageContainer>

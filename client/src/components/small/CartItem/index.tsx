@@ -17,7 +17,17 @@ interface Props {
 
 export default function CartItem(props: Props) {
   const { cart, toggleCheckBoxActive, generateImageByActive, deleteCartItem } = props;
-  const { id, title, count, quantity, imageUrl, price, discountedPrice, isDiscounted } = cart;
+  const {
+    id,
+    title,
+    count,
+    quantity,
+    imageUrl,
+    price,
+    discountedPrice,
+    isDiscounted,
+    isActive,
+  } = cart;
   const [isCheckBoxActive, setIsCheckBoxActive] = useState<boolean>(true);
   const [storageQuantity, setStorageQuantity] = useState<number>(count);
 
@@ -29,16 +39,16 @@ export default function CartItem(props: Props) {
       nextCount = storageQuantity - 1 === 1 ? 1 : storageQuantity - 1;
     }
     setStorageQuantity(nextCount);
-    storage.updateCart(id ?? 0, nextCount);
+    storage.updateCartById(id ?? 0, nextCount);
   };
 
   return (
     <S.ItemWrapper>
       <S.HeaderBox>
         <S.CheckBox
-          onClick={() => toggleCheckBoxActive('all')}
+          onClick={() => toggleCheckBoxActive(id ?? 0)}
           id={`cart-checkobx-${id}`}
-          background={generateImageByActive(isCheckBoxActive)}
+          background={generateImageByActive(isActive ?? true)}
         />
         <S.HeaderText id={`cart-checkobx-${id}`}>{title}</S.HeaderText>
       </S.HeaderBox>

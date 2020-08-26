@@ -39,6 +39,7 @@ export interface Product {
 
 export interface ProductInCart extends Product {
   count: number; // 수량
+  isActive?: boolean; // 선택 여부
 }
 
 export interface ProductFilter {

@@ -47,7 +47,7 @@ export const storage = {
     }
     this.set(CARTS, JSON.stringify([{ ...product, count }])); // 장바구니 비어서 장바구니 만들고 추가
   },
-  updateCart(id: number, count: number) {
+  updateCartById(id: number, count: number) {
     const carts = this.getCarts();
     const targetIndex = carts.findIndex((cart: ProductInCart) => cart.id === id);
     const newCarts = [
