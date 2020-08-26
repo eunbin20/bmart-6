@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import {
   MainPage,
+  MenuPage,
   UserPage,
   SearchPage,
   SearchResultPage,
@@ -20,6 +21,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={MainPage} />
+          <Route exact path="/menu" component={MenuPage} />
           <Route exact path="/search" component={SearchPage} />
           <Route exact path="/search/:title" component={SearchResultPage} />
           <Route exact path="/category/:categoryId" component={CategoryPage} />
