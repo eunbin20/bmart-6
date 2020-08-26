@@ -1,3 +1,3 @@
-export { getProducts } from './product';
+export { getProducts, likeProduct, unlikeProduct } from './product';
 export { getCategories } from './category';
 export { createUser, loginUser } from './user';
