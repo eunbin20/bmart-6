@@ -38,6 +38,11 @@ export interface Product {
   isLiked: boolean;
 }
 
+export interface ProductInCart extends Product {
+  count: number; // 수량
+  isActive?: boolean; // 선택 여부
+}
+
 export interface ProductFilter {
   limit?: number;
   offset?: number;

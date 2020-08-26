@@ -8,6 +8,10 @@ export { default as HotDealTimer } from './small/HotDealTimer';
 export { default as HotDealBigProductCard } from './small/HotDealBigProductCard';
 export { default as QuantityCoutner } from './small/QuantityCoutner';
 export { default as CartBadge } from './small/CartBadge';
+export { default as Empty } from './small/Empty';
+export { default as CartItem } from './small/CartItem';
+export { default as CartDeleteModal } from './small/CartDeleteModal';
+export { default as TotalCartMoney } from './small/TotalCartMoney';
 
 export { default as PageHeader } from './medium/PageHeader';
 export { default as SectionHeader } from './medium/SectionHeader';
@@ -31,3 +35,4 @@ export { default as JoinSection } from './large/JoinSection';
 export { default as LoginSection } from './large/LoginSection';
 export { default as RecentSearchSection } from './large/RecentSearchSection';
 export { default as ProductDetailModal } from './large/ProductDetailModal';
+export { default as CartSection } from './large/CartSection';

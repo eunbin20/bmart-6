@@ -9,6 +9,7 @@ import {
   CategoryPage,
   SubcategoryPage,
   ProductDetailPage,
+  CartPage,
 } from './pages';
 import './styles/reset.scss';
 import './styles/fonts.scss';
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/user/join" component={JoinPage} />
           <Route exact path="/user/login" component={LoginPage} />
           <Route exact path="/detail/:productId" component={ProductDetailPage} />
+          <Route exact path="/cart" component={CartPage} />
           <Redirect path="*" to="/" />
         </Switch>
       </Router>
