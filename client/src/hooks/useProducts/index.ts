@@ -23,6 +23,12 @@ const defaultProductsState: ProductsState = {
   status: 0,
 };
 
+export const toggleProductIsLikedDispatcher = (
+  productDispatch: (value: ProductAction) => void,
+): Function => (productId: number, isLiked: boolean) => {
+  productDispatch(isLiked ? likeProduct(productId) : unlikeProduct(productId));
+};
+
 export default function useProducts(
   data: ProductFilter,
 ): [ProductsState, React.Dispatch<ProductAction>] {
