@@ -4,7 +4,9 @@ export const CartWrapper = styled.div`
   width: 100%;
 `;
 
-export const Text = styled.div`
+export const Text = styled.div.attrs((props) => ({
+  onClick: props.onClick,
+}))`
   font-size: 14px;
   margin-top: 3px;
   min-width: 61px;

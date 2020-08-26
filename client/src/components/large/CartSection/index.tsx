@@ -4,6 +4,7 @@ import activeImage from './aseets/checkbox-active.png';
 import defaultImage from './aseets/checkbox-default.png';
 import { ProductInCart } from '../../../types/data';
 import { storage } from '../../../utils/storage';
+import { STORAGE_KEY } from '../../../commons/constants';
 import { Empty, CartItem } from '../../../components';
 
 export default function CartSection() {
@@ -12,20 +13,35 @@ export default function CartSection() {
 
   const generateImageByActive = (isActive: boolean) => (isActive ? activeImage : defaultImage);
 
-  const toggleCheckBoxActive = (target: number | 'all') => {
-    if (target === 'all') {
-      setIsAllActive(!isAllActive);
-      const nextCarts = carts.map((cart: ProductInCart) => ({ ...cart, isActive: !isAllActive }));
-      setCarts(nextCarts);
+  const updateCarts = (nextCarts: ProductInCart[]) => {
+    storage.set(STORAGE_KEY.CARTS, JSON.stringify(nextCarts));
+    setCarts(nextCarts);
+  };
 
-      return;
-    }
+  const toggleCheckBoxAll = () => {
+    setIsAllActive(!isAllActive);
+    const nextCarts = carts.map((cart: ProductInCart) => ({ ...cart, isActive: !isAllActive }));
+    updateCarts(nextCarts);
+  }; // 전체 토글
+
+  const toggleCheckBox = (id: number, isActive: boolean) => {
+    const targetIndex = carts.findIndex((cart: ProductInCart) => cart.id === id);
+    const nextCarts = [
+      ...carts.slice(0, targetIndex),
+      { ...carts[targetIndex], isActive: !isActive },
+      ...carts.slice(targetIndex + 1, carts.length),
+    ];
+    updateCarts(nextCarts);
   };
 
   const deleteCartItem = (id: number) => {
     const nextCarts = carts.filter((cart: ProductInCart) => cart.id !== id);
-    storage.deleteCartItem(nextCarts);
-    setCarts(nextCarts);
+    updateCarts(nextCarts);
+  };
+
+  const deleteCartsByIsActive = () => {
+    const nextCarts = carts.filter((cart: ProductInCart) => !cart.isActive);
+    updateCarts(nextCarts);
   };
 
   const generateCarts = (carts: ProductInCart[]) => {
@@ -34,7 +50,7 @@ export default function CartSection() {
         <CartItem
           key={cart.id}
           cart={cart}
-          toggleCheckBoxActive={toggleCheckBoxActive}
+          toggleCheckBox={toggleCheckBox}
           generateImageByActive={generateImageByActive}
           deleteCartItem={deleteCartItem}
         />
@@ -45,7 +61,19 @@ export default function CartSection() {
   useEffect(() => {
     const cartsWithIsActive = carts.map((cart: ProductInCart) => ({ ...cart, isActive: true }));
     setCarts(cartsWithIsActive);
-  }, []);
+  }, []); // 처음 렌더링 > 모두 active
+
+  useEffect(() => {
+    let isAllActive = true; // 모두가 active인지 체크
+    carts.every((cart: ProductInCart) => {
+      if (!cart.isActive) {
+        isAllActive = false;
+        return false;
+      }
+      return true;
+    });
+    setIsAllActive(isAllActive);
+  }, [carts]);
 
   return (
     <S.CartWrapper>
@@ -54,15 +82,15 @@ export default function CartSection() {
           <S.SelectManageContainer>
             <S.ChekBoxContainer>
               <S.CheckBox
-                onClick={() => toggleCheckBoxActive('all')}
+                onClick={toggleCheckBoxAll}
                 id="cart-checkobx-all"
                 background={generateImageByActive(isAllActive)}
               />
-              <S.CheckAllText onClick={() => toggleCheckBoxActive('all')}>
+              <S.CheckAllText onClick={toggleCheckBoxAll}>
                 {isAllActive ? '선택 해제' : '모두 선택'}
               </S.CheckAllText>
             </S.ChekBoxContainer>
-            <S.Text>선택 비우기</S.Text>
+            <S.Text onClick={deleteCartsByIsActive}>선택 비우기</S.Text>
           </S.SelectManageContainer>
           <S.MainContainer>
             <S.Title>장바구니</S.Title>

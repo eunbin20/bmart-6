@@ -10,13 +10,13 @@ import { makeComma } from '../../../utils/functions';
 
 interface Props {
   cart: ProductInCart;
-  toggleCheckBoxActive: (id: number | 'all') => void;
+  toggleCheckBox: (id: number, isActive: boolean) => void;
   generateImageByActive: (isActive: boolean) => string;
   deleteCartItem: (id: number) => void;
 }
 
 export default function CartItem(props: Props) {
-  const { cart, toggleCheckBoxActive, generateImageByActive, deleteCartItem } = props;
+  const { cart, toggleCheckBox, generateImageByActive, deleteCartItem } = props;
   const {
     id,
     title,
@@ -28,7 +28,6 @@ export default function CartItem(props: Props) {
     isDiscounted,
     isActive,
   } = cart;
-  const [isCheckBoxActive, setIsCheckBoxActive] = useState<boolean>(true);
   const [storageQuantity, setStorageQuantity] = useState<number>(count);
 
   const onStorageCount = (type: 'minus' | 'plus') => {
@@ -39,14 +38,14 @@ export default function CartItem(props: Props) {
       nextCount = storageQuantity - 1 === 1 ? 1 : storageQuantity - 1;
     }
     setStorageQuantity(nextCount);
-    storage.updateCartById(id ?? 0, nextCount);
+    storage.updateCartCount(id ?? 0, nextCount);
   };
 
   return (
     <S.ItemWrapper>
       <S.HeaderBox>
         <S.CheckBox
-          onClick={() => toggleCheckBoxActive(id ?? 0)}
+          onClick={() => toggleCheckBox(id ?? 0, isActive ?? true)}
           id={`cart-checkobx-${id}`}
           background={generateImageByActive(isActive ?? true)}
         />

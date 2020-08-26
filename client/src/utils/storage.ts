@@ -47,7 +47,7 @@ export const storage = {
     }
     this.set(CARTS, JSON.stringify([{ ...product, count }])); // 장바구니 비어서 장바구니 만들고 추가
   },
-  updateCartById(id: number, count: number) {
+  updateCartCount(id: number, count: number) {
     const carts = this.getCarts();
     const targetIndex = carts.findIndex((cart: ProductInCart) => cart.id === id);
     const newCarts = [
@@ -56,9 +56,6 @@ export const storage = {
       ...carts.slice(targetIndex + 1, carts.length),
     ];
     this.set(CARTS, JSON.stringify(newCarts));
-  },
-  deleteCartItem(nextCarts: ProductInCart[]) {
-    this.set(CARTS, JSON.stringify(nextCarts));
   },
   getSearches() {
     return this.get(RECENT_SEARCH) ? JSON.parse(this.get(RECENT_SEARCH) as string) : [];
