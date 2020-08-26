@@ -1,16 +1,19 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import * as S from './style';
+import { useHistory } from 'react-router-dom';
 import activeImage from './aseets/checkbox-active.png';
 import defaultImage from './aseets/checkbox-default.png';
 import { ProductInCart } from '../../../types/data';
 import { storage } from '../../../utils/storage';
-import { STORAGE_KEY, COUNTER_KEY } from '../../../commons/constants';
+import { STORAGE_KEY } from '../../../commons/constants';
 import { Empty, CartItem, CartDeleteModal, TotalCartMoney } from '../../../components';
+import { createOrder } from '../../../apis';
 
 export default function CartSection() {
   const [carts, setCarts] = useState<ProductInCart[]>(storage.getCarts());
   const [isAllActive, setIsAllActive] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
+  const history = useHistory();
   const totalMoney = useMemo(
     () =>
       carts.reduce((acc, cur) => {
@@ -64,6 +67,25 @@ export default function CartSection() {
     const nextCarts = storage.getCarts();
     setCarts(nextCarts);
   }; // QuantityCounter 클릭
+
+  const onSubmit = async () => {
+    const isAuthenticated = storage.get(STORAGE_KEY.ACCESS_TOKEN);
+    if (!isAuthenticated) {
+      history.push('/user/login');
+    }
+    const productIds = carts
+      .filter((cart: ProductInCart) => cart.isActive)
+      .map((cart: ProductInCart) => cart.id) as number[];
+
+    try {
+      await createOrder(productIds);
+      storage.set(STORAGE_KEY.CARTS, '[]');
+      alert('일단 주문 완료'); // 여기랑 밑에 수정해야함 (페이지 나오면)
+      history.push('/');
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   const generateCarts = (carts: ProductInCart[]) => {
     return carts.map((cart: ProductInCart) => {
@@ -121,7 +143,7 @@ export default function CartSection() {
             <S.ItemContainer>{generateCarts(carts)}</S.ItemContainer>
           </S.MainContainer>
           <TotalCartMoney totalMoney={totalMoney} />
-          <S.SubmitButton onClick={() => {}} canSubmit={totalMoney >= 5000}>
+          <S.SubmitButton onClick={onSubmit} canSubmit={totalMoney >= 5000}>
             {totalMoney >= 5000 ? '주문하기' : '최소주문금액을 채워주세요.'}
           </S.SubmitButton>
           <CartDeleteModal

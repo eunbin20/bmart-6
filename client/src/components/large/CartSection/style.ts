@@ -84,6 +84,7 @@ export const SubmitButton = styled.button.attrs((props) => ({
   position: fixed;
   bottom: 0;
   border: none;
+  outline: none;
   font-size: 15px;
   padding: 14px;
   z-index: 10;
