@@ -4,6 +4,7 @@ import { ProductInCart } from '../../../types/data';
 import { QuantityCoutner } from '../../../components';
 import { COUNTER_KEY } from '../../../commons/constants';
 import { storage } from '../../../utils/storage';
+import { makeComma } from '../../../utils/functions';
 
 // 여기서 카운트 업데이트 해주면 되겠네
 
@@ -11,11 +12,12 @@ interface Props {
   cart: ProductInCart;
   toggleCheckBoxActive: (id: number | 'all') => void;
   generateImageByActive: (isActive: boolean) => string;
+  deleteCartItem: (id: number) => void;
 }
 
 export default function CartItem(props: Props) {
-  const { cart, toggleCheckBoxActive, generateImageByActive } = props;
-  const { id, count, quantity } = cart;
+  const { cart, toggleCheckBoxActive, generateImageByActive, deleteCartItem } = props;
+  const { id, title, count, quantity, imageUrl, price, discountedPrice, isDiscounted } = cart;
   const [isCheckBoxActive, setIsCheckBoxActive] = useState<boolean>(true);
   const [storageQuantity, setStorageQuantity] = useState<number>(count);
 
@@ -38,21 +40,23 @@ export default function CartItem(props: Props) {
           id={`cart-checkobx-${id}`}
           background={generateImageByActive(isCheckBoxActive)}
         />
-        <S.HeaderText id={`cart-checkobx-${id}`}>CJ 유부초밥 맛있고 짠 초밥</S.HeaderText>
+        <S.HeaderText id={`cart-checkobx-${id}`}>{title}</S.HeaderText>
       </S.HeaderBox>
       <S.ContentBox>
-        <S.ContentImage src="" />
+        <S.ContentImage src={imageUrl} />
         <S.ContentPriceBox>
-          <S.Price>(3,000원)</S.Price>
+          <S.Price>({makeComma(price)}) 원</S.Price>
           <S.DiscountedPriceWrapper>
-            <S.StrikePrice>3,000원</S.StrikePrice>
-            <S.DiscountedPrice>4,900원</S.DiscountedPrice>
+            {isDiscounted && <S.StrikePrice>{makeComma(price)}원</S.StrikePrice>}
+            <S.DiscountedPrice>
+              {makeComma(isDiscounted ? discountedPrice : price)}원
+            </S.DiscountedPrice>
           </S.DiscountedPriceWrapper>
           <S.QuantityCounterWrapper>
             <QuantityCoutner count={storageQuantity} setCount={onStorageCount} />
           </S.QuantityCounterWrapper>
         </S.ContentPriceBox>
-        <S.ItemDeleteButton onClick={() => {}}>삭제</S.ItemDeleteButton>
+        <S.ItemDeleteButton onClick={() => deleteCartItem(id ?? 0)}>삭제</S.ItemDeleteButton>
       </S.ContentBox>
     </S.ItemWrapper>
   );

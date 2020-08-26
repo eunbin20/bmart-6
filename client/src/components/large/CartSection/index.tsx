@@ -19,6 +19,12 @@ export default function CartSection() {
     }
   };
 
+  const deleteCartItem = (id: number) => {
+    const nextCarts = carts.filter((cart: ProductInCart) => cart.id !== id);
+    storage.deleteCartItem(nextCarts);
+    setCarts(nextCarts);
+  };
+
   const generateCarts = (carts: ProductInCart[]) => {
     return carts.map((cart: ProductInCart) => {
       return (
@@ -27,6 +33,7 @@ export default function CartSection() {
           cart={cart}
           toggleCheckBoxActive={toggleCheckBoxActive}
           generateImageByActive={generateImageByActive}
+          deleteCartItem={deleteCartItem}
         />
       );
     });

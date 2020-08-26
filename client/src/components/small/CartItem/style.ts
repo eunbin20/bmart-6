@@ -16,7 +16,9 @@ export const CheckBox = styled.input.attrs((props) => ({
   height: 20px;
 `;
 
-export const ItemWrapper = styled.div``;
+export const ItemWrapper = styled.div.attrs({
+  className: 'cart-item-wrapper',
+})``;
 
 export const HeaderBox = styled.div`
   display: flex;
@@ -45,9 +47,10 @@ export const ContentImage = styled.img.attrs((props: ContentImage) => ({
   src: props.src,
   alt: 'content-image',
 }))`
-  min-width: 106px;
-  min-height: 106px;
+  max-width: 106px;
+  max-height: 106px;
   background: var(--gray);
+  object-fit: cover;
 `;
 
 export const ContentPriceBox = styled.div`
@@ -76,6 +79,7 @@ export const StrikePrice = styled.div.attrs({
 export const DiscountedPrice = styled.div`
   font-weight: 700;
   font-size: 17px;
+  margin-top: 2px;
 `;
 
 export const QuantityCounterWrapper = styled.div`

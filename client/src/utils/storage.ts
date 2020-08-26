@@ -57,6 +57,9 @@ export const storage = {
     ];
     this.set(CARTS, JSON.stringify(newCarts));
   },
+  deleteCartItem(nextCarts: ProductInCart[]) {
+    this.set(CARTS, JSON.stringify(nextCarts));
+  },
   getSearches() {
     return this.get(RECENT_SEARCH) ? JSON.parse(this.get(RECENT_SEARCH) as string) : [];
   },

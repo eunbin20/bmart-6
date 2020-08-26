@@ -65,4 +65,7 @@ export const Title = styled.span`
 
 export const ItemContainer = styled.div`
   padding: 24px 0px;
+  & > .cart-item-wrapper + .cart-item-wrapper {
+    margin-top: 21px;
+  }
 `;
