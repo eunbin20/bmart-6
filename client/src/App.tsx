@@ -1,18 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import {
-  MainPage,
-  JoinPage,
-  LoginPage,
-  MenuPage,
-  UserLikedPage,
-  SearchPage,
-  SearchResultPage,
-  CategoryPage,
-  SubcategoryPage,
-  ProductDetailPage,
-  CartPage,
-} from './pages';
+import * as Pages from './pages';
 import './styles/reset.scss';
 import './styles/fonts.scss';
 import './styles/reactModal.scss';
@@ -24,17 +12,18 @@ export default function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/" component={MainPage} />
-          <Route exact path="/menu" component={MenuPage} />
-          <Route exact path="/search" component={SearchPage} />
-          <Route exact path="/search/:title" component={SearchResultPage} />
-          <Route exact path="/category/:categoryId" component={CategoryPage} />
-          <Route exact path="/subcategory/:subcategoryId" component={SubcategoryPage} />
-          <RequireAuthRoute path="/user/liked" component={UserLikedPage} />
-          <Route exact path="/user/join" component={JoinPage} />
-          <Route exact path="/user/login" component={LoginPage} />
-          <Route exact path="/detail/:productId" component={ProductDetailPage} />
-          <Route exact path="/cart" component={CartPage} />
+          <Route exact path="/" component={Pages.MainPage} />
+          <Route exact path="/menu" component={Pages.MenuPage} />
+          <Route exact path="/search" component={Pages.SearchPage} />
+          <Route exact path="/search/:title" component={Pages.SearchResultPage} />
+          <Route exact path="/category/:categoryId" component={Pages.CategoryPage} />
+          <Route exact path="/subcategory/:subcategoryId" component={Pages.SubcategoryPage} />
+          <Route exact path="/user/join" component={Pages.JoinPage} />
+          <Route exact path="/user/login" component={Pages.LoginPage} />
+          <RequireAuthRoute path="/user/liked" component={Pages.UserLikedPage} />
+          <Route exact path="/user/order" component={Pages.OrderListPage} />
+          <Route exact path="/detail/:productId" component={Pages.ProductDetailPage} />
+          <Route exact path="/cart" component={Pages.CartPage} />
           <Redirect path="*" to="/" />
         </Switch>
       </Router>

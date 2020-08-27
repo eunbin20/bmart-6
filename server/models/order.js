@@ -68,7 +68,7 @@ class Order extends Model {
       targetKey: 'id',
       otherKey: 'productId',
       through: models.OrderProductRelation,
-      as: 'orders',
+      as: 'products',
     });
   }
 }
