@@ -57,9 +57,14 @@ const datas: IData[] = [
 let isFinishingState = false;
 let isBeforeEnd = false;
 let dataIdx = 0;
+let isRealFinish = false;
+let lastDataIdx = 0;
+let lastText = '';
 
 const getRandomIdx = () => {
-  return Math.floor(Math.random() * datas.length);
+  const randomIndex = Math.floor(Math.random() * datas.length);
+  lastDataIdx = randomIndex;
+  return randomIndex;
 };
 
 const shuffle = (array: IData[]) => {
@@ -87,7 +92,10 @@ const Slot = ({ boxHeight, isPulling }: IPull) => {
               dataIdx = -1;
               setImgTopHeight(0);
               isFinishingState = false;
+              lastText = datas[lastDataIdx].text;
+              console.log('2', lastText);
               shuffle(datas);
+              isRealFinish = true;
               return;
             }
             setImgTopHeight(((maxTime - time) % range) - rangeHalf);
@@ -113,11 +121,19 @@ const Slot = ({ boxHeight, isPulling }: IPull) => {
     return `translate(0px, ${newHight}px)`;
   };
 
+  const renderText = (dataIdx: number) => {
+    if (isRealFinish) {
+      return lastText;
+    }
+    if (dataIdx === -1) {
+      return datas[getRandomIdx()].text;
+    }
+    return datas[dataIdx].emoji;
+  };
+
   return (
     <S.SlotContainer style={{ transform: transformOption() }} ref={pullContainerRef}>
-      <S.SlotWrap>
-        {dataIdx === -1 ? `${datas[getRandomIdx()].text}` : datas[dataIdx].emoji}
-      </S.SlotWrap>
+      <S.SlotWrap>{renderText(dataIdx)}</S.SlotWrap>
       <S.SlotItem>땡겨요</S.SlotItem>
     </S.SlotContainer>
   );
