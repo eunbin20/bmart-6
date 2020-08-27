@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import * as S from './style';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import activeImage from './aseets/checkbox-active.png';
 import defaultImage from './aseets/checkbox-default.png';
 import { ProductInCart } from '../../../types/data';
@@ -14,6 +14,7 @@ export default function CartSection() {
   const [isAllActive, setIsAllActive] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
   const history = useHistory();
+  const location = useLocation();
   const totalMoney = useMemo(
     () =>
       carts.reduce((acc, cur) => {
@@ -71,7 +72,7 @@ export default function CartSection() {
   const onSubmit = async () => {
     const isAuthenticated = storage.get(STORAGE_KEY.ACCESS_TOKEN);
     if (!isAuthenticated) {
-      history.push('/user/login');
+      history.push('/user/login', { from: location });
     }
 
     interface CreateOrderBody {
@@ -89,10 +90,10 @@ export default function CartSection() {
       await createOrder({ products } as CreateOrderBody);
       storage.set(STORAGE_KEY.CARTS, '[]');
       alert('일단 주문 완료'); // 여기랑 밑에 수정해야함 (페이지 나오면)
-      history.push('/');
+      history.push('/', { from: location });
     } catch (e) {
       if (e.response.status === ERROR_STATUS.UNAUTHORIZED) {
-        history.push('/user/login?prevPage=cart');
+        history.push('/user/login', { from: location });
       }
     }
   };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as S from './style';
 import { Framework7Icon } from '../..';
+import { useLocation } from 'react-router-dom';
 
 interface Props {
   isSearchPage?: boolean;
@@ -12,23 +13,24 @@ interface Props {
 function SearchBar({
   isSearchPage = true,
   presetTitle,
-  history,
   createSearch,
+  history,
 }: Props): React.ReactElement {
+  const location = useLocation();
   const [title, setTitle] = useState(presetTitle ?? '');
   const isFromSearchPage = history[history.length - 2]?.location === '/search';
 
   function onSearchIconClick() {
     if (title.length === 0 || !isSearchPage) return;
     createSearch(title);
-    history.push(`/search/${title}`);
+    history.push(`/search/${title}`, { from: location });
   }
 
   return (
     <S.SearchBar
       onClick={() => {
         if (isSearchPage) return;
-        isFromSearchPage ? history.goBack() : history.push('/search');
+        isFromSearchPage ? history.goBack() : history.push('/search', { from: location });
       }}
     >
       <S.IconContainer onClick={() => isSearchPage && history.goBack()}>

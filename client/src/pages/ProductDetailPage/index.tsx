@@ -8,6 +8,7 @@ import { Product } from '../../types/data';
 
 export default function ProductDetailPage({
   history,
+  location,
   match: { params },
 }: RouteComponentProps<{ productId: string }>) {
   const [cartModalVisible, setCartModalVisible] = useState<boolean>(false);
@@ -28,7 +29,7 @@ export default function ProductDetailPage({
 
   useEffect(() => {
     if (!params?.productId) {
-      history.push('/');
+      history.push('/', { from: location });
       return;
     }
   }, []);

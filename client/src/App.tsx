@@ -5,8 +5,9 @@ import './styles/reset.scss';
 import './styles/fonts.scss';
 import './styles/reactModal.scss';
 import './styles/globalstyle.scss';
+import { useAuthContext } from './contexts/user';
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <Router>
@@ -19,7 +20,7 @@ function App() {
           <Route exact path="/subcategory/:subcategoryId" component={Pages.SubcategoryPage} />
           <Route exact path="/user/join" component={Pages.JoinPage} />
           <Route exact path="/user/login" component={Pages.LoginPage} />
-          <Route exact path="/user/liked" component={Pages.UserLikedPage} />
+          <RequireAuthRoute path="/user/liked" component={Pages.UserLikedPage} />
           <Route exact path="/user/order" component={Pages.OrderListPage} />
           <Route exact path="/detail/:productId" component={Pages.ProductDetailPage} />
           <Route exact path="/cart" component={Pages.CartPage} />
@@ -30,14 +31,28 @@ function App() {
   );
 }
 
-// function PublicRoute({ ...rest }: any): React.ReactElement {
-//   const { setLoginCallback } = useContext(AfterLoginAction);
+interface RequireAuthRouteProps {
+  path: string;
+  component: any;
+  [index: string]: any;
+}
 
-//   useEffect(() => {
-//     setLoginCallback('/');
-//   }, [setLoginCallback]);
+function RequireAuthRoute({ path, component: Component, ...rest }: RequireAuthRouteProps) {
+  const userAuthContext = useAuthContext();
+  const isAuthenticated = userAuthContext?.state.isAuthorized || false;
 
-//   return <Route {...rest} />;
-// }
-
-export default App;
+  return (
+    <Route
+      exact
+      path={path}
+      {...rest}
+      render={(props) =>
+        isAuthenticated === true ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={{ pathname: '/user/login', state: { from: props.location } }} />
+        )
+      }
+    />
+  );
+}
