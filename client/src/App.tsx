@@ -17,6 +17,7 @@ export default function App() {
           <Route exact path="/search/:title" component={Pages.SearchResultPage} />
           <Route exact path="/category/:categoryId" component={Pages.CategoryPage} />
           <Route exact path="/subcategory/:subcategoryId" component={Pages.SubcategoryPage} />
+          <RequireAuthRoute path="/order/complete" component={Pages.OrderCompletePage} />
           <Route exact path="/user/join" component={Pages.JoinPage} />
           <Route exact path="/user/login" component={Pages.LoginPage} />
           <Route exact path="/user/logout" component={Pages.LogoutPage} />

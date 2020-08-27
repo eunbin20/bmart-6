@@ -89,8 +89,7 @@ export default function CartSection() {
     try {
       await createOrder({ products } as CreateOrderBody);
       storage.set(STORAGE_KEY.CARTS, '[]');
-      alert('일단 주문 완료'); // 여기랑 밑에 수정해야함 (페이지 나오면)
-      history.push('/', { from: location });
+      history.push('/order/complete', { from: location });
     } catch (e) {
       if (e.response.status === ERROR_STATUS.UNAUTHORIZED) {
         history.push('/user/login', { from: location });
