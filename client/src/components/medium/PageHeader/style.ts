@@ -22,6 +22,7 @@ export const IconContainer = styled.div`
   height: 5.333vw;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const SearchBar = styled(Link)`
@@ -45,4 +46,5 @@ export const SearchBar = styled(Link)`
 
 export const LogoContainer = styled.div`
   padding-top: 1.067vw;
+  cursor: pointer;
 `;
