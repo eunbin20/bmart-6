@@ -33,4 +33,6 @@ export const Count = styled.div`
 export const Image = styled.img.attrs((props) => ({
   src: props.src,
   alt: 'cart',
-}))``;
+}))`
+  width: 6.667vw;
+`;

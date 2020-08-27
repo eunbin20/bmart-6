@@ -10,5 +10,6 @@ export const CardGridHeaderContainer = styled.div`
 
 export const SortContainer = styled.div`
   margin-left: 5.333vw;
+  font-size: 3.2vw;
   cursor: pointer;
 `;
