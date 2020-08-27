@@ -15,6 +15,7 @@ export { default as CartItem } from './small/CartItem';
 export { default as CartDeleteModal } from './small/CartDeleteModal';
 export { default as TotalCartMoney } from './small/TotalCartMoney';
 export { default as BmartLogo } from './small/BmartLogo';
+export { default as Slot } from './small/Slot';
 
 export { default as PageHeader } from './medium/PageHeader';
 export { default as SectionHeader } from './medium/SectionHeader';
@@ -34,6 +35,7 @@ export { default as SinglePageHeader } from './medium/SinglePageHeader';
 export { default as MenuListGrid } from './medium/MenuListGrid';
 export { default as MenuListGridHeader } from './medium/MenuListGridHeader';
 export { default as OrderCardListView } from './medium/OrderCardListView';
+export { default as BindPullEvent } from './medium/BindPullEvent';
 
 export { default as CategoryProductSection } from './large/CategoryProductSection';
 export { default as HotDealSection } from './large/HotDealSection';
