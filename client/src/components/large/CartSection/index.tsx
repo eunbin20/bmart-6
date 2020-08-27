@@ -6,7 +6,7 @@ import defaultImage from './aseets/checkbox-default.png';
 import { ProductInCart } from '../../../types/data';
 import { storage } from '../../../utils/storage';
 import { STORAGE_KEY, ERROR_STATUS } from '../../../commons/constants';
-import { Empty, CartItem, CartDeleteModal, TotalCartMoney } from '../../../components';
+import { Empty, CartItem, CartDeleteModal, TotalCartMoney, Loading } from '../../../components';
 import { createOrder } from '../../../apis';
 
 export default function CartSection() {
@@ -168,6 +168,7 @@ export default function CartSection() {
             onVisible={onModalVisible}
             onDelete={deleteCartsByIsActive}
           />
+          <Loading />
         </>
       ) : (
         <Empty text="장바구니가 텅 비어있어요🤔🤔🤔🤔" />

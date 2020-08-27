@@ -34,7 +34,7 @@ const shuffle = (array: IData[]) => {
   array.sort(() => Math.random() - 0.5);
 };
 
-const Slot = ({ boxHeight, isPulling }: IPull) => {
+export default function Slot({ boxHeight, isPulling }: IPull) {
   const [imgTopHeight, setImgTopHeight] = useState(defaultTopHeight);
   const isPullingFinished = boxHeight === minBoxSize && !isPulling;
   const pullContainerRef = useRef<HTMLDivElement>(null);
@@ -100,6 +100,4 @@ const Slot = ({ boxHeight, isPulling }: IPull) => {
       <S.SlotItem>땡겨요</S.SlotItem>
     </S.SlotContainer>
   );
-};
-
-export default Slot;
+}
