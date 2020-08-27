@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
 export const Header = styled.div`
+  z-index: 1;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 10.667vw;
+  width: 100%;
   padding: 0 4vw;
-
+  background: var(--white);
+  border-radius: 4vw 4vw 0vw 0vw;
   border-bottom: 0.267vw solid var(--light-gray);
 `;
 export const Title = styled.div``;
