@@ -95,17 +95,19 @@ function MainPage({ history }: RouteComponentProps): React.ReactElement {
         }}
       />
       <SectionDivider />
-      <ProductSection
-        {...{
-          products: forYouProducts ?? [],
-          viewType: VIEW_TYPE_LISTVIEW,
-          columns: 2.5,
-          header: {
-            title: '관형님을 위해 준비한 상품',
-          },
-          onLikeIconClick: toggleProductIsLikedDispatcher(forYouProductsDispatch),
-        }}
-      />
+      {userContext?.state.isAuthorized && (
+        <ProductSection
+          {...{
+            products: forYouProducts ?? [],
+            viewType: VIEW_TYPE_LISTVIEW,
+            columns: 2.5,
+            header: {
+              title: `${userContext?.state.nickname}님을 위해 준비한 상품`,
+            },
+            onLikeIconClick: toggleProductIsLikedDispatcher(forYouProductsDispatch),
+          }}
+        />
+      )}
       <SectionDivider />
       <ProductSection
         {...{
