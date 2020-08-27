@@ -30,32 +30,32 @@
     |-- src
         |-- apis
         |-- commons
-        		constants.ts
+            constants.ts
             svgs.tsx
         |-- components // UI Components
-        		|-- largs
-        		|-- medium
-        		|-- small
+            |-- largs
+            |-- medium
+            |-- small
         |-- contexts
-        		|-- user // user context
+            |-- user // user context
         |-- hooks // custom hooks
         |-- libs // libraries
         |-- pages // page components
         |-- styles // common & global styles
         |-- tyles // common types
         |-- utils // util functions..
-				App.tsx
+	App.tsx
 |-- scripts // deploy scripts
 |-- server
-		|-- bin // www
-		|-- controllers
-		|-- lib
-		|-- middlewares // express middlewares
-		|-- models // sequelize models
-		|-- routes // routing
-		|-- seeder // dummy data
-		|-- utils // constants & utils functions
-		app.js
+    |-- bin // www
+    |-- controllers
+    |-- lib
+    |-- middlewares // express middlewares
+    |-- models // sequelize models
+    |-- routes // routing
+    |-- seeder // dummy data
+    |-- utils // constants & utils functions
+    app.js
  
 ```
 
