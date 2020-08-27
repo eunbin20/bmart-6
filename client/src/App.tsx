@@ -21,7 +21,7 @@ export default function App() {
           <Route exact path="/user/login" component={Pages.LoginPage} />
           <Route exact path="/user/logout" component={Pages.LogoutPage} />
           <RequireAuthRoute path="/user/liked" component={Pages.UserLikedPage} />
-          <Route exact path="/user/order" component={Pages.OrderListPage} />
+          <RequireAuthRoute path="/user/order" component={Pages.OrderListPage} />
           <Route exact path="/detail/:productId" component={Pages.ProductDetailPage} />
           <Route exact path="/cart" component={Pages.CartPage} />
           <Redirect path="*" to="/" />
