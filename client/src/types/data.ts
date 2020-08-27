@@ -52,6 +52,7 @@ export interface ProductFilter {
   id?: number;
   sortBy?: string;
   isLiked?: boolean;
+  type?: string;
 }
 
 export type ProductGridColumns = 2 | 2.5 | 3;
