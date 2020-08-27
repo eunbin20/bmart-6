@@ -7,7 +7,7 @@ import { generateProductCards } from '../../small/ProductCard';
 interface Props {
   products: Product[];
   columns: ProductGridColumns;
-  onLikeIconClick: Function;
+  onLikeIconClick?: Function;
 }
 
 function ProductCardGrid({ products, columns, onLikeIconClick }: Props) {

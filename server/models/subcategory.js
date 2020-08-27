@@ -31,10 +31,12 @@ class Subcategory extends Model {
 
   static async findByCategoryId(categoryId) {
     if (!categoryId) return;
-    return await this.findAll({
-      attributes: ['id'],
-      where: { caetegoryId },
-    }).map((subcategory) => subcategory.id);
+    return (
+      await this.findAll({
+        attributes: ['id'],
+        where: { categoryId },
+      })
+    ).map((subcategory) => subcategory.id);
   }
 }
 

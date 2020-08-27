@@ -9,7 +9,7 @@ interface Props {
   products: Product[];
   viewType: ProductViewType;
   columns: ProductGridColumns;
-  onLikeIconClick: Function;
+  onLikeIconClick?: Function;
 }
 
 function ProductSection({
