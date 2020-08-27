@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { StyledPullContainer, StyledPullText, StyledSlotsWrap } from './style';
 
+/* 땡겨요 기능은 2조 명우님의 코드를 참고하였습니다. by 동욱*/
+/* 땡겨요 기능은 2조 명우님의 코드를 참고하였습니다. by 동욱*/
+/* 땡겨요 기능은 2조 명우님의 코드를 참고하였습니다. by 동욱*/
+
 interface IPull {
   boxHeight: number;
   isPulling: boolean;
@@ -9,7 +13,7 @@ interface IPull {
 const range = 40;
 const rangeHalf = range / 2;
 const defaultTopHeight = 0;
-const minBoxSize = 100;
+const minBoxSize = 70;
 
 interface IData {
   emoji: string;
@@ -101,25 +105,21 @@ const Slot = ({ boxHeight, isPulling }: IPull) => {
     }
   }, [boxHeight, isPullingFinished]);
 
-  const slotsOpacity = 1 - Math.abs(imgTopHeight / rangeHalf);
   const transformOption = () => {
     const newHight = boxHeight / 4;
     if (newHight <= 0 || newHight >= window.innerHeight) {
       return `translate(0px, 0px)`;
-    }
-    if (isPullingFinished) {
-      return `translate(0px, 50px)`;
     }
     return `translate(0px, ${newHight}px)`;
   };
 
   return (
     <StyledPullContainer
-      className="testtest"
-      style={{ height: `${boxHeight}px`, transform: transformOption() }}
+      style={{ transform: transformOption() }}
+      // style={{ height: `${boxHeight}px`, transform: transformOption() }}
       ref={pullContainerRef}
     >
-      <StyledSlotsWrap style={{ top: `${imgTopHeight}px`, opacity: slotsOpacity }}>
+      <StyledSlotsWrap>
         {dataIdx === -1 ? `${datas[getRandomIdx()].text}` : datas[dataIdx].emoji}
       </StyledSlotsWrap>
       <StyledPullText>땡겨요</StyledPullText>

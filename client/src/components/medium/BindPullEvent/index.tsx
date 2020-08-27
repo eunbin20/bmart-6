@@ -2,12 +2,17 @@ import React, { useState, useMemo, useRef } from 'react';
 import styled from 'styled-components';
 import { Slot } from '../../../components';
 
+/* 땡겨요 기능은 2조 명우님의 코드를 참고하였습니다. by 동욱*/
+/* 땡겨요 기능은 2조 명우님의 코드를 참고하였습니다. by 동욱*/
+/* 땡겨요 기능은 2조 명우님의 코드를 참고하였습니다. by 동욱*/
+
 const Wrap = styled.div<{
   transitionTime: number;
 }>`
   transition: all ${(props) => `${props.transitionTime}`}ms linear;
   overflow-y: hidden;
   overflow-x: hidden;
+  top: -40px; // slot height
   position: relative;
 `;
 const ChildrenWraper = styled.div``;
@@ -22,7 +27,7 @@ interface IPos {
 }
 let lastTouch: IPos = { x: 0, y: 0 };
 let startTouch: IPos = { x: 0, y: 0 };
-const minBoxSize = 100;
+const minBoxSize = 70;
 
 const defaultTransitionTime = 0;
 const finishTransitionTime = 200;
@@ -32,7 +37,6 @@ let isTouchStart = false;
 
 function isPullDown(dy: number, dx: number) {
   const angleDeg = (Math.atan2(dy, dx) * 180) / Math.PI;
-
   return angleDeg > 60 && angleDeg < 120;
 }
 
@@ -70,7 +74,7 @@ export default function BindPullEvent({ children }: Props) {
   };
 
   const setBoxHeightByDiff = (touch: React.Touch) => {
-    const defaultPadding = 80;
+    const defaultPadding = 0;
     const heightDiffer =
       touch.clientY - startTouch.y + (isFinishing ? minBoxSize + defaultPadding : 0);
     const newHeight = Math.round(heightDiffer / 2);
@@ -84,11 +88,9 @@ export default function BindPullEvent({ children }: Props) {
     const touch = touches[0];
     if (!isPullDown(touch.clientY - lastTouch.y, touch.clientX - lastTouch.x)) return;
     if (touch.clientY - lastTouch.y > 0 && isScrollInTop()) {
-      setBoxHeightByDiff(touch);
       lastTouch = { x: touch.clientX, y: touch.clientY };
-    } else if (touch.clientY - lastTouch.y < 0) {
-      setBoxHeightByDiff(touch);
     }
+    setBoxHeightByDiff(touch);
   };
 
   const isScrollInTop = () => {
@@ -129,16 +131,18 @@ export default function BindPullEvent({ children }: Props) {
   };
 
   return (
-    <Wrap
-      transitionTime={defaultTransitionTime}
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={onTouchEnd}
-    >
+    <>
       {getSlot}
-      <ChildrenWraper style={{ transform: transformOption() }} ref={transitionContainerRef}>
-        {children}
-      </ChildrenWraper>
-    </Wrap>
+      <Wrap
+        transitionTime={defaultTransitionTime}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        <ChildrenWraper style={{ transform: transformOption() }} ref={transitionContainerRef}>
+          {children}
+        </ChildrenWraper>
+      </Wrap>
+    </>
   );
 }
