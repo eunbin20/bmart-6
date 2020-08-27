@@ -9,21 +9,36 @@ interface Props {
   products: Product[];
   viewType: ProductViewType;
   columns: ProductGridColumns;
+  onLikeIconClick?: Function;
 }
 
-function ProductSection({ header, products, viewType, columns }: Props): React.ReactElement {
+function ProductSection({
+  header,
+  products,
+  viewType,
+  columns,
+  onLikeIconClick,
+}: Props): React.ReactElement {
   return (
     <S.ProductSection>
       <S.HeaderContainer>{<SectionHeader {...header} />}</S.HeaderContainer>
       {products.length === 0 ? (
-        <S.ProductGridContainer>검색 결과가 없습니다.😭</S.ProductGridContainer>
+        <S.ProductGridContainer>검색 결과가 없습니다.</S.ProductGridContainer>
       ) : viewType === VIEW_TYPE_GRID ? (
         <S.ProductGridContainer>
-          {<ProductCardGrid products={products} columns={columns} />}
+          <ProductCardGrid
+            products={products}
+            columns={columns}
+            onLikeIconClick={onLikeIconClick}
+          />
         </S.ProductGridContainer>
       ) : (
         <S.ProductListViewContainer>
-          {<ProductCardListView products={products} columns={columns} />}
+          <ProductCardListView
+            products={products}
+            columns={columns}
+            onLikeIconClick={onLikeIconClick}
+          />
         </S.ProductListViewContainer>
       )}
     </S.ProductSection>

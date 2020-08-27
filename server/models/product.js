@@ -1,5 +1,5 @@
-const { Model, Op } = require('sequelize');
-
+const { Model, Op, literal } = require('sequelize');
+const UserProductRelation = require('./user_product_relation');
 class Product extends Model {
   static init(sequelize, DataTypes) {
     return super.init(
@@ -67,8 +67,38 @@ class Product extends Model {
     }
   }
 
+  static addIsLikedAttribute(userId = -1) {
+    return [
+      literal(
+        `(SELECT COUNT(*) FROM UserProductRelation WHERE userId = ${userId} and productId = Product.id)`,
+      ),
+      'isLiked',
+    ];
+  }
+
+  static async getProductsByType(type, data) {
+    switch (type) {
+      case 'userliked':
+        const likedProductIds = (
+          await UserProductRelation.findAll({
+            attributes: ['productId'],
+            where: { userId: data.userId },
+          })
+        ).map((relation) => relation.productId);
+        return this.filter({ ...data, limit: likedProductIds.length, ids: likedProductIds });
+      case 'recommend':
+        return this.filter({ ...data, ids: [10, 20, 30, 40, 50] });
+      case 'bestseller':
+        return this.filter({ ...data, ids: [305, 276, 536, 159, 86] });
+      default:
+        return this.filter(...data);
+    }
+  }
+
   static async filter({
     id,
+    ids,
+    userId,
     limit = 20,
     offset = 0,
     title,
@@ -80,9 +110,14 @@ class Product extends Model {
     return this.findAll({
       limit: +limit,
       offset: +offset,
+      attributes: {
+        include: [this.addIsLikedAttribute(userId)],
+      },
+
       where: {
-        ...(title && { title: { [Op.like]: `%${title}%` } }),
+        ...(ids && { id: ids }),
         ...(id && { id: +id }),
+        ...(title && { title: { [Op.like]: `%${title}%` } }),
         ...(subcategoryId && { subcategoryId: +subcategoryId }),
         ...(subcategoryIds && { subcategoryId: subcategoryIds }),
         ...(isDiscounted && { isDiscounted: +isDiscounted }),

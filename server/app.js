@@ -29,7 +29,10 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, '../client/build')));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+  // 개발환경에서 build.js 없으면 에러를 띄워서 조건문 처리했음..
+}
 app.use(passport.initialize());
 passportConfig(); // strategy 등록
 app.use('/api', router);

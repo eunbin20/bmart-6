@@ -1,18 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { TwoColumnCard, ThreeColumnCard, TwoHalfColumnCard } from './style';
 import { Product, ProductGridColumns } from '../../../types/data';
-import { LikeIcon } from '../../../commons/svgs';
+import { ProductLikeIcon } from '../..';
 
 interface Props extends Product {
   columns: ProductGridColumns;
-  isLiked?: boolean;
+  onLikeIconClick?: Function;
   //   to: string;
   //   setRef?: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
 }
 
-export const generateProductCards = (products: Product[], columns: ProductGridColumns) => {
-  return products.map(({ id, ...rest }) => <ProductCard key={id} {...{ id, columns, ...rest }} />);
+export const generateProductCards = (
+  products: Product[],
+  columns: ProductGridColumns,
+  onLikeIconClick?: Function,
+) => {
+  return products.map(({ id, ...rest }) => (
+    <ProductCard key={id} {...{ id, columns, onLikeIconClick, ...rest }} />
+  ));
 };
 
 function selectStyle(columns: ProductGridColumns) {
@@ -28,7 +34,7 @@ function selectStyle(columns: ProductGridColumns) {
 
 function ProductCard({
   columns,
-  isLiked = false,
+  onLikeIconClick,
   id,
   imageUrl,
   title,
@@ -36,20 +42,19 @@ function ProductCard({
   discountedPrice,
   discountedRate,
   isDiscounted,
+  isLiked,
 }: Props): React.ReactElement {
   const S = selectStyle(columns);
-  const [liked, setLiked] = useState(isLiked);
-
-  const likeIconToggler = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
-    e.preventDefault();
-    setLiked((liked) => !liked);
-  };
 
   return (
     <S.LinkWrapper to={`/detail/${id}`}>
       <S.ImgWrapper>
         <S.Image alt={'card'} src={imageUrl} />
-        <S.LikeIconWrapper>{LikeIcon(liked, likeIconToggler)}</S.LikeIconWrapper>
+        {onLikeIconClick && (
+          <S.LikeIconWrapper>
+            <ProductLikeIcon productId={id} isLiked={isLiked} onClick={onLikeIconClick} />
+          </S.LikeIconWrapper>
+        )}
       </S.ImgWrapper>
       <S.ContentContainer>
         <S.Title>{title}</S.Title>

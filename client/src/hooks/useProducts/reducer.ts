@@ -1,6 +1,20 @@
+import { Product } from '../../types/data';
 import { ProductsState } from '../../types/states';
 import { ProductsAction } from '../../types/actions';
-import { ACTION_GET_PRODUCTS, ACTION_GET_MORE_PRODUCTS, ACTION_ERROR } from './actions';
+import {
+  ACTION_GET_PRODUCTS,
+  ACTION_GET_MORE_PRODUCTS,
+  ACTION_ERROR,
+  ACTION_LIKE_PRODUCT,
+  ACTION_UNLIKE_PRODUCT,
+} from './actions';
+
+function getProductsAfterLike(products: Product[], productId: number, isLiked: boolean) {
+  const newProducts = [...products];
+  const index = newProducts.findIndex((product) => product.id === productId);
+  newProducts[index].isLiked = isLiked;
+  return newProducts;
+}
 
 export function productsReducer(state: ProductsState, action: ProductsAction): ProductsState {
   switch (action.type) {
@@ -18,6 +32,19 @@ export function productsReducer(state: ProductsState, action: ProductsAction): P
         status: action.value.status,
       };
 
+    case ACTION_LIKE_PRODUCT:
+      if (!state.products || !action.value.productId) return state;
+      return {
+        products: getProductsAfterLike(state.products, action.value.productId, true),
+        status: action.value.status,
+      };
+
+    case ACTION_UNLIKE_PRODUCT:
+      if (!state.products || !action.value.productId) return state;
+      return {
+        products: getProductsAfterLike(state.products, action.value.productId, false),
+        status: action.value.status,
+      };
     case ACTION_ERROR:
       return {
         ...state,

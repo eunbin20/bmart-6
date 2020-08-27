@@ -39,7 +39,6 @@ module.exports = () => {
         secretOrKey: process.env.JWT_SECRET,
       },
       async (payload, done) => {
-        console.log('JWT Strategy Success');
         try {
           const result = await User.findOne({ where: { id: payload.userId } });
           if (!result) {

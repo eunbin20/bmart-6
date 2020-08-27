@@ -7,7 +7,7 @@ import {
   PageHeader,
   SectionDivider,
 } from '../../components';
-import useProducts from '../../hooks/useProducts';
+import useProducts, { toggleProductIsLikedDispatcher } from '../../hooks/useProducts';
 import { getProducts } from '../../hooks/useProducts/actions';
 import { SORTOPTIONS, DEFAULT_SORT_OPTION } from '../../commons/constants';
 import { RouteComponentProps } from 'react-router-dom';
@@ -38,7 +38,13 @@ function SubcategoryPage({ match: { params } }: RouteComponentProps<Params>): Re
         {<ProductCardGridHeader sortBy={sortBy} changeSort={changeSort} />}
       </S.ProductCardGridHeaderContainer>
       <S.ProductCardGridContainer>
-        {products && <ProductCardGrid products={products} columns={2} />}
+        {products && (
+          <ProductCardGrid
+            products={products}
+            columns={2}
+            onLikeIconClick={toggleProductIsLikedDispatcher(productDispatch)}
+          />
+        )}
       </S.ProductCardGridContainer>
     </DefaultTemplate>
   );

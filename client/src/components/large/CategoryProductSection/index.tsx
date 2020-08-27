@@ -6,8 +6,9 @@ import { VIEW_TYPE_GRID } from '../../../commons/constants';
 
 interface Props {
   categoryProducts: CategoryProducts[];
+  onLikeIconClick?: Function;
 }
-function CategoryProductSection({ categoryProducts }: Props): React.ReactElement {
+function CategoryProductSection({ categoryProducts, onLikeIconClick }: Props): React.ReactElement {
   const categoryRefs = useRef([]) as React.MutableRefObject<Array<HTMLDivElement>>;
   const bindCategoryRef = (ref: HTMLDivElement | null, index: number) => {
     if (ref !== null) {
@@ -30,6 +31,7 @@ function CategoryProductSection({ categoryProducts }: Props): React.ReactElement
             header={{ title: categoryProduct.category.name, isCategoryProductHeader: true }}
             products={categoryProduct.products}
             viewType={VIEW_TYPE_GRID}
+            onLikeIconClick={onLikeIconClick}
             columns={2}
           />
           <SectionDivider />

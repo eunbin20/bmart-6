@@ -10,29 +10,46 @@ import {
   CategoryIconGrid,
   CartBadge,
 } from '../../components';
-import useProducts from '../../hooks/useProducts';
+import useProducts, { toggleProductIsLikedDispatcher } from '../../hooks/useProducts';
 import { BANNERS, SORT_BY, VIEW_TYPE_GRID, VIEW_TYPE_LISTVIEW } from '../../commons/constants';
-import { getCategories } from '../../apis';
-import { Category } from '../../types/data';
+import { getCategories, getProducts } from '../../apis';
+import { Category, CategoryProducts } from '../../types/data';
 import { storage } from '../../utils/storage';
 
 function MainPage(): React.ReactElement {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [{ products: hotDealProducts }] = useProducts({ limit: 4, sortBy: SORT_BY.DISCOUNTEDRATE });
-  const [{ products: eatNowProducts }] = useProducts({ limit: 6 });
-  const [{ products: forYouProducts }] = useProducts({ limit: 5 });
-  const [{ products: bestSellerProducts }] = useProducts({ limit: 5 });
-  const [{ products: dummy }] = useProducts({ limit: 4 });
-  const [cartCount, setCartCount] = useState(storage.getProductTotalCount()); // 장바구니에 렌더할 Product Count 개수
+  const [{ products: hotDealProducts }] = useProducts({
+    limit: 4,
+    sortBy: SORT_BY.DISCOUNTEDRATE,
+  });
 
-  const dummyProducts = categories.map((category, index) => ({
-    category,
-    products: dummy ?? [],
-  }));
+  const [{ products: eatNowProducts }, eatNowProductsDispatch] = useProducts({
+    categoryId: 7,
+    limit: 6,
+  });
+
+  const [{ products: forYouProducts }, forYouProductsDispatch] = useProducts({
+    type: 'recommend',
+  });
+
+  const [{ products: bestSellerProducts }, bestSellerProductsDispatch] = useProducts({
+    type: 'bestseller',
+  });
+
+  const [cartCount] = useState(storage.getProductTotalCount()); // 장바구니에 렌더할 Product Count 개수
+  const [categoryProducts, setCategoryProducts] = useState<CategoryProducts[]>([]);
 
   useEffect(() => {
-    getCategories().then((categories) => {
-      setCategories(categories.data);
+    categories.forEach((category: Category) => {
+      getProducts({ limit: 4, categoryId: category.id }).then(({ data: products }) => {
+        setCategoryProducts((categoryProducts) => [...categoryProducts, { category, products }]);
+      });
+    });
+  }, [categories]);
+
+  useEffect(() => {
+    getCategories().then(({ data: categories }) => {
+      setCategories(categories);
     });
   }, []);
 
@@ -51,6 +68,7 @@ function MainPage(): React.ReactElement {
             title: '지금 뭐먹지?',
             description: '#간식시간',
           },
+          onLikeIconClick: toggleProductIsLikedDispatcher(eatNowProductsDispatch),
         }}
       />
       <SectionDivider />
@@ -69,6 +87,7 @@ function MainPage(): React.ReactElement {
           header: {
             title: '관형님을 위해 준비한 상품',
           },
+          onLikeIconClick: toggleProductIsLikedDispatcher(forYouProductsDispatch),
         }}
       />
       <SectionDivider />
@@ -80,11 +99,12 @@ function MainPage(): React.ReactElement {
           header: {
             title: '요즘 잘 팔려요',
           },
+          onLikeIconClick: toggleProductIsLikedDispatcher(bestSellerProductsDispatch),
         }}
       />
       <SectionDivider />
       <BannerSlider banners={BANNERS} />
-      <CategoryProductSection categoryProducts={dummyProducts} />
+      <CategoryProductSection categoryProducts={categoryProducts} />
       <CartBadge count={cartCount} />
     </DefaultTemplate>
   );

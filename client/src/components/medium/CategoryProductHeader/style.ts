@@ -5,6 +5,7 @@ export const CategoryProductHeader = styled.div`
   align-items: center;
   width: 100%;
   overflow-x: scroll;
+  scroll-snap-type: x mandatory;
 
   padding: 0 15px;
   background: var(--white);
@@ -18,7 +19,7 @@ export const CategoryProductHeader = styled.div`
   }
 
   &.sticky + .category-product-section {
-    padding-top: 59px;
+    margin-top: 59px;
   }
 `;
 
@@ -33,6 +34,7 @@ export const CategoryChip = styled.div`
   background: var(--white);
   color: #888888;
   margin-right: 14px;
+  scroll-snap-align: center;
 
   &.selected {
     border-radius: 14px;
