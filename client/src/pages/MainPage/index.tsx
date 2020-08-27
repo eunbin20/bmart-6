@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import DefaultTemplate from '../Default';
 import {
@@ -39,26 +39,42 @@ function MainPage({ history, location }: RouteComponentProps): React.ReactElemen
   const [{ products: forYouProducts, status: forYouStatus }, forYouProductsDispatch] = useProducts({
     type: FILTER_TYPE.RECOMMEND,
   });
+
   const [
-    { products: bestSellerProducts, status: besetSellerStatus },
+    { products: bestSellerProducts, status: bestSellerStatus },
     bestSellerProductsDispatch,
   ] = useProducts({ type: FILTER_TYPE.BESTSELLER });
 
   const [cartCount] = useState(storage.getProductTotalCount()); // 장바구니에 렌더할 Product Count 개수
   const [categoryProducts, setCategoryProducts] = useState<CategoryProducts[]>([]);
+  const isMounted = useRef(true);
 
   useEffect(() => {
+    setCategoryProducts(categories.map((category) => ({ category, products: [] })));
+
     categories.forEach((category: Category) => {
       getProducts({ limit: 4, categoryId: category.id }).then(({ data: products }) => {
-        setCategoryProducts((categoryProducts) => [...categoryProducts, { category, products }]);
+        if (!isMounted.current) return;
+        setCategoryProducts((categoryProducts) => {
+          const updatedCategoryProducts = [...categoryProducts];
+          const index = updatedCategoryProducts.findIndex(
+            (item) => item.category.id === category.id,
+          );
+          updatedCategoryProducts[index].products = products;
+          return updatedCategoryProducts;
+        });
       });
     });
   }, [categories]);
 
   useEffect(() => {
     getCategories().then(({ data: categories }) => {
+      if (!isMounted.current) return;
       setCategories(categories);
     });
+    return () => {
+      isMounted.current = false;
+    };
   }, []);
 
   useEffect(() => {
@@ -66,11 +82,11 @@ function MainPage({ history, location }: RouteComponentProps): React.ReactElemen
       forYouStatus === ERROR_STATUS.UNAUTHORIZED ||
       hotDealStatus === ERROR_STATUS.UNAUTHORIZED ||
       eatNowStatus === ERROR_STATUS.UNAUTHORIZED ||
-      besetSellerStatus === ERROR_STATUS.UNAUTHORIZED
+     SellerStatus === ERROR_STATUS.UNAUTHORIZED
     ) {
       history.push('/user/login', { from: location });
     }
-  }, [forYouStatus, hotDealStatus, eatNowStatus, besetSellerStatus]);
+  }, [forYouStatus, hotDealStatus, eatNowStatus, bestSellerStatus]);
 
   return (
     <DefaultTemplate>
