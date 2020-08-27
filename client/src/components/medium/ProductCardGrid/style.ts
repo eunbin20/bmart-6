@@ -7,14 +7,14 @@ export const CardGridContainer = styled.div`
         display: grid;
         width: 100%;
         grid-template-columns: repeat(2, 1fr);
-        column-gap: 12px;
-        row-gap: 15px;
+        column-gap: 3.200vw;
+        row-gap: 4vw;
       `
       : `
         display: grid;
         width: 100%;
         grid-template-columns: repeat(3, 1fr);
-        column-gap: 8px;
-        row-gap: 14px;
+        column-gap: 2.133vw;
+        row-gap: 3.733vw;
       `}
 `;

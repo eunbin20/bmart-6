@@ -45,7 +45,7 @@ function SearchBar({
       <S.IconContainer
         onClick={() => (location.state ? history.goBack() : history.push('/', { from: location }))}
       >
-        <Framework7Icon iconName="arrow_left" fontSize={'20px'} />
+        <Framework7Icon iconName="arrow_left" fontSize={'5.333vw'} />
       </S.IconContainer>
       <S.Input
         value={title}
@@ -55,7 +55,7 @@ function SearchBar({
         autoFocus={isSearchPage}
       ></S.Input>
       <S.IconContainer onClick={() => onSearchIconClick()}>
-        <Framework7Icon iconName="search" fontSize={'20px'} />
+        <Framework7Icon iconName="search" fontSize={'5.333vw'} />
       </S.IconContainer>
     </S.SearchBar>
   );

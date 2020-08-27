@@ -6,11 +6,11 @@ export const Grid = styled.div`
   width: 100%;
   background: var(--light-gray);
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1px;
+  grid-gap: 0.267vw;
 `;
 
 export const CardContainer = styled(Link)`
-  height: 40px;
+  height: 10.667vw;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -19,8 +19,8 @@ export const CardContainer = styled(Link)`
 
 export const Card = styled.div`
   font-weight: 500;
-  font-size: 13px;
-  line-height: 15px;
-  margin-left: 14px;
+  font-size: 3.467vw;
+  line-height: 4vw;
+  margin-left: 3.733vw;
   color: var(--black);
 `;

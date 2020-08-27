@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const Logo = styled.img`
-  width: ${(props) => props.style?.width ?? '60px'};
+  width: ${(props) => props.style?.width ?? '16vw'};
 `;
 function BmartLogo({ width }: Props): React.ReactElement {
   return <Logo src="/assets/bmart-logo.png" style={{ width }}></Logo>;

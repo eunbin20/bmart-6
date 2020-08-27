@@ -4,8 +4,8 @@ import styled from 'styled-components';
 interface Props {
   productId: number;
   isLiked: boolean;
-  containerSize?: number;
-  iconSize?: number;
+  containerSize?: string;
+  iconSize?: string;
   onClick: Function;
 }
 
@@ -13,8 +13,8 @@ const LikeIconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: ${(props) => props?.style?.height ?? '26px'};
-  width: ${(props) => props?.style?.height ?? '26px'};
+  height: ${(props) => props?.style?.height ?? '6.933vw'};
+  width: ${(props) => props?.style?.height ?? '6.933vw'};
 
   background: rgba(0, 0, 0, 0.4);
   border-radius: 50%;
@@ -23,12 +23,12 @@ const LikeIconContainer = styled.div`
 function ProductLikeIcon({
   productId,
   isLiked,
-  containerSize = 26,
-  iconSize = 20,
+  containerSize = '6.933vw',
+  iconSize = '5.333vw',
   onClick,
 }: Props): React.ReactElement {
   return (
-    <LikeIconContainer style={{ height: `${containerSize}px` }}>
+    <LikeIconContainer style={{ height: `${containerSize}` }}>
       <svg
         onClick={(e) => {
           e.preventDefault();
