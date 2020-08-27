@@ -1,8 +1,7 @@
 import React from 'react';
 import * as S from './style';
 import { useHistory, useLocation } from 'react-router-dom';
-import { Logo } from '../../../commons/svgs';
-import { Framework7Icon } from '../..';
+import { Framework7Icon, BmartLogo } from '../..';
 import { setLink } from '../../../utils/functions';
 
 interface Props {
@@ -25,7 +24,9 @@ function PageHeader({ isHome }: Props): React.ReactElement {
             />
           )}
         </S.IconContainer>
-        <S.LogoContainer onClick={() => routePage('/')}>{Logo()}</S.LogoContainer>
+        <S.LogoContainer onClick={() => routePage('/')}>
+          <BmartLogo />
+        </S.LogoContainer>
         <S.IconContainer>
           <Framework7Icon iconName={'bars'} onClick={() => routePage('/menu')} />
         </S.IconContainer>
