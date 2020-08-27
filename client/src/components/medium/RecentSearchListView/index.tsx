@@ -32,7 +32,11 @@ function RecentSearchListView({ searches, deleteSearch }: Props): React.ReactEle
                     deleteSearch(title);
                   }}
                 >
-                  <Framework7Icon iconName={'multiply'} fontSize={'22px'} color={'var(--gray)'} />
+                  <Framework7Icon
+                    iconName={'multiply'}
+                    fontSize={'5.867vw'}
+                    color={'var(--gray)'}
+                  />
                 </S.DeleteIconContainer>
               </S.SearchTrailingContainer>
             </S.RecentSearchCard>

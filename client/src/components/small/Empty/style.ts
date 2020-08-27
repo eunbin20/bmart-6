@@ -10,7 +10,9 @@ export const EmptyContainer = styled.div<EmptyContainerProps>`
   align-items: center;
   flex-direction: column;
   height: ${(props: EmptyContainerProps) =>
-    props.subtractHeight ? `calc(100vh - 52px - ${props.subtractHeight}px)` : 'calc(100vh - 52px)'};
+    props.subtractHeight
+      ? `calc(100vh - 13.867vw - ${props.subtractHeight}px)`
+      : 'calc(100vh - 13.867vw)'};
 `;
 
 export const EmptyImage = styled.img.attrs((props) => ({
@@ -18,6 +20,6 @@ export const EmptyImage = styled.img.attrs((props) => ({
 }))``;
 
 export const EmptyText = styled.div`
-  font-size: 16px;
-  margin-top: 20px;
+  font-size: 4.267vw;
+  margin-top: 5.333vw;
 `;

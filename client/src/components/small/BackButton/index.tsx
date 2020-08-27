@@ -12,7 +12,7 @@ function BackButton(): React.ReactElement {
 
   return (
     <IconContainer onClick={() => history.goBack()}>
-      <Framework7Icon iconName="arrow_left" fontSize={'20px'} />
+      <Framework7Icon iconName="arrow_left" fontSize={'5.333vw'} />
     </IconContainer>
   );
 }

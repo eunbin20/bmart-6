@@ -3,14 +3,14 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   /* bottom: 0; */
   width: 100%;
-  margin-bottom: 45px;
+  margin-bottom: 12vw;
 `;
 
 export const PriceTotalBox = styled.div`
-  padding: 35px 14px 24px 14px;
-  border-top: 1px solid var(--border-gray);
+  padding: 9.333vw 3.733vw 6.4vw 3.733vw;
+  border-top: 0.267vw solid var(--border-gray);
   & > .cart-money-content + .cart-money-content {
-    margin-top: 20px;
+    margin-top: 5.333vw;
   }
 `;
 
@@ -22,14 +22,14 @@ export const Content = styled.div.attrs({
 `;
 
 export const Text = styled.div`
-  font-size: 18px;
+  font-size: 4.8vw;
   font-weight: 700;
 `;
 
 export const MinimizePrice = styled.div`
-  margin-top: 10px;
+  margin-top: 2.667vw;
   text-align: right;
-  font-size: 17px;
+  font-size: 4.533vw;
   color: var(--red);
 `;
 
@@ -37,22 +37,22 @@ export const EventText = styled.div<{ hasMargin?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 15px;
+  font-size: 4vw;
   font-weight: 500;
-  margin-top: ${(props) => (props.hasMargin ? '24px' : '5px')};
+  margin-top: ${(props) => (props.hasMargin ? '6.400vw' : '1.333vw')};
 `;
 
 export const DiscriptionBox = styled.div`
-  padding: 14px;
+  padding: 3.733vw;
   background: var(--light-gray);
   & > .money-total-des + .money-total-des {
-    margin-top: 10px;
+    margin-top: 2.667vw;
   }
 `;
 
 export const DiscriptionText = styled.div.attrs({
   className: 'money-total-des',
 })`
-  font-size: 12px;
-  line-height: 15px;
+  font-size: 3.2vw;
+  line-height: 4vw;
 `;

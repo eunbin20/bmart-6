@@ -26,9 +26,6 @@
 //   }
 // }
 
-* {
-}
-
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -64,13 +61,13 @@ body {
   align-items: center;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 700vw) {
   html {
     font-size: 75%;
   }
 }
 
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 1400vw) {
   html {
     font-size: 100%;
   }
@@ -82,7 +79,7 @@ body {
 }
 .strike::before {
   content: '';
-  border-bottom: 2px solid black;
+  border-bottom: 0.533vw solid black;
   width: 100%;
   position: absolute;
   right: 0;

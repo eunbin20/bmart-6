@@ -10,13 +10,13 @@ export const SearchBarContainer = styled.div`
 `;
 
 export const ProductCardGridHeaderContainer = styled.div`
-  height: 50px;
+  height: 13.333vw;
 `;
 
 export const ProductCardGridContainer = styled.div`
   width: 100%;
 
-  padding: 0 15px;
+  padding: 0 4vw;
 `;
 
 export const ImageContainer = styled.div`
@@ -25,16 +25,16 @@ export const ImageContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 0 15px;
+  padding: 0 4vw;
 `;
 
 export const NoProductImage = styled.img`
   width: 100%;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  margin-right: 5.333vw;
+  margin-bottom: 5.333vw;
 `;
 
 export const NoProductTitle = styled.div`
   font-weight: 500;
-  font-size: 20px;
+  font-size: 5.333vw;
 `;

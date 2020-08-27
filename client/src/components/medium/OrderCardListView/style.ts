@@ -9,5 +9,5 @@ export const OrderCardListView = styled.div`
 
 export const OrderCardContainer = styled.div`
   width: 100%;
-  margin-bottom: 5px;
+  margin-bottom: 1.333vw;
 `;

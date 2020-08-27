@@ -11,7 +11,7 @@ export const ContentContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: calc(100vh - 52px);
+  height: calc(100vh - 13.867vw);
 `;
 
 export const FriendsImage = styled.img.attrs((props) => ({
@@ -19,36 +19,36 @@ export const FriendsImage = styled.img.attrs((props) => ({
 }))``;
 
 export const Title = styled.div`
-  font-size: 18px;
+  font-size: 4.8vw;
   font-weight: bold;
   color: var(--green);
-  margin-top: 26px;
+  margin-top: 6.933vw;
 `;
 
 export const Description = styled.div`
-  font-size: 14px;
-  margin-top: 10px;
+  font-size: 3.733vw;
+  margin-top: 2.667vw;
 `;
 
 export const MenuButtonList = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 32px;
+  margin-top: 8.533vw;
 `;
 
 export const MenuButton = styled(Link)`
   display: flex;
-  width: 146px;
-  height: 36px;
-  border: 1px solid var(--gray);
-  border-radius: 4px;
+  width: 38.933vw;
+  height: 9.6vw;
+  border: 0.267vw solid var(--gray);
+  border-radius: 1.067vw;
   align-items: center;
   justify-content: center;
   text-align: center;
   text-decoration: none;
   flex-shrink: 0;
   color: var(--black);
-  margin-top: 8px;
+  margin-top: 2.133vw;
 
   &:first-child {
     margin-top: 0;
@@ -56,5 +56,5 @@ export const MenuButton = styled(Link)`
 `;
 
 export const MenuButtonText = styled.div`
-  margin-left: 6px;
+  margin-left: 1.6vw;
 `;

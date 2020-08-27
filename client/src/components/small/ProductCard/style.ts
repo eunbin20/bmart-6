@@ -40,7 +40,7 @@ const PriceWrapper = styled.div`
 `;
 
 const LinkWrapper = styled(Link)`
-  width: 165px;
+  width: 44vw;
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -53,46 +53,46 @@ const LikeIconWrapper = styled.div`
   position: relative;
   float: right;
 
-  bottom: 36px;
-  right: 10px;
+  bottom: 9.6vw;
+  right: 2.667vw;
 `;
 
 const ImgWrapper = styled.div`
   width: 100%;
-  height: 165px;
-  margin-bottom: 7px;
+  height: 44vw;
+  margin-bottom: 1.867vw;
 `;
 
 const Title = styled.div`
-  font-size: 10px;
-  line-height: 12px;
-  margin-bottom: 5px;
+  font-size: 2.667vw;
+  line-height: 3.2vw;
+  margin-bottom: 1.333vw;
 `;
 
 const DiscountedRate = styled.div`
   font-weight: bold;
-  font-size: 9px;
-  line-height: 10px;
+  font-size: 2.4vw;
+  line-height: 2.667vw;
   letter-spacing: -0.1em;
-  margin-right: 1px;
+  margin-right: 0.267vw;
 
   color: var(--red);
 `;
 
 const DiscountedPrice = styled.div`
-  font-size: 8px;
-  line-height: 9px;
+  font-size: 2.133vw;
+  line-height: 2.4vw;
   letter-spacing: -0.1em;
   text-decoration-line: line-through;
-  margin-right: 1px;
+  margin-right: 0.267vw;
 
   color: var(--gray);
 `;
 
 const Price = styled.div`
   font-weight: bold;
-  font-size: 10px;
-  line-height: 12px;
+  font-size: 2.667vw;
+  line-height: 3.2vw;
 
   letter-spacing: -0.1em;
 `;
@@ -115,32 +115,32 @@ export const TwoHalfColumnCard = {
   Image,
   PriceWrapper,
   LinkWrapper: styled(LinkWrapper)`
-    width: 120px;
+    width: 32vw;
   `,
   ImgWrapper: styled(ImgWrapper)`
-    height: 120px;
-    margin-bottom: 7px;
+    height: 32vw;
+    margin-bottom: 1.867vw;
   `,
   LikeIconWrapper: styled(LikeIconWrapper)`
-    bottom: 33px;
-    right: 7px;
+    bottom: 8.8vw;
+    right: 1.867vw;
   `,
   Title: styled(Title)`
-    font-size: 11px;
-    line-height: 13px;
+    font-size: 2.933vw;
+    line-height: 3.467vw;
   `,
   DiscountedRate: styled(DiscountedRate)`
-    font-size: 10px;
-    line-height: 12px;
+    font-size: 2.667vw;
+    line-height: 3.2vw;
   `,
   DiscountedPrice: styled(DiscountedPrice)`
-    font-size: 9px;
-    line-height: 10px;
-    margin-right: 1px;
+    font-size: 2.4vw;
+    line-height: 2.667vw;
+    margin-right: 0.267vw;
   `,
   Price: styled(Price)`
-    font-size: 11px;
-    line-height: 13px;
+    font-size: 2.933vw;
+    line-height: 3.467vw;
   `,
 };
 
@@ -149,29 +149,29 @@ export const ThreeColumnCard = {
   Image,
   PriceWrapper,
   LinkWrapper: styled(LinkWrapper)`
-    width: 106px;
+    width: 28.267vw;
   `,
   ImgWrapper: styled(ImgWrapper)`
-    height: 106px;
-    margin-bottom: 6px;
+    height: 28.267vw;
+    margin-bottom: 1.6vw;
   `,
   LikeIconWrapper: styled(LikeIconWrapper)`
-    bottom: 33px;
-    right: 7px;
+    bottom: 8.8vw;
+    right: 1.867vw;
   `,
   Title: styled(Title)`
-    font-size: 10px;
-    line-height: 12px;
+    font-size: 2.667vw;
+    line-height: 3.2vw;
   `,
   DiscountedRate: styled(DiscountedRate)`
-    font-size: 9px;
-    line-height: 10px;
+    font-size: 2.4vw;
+    line-height: 2.667vw;
   `,
   DiscountedPrice: styled(DiscountedPrice)`
-    margin-right: 1px;
+    margin-right: 0.267vw;
   `,
   Price: styled(Price)`
-    font-size: 10px;
-    line-height: 12px;
+    font-size: 2.667vw;
+    line-height: 3.2vw;
   `,
 };
