@@ -22,9 +22,20 @@ function MainPage(): React.ReactElement {
     limit: 4,
     sortBy: SORT_BY.DISCOUNTEDRATE,
   });
-  const [{ products: eatNowProducts }, eatNowProductsDispatch] = useProducts({ limit: 6 });
-  const [{ products: forYouProducts }, forYouProductsDispatch] = useProducts({ limit: 5 });
-  const [{ products: bestSellerProducts }, bestSellerProductsDispatch] = useProducts({ limit: 5 });
+
+  const [{ products: eatNowProducts }, eatNowProductsDispatch] = useProducts({
+    categoryId: 7,
+    limit: 6,
+  });
+
+  const [{ products: forYouProducts }, forYouProductsDispatch] = useProducts({
+    type: 'recommend',
+  });
+
+  const [{ products: bestSellerProducts }, bestSellerProductsDispatch] = useProducts({
+    type: 'bestseller',
+  });
+
   const [cartCount] = useState(storage.getProductTotalCount()); // 장바구니에 렌더할 Product Count 개수
   const [categoryProducts, setCategoryProducts] = useState<CategoryProducts[]>([]);
 
