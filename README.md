@@ -33,7 +33,7 @@
             constants.ts
             svgs.tsx
         |-- components // UI Components
-            |-- largs
+            |-- large
             |-- medium
             |-- small
         |-- contexts
