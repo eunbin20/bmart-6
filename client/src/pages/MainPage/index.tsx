@@ -12,8 +12,8 @@ import {
 } from '../../components';
 import useProducts, { toggleProductIsLikedDispatcher } from '../../hooks/useProducts';
 import { BANNERS, SORT_BY, VIEW_TYPE_GRID, VIEW_TYPE_LISTVIEW } from '../../commons/constants';
-import { getCategories } from '../../apis';
-import { Category } from '../../types/data';
+import { getCategories, getProducts } from '../../apis';
+import { Category, CategoryProducts } from '../../types/data';
 import { storage } from '../../utils/storage';
 
 function MainPage(): React.ReactElement {
@@ -25,17 +25,20 @@ function MainPage(): React.ReactElement {
   const [{ products: eatNowProducts }, eatNowProductsDispatch] = useProducts({ limit: 6 });
   const [{ products: forYouProducts }, forYouProductsDispatch] = useProducts({ limit: 5 });
   const [{ products: bestSellerProducts }, bestSellerProductsDispatch] = useProducts({ limit: 5 });
-  const [{ products: dummy }, categoryProductsDispatch] = useProducts({ limit: 4 });
   const [cartCount] = useState(storage.getProductTotalCount()); // 장바구니에 렌더할 Product Count 개수
-
-  const dummyProducts = categories.map((category, index) => ({
-    category,
-    products: dummy ?? [],
-  }));
+  const [categoryProducts, setCategoryProducts] = useState<CategoryProducts[]>([]);
 
   useEffect(() => {
-    getCategories().then((categories) => {
-      setCategories(categories.data);
+    categories.forEach((category: Category) => {
+      getProducts({ limit: 4, categoryId: category.id }).then(({ data: products }) => {
+        setCategoryProducts((categoryProducts) => [...categoryProducts, { category, products }]);
+      });
+    });
+  }, [categories]);
+
+  useEffect(() => {
+    getCategories().then(({ data: categories }) => {
+      setCategories(categories);
     });
   }, []);
 
@@ -90,10 +93,7 @@ function MainPage(): React.ReactElement {
       />
       <SectionDivider />
       <BannerSlider banners={BANNERS} />
-      <CategoryProductSection
-        categoryProducts={dummyProducts}
-        onLikeIconClick={toggleProductIsLikedDispatcher(categoryProductsDispatch)}
-      />
+      <CategoryProductSection categoryProducts={categoryProducts} />
       <CartBadge count={cartCount} />
     </DefaultTemplate>
   );

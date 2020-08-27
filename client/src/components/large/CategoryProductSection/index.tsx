@@ -6,7 +6,7 @@ import { VIEW_TYPE_GRID } from '../../../commons/constants';
 
 interface Props {
   categoryProducts: CategoryProducts[];
-  onLikeIconClick: Function;
+  onLikeIconClick?: Function;
 }
 function CategoryProductSection({ categoryProducts, onLikeIconClick }: Props): React.ReactElement {
   const categoryRefs = useRef([]) as React.MutableRefObject<Array<HTMLDivElement>>;

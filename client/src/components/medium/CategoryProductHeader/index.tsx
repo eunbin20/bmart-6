@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as S from './style';
 import { Category } from '../../../types/data';
-import { DEFAULT_HEADER_OFFSET_TOP } from '../../../commons/constants';
 
 interface Props {
   categories: Category[];
@@ -18,8 +17,7 @@ function CategoryProductHeader({
   const [selectedChipId, setSelectedChipId] = useState(selectedId);
 
   useEffect(() => {
-    const headerOffsetTop =
-      headerRef.current.offsetTop === 0 ? DEFAULT_HEADER_OFFSET_TOP : headerRef.current.offsetTop;
+    const headerOffsetTop = categoryRefs.current[1]?.offsetTop - 75;
     const setSticky = function () {
       const header = headerRef.current;
       if (!header) return;
@@ -30,33 +28,29 @@ function CategoryProductHeader({
       }
     };
 
-    const getScrollPoint = function (tab: HTMLDivElement): number {
-      return tab && tab.offsetTop + tab.offsetHeight - 70;
-    };
-
-    const changeSelectedChip = function () {
-      const currentTab = categoryRefs.current[selectedChipId];
-      const currentTabScrollPoint = getScrollPoint(currentTab);
-
-      if (currentTabScrollPoint && currentTabScrollPoint < window.pageYOffset) {
-        setSelectedChipId(selectedChipId + 1);
-      }
-      const prevTab = categoryRefs?.current[selectedChipId - 1];
-      const prevTabScrollPoint = getScrollPoint(prevTab);
-
-      if (prevTabScrollPoint && prevTabScrollPoint > window.pageYOffset) {
-        setSelectedChipId(selectedChipId - 1);
-      }
+    const scrollHandler = function () {
+      const index = categoryRefs.current.findIndex(
+        (tab) => tab && tab.offsetTop - 70 > window.pageYOffset,
+      );
+      if (index - 1 === selectedChipId) return;
+      headerRef.current.children[index - 2]?.scrollIntoView({
+        inline: 'center',
+      });
+      setSelectedChipId(index - 1 == 0 ? 1 : index - 1);
     };
 
     window.onscroll = function () {
       setSticky();
-      changeSelectedChip();
+      scrollHandler();
     };
     return () => {
       window.onscroll = function () {};
     };
   });
+
+  const changeSelectedChipId = function (categoryId: number) {
+    window.scrollTo(0, categoryRefs.current[categoryId].offsetTop - 70);
+  };
 
   return (
     <S.CategoryProductHeader ref={headerRef}>
@@ -64,6 +58,7 @@ function CategoryProductHeader({
         <S.CategoryChip
           key={category.id}
           className={selectedChipId === category.id ? 'selected' : ''}
+          onClick={() => changeSelectedChipId(category.id)}
         >
           {category.name}
         </S.CategoryChip>

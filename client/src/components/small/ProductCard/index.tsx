@@ -6,7 +6,7 @@ import { ProductLikeIcon } from '../..';
 
 interface Props extends Product {
   columns: ProductGridColumns;
-  onLikeIconClick: Function;
+  onLikeIconClick?: Function;
   //   to: string;
   //   setRef?: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
 }
@@ -14,7 +14,7 @@ interface Props extends Product {
 export const generateProductCards = (
   products: Product[],
   columns: ProductGridColumns,
-  onLikeIconClick: Function,
+  onLikeIconClick?: Function,
 ) => {
   return products.map(({ id, ...rest }) => (
     <ProductCard key={id} {...{ id, columns, onLikeIconClick, ...rest }} />
@@ -50,9 +50,11 @@ function ProductCard({
     <S.LinkWrapper to={`/detail/${id}`}>
       <S.ImgWrapper>
         <S.Image alt={'card'} src={imageUrl} />
-        <S.LikeIconWrapper>
-          <ProductLikeIcon productId={id} isLiked={isLiked} onClick={onLikeIconClick} />
-        </S.LikeIconWrapper>
+        {onLikeIconClick && (
+          <S.LikeIconWrapper>
+            <ProductLikeIcon productId={id} isLiked={isLiked} onClick={onLikeIconClick} />
+          </S.LikeIconWrapper>
+        )}
       </S.ImgWrapper>
       <S.ContentContainer>
         <S.Title>{title}</S.Title>
