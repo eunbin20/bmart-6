@@ -24,12 +24,6 @@ export default function LoginForm({ onSubmit, prevPage }: Props) {
     return url;
   };
 
-  const onKeyUpEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key !== KEYBOARD.ENTER) {
-      return;
-    }
-  };
-
   return (
     <>
       <S.LogoContainer>{Logo(140, 50)}</S.LogoContainer>
@@ -39,6 +33,7 @@ export default function LoginForm({ onSubmit, prevPage }: Props) {
           validate={loginValidation}
           render={({ handleSubmit, submitError }) => (
             <>
+              {prevPage?.query && <S.NeedLogin>로그인이 필요한 서비스에요!</S.NeedLogin>}
               <Field name="email">
                 {({ input, meta }) => (
                   <UserPageInput input={input} meta={meta} type="email" placeholder="이메일" />

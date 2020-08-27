@@ -11,6 +11,12 @@ export const InputContainer = styled.section`
 
 export const LogoContainer = styled.div``;
 
+export const NeedLogin = styled.div`
+  color: var(--gray);
+  width: 100%;
+  padding-bottom: 15px;
+`;
+
 interface PushButtonProps {
   onSubmit: (args: any) => void;
 }

@@ -18,7 +18,7 @@ type PrevPage = {
 function getUrlByPrevPage(prevPage: PrevPage) {
   const { query, id } = prevPage;
   let url = '/';
-  if (query) url += query;
+  if (query && query !== 'main') url += query;
   if (id) url += `/${id}`;
   return url;
 }

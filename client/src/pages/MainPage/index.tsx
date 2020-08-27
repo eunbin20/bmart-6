@@ -65,7 +65,7 @@ function MainPage({ history }: RouteComponentProps): React.ReactElement {
       eatNowStatus === ERROR_STATUS.UNAUTHORIZED ||
       besetSellerStatus === ERROR_STATUS.UNAUTHORIZED
     ) {
-      history.push('/user/login');
+      history.push('/user/login?prevPage=main');
     }
   }, [forYouStatus, hotDealStatus, eatNowStatus, besetSellerStatus]);
 
