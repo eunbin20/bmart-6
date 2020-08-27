@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
-export const EmptyContainer = styled.div`
+interface EmptyContainerProps {
+  subtractHeight: string | undefined;
+}
+
+export const EmptyContainer = styled.div<EmptyContainerProps>`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: calc(100vh - 52px);
+  height: ${(props: EmptyContainerProps) =>
+    props.subtractHeight ? `calc(100vh - 52px - ${props.subtractHeight}px)` : 'calc(100vh - 52px)'};
 `;
 
 export const EmptyImage = styled.img.attrs((props) => ({
