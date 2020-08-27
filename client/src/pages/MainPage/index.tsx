@@ -31,16 +31,19 @@ function MainPage({ history }: RouteComponentProps): React.ReactElement {
     limit: 4,
     sortBy: SORT_BY.DISCOUNTEDRATE,
   });
+  
   const [{ products: eatNowProducts, status: eatNowStatus }, eatNowProductsDispatch] = useProducts({
-    limit: 6,
+        categoryId: 7,
+        limit: 6,
   });
   const [{ products: forYouProducts, status: forYouStatus }, forYouProductsDispatch] = useProducts({
-    limit: 5,
+    type: 'recommend',
   });
   const [
     { products: bestSellerProducts, status: besetSellerStatus },
     bestSellerProductsDispatch,
-  ] = useProducts({ limit: 5 });
+  ] = useProducts({ type: 'bestseller' });
+  
   const [cartCount] = useState(storage.getProductTotalCount()); // 장바구니에 렌더할 Product Count 개수
   const [categoryProducts, setCategoryProducts] = useState<CategoryProducts[]>([]);
 

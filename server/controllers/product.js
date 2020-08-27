@@ -21,7 +21,9 @@ exports.filter = async (req, res) => {
   const userId = req.user?.id;
   const { categoryId } = req.query;
   const subcategoryIds = await Subcategory.findByCategoryId(+categoryId);
-  const products = await Product.filter({ userId, subcategoryIds, ...req.query });
+  const products = req.query.type
+    ? await Product.getProductsByType(req.query.type, { userId, ...req.query })
+    : await Product.filter({ userId, subcategoryIds, ...req.query });
   res.status(HTTP_STATUS.SUCCESS).send(products);
 };
 
