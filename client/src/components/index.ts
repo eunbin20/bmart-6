@@ -16,6 +16,7 @@ export { default as CartDeleteModal } from './small/CartDeleteModal';
 export { default as TotalCartMoney } from './small/TotalCartMoney';
 export { default as BmartLogo } from './small/BmartLogo';
 export { default as Slot } from './small/Slot';
+export { default as Loading } from './small/Loading';
 
 export { default as PageHeader } from './medium/PageHeader';
 export { default as SectionHeader } from './medium/SectionHeader';

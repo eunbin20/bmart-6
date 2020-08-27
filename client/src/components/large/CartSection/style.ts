@@ -9,7 +9,7 @@ export const Text = styled.div.attrs((props) => ({
   onClick: props.onClick,
 }))`
   font-size: 3.733vw;
- margin-top: 0.8vw;
+  margin-top: 0.8vw;
   min-width: 20vw;
 `;
 
@@ -24,7 +24,8 @@ export const CheckBox = styled.input.attrs((props) => ({
   onClick: props.onClick,
   type: 'checkbox',
 }))`
-  background-image: ${(props: CheckBoxProps) => `url(${props.background})`};
+  background: ${(props: CheckBoxProps) => `url(${props.background})`} no-repeat;
+  background-size: 5.333vw 5.333vw;
   width: 5.333vw;
   height: 5.333vw;
 `;

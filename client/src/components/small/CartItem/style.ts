@@ -11,7 +11,8 @@ export const CheckBox = styled.input.attrs((props) => ({
   onClick: props.onClick,
   type: 'checkbox',
 }))`
-  background-image: ${(props: CheckBoxProps) => `url(${props.background})`};
+  background: ${(props: CheckBoxProps) => `url(${props.background})`} no-repeat;
+  background-size: 5.333vw 5.333vw;
   width: 5.333vw;
   height: 5.333vw;
 `;
