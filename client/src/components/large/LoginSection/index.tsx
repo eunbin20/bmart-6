@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from './style';
 import { Form, Field } from 'react-final-form';
+import { useLocation } from 'react-router-dom';
 import { loginValidation } from '../../../utils/validation';
 import { UserLogin } from '../../../types/data';
 import { KEYBOARD } from '../../../commons/constants';
@@ -9,19 +10,14 @@ import { Logo } from '../../../commons/svgs';
 
 interface Props {
   onSubmit: (values: UserLogin) => void;
-  prevPage: {
-    query: string | null;
-    id: string | null;
-  };
+  prevPath: string;
 }
 
-export default function LoginForm({ onSubmit, prevPage }: Props) {
-  const getRouteUrl = () => {
-    let url = '/user/join';
-    const { query, id } = prevPage;
-    if (query) url += `?prevPage=${query}`;
-    if (id) url += `&id=${id}`;
-    return url;
+export default function LoginForm({ onSubmit, prevPath }: Props) {
+  const location = useLocation();
+  const joinLink = {
+    pathname: '/user/join',
+    state: { from: location, customFrom: prevPath },
   };
 
   return (
@@ -33,7 +29,7 @@ export default function LoginForm({ onSubmit, prevPage }: Props) {
           validate={loginValidation}
           render={({ handleSubmit, submitError }) => (
             <>
-              {prevPage?.query && <S.NeedLogin>로그인이 필요한 서비스에요!</S.NeedLogin>}
+              {prevPath && <S.NeedLogin>로그인이 필요한 서비스에요!</S.NeedLogin>}
               <Field name="email">
                 {({ input, meta }) => (
                   <UserPageInput input={input} meta={meta} type="email" placeholder="이메일" />
@@ -59,7 +55,7 @@ export default function LoginForm({ onSubmit, prevPage }: Props) {
               </Field>
               <S.PushButton onClick={handleSubmit}>로그인</S.PushButton>
               <S.Text>
-                혹시, B마트가 처음이신가요? <S.JoinButton to={getRouteUrl}>회원가입</S.JoinButton>
+                혹시, B마트가 처음이신가요? <S.JoinButton to={joinLink}>회원가입</S.JoinButton>
               </S.Text>
             </>
           )}

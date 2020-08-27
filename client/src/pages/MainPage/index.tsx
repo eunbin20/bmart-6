@@ -24,7 +24,7 @@ import { Category, CategoryProducts } from '../../types/data';
 import { storage } from '../../utils/storage';
 import { useAuthContext } from '../../contexts/user';
 
-function MainPage({ history }: RouteComponentProps): React.ReactElement {
+function MainPage({ history, location }: RouteComponentProps): React.ReactElement {
   const userContext = useAuthContext();
   const [categories, setCategories] = useState<Category[]>([]);
   const [{ products: hotDealProducts, status: hotDealStatus }] = useProducts({
@@ -68,7 +68,7 @@ function MainPage({ history }: RouteComponentProps): React.ReactElement {
       eatNowStatus === ERROR_STATUS.UNAUTHORIZED ||
       besetSellerStatus === ERROR_STATUS.UNAUTHORIZED
     ) {
-      history.push('/user/login?prevPage=main');
+      history.push('/user/login', { from: location });
     }
   }, [forYouStatus, hotDealStatus, eatNowStatus, besetSellerStatus]);
 

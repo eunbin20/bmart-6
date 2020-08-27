@@ -19,6 +19,7 @@ interface Params {
 function SubcategoryPage({
   match: { params },
   history,
+  location,
 }: RouteComponentProps<Params>): React.ReactElement {
   const [{ products, status }, productDispatch] = useProducts({
     subcategoryId: +params.subcategoryId,
@@ -37,7 +38,7 @@ function SubcategoryPage({
 
   useEffect(() => {
     if (status === ERROR_STATUS.UNAUTHORIZED) {
-      history.push(`/user/login?prevPage=subcategory&id=${params.subcategoryId}`);
+      history.push('/user/login', { from: location });
     }
   }, [status]);
 
