@@ -8,9 +8,9 @@ export const CartWrapper = styled.div`
 export const Text = styled.div.attrs((props) => ({
   onClick: props.onClick,
 }))`
-  font-size: 14px;
+  font-size: 3.733vw;
   margin-top: 3px;
-  min-width: 61px;
+  min-width: 20vw;
 `;
 
 interface CheckBoxProps {
