@@ -38,6 +38,7 @@ function SearchBar({
         value={title}
         onChange={(event) => setTitle(event.target.value)}
         placeholder={'어떤 상품을 찾으시나요?'}
+        autoFocus={isSearchPage}
       ></S.Input>
       <S.IconContainer onClick={() => onSearchIconClick()}>
         <Framework7Icon iconName="search" fontSize={'20px'} />
