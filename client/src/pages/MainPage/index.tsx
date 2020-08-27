@@ -40,9 +40,18 @@ function MainPage(): React.ReactElement {
   const [categoryProducts, setCategoryProducts] = useState<CategoryProducts[]>([]);
 
   useEffect(() => {
+    setCategoryProducts(categories.map((category) => ({ category, products: [] })));
+
     categories.forEach((category: Category) => {
       getProducts({ limit: 4, categoryId: category.id }).then(({ data: products }) => {
-        setCategoryProducts((categoryProducts) => [...categoryProducts, { category, products }]);
+        setCategoryProducts((categoryProducts) => {
+          const updatedCategoryProducts = [...categoryProducts];
+          const index = updatedCategoryProducts.findIndex(
+            (item) => item.category.id === category.id,
+          );
+          updatedCategoryProducts[index].products = products;
+          return updatedCategoryProducts;
+        });
       });
     });
   }, [categories]);
