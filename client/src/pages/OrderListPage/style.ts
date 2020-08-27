@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
-export const OrderListPage = styled.div`
+export const PageContainer = styled.div`
   width: 100%;
   height: 100%;
-  background: var(--light-gray);
+`;
+
+export const OrderListContainer = styled.div`
+  width: 100%;
+  height: 100%;
 `;
