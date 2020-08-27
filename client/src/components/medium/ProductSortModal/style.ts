@@ -28,6 +28,7 @@ export const SortCardList = styled.div`
 `;
 
 export const SortCard = styled.div`
+  width: 100%;
   height: 13.333vw;
   padding: 4vw;
   display: flex;

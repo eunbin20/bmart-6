@@ -18,6 +18,9 @@ export default function CartSection() {
   const totalMoney = useMemo(
     () =>
       carts.reduce((acc, cur) => {
+        if (!cur.isActive) {
+          return 0;
+        }
         return acc + (cur.isDiscounted ? cur.discountedPrice : cur.price) * cur.count;
       }, 0),
     [carts],
@@ -70,6 +73,10 @@ export default function CartSection() {
   }; // QuantityCounter 클릭
 
   const onSubmit = async () => {
+    const minimunMoney = 5000;
+    if (totalMoney < minimunMoney) {
+      return;
+    }
     const isAuthenticated = storage.get(STORAGE_KEY.ACCESS_TOKEN);
     if (!isAuthenticated) {
       history.push('/user/login', { from: location });

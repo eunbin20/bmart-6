@@ -9,18 +9,20 @@ import {
   BannerSlider,
   SectionDivider,
   ProductSection,
+  CartBadge,
 } from '../../components';
 import useProducts, { toggleProductIsLikedDispatcher } from '../../hooks/useProducts';
 import { getProducts } from '../../hooks/useProducts/actions';
 import {
   SORTOPTIONS,
-  BANNERS,
+  SUB_BANNERS,
   DEFAULT_SORT_OPTION,
   VIEW_TYPE_LISTVIEW,
   ERROR_STATUS,
 } from '../../commons/constants';
 import { RouteComponentProps } from 'react-router-dom';
 import { getSubcategories } from '../../apis/category';
+import { storage } from '../../utils/storage';
 
 interface Params {
   categoryId: string;
@@ -32,6 +34,7 @@ function CategoryPage({
   location,
 }: RouteComponentProps<Params>): React.ReactElement {
   const [subcategories, setSubcategories] = useState([]);
+  const [cartCount] = useState(storage.getProductTotalCount()); // 장바구니에 렌더할 Product Count 개수
   const [{ products, status }, productDispatch] = useProducts({ categoryId: +params.categoryId });
   const [sortBy, setSortBy] = useState(DEFAULT_SORT_OPTION);
 
@@ -58,7 +61,7 @@ function CategoryPage({
   return (
     <DefaultTemplate>
       <PageHeader isHome={false} />
-      <BannerSlider banners={BANNERS} />
+      <BannerSlider banners={SUB_BANNERS} />
       <SubcategoryCardGrid subcategories={subcategories} />
       <SectionDivider />
       <ProductSection
@@ -85,6 +88,7 @@ function CategoryPage({
           />
         )}
       </S.ProductCardGridContainer>
+      <CartBadge count={cartCount} />
     </DefaultTemplate>
   );
 }

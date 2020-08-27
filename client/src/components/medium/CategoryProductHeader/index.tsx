@@ -37,7 +37,7 @@ function CategoryProductHeader({
       headerRef.current.children[index - 2]?.scrollIntoView({
         inline: 'center',
       });
-      setSelectedChipId(index - 1 == 0 ? 1 : index - 1);
+      setSelectedChipId(index - 1 === 0 ? 1 : index - 1);
     };
 
     window.onscroll = function () {

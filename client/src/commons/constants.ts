@@ -50,7 +50,6 @@ export const ERROR_STATUS = {
 export const SORTOPTIONS: {
   [key: string]: string | undefined;
 } = {
-  '기본 정렬순': undefined,
   '인기 상품순': SORT_BY.POPULAR,
   '높은 가격순': SORT_BY.PRICEUP,
   '낮은 가격순': SORT_BY.PRICEDOWN,
@@ -58,7 +57,7 @@ export const SORTOPTIONS: {
   '할인율 순': SORT_BY.DISCOUNTEDRATE,
 };
 
-export const DEFAULT_SORT_OPTION = '기본 정렬순';
+export const DEFAULT_SORT_OPTION = '인기 상품순';
 
 export const DEFAULT_HEADER_OFFSET_TOP = 1758;
 export const BANNER_SCROLL_INTERVAL = 3500;
@@ -66,29 +65,71 @@ export const BANNER_SCROLL_INTERVAL = 3500;
 export const VIEW_TYPE_LISTVIEW = 'listview';
 export const VIEW_TYPE_GRID = 'grid';
 
-export const BANNERS = [
+export const MAIN_BANNERS = [
+  {
+    id: 2,
+    redirectUrl: '/detail/252',
+    imageUrl:
+      'https://user-images.githubusercontent.com/14324748/91476968-ac543080-e8d8-11ea-8c78-37835ce763a2.jpg',
+  },
+  {
+    id: 3,
+    redirectUrl: '/detail/324',
+    imageUrl:
+      'https://user-images.githubusercontent.com/14324748/91476979-aeb68a80-e8d8-11ea-8c2e-c63f5addabfb.jpg',
+  },
   {
     id: 1,
     redirectUrl: '/',
     imageUrl:
-      'https://user-images.githubusercontent.com/14324748/90576935-7b9a3a00-e1fa-11ea-892c-58cbeed119a3.png',
-  },
-  {
-    id: 2,
-    redirectUrl: '/banner',
-    imageUrl:
-      'https://user-images.githubusercontent.com/14324748/90576940-7d63fd80-e1fa-11ea-9224-0561d69749da.png',
-  },
-  {
-    id: 3,
-    redirectUrl: '/banner',
-    imageUrl:
-      'https://user-images.githubusercontent.com/14324748/90576935-7b9a3a00-e1fa-11ea-892c-58cbeed119a3.png',
+      'https://user-images.githubusercontent.com/14324748/91476960-a9f1d680-e8d8-11ea-9615-b922da2f4e15.jpg',
   },
   {
     id: 4,
-    redirectUrl: '/banner',
+    redirectUrl: '/detail/318',
     imageUrl:
-      'https://user-images.githubusercontent.com/14324748/90576940-7d63fd80-e1fa-11ea-9224-0561d69749da.png',
+      'https://user-images.githubusercontent.com/14324748/91476972-ae1df400-e8d8-11ea-9848-5f52824c7b19.jpg',
+  },
+  {
+    id: 5,
+    redirectUrl: '/detail/364',
+    imageUrl:
+      'https://user-images.githubusercontent.com/14324748/91476971-ad855d80-e8d8-11ea-8408-79a12c2b5101.jpg',
+  },
+];
+
+export const MID_BANNERS = [
+  {
+    id: 1,
+    redirectUrl: '/detail/124',
+    imageUrl:
+      'https://user-images.githubusercontent.com/14324748/91476982-af4f2100-e8d8-11ea-95e7-28c7a7648d6a.jpg',
+  },
+  {
+    id: 2,
+    redirectUrl: '/detail/308',
+    imageUrl:
+      'https://user-images.githubusercontent.com/14324748/91476983-afe7b780-e8d8-11ea-9a81-ae35afdefa7a.jpg',
+  },
+];
+
+export const SUB_BANNERS = [
+  {
+    id: 2,
+    redirectUrl: '/',
+    imageUrl:
+      'https://user-images.githubusercontent.com/14324748/91476986-afe7b780-e8d8-11ea-9113-c5dfe668bf49.jpg',
+  },
+  {
+    id: 1,
+    redirectUrl: '/',
+    imageUrl:
+      'https://user-images.githubusercontent.com/14324748/91476989-b0804e00-e8d8-11ea-84a5-826fa9196c61.jpg',
+  },
+  {
+    id: 3,
+    redirectUrl: '/',
+    imageUrl:
+      'https://user-images.githubusercontent.com/14324748/91476988-b0804e00-e8d8-11ea-9982-eb442906de67.jpg',
   },
 ];

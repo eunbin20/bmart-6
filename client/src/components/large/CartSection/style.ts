@@ -9,8 +9,8 @@ export const Text = styled.div.attrs((props) => ({
   onClick: props.onClick,
 }))`
   font-size: 3.733vw;
-  margin-top: 0.8vw;
-  min-width: 16.267vw;
+ margin-top: 0.8vw;
+  min-width: 20vw;
 `;
 
 interface CheckBoxProps {

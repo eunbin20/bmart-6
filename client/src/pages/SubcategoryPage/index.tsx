@@ -6,11 +6,13 @@ import {
   ProductCardGrid,
   PageHeader,
   SectionDivider,
+  CartBadge,
 } from '../../components';
 import useProducts, { toggleProductIsLikedDispatcher } from '../../hooks/useProducts';
 import { getProducts } from '../../hooks/useProducts/actions';
 import { SORTOPTIONS, DEFAULT_SORT_OPTION, ERROR_STATUS } from '../../commons/constants';
 import { RouteComponentProps } from 'react-router-dom';
+import { storage } from '../../utils/storage';
 
 interface Params {
   subcategoryId: string;
@@ -25,6 +27,7 @@ function SubcategoryPage({
     subcategoryId: +params.subcategoryId,
   });
   const [sortBy, setSortBy] = useState(DEFAULT_SORT_OPTION);
+  const [cartCount] = useState(storage.getProductTotalCount()); // 장바구니에 렌더할 Product Count 개수
 
   function changeSort(sortBy: string) {
     productDispatch(
@@ -58,6 +61,7 @@ function SubcategoryPage({
           />
         )}
       </S.ProductCardGridContainer>
+      <CartBadge count={cartCount} />
     </DefaultTemplate>
   );
 }

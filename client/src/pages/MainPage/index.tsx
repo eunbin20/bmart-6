@@ -13,7 +13,8 @@ import {
 } from '../../components';
 import useProducts, { toggleProductIsLikedDispatcher, FILTER_TYPE } from '../../hooks/useProducts';
 import {
-  BANNERS,
+  MAIN_BANNERS,
+  MID_BANNERS,
   SORT_BY,
   VIEW_TYPE_GRID,
   VIEW_TYPE_LISTVIEW,
@@ -23,9 +24,11 @@ import { getCategories, getProducts } from '../../apis';
 import { Category, CategoryProducts } from '../../types/data';
 import { storage } from '../../utils/storage';
 import { useAuthContext } from '../../contexts/user';
+import { getTomorrowDatetime } from '../../utils/functions';
 
 function MainPage({ history, location }: RouteComponentProps): React.ReactElement {
   const userContext = useAuthContext();
+  const expiredHotDealDate = getTomorrowDatetime();
   const [categories, setCategories] = useState<Category[]>([]);
   const [{ products: hotDealProducts, status: hotDealStatus }] = useProducts({
     limit: 4,
@@ -91,7 +94,7 @@ function MainPage({ history, location }: RouteComponentProps): React.ReactElemen
   return (
     <DefaultTemplate>
       <PageHeader isHome={true} />
-      <BannerSlider banners={BANNERS} />
+      <BannerSlider banners={MAIN_BANNERS} />
       <CategoryIconGrid categories={categories} />
       <SectionDivider />
       <ProductSection
@@ -110,7 +113,7 @@ function MainPage({ history, location }: RouteComponentProps): React.ReactElemen
       <HotDealSection
         {...{
           products: hotDealProducts ?? [],
-          expiredDate: '2020-08-22 11:00:00',
+          expiredDate: expiredHotDealDate,
         }}
       />
       <SectionDivider />
@@ -140,7 +143,7 @@ function MainPage({ history, location }: RouteComponentProps): React.ReactElemen
         }}
       />
       <SectionDivider />
-      <BannerSlider banners={BANNERS} />
+      <BannerSlider banners={MID_BANNERS} />
       <CategoryProductSection categoryProducts={categoryProducts} />
       <CartBadge count={cartCount} />
     </DefaultTemplate>
