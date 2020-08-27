@@ -1,4 +1,9 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+export const LinkWrapper = styled(Link)`
+  text-decoration: none;
+`;
 
 export const ImageWrapper = styled.div`
   position: relative;
@@ -38,6 +43,7 @@ export const Image = styled.img`
 export const Title = styled.div`
   font-size: 13px;
   margin-top: 11px;
+  color: var(--black);
 `;
 
 export const PriceWrapper = styled.div`
