@@ -18,6 +18,7 @@ const customStyle = {
     bottom: 0,
     right: 0,
     background: 'rgba(0,0,0,0.16)',
+    opacity: 1,
   },
 
   content: {
@@ -48,7 +49,7 @@ const ProductDetailModal = (props: Props) => {
   } = props;
 
   return (
-    <Modal isOpen={true} style={customStyle}>
+    <Modal isOpen={true} style={customStyle} className="detail-page-modal">
       <PageHeader isHome={false} />
       <S.ModalContentContainer>
         <S.Image src={imageUrl} />
