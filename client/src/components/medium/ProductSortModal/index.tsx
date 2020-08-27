@@ -20,6 +20,7 @@ const customStyle = {
     bottom: 0,
     right: 0,
     background: 'rgba(0,0,0,0.16)',
+    opacity: 1,
   },
 
   content: {
