@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { StyledPullContainer, StyledPullText, StyledSlotsWrap } from './style';
+import * as S from './style';
 
 /* 땡겨요 기능은 2조 명우님의 코드를 참고하였습니다. by 동욱*/
 /* 땡겨요 기능은 2조 명우님의 코드를 참고하였습니다. by 동욱*/
@@ -21,36 +21,36 @@ interface IData {
 }
 const datas: IData[] = [
   {
-    emoji: '🍕',
-    text: '피자',
+    emoji: '🥯',
+    text: '동킨 도낫츠',
   },
   {
-    emoji: '🌭',
-    text: '핫도그',
+    emoji: '🥞',
+    text: '건포도 팬 케이크',
   },
   {
-    emoji: '🌮',
-    text: '타코',
+    emoji: '🍗',
+    text: '간장 칰힌',
   },
   {
-    emoji: '🥚',
-    text: '달걀',
+    emoji: '🍔',
+    text: '수제 햄바그',
   },
   {
-    emoji: '🧈',
-    text: '버터',
+    emoji: '🌯',
+    text: '치킨 부리또',
   },
   {
-    emoji: '🍜',
-    text: '라면',
+    emoji: '🍙',
+    text: '개등딱지 삼각김밥',
   },
   {
-    emoji: '🍛',
-    text: '카레',
+    emoji: '🥘',
+    text: '매운 부대찌개',
   },
   {
-    emoji: '🧁',
-    text: '컵케잌',
+    emoji: '🥗',
+    text: '다이어트 샐러드',
   },
 ];
 
@@ -114,16 +114,12 @@ const Slot = ({ boxHeight, isPulling }: IPull) => {
   };
 
   return (
-    <StyledPullContainer
-      style={{ transform: transformOption() }}
-      // style={{ height: `${boxHeight}px`, transform: transformOption() }}
-      ref={pullContainerRef}
-    >
-      <StyledSlotsWrap>
+    <S.SlotContainer style={{ transform: transformOption() }} ref={pullContainerRef}>
+      <S.SlotWrap>
         {dataIdx === -1 ? `${datas[getRandomIdx()].text}` : datas[dataIdx].emoji}
-      </StyledSlotsWrap>
-      <StyledPullText>땡겨요</StyledPullText>
-    </StyledPullContainer>
+      </S.SlotWrap>
+      <S.SlotItem>땡겨요</S.SlotItem>
+    </S.SlotContainer>
   );
 };
 

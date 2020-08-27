@@ -103,7 +103,6 @@ export default function BindPullEvent({ children }: Props) {
     setBoxHeight(minBoxSize);
     if (isFinishing) return;
     isFinishing = true;
-    // finish동작은 동작 중 1번만 일어나게
     setTimeout(() => {
       const intervalDelay = 100;
       const intervalId = setInterval(() => {

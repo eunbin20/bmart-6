@@ -1,16 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledPullContainer = styled.div`
-  /* position: absolute;
-  text-align: center;
-  width: 100%;
-  z-index: -1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 35px;
-  font-weight: bolder;
-  top: 15px; */
+export const SlotContainer = styled.div`
   width: 100%;
   height: 40px;
   display: flex;
@@ -18,15 +8,13 @@ export const StyledPullContainer = styled.div`
   justify-content: center;
   font-size: 25px;
   font-weight: bolder;
-  margin-top: -10px;
 `;
 
-export const StyledSlotsWrap = styled.span`
+export const SlotWrap = styled.span`
   padding-right: 10px;
   font-size: 25px;
 `;
 
-export const StyledPullText = styled.div`
+export const SlotItem = styled.div`
   font-size: 25px;
-  color: gray;
 `;
