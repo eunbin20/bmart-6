@@ -78,7 +78,7 @@ class Product extends Model {
 
   static async getProductsByType(type, data) {
     switch (type) {
-      case 'jjim':
+      case 'userliked':
         const likedProductIds = (
           await UserProductRelation.findAll({
             attributes: ['productId'],
