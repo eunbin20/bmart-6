@@ -19,7 +19,7 @@ function PageHeader({ isHome }: Props): React.ReactElement {
           {!isHome && (
             <Framework7Icon
               iconName="arrow_left"
-              fontSize={'20px'}
+              fontSize={'5.333vw'}
               onClick={() => (location.state ? history.goBack() : routePage('/home'))}
             />
           )}
@@ -33,7 +33,7 @@ function PageHeader({ isHome }: Props): React.ReactElement {
       </S.PageHeader>
       {isHome && (
         <S.SearchBar to={setLink('/search', location)}>
-          <Framework7Icon iconName={'search'} fontSize={'16px'} />
+          <Framework7Icon iconName={'search'} fontSize={'4.267vw'} />
           이곳에서 검색하세요!
         </S.SearchBar>
       )}

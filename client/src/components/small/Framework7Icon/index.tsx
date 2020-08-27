@@ -11,7 +11,7 @@ interface Props {
 const Icon = styled.div.attrs((props) => ({
   onClick: props.onClick,
 }))`
-  font-size: ${(props) => props?.style?.fontSize ?? '18px'};
+  font-size: ${(props) => props?.style?.fontSize ?? '4.800vw'};
   color: ${(props) => props?.style?.color ?? 'var(--black)'};
 `;
 

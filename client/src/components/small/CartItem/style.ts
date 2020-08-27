@@ -12,8 +12,8 @@ export const CheckBox = styled.input.attrs((props) => ({
   type: 'checkbox',
 }))`
   background-image: ${(props: CheckBoxProps) => `url(${props.background})`};
-  width: 20px;
-  height: 20px;
+  width: 5.333vw;
+  height: 5.333vw;
 `;
 
 export const ItemWrapper = styled.div.attrs({
@@ -28,15 +28,15 @@ export const HeaderBox = styled.div`
 export const HeaderText = styled.label.attrs((props) => ({
   htmlFor: props.id,
 }))`
-  font-size: 18px;
+  font-size: 4.8vw;
   font-weight: 700;
-  margin-left: 14px;
-  margin-top: 4px;
+  margin-left: 3.733vw;
+  margin-top: 1.067vw;
 `;
 
 export const ContentBox = styled.div`
   display: flex;
-  margin-top: 14px;
+  margin-top: 3.733vw;
 `;
 
 interface ContentImage {
@@ -47,20 +47,20 @@ export const ContentImage = styled.img.attrs((props: ContentImage) => ({
   src: props.src,
   alt: 'content-image',
 }))`
-  max-width: 106px;
-  max-height: 106px;
+  max-width: 28.267vw;
+  max-height: 28.267vw;
   background: var(--gray);
   object-fit: cover;
 `;
 
 export const ContentPriceBox = styled.div`
-  margin-left: 14px;
+  margin-left: 3.733vw;
   position: relative;
 `;
 
 export const Price = styled.div`
   color: var(--strong-gray);
-  font-size: 15px;
+  font-size: 4vw;
 `;
 
 export const DiscountedPriceWrapper = styled.div`
@@ -72,14 +72,14 @@ export const StrikePrice = styled.div.attrs({
   className: 'strike',
 })`
   color: var(--gray);
-  font-size: 15px;
-  margin-right: 5px;
+  font-size: 4vw;
+  margin-right: 1.333vw;
 `;
 
 export const DiscountedPrice = styled.div`
   font-weight: 700;
-  font-size: 17px;
-  margin-top: 2px;
+  font-size: 4.533vw;
+  margin-top: 0.533vw;
 `;
 
 export const QuantityCounterWrapper = styled.div`
@@ -94,10 +94,10 @@ export const ItemDeleteButton = styled.button.attrs((props) => ({
   outline: none;
   border: none;
   color: var(--green);
-  font-size: 15px;
+  font-size: 4vw;
   font-weight: 700;
-  min-width: 41px;
-  height: 1px;
+  min-width: 10.933vw;
+  height: 0.267vw;
   background-color: var(--white);
   margin-left: auto;
 `;

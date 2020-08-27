@@ -6,8 +6,8 @@ export const OrderCard = styled.div`
   background: var(--white);
   width: 100%;
   display: flex;
-  border-bottom: 1px var(--border-gray) solid;
-  padding: 14px 15px;
+  border-bottom: 0.267vw var(--border-gray) solid;
+  padding: 3.733vw 4vw;
 `;
 export const DataContainer = styled.div`
   display: flex;
@@ -15,21 +15,21 @@ export const DataContainer = styled.div`
 `;
 export const DateContainer = styled.div`
   color: var(--dark-gray);
-  font-size: 13px;
-  margin-bottom: 6px;
+  font-size: 3.467vw;
+  margin-bottom: 1.6vw;
 `;
 export const TitleContainer = styled.div`
   font-weight: bold;
-  font-size: 16px;
-  margin-bottom: 6px;
+  font-size: 4.267vw;
+  margin-bottom: 1.6vw;
 `;
 export const PriceContainer = styled.div`
-  font-size: 13px;
+  font-size: 3.467vw;
 `;
 
 export const ImageContainer = styled.div`
-  width: 65px;
-  height: 65px;
+  width: 17.333vw;
+  height: 17.333vw;
 `;
 
 export const Image = styled.img`

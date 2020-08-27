@@ -25,16 +25,16 @@ function MenuUserSection(): React.ReactElement {
     <S.SectionContainer>
       <S.SuggestLink to={suggestLink.url}>
         {suggestLink.text}
-        <Framework7Icon iconName="chevron_right" fontSize={'12px'} />
+        <Framework7Icon iconName="chevron_right" fontSize={'3.200vw'} />
       </S.SuggestLink>
       <S.UserMenuContainer>
         <S.MenuLink to={setLink('/user/order', location)}>
-          <Framework7Icon iconName="list_dash" fontSize={'16px'} />
+          <Framework7Icon iconName="list_dash" fontSize={'4.267vw'} />
           <S.UserMenuText>주문내역</S.UserMenuText>
         </S.MenuLink>
         <S.UserMenuBar />
         <S.MenuLink to={setLink('/user/liked', location)}>
-          <Framework7Icon iconName="heart_fill" color="var(--red)" fontSize={'16px'} />
+          <Framework7Icon iconName="heart_fill" color="var(--red)" fontSize={'4.267vw'} />
           <S.UserMenuText>찜한상품</S.UserMenuText>
         </S.MenuLink>
       </S.UserMenuContainer>

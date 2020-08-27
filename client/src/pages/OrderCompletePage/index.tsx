@@ -20,11 +20,11 @@ export default function OrderCompletePage({
         </S.Description>
         <S.MenuButtonList>
           <S.MenuButton to={setLink('/', location)}>
-            <Framework7Icon iconName="house" fontSize={'14px'} />
+            <Framework7Icon iconName="house" fontSize={'3.733vw'} />
             <S.MenuButtonText>메인화면으로 이동</S.MenuButtonText>
           </S.MenuButton>
           <S.MenuButton to={setLink('/user/order', location)}>
-            <Framework7Icon iconName="list_dash" fontSize={'14px'} />
+            <Framework7Icon iconName="list_dash" fontSize={'3.733vw'} />
             <S.MenuButtonText>주문내역 확인하기</S.MenuButtonText>
           </S.MenuButton>
         </S.MenuButtonList>

@@ -12,11 +12,15 @@ export default function QuantityCounter({ count, setCount }: Props) {
     <S.CounterContainer>
       <Framework7Icon
         iconName="minus"
-        font-size="18px"
+        font-size="4.800vw"
         onClick={() => setCount(COUNTER_KEY.MINUS)}
       />
       <S.Count>{count}</S.Count>
-      <Framework7Icon iconName="plus" fontSize="18px" onClick={() => setCount(COUNTER_KEY.PLUS)} />
+      <Framework7Icon
+        iconName="plus"
+        fontSize="4.800vw"
+        onClick={() => setCount(COUNTER_KEY.PLUS)}
+      />
     </S.CounterContainer>
   );
 }

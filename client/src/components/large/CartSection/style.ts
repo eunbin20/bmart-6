@@ -8,9 +8,9 @@ export const CartWrapper = styled.div`
 export const Text = styled.div.attrs((props) => ({
   onClick: props.onClick,
 }))`
-  font-size: 14px;
-  margin-top: 3px;
-  min-width: 61px;
+  font-size: 3.733vw;
+ margin-top: 0.8vw;
+  min-width: 20vw;
 `;
 
 interface CheckBoxProps {
@@ -25,16 +25,16 @@ export const CheckBox = styled.input.attrs((props) => ({
   type: 'checkbox',
 }))`
   background-image: ${(props: CheckBoxProps) => `url(${props.background})`};
-  width: 20px;
-  height: 20px;
+  width: 5.333vw;
+  height: 5.333vw;
 `;
 
 export const SelectManageContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 14px;
-  border-bottom: 3px solid var(--border-gray);
+  padding: 4.267vw 3.733vw;
+  border-bottom: 0.8vw solid var(--border-gray);
   width: 100%;
 `;
 
@@ -48,28 +48,28 @@ export const CheckAllText = styled.label.attrs((props) => ({
   htmlFor: 'cart-checkbox-all',
   onClick: props.onClick,
 }))`
-  margin-top: 3px;
-  margin-left: 14px;
+  margin-top: 0.8vw;
+  margin-left: 3.733vw;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 3.733vw;
 `;
 
 export const MainContainer = styled.div`
-  padding: 24px 14px;
+  padding: 6.4vw 3.733vw;
 `;
 
 export const Title = styled.span`
-  font-size: 18px;
+  font-size: 4.8vw;
   font-weight: 600;
   color: var(--green);
-  border-bottom: 2px solid var(--green);
-  padding-bottom: 2px;
+  border-bottom: 0.533vw solid var(--green);
+  padding-bottom: 0.533vw;
 `;
 
 export const ItemContainer = styled.div`
-  padding: 24px 0px;
+  padding: 6.4vw 0vw;
   & > .cart-item-wrapper + .cart-item-wrapper {
-    margin-top: 21px;
+    margin-top: 5.6vw;
   }
 `;
 
@@ -85,8 +85,8 @@ export const SubmitButton = styled.button.attrs((props) => ({
   bottom: 0;
   border: none;
   outline: none;
-  font-size: 15px;
-  padding: 14px;
+  font-size: 4vw;
+  padding: 3.733vw;
   z-index: 10;
   width: 100%;
   background: ${(props: SubmitButton) => (props.canSubmit ? 'var(--green)' : 'var(--gray)')};
