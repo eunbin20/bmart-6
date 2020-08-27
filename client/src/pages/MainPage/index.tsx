@@ -10,6 +10,7 @@ import {
   CategoryProductSection,
   CategoryIconGrid,
   CartBadge,
+  BindPullEvent,
 } from '../../components';
 import useProducts, { toggleProductIsLikedDispatcher, FILTER_TYPE } from '../../hooks/useProducts';
 import {
@@ -94,57 +95,59 @@ function MainPage({ history, location }: RouteComponentProps): React.ReactElemen
   return (
     <DefaultTemplate>
       <PageHeader isHome={true} />
-      <BannerSlider banners={MAIN_BANNERS} />
-      <CategoryIconGrid categories={categories} />
-      <SectionDivider />
-      <ProductSection
-        {...{
-          products: eatNowProducts ?? [],
-          viewType: VIEW_TYPE_GRID,
-          columns: 3,
-          header: {
-            title: '지금 뭐먹지?',
-            description: '#간식시간',
-          },
-          onLikeIconClick: toggleProductIsLikedDispatcher(eatNowProductsDispatch),
-        }}
-      />
-      <SectionDivider />
-      <HotDealSection
-        {...{
-          products: hotDealProducts ?? [],
-          expiredDate: expiredHotDealDate,
-        }}
-      />
-      <SectionDivider />
-      {userContext?.state.isAuthorized && (
+      <BindPullEvent>
+        <BannerSlider banners={MAIN_BANNERS} />
+        <CategoryIconGrid categories={categories} />
+        <SectionDivider />
         <ProductSection
           {...{
-            products: forYouProducts ?? [],
+            products: eatNowProducts ?? [],
+            viewType: VIEW_TYPE_GRID,
+            columns: 3,
+            header: {
+              title: '지금 뭐먹지?',
+              description: '#간식시간',
+            },
+            onLikeIconClick: toggleProductIsLikedDispatcher(eatNowProductsDispatch),
+          }}
+        />
+        <SectionDivider />
+        <HotDealSection
+          {...{
+            products: hotDealProducts ?? [],
+            expiredDate: expiredHotDealDate,
+          }}
+        />
+        <SectionDivider />
+        {userContext?.state.isAuthorized && (
+          <ProductSection
+            {...{
+              products: forYouProducts ?? [],
+              viewType: VIEW_TYPE_LISTVIEW,
+              columns: 2.5,
+              header: {
+                title: `${userContext?.state.nickname}님을 위해 준비한 상품`,
+              },
+              onLikeIconClick: toggleProductIsLikedDispatcher(forYouProductsDispatch),
+            }}
+          />
+        )}
+        <SectionDivider />
+        <ProductSection
+          {...{
+            products: bestSellerProducts ?? [],
             viewType: VIEW_TYPE_LISTVIEW,
             columns: 2.5,
             header: {
-              title: `${userContext?.state.nickname}님을 위해 준비한 상품`,
+              title: '요즘 잘 팔려요',
             },
-            onLikeIconClick: toggleProductIsLikedDispatcher(forYouProductsDispatch),
+            onLikeIconClick: toggleProductIsLikedDispatcher(bestSellerProductsDispatch),
           }}
         />
-      )}
-      <SectionDivider />
-      <ProductSection
-        {...{
-          products: bestSellerProducts ?? [],
-          viewType: VIEW_TYPE_LISTVIEW,
-          columns: 2.5,
-          header: {
-            title: '요즘 잘 팔려요',
-          },
-          onLikeIconClick: toggleProductIsLikedDispatcher(bestSellerProductsDispatch),
-        }}
-      />
-      <SectionDivider />
-      <BannerSlider banners={MID_BANNERS} />
-      <CategoryProductSection categoryProducts={categoryProducts} />
+        <SectionDivider />
+        <BannerSlider banners={MID_BANNERS} />
+        <CategoryProductSection categoryProducts={categoryProducts} />
+      </BindPullEvent>
       <CartBadge count={cartCount} />
     </DefaultTemplate>
   );
