@@ -3,6 +3,7 @@ import * as S from './style';
 import { Form, Field } from 'react-final-form';
 import { loginValidation } from '../../../utils/validation';
 import { UserLogin } from '../../../types/data';
+import { KEYBOARD } from '../../../commons/constants';
 import UserPageInput from '../../small/UserInput';
 import { Logo } from '../../../commons/svgs';
 
@@ -21,6 +22,12 @@ export default function LoginForm({ onSubmit, prevPage }: Props) {
     if (query) url += `?prevPage=${query}`;
     if (id) url += `&id=${id}`;
     return url;
+  };
+
+  const onKeyUpEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key !== KEYBOARD.ENTER) {
+      return;
+    }
   };
 
   return (
@@ -46,6 +53,12 @@ export default function LoginForm({ onSubmit, prevPage }: Props) {
                     submitError={submitError}
                     type="password"
                     placeholder="비밀번호"
+                    onKeyUp={(e) => {
+                      if (e.key !== KEYBOARD.ENTER) {
+                        return;
+                      }
+                      handleSubmit();
+                    }}
                   />
                 )}
               </Field>
