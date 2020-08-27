@@ -33,7 +33,12 @@ const ModalWrapper = styled.div`
   z-index: 10;
 `;
 
-export default function Loading() {
+interface Props {
+  visible: boolean;
+}
+
+export default function Loading({ visible }: Props) {
+  if (!visible) return null;
   return (
     <GrayBg>
       <ModalWrapper>

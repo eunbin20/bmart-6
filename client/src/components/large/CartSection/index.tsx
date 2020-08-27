@@ -13,6 +13,7 @@ export default function CartSection() {
   const [carts, setCarts] = useState<ProductInCart[]>(storage.getCarts());
   const [isAllActive, setIsAllActive] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
   const location = useLocation();
   const totalMoney = useMemo(
@@ -96,7 +97,10 @@ export default function CartSection() {
     try {
       await createOrder({ products } as CreateOrderBody);
       storage.set(STORAGE_KEY.CARTS, '[]');
-      history.push('/order/complete', { from: location });
+      setIsLoading(true);
+      setTimeout(() => {
+        history.push('/order/complete', { from: location });
+      }, 2000);
     } catch (e) {
       if (e.response.status === ERROR_STATUS.UNAUTHORIZED) {
         history.push('/user/login', { from: location });
@@ -168,7 +172,7 @@ export default function CartSection() {
             onVisible={onModalVisible}
             onDelete={deleteCartsByIsActive}
           />
-          <Loading />
+          <Loading visible={isLoading} />
         </>
       ) : (
         <Empty text="장바구니가 텅 비어있어요🤔🤔🤔🤔" />
