@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import DefaultTemplate from '../Default';
 import {
   SectionDivider,
@@ -35,15 +35,16 @@ function MainPage(): React.ReactElement {
   const [{ products: bestSellerProducts }, bestSellerProductsDispatch] = useProducts({
     type: 'bestseller',
   });
-
   const [cartCount] = useState(storage.getProductTotalCount()); // 장바구니에 렌더할 Product Count 개수
   const [categoryProducts, setCategoryProducts] = useState<CategoryProducts[]>([]);
+  const isMounted = useRef(true);
 
   useEffect(() => {
     setCategoryProducts(categories.map((category) => ({ category, products: [] })));
 
     categories.forEach((category: Category) => {
       getProducts({ limit: 4, categoryId: category.id }).then(({ data: products }) => {
+        if (!isMounted.current) return;
         setCategoryProducts((categoryProducts) => {
           const updatedCategoryProducts = [...categoryProducts];
           const index = updatedCategoryProducts.findIndex(
@@ -58,8 +59,12 @@ function MainPage(): React.ReactElement {
 
   useEffect(() => {
     getCategories().then(({ data: categories }) => {
+      if (!isMounted.current) return;
       setCategories(categories);
     });
+    return () => {
+      isMounted.current = false;
+    };
   }, []);
 
   return (
