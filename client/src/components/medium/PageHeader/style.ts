@@ -11,6 +11,7 @@ export const PageHeader = styled.div`
   display: flex;
   width: 100%;
   height: 52px;
+  color: #fff;
   justify-content: space-between;
   align-items: center;
 `;
