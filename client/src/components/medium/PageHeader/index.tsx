@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './style';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Logo } from '../../../commons/svgs';
 import { Framework7Icon } from '../..';
 
@@ -10,7 +10,8 @@ interface Props {
 
 function PageHeader({ isHome }: Props): React.ReactElement {
   const history = useHistory();
-  const routePage = (url: string) => history.push(url);
+  const location = useLocation();
+  const routePage = (url: string) => history.push(url, { from: location });
 
   return (
     <S.PageHeaderContainer>

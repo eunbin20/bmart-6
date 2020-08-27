@@ -17,6 +17,7 @@ import {
   BANNERS,
   DEFAULT_SORT_OPTION,
   VIEW_TYPE_LISTVIEW,
+  ERROR_STATUS,
 } from '../../commons/constants';
 import { RouteComponentProps } from 'react-router-dom';
 import { getSubcategories } from '../../apis/category';
@@ -25,9 +26,13 @@ interface Params {
   categoryId: string;
 }
 
-function CategoryPage({ match: { params } }: RouteComponentProps<Params>): React.ReactElement {
+function CategoryPage({
+  match: { params },
+  history,
+  location,
+}: RouteComponentProps<Params>): React.ReactElement {
   const [subcategories, setSubcategories] = useState([]);
-  const [{ products }, productDispatch] = useProducts({ categoryId: +params.categoryId });
+  const [{ products, status }, productDispatch] = useProducts({ categoryId: +params.categoryId });
   const [sortBy, setSortBy] = useState(DEFAULT_SORT_OPTION);
 
   useEffect(() => {
@@ -43,6 +48,12 @@ function CategoryPage({ match: { params } }: RouteComponentProps<Params>): React
     );
     setSortBy(sortBy);
   }
+
+  useEffect(() => {
+    if (status === ERROR_STATUS.UNAUTHORIZED) {
+      history.push('/user/login', { from: location });
+    }
+  }, [status]);
 
   return (
     <DefaultTemplate>

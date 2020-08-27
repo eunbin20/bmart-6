@@ -1,3 +1,8 @@
+export interface CustomLocationState {
+  from?: Location;
+  customFrom?: string;
+}
+
 export interface User {
   email: string;
   nickname: string;
@@ -16,6 +21,15 @@ export interface UserLogin {
 export interface Category {
   id: number;
   name: string;
+}
+
+export interface Order {
+  id: number;
+  totalPrice: number;
+  totalDiscountedPrice: number;
+  createdAt: string;
+  updatedAt: string;
+  products: Product[];
 }
 
 export interface Menu {

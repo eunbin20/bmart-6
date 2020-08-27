@@ -1,9 +1,9 @@
 export { default as Framework7Icon } from './small/Framework7Icon';
 export { default as ProductLikeIcon } from './small/ProductLikeIcon';
 export { default as ProductCard } from './small/ProductCard';
+export { default as OrderCard } from './small/OrderCard';
 export { default as SectionDivider } from './small/SectionDivider';
 export { default as UserHeader } from './small/UserHeader';
-export { default as UserFooter } from './small/UserFooter';
 export { default as HotDealTimer } from './small/HotDealTimer';
 export { default as HotDealBigProductCard } from './small/HotDealBigProductCard';
 export { default as QuantityCoutner } from './small/QuantityCoutner';
@@ -31,6 +31,7 @@ export { default as AddCartModal } from './medium/AddCartModal';
 export { default as SinglePageHeader } from './medium/SinglePageHeader';
 export { default as MenuListGrid } from './medium/MenuListGrid';
 export { default as MenuListGridHeader } from './medium/MenuListGridHeader';
+export { default as OrderCardListView } from './medium/OrderCardListView';
 
 export { default as CategoryProductSection } from './large/CategoryProductSection';
 export { default as HotDealSection } from './large/HotDealSection';

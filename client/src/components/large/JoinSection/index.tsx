@@ -3,8 +3,8 @@ import * as S from './style';
 import { Form, Field } from 'react-final-form';
 import { createUserValidation } from '../../../utils/validation';
 import { UserJoin } from '../../../types/data';
-import UserPageTitle from '../../small/UserTitle';
 import UserPageInput from '../../small/UserInput';
+import { Logo } from '../../../commons/svgs';
 
 interface Props {
   onSubmit: (values: UserJoin) => void;
@@ -13,7 +13,7 @@ interface Props {
 export default function JoinForm({ onSubmit }: Props) {
   return (
     <>
-      <UserPageTitle title="Bmart" />
+      <S.LogoContainer>{Logo(140, 50)}</S.LogoContainer>
       <S.InputContainer>
         <Form
           onSubmit={onSubmit}
@@ -56,7 +56,7 @@ export default function JoinForm({ onSubmit }: Props) {
                   />
                 )}
               </Field>
-              <S.PushButton onClick={handleSubmit}>arrow_right</S.PushButton>
+              <S.PushButton onClick={handleSubmit}>회원가입</S.PushButton>
             </>
           )}
         />
