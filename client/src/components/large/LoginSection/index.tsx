@@ -5,8 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { loginValidation } from '../../../utils/validation';
 import { UserLogin } from '../../../types/data';
 import { KEYBOARD } from '../../../commons/constants';
-import UserPageInput from '../../small/UserInput';
-import { Logo } from '../../../commons/svgs';
+import { BmartLogo, UserPageInput } from '../..';
 
 interface Props {
   onSubmit: (values: UserLogin) => void;
@@ -22,7 +21,9 @@ export default function LoginForm({ onSubmit, prevPath }: Props) {
 
   return (
     <>
-      <S.LogoContainer>{Logo(140, 50)}</S.LogoContainer>
+      <S.LogoContainer>
+        <BmartLogo width={'140px'} />
+      </S.LogoContainer>
       <S.InputContainer>
         <Form
           onSubmit={onSubmit}

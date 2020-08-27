@@ -3,6 +3,7 @@ export { default as ProductLikeIcon } from './small/ProductLikeIcon';
 export { default as ProductCard } from './small/ProductCard';
 export { default as OrderCard } from './small/OrderCard';
 export { default as SectionDivider } from './small/SectionDivider';
+export { default as UserPageInput } from './small/UserInput';
 export { default as UserHeader } from './small/UserHeader';
 export { default as HotDealTimer } from './small/HotDealTimer';
 export { default as HotDealBigProductCard } from './small/HotDealBigProductCard';
@@ -13,6 +14,7 @@ export { default as Empty } from './small/Empty';
 export { default as CartItem } from './small/CartItem';
 export { default as CartDeleteModal } from './small/CartDeleteModal';
 export { default as TotalCartMoney } from './small/TotalCartMoney';
+export { default as BmartLogo } from './small/BmartLogo';
 
 export { default as PageHeader } from './medium/PageHeader';
 export { default as SectionHeader } from './medium/SectionHeader';
