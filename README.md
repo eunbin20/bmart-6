@@ -1,4 +1,4 @@
-# Bmart
+# 🛒 Bmart
 
 ![version](https://img.shields.io/github/v/release/woowa-techcamp-2020/bmart-6?include_prereleases&sort=semver&label=version)
 
