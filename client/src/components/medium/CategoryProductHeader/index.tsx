@@ -17,7 +17,7 @@ function CategoryProductHeader({
   const [selectedChipId, setSelectedChipId] = useState(selectedId);
 
   useEffect(() => {
-    const headerOffsetTop = categoryRefs.current[1]?.offsetTop - 75;
+    const headerOffsetTop = categoryRefs.current[1]?.offsetTop - headerRef.current.offsetHeight;
     const setSticky = function () {
       const header = headerRef.current;
       if (!header) return;
@@ -30,7 +30,7 @@ function CategoryProductHeader({
 
     const scrollHandler = function () {
       let index = categoryRefs.current.findIndex(
-        (tab) => tab && tab.offsetTop - 70 > window.pageYOffset,
+        (tab) => tab && tab.offsetTop - headerRef.current.offsetHeight > window.pageYOffset,
       );
       if (index - 1 === selectedChipId) return;
       if (index === -1) index = 10;
