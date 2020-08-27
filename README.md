@@ -8,8 +8,6 @@
 ## 배포
 [배포 링크](http://3.35.66.51)
 
-## 프로젝트 구조
-
 ## 재사용성 높은 UI 컴포넌트
 ![UI 컴포넌트 구조](https://user-images.githubusercontent.com/36878344/91496983-15976c00-e8f8-11ea-8551-e5a1bcc2d067.png)
 
@@ -21,6 +19,45 @@
 
 각 페이지에 필요한 데이터와 상태 관리는 page에서 이루어지고 컴포넌트는 받은 데이터를 렌더링하는 역할을 수행합니다.
 
+## 프로젝트 구조
+```bash
+|-- github
+    |-- workflows // github actions
+|-- client
+    |-- public
+        |-- aseets // images
+        index.html
+    |-- src
+        |-- apis
+        |-- commons
+        		constants.ts
+            svgs.tsx
+        |-- components // UI Components
+        		|-- largs
+        		|-- medium
+        		|-- small
+        |-- contexts
+        		|-- user // user context
+        |-- hooks // custom hooks
+        |-- libs // libraries
+        |-- pages // page components
+        |-- styles // common & global styles
+        |-- tyles // common types
+        |-- utils // util functions..
+				App.tsx
+|-- scripts // deploy scripts
+|-- server
+		|-- bin // www
+		|-- controllers
+		|-- lib
+		|-- middlewares // express middlewares
+		|-- models // sequelize models
+		|-- routes // routing
+		|-- seeder // dummy data
+		|-- utils // constants & utils functions
+		app.js
+ 
+```
 
 ## 설치 가이드
 
