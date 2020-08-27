@@ -1,12 +1,20 @@
-import React from 'react';
-import { SectionDivider, SinglePageHeader } from '../../components';
-import DefaultTemplate from '../Default';
+import React, { useState, useEffect } from 'react';
+import { SectionDivider, SinglePageHeader, OrderCardListView } from '../../components';
+import * as S from './style';
+import { getOrders } from '../../apis/order';
 
 export default function OrderListPage() {
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    getOrders().then(({ data: orders }) => setOrders(orders));
+  }, []);
+
   return (
-    <DefaultTemplate>
+    <S.OrderListPage>
       <SinglePageHeader />
       <SectionDivider />
-    </DefaultTemplate>
+      <OrderCardListView orders={orders} />
+    </S.OrderListPage>
   );
 }
