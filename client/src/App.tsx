@@ -4,6 +4,7 @@ import {
   MainPage,
   JoinPage,
   LoginPage,
+  LogoutPage,
   MenuPage,
   UserLikedPage,
   SearchPage,
@@ -33,6 +34,7 @@ export default function App() {
           <RequireAuthRoute path="/user/liked" component={UserLikedPage} />
           <Route exact path="/user/join" component={JoinPage} />
           <Route exact path="/user/login" component={LoginPage} />
+          <Route exact path="/user/logout" component={LogoutPage} />
           <Route exact path="/detail/:productId" component={ProductDetailPage} />
           <Route exact path="/cart" component={CartPage} />
           <Redirect path="*" to="/" />
