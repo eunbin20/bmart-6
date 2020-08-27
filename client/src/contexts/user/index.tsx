@@ -13,17 +13,14 @@ interface UserContextType {
 }
 
 const checkIsAuthorized = () => {
-  if (process.env.NODE_ENV === 'development') {
-    return true;
-  }
   return storage.get(STORAGE_KEY.ACCESS_TOKEN) ? true : false;
 };
 
 const initialState = {
-  isAuthorized: false,
+  isAuthorized: checkIsAuthorized(),
   nickname: '',
   email: '',
-  status: 0, //
+  status: 0,
 };
 
 const UserContext = createContext<UserContextType | null>(null);

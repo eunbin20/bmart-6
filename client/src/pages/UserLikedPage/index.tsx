@@ -1,5 +1,4 @@
 import React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
 import * as S from './style';
 import DefaultTemplate from '../Default';
 import {
@@ -12,7 +11,7 @@ import {
 import useProducts, { FILTER_TYPE } from '../../hooks/useProducts';
 import { Header } from '../../types/data';
 
-function UserLikedPage({ history }: RouteComponentProps): React.ReactElement {
+function UserLikedPage(): React.ReactElement {
   const [{ products }] = useProducts({ type: FILTER_TYPE.USER_LIKED });
   const sectionHeaderProps: Header = {
     title: '찜한상품',

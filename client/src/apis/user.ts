@@ -1,6 +1,6 @@
 import { Axios } from '../libs/axios';
 import { UserJoin, UserLogin } from '../types/data';
-import { ERROR_STATUS, STORAGE_KEY } from '../commons/constants';
+import { ERROR_STATUS, ERROR_MESSAGE, STORAGE_KEY } from '../commons/constants';
 import { storage } from '../utils/storage';
 
 export const createUser = async (body: UserJoin) => Axios().post('/user', body);
@@ -12,6 +12,8 @@ export const getUserInfo = async () => {
   } catch (e) {
     if (e.response.status === ERROR_STATUS.UNAUTHORIZED) {
       storage.remove(STORAGE_KEY.ACCESS_TOKEN);
+      alert(ERROR_MESSAGE.UNAUTHORIZED_TOKEN_AND_REQUIRE_LOGIN);
+      window.location.href = '/user/login';
     }
   }
 };

@@ -1,3 +1,8 @@
+export interface CustomLocationState {
+  from?: Location;
+  customFrom?: string;
+}
+
 export interface User {
   email: string;
   nickname: string;

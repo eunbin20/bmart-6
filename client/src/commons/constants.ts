@@ -35,6 +35,7 @@ export const ERROR_MESSAGE = {
   PASSWORD_CONFIRM_EQUAL: '비밀번호와 비밀번호 확인이 다릅니다.',
   LOGIN_FAILED: '아이디 또는 비밀번호가 올바르지 않습니다.',
   DUPLICATED_EMAIL: '중복된 이메일 입니다.',
+  UNAUTHORIZED_TOKEN_AND_REQUIRE_LOGIN: '토큰 정보가 유효하지 않습니다.\n다시 로그인해주세요.',
 };
 
 export const ERROR_STATUS = {
