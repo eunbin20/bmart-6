@@ -82,7 +82,7 @@ function MainPage({ history, location }: RouteComponentProps): React.ReactElemen
       forYouStatus === ERROR_STATUS.UNAUTHORIZED ||
       hotDealStatus === ERROR_STATUS.UNAUTHORIZED ||
       eatNowStatus === ERROR_STATUS.UNAUTHORIZED ||
-     SellerStatus === ERROR_STATUS.UNAUTHORIZED
+      bestSellerStatus === ERROR_STATUS.UNAUTHORIZED
     ) {
       history.push('/user/login', { from: location });
     }
