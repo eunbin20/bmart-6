@@ -11,7 +11,7 @@ import {
   CategoryIconGrid,
   CartBadge,
 } from '../../components';
-import useProducts, { toggleProductIsLikedDispatcher } from '../../hooks/useProducts';
+import useProducts, { toggleProductIsLikedDispatcher, FILTER_TYPE } from '../../hooks/useProducts';
 import {
   BANNERS,
   SORT_BY,
@@ -31,19 +31,19 @@ function MainPage({ history }: RouteComponentProps): React.ReactElement {
     limit: 4,
     sortBy: SORT_BY.DISCOUNTEDRATE,
   });
-  
+
   const [{ products: eatNowProducts, status: eatNowStatus }, eatNowProductsDispatch] = useProducts({
-        categoryId: 7,
-        limit: 6,
+    categoryId: 7,
+    limit: 6,
   });
   const [{ products: forYouProducts, status: forYouStatus }, forYouProductsDispatch] = useProducts({
-    type: 'recommend',
+    type: FILTER_TYPE.RECOMMEND,
   });
   const [
     { products: bestSellerProducts, status: besetSellerStatus },
     bestSellerProductsDispatch,
-  ] = useProducts({ type: 'bestseller' });
-  
+  ] = useProducts({ type: FILTER_TYPE.BESTSELLER });
+
   const [cartCount] = useState(storage.getProductTotalCount()); // 장바구니에 렌더할 Product Count 개수
   const [categoryProducts, setCategoryProducts] = useState<CategoryProducts[]>([]);
 

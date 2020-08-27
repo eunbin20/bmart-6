@@ -7,4 +7,4 @@ interface CreateOrderBody {
   }[];
 }
 
-export const createOrder = (body: CreateOrderBody) => Axios.post('/order', body);
+export const createOrder = (body: CreateOrderBody) => Axios().post('/order', body);
