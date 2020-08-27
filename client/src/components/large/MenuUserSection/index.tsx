@@ -18,6 +18,7 @@ const getSuggestLink = (isAuthorized: boolean) => {
 };
 
 function MenuUserSection(): React.ReactElement {
+  const location = useLocation();
   const authContext = useAuthContext();
   const suggestLink = getSuggestLink(authContext?.state.isAuthorized || false);
   return (
