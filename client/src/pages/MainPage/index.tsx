@@ -22,8 +22,10 @@ import {
 import { getCategories, getProducts } from '../../apis';
 import { Category, CategoryProducts } from '../../types/data';
 import { storage } from '../../utils/storage';
+import { useAuthContext } from '../../contexts/user';
 
 function MainPage({ history }: RouteComponentProps): React.ReactElement {
+  const userContext = useAuthContext();
   const [categories, setCategories] = useState<Category[]>([]);
   const [{ products: hotDealProducts, status: hotDealStatus }] = useProducts({
     limit: 4,
