@@ -15,7 +15,7 @@ function OrderCard({ order }: Props): React.ReactElement {
       <S.DataContainer>
         <S.DateContainer>{formatDate(createdAt)}</S.DateContainer>
         <S.TitleContainer>
-          {products[0].title} {products.length != 1 && `외 ${products.length - 1}개`}
+          {products[0].title} {products.length !== 1 && `외 ${products.length - 1}개`}
         </S.TitleContainer>
         <S.PriceContainer>{makeComma(totalDiscountedPrice)}원</S.PriceContainer>
       </S.DataContainer>

@@ -1,7 +1,5 @@
 import React from 'react';
-
 import * as S from './style';
-import { Menu } from '../../../types/data';
 
 interface Props {
   title: string;

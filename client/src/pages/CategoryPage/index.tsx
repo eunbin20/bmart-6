@@ -15,7 +15,7 @@ import useProducts, { toggleProductIsLikedDispatcher } from '../../hooks/useProd
 import { getProducts } from '../../hooks/useProducts/actions';
 import {
   SORTOPTIONS,
-  BANNERS,
+  SUB_BANNERS,
   DEFAULT_SORT_OPTION,
   VIEW_TYPE_LISTVIEW,
   ERROR_STATUS,
@@ -61,7 +61,7 @@ function CategoryPage({
   return (
     <DefaultTemplate>
       <PageHeader isHome={false} />
-      <BannerSlider banners={BANNERS} />
+      <BannerSlider banners={SUB_BANNERS} />
       <SubcategoryCardGrid subcategories={subcategories} />
       <SectionDivider />
       <ProductSection
