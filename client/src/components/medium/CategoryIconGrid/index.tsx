@@ -20,7 +20,7 @@ function CategoryIconGrid({ categories }: Props): React.ReactElement {
           ></S.CategoryIcon>
         </S.CategoryIconWrapper>
       ))}
-      <S.CategoryIconWrapper key={99} to={setLink('/', location)}>
+      <S.CategoryIconWrapper key={99} to={setLink('/menu', location)}>
         <S.CategoryIcon src={'assets/category-more.png'} alt={'Category-more'}></S.CategoryIcon>
       </S.CategoryIconWrapper>
     </S.CategoryIconGrid>
