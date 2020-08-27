@@ -23,6 +23,15 @@ export interface Category {
   name: string;
 }
 
+export interface Order {
+  id: number;
+  totalPrice: number;
+  totalDiscountedPrice: number;
+  createdAt: string;
+  updatedAt: string;
+  products: Product[];
+}
+
 export interface Menu {
   name: string;
   path: string;
