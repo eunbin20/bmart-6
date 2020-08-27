@@ -19,7 +19,7 @@ export default function LoginForm({ onSubmit, prevPage }: Props) {
     let url = '/user/join';
     const { query, id } = prevPage;
     if (query) url += `?prevPage=${query}`;
-    if (id) url += `&${id}`;
+    if (id) url += `&id=${id}`;
     return url;
   };
 

@@ -31,7 +31,7 @@ function LoginPage({ history, location }: RouteComponentProps) {
     const query = queryString.parse(search)['?prevPage'] as string;
     const id = queryString.parse(search)['id'] as string;
     return { query, id };
-  }, [search]); // 현재는 CartPage만
+  }, [search]); // CartPage, Categorypage ...
 
   const onSubmitLogin = async (values: UserLogin) => {
     if (userContext === null) {

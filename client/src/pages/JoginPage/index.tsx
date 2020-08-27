@@ -8,13 +8,17 @@ import * as userApis from '../../apis/user';
 import { JoinSection, UserHeader } from '../../components';
 import { ERROR_STATUS, ERROR_MESSAGE } from '../../commons/constants';
 
-function getUrlByPrevPage(prevPage: string | null) {
-  switch (prevPage) {
-    case 'cart':
-      return '/cart';
-    default:
-      return '/';
-  }
+type PrevPage = {
+  query: string | null;
+  id: string | null;
+};
+
+function getUrlByPrevPage(prevPage: PrevPage) {
+  const { query, id } = prevPage;
+  let url = '/';
+  if (query) url += query;
+  if (id) url += `/${id}`;
+  return url;
 }
 
 function JoinPage({ history, location }: RouteComponentProps) {
@@ -23,16 +27,16 @@ function JoinPage({ history, location }: RouteComponentProps) {
 
   const prevPage = useMemo(() => {
     const query = queryString.parse(search)['?prevPage'] as string;
-    if (query) return query;
-    return null;
-  }, [search]); // 현재는 CartPage만
+    const id = queryString.parse(search)['id'] as string;
+    return { query, id };
+  }, [search]); // CartPage, Categorypage ...
 
   const getRouteUrl = () => {
-    let returnValue = '/user/login';
-    if (prevPage !== null) {
-      returnValue += `?prevPage=${prevPage}`;
-    }
-    return returnValue;
+    let url = '/user/login';
+    const { query, id } = prevPage;
+    if (query) url += `?prevPage=${query}`;
+    if (id) url += `&id=${id}`;
+    return url;
   };
 
   const onSubmitJoin = async (values: UserJoin) => {
