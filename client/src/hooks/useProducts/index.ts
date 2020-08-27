@@ -18,6 +18,12 @@ import {
 } from './actions';
 import { productsReducer } from './reducer';
 
+export const FILTER_TYPE = {
+  USER_LIKED: 'userliked',
+  RECOMMEND: 'recommend',
+  BESTSELLER: 'bestseller',
+};
+
 const defaultProductsState: ProductsState = {
   products: [],
   status: 0,
