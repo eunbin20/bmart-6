@@ -1,11 +1,20 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const InputContainer = styled.section`
   width: 100%;
-  padding: 0 28px;
+  padding: 45px 28px;
   > .input-wrapper + .input-wrapper {
     margin-top: 32px;
   }
+`;
+
+export const LogoContainer = styled.div``;
+
+export const NeedLogin = styled.div`
+  color: var(--gray);
+  width: 100%;
+  padding-bottom: 15px;
 `;
 
 interface PushButtonProps {
@@ -14,17 +23,28 @@ interface PushButtonProps {
 
 export const PushButton = styled.button.attrs((props: PushButtonProps) => ({
   type: 'submit',
-  className: 'f7-icons',
   onSubmit: props.onSubmit,
 }))`
-  background: var(--gray);
+  background: var(--green);
+  margin-top: 10px;
   border: none;
-  width: 60px;
-  height: 60px;
+  width: 100%;
+  height: 45px;
   border-radius: 7px;
   color: #ffffffff;
-  position: absolute;
-  bottom: 50px;
-  right: 28px;
-  z-index: 5;
+  font-size: 18px;
+  font-weight: 700;
+`;
+
+export const Text = styled.div`
+  padding-top: 20px;
+  text-align: right;
+  font-size: 14px;
+  color: var(--gray);
+`;
+
+export const JoinButton = styled(Link)`
+  color: var(--gray);
+  /* text-decoration: none; */
+  font-size: 14px;
 `;

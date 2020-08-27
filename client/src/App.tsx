@@ -2,8 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import {
   MainPage,
+  JoinPage,
+  LoginPage,
   MenuPage,
-  UserPage,
   SearchPage,
   SearchResultPage,
   CategoryPage,
@@ -27,7 +28,8 @@ function App() {
           <Route exact path="/search/:title" component={SearchResultPage} />
           <Route exact path="/category/:categoryId" component={CategoryPage} />
           <Route exact path="/subcategory/:subcategoryId" component={SubcategoryPage} />
-          <Route exact path="/user/:subPath" component={UserPage} />
+          <Route exact path="/user/join" component={JoinPage} />
+          <Route exact path="/user/login" component={LoginPage} />
           <Route exact path="/detail/:productId" component={ProductDetailPage} />
           <Route exact path="/cart" component={CartPage} />
           <Redirect path="*" to="/" />

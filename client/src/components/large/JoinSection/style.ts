@@ -2,11 +2,13 @@ import styled from 'styled-components';
 
 export const InputContainer = styled.section`
   width: 100%;
-  padding: 0 28px;
+  padding: 45px 28px;
   > .input-wrapper + .input-wrapper {
     margin-top: 32px;
   }
 `;
+
+export const LogoContainer = styled.div``;
 
 interface PushButtonProps {
   onSubmit: (args: any) => void;
@@ -14,17 +16,15 @@ interface PushButtonProps {
 
 export const PushButton = styled.button.attrs((props: PushButtonProps) => ({
   type: 'submit',
-  className: 'f7-icons',
   onSubmit: props.onSubmit,
 }))`
-  background: var(--gray);
+  background: var(--green);
+  margin-top: 20px;
   border: none;
-  width: 60px;
-  height: 60px;
+  width: 100%;
+  height: 45px;
   border-radius: 7px;
-  color: var(--white);
-  position: absolute;
-  bottom: 50px;
-  right: 28px;
-  z-index: 5;
+  color: #ffffffff;
+  font-size: 18px;
+  font-weight: 700;
 `;

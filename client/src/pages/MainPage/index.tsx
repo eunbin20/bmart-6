@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import DefaultTemplate from '../Default';
 import {
   SectionDivider,
@@ -11,31 +12,38 @@ import {
   CartBadge,
 } from '../../components';
 import useProducts, { toggleProductIsLikedDispatcher } from '../../hooks/useProducts';
-import { BANNERS, SORT_BY, VIEW_TYPE_GRID, VIEW_TYPE_LISTVIEW } from '../../commons/constants';
+import {
+  BANNERS,
+  SORT_BY,
+  VIEW_TYPE_GRID,
+  VIEW_TYPE_LISTVIEW,
+  ERROR_STATUS,
+} from '../../commons/constants';
 import { getCategories, getProducts } from '../../apis';
 import { Category, CategoryProducts } from '../../types/data';
 import { storage } from '../../utils/storage';
+import { useAuthContext } from '../../contexts/user';
 
-function MainPage(): React.ReactElement {
+function MainPage({ history }: RouteComponentProps): React.ReactElement {
+  const userContext = useAuthContext();
   const [categories, setCategories] = useState<Category[]>([]);
-  const [{ products: hotDealProducts }] = useProducts({
+  const [{ products: hotDealProducts, status: hotDealStatus }] = useProducts({
     limit: 4,
     sortBy: SORT_BY.DISCOUNTEDRATE,
   });
-
-  const [{ products: eatNowProducts }, eatNowProductsDispatch] = useProducts({
-    categoryId: 7,
-    limit: 6,
+  
+  const [{ products: eatNowProducts, status: eatNowStatus }, eatNowProductsDispatch] = useProducts({
+        categoryId: 7,
+        limit: 6,
   });
-
-  const [{ products: forYouProducts }, forYouProductsDispatch] = useProducts({
+  const [{ products: forYouProducts, status: forYouStatus }, forYouProductsDispatch] = useProducts({
     type: 'recommend',
   });
-
-  const [{ products: bestSellerProducts }, bestSellerProductsDispatch] = useProducts({
-    type: 'bestseller',
-  });
-
+  const [
+    { products: bestSellerProducts, status: besetSellerStatus },
+    bestSellerProductsDispatch,
+  ] = useProducts({ type: 'bestseller' });
+  
   const [cartCount] = useState(storage.getProductTotalCount()); // 장바구니에 렌더할 Product Count 개수
   const [categoryProducts, setCategoryProducts] = useState<CategoryProducts[]>([]);
 
@@ -52,6 +60,17 @@ function MainPage(): React.ReactElement {
       setCategories(categories);
     });
   }, []);
+
+  useEffect(() => {
+    if (
+      forYouStatus === ERROR_STATUS.UNAUTHORIZED ||
+      hotDealStatus === ERROR_STATUS.UNAUTHORIZED ||
+      eatNowStatus === ERROR_STATUS.UNAUTHORIZED ||
+      besetSellerStatus === ERROR_STATUS.UNAUTHORIZED
+    ) {
+      history.push('/user/login?prevPage=main');
+    }
+  }, [forYouStatus, hotDealStatus, eatNowStatus, besetSellerStatus]);
 
   return (
     <DefaultTemplate>
@@ -79,17 +98,19 @@ function MainPage(): React.ReactElement {
         }}
       />
       <SectionDivider />
-      <ProductSection
-        {...{
-          products: forYouProducts ?? [],
-          viewType: VIEW_TYPE_LISTVIEW,
-          columns: 2.5,
-          header: {
-            title: '관형님을 위해 준비한 상품',
-          },
-          onLikeIconClick: toggleProductIsLikedDispatcher(forYouProductsDispatch),
-        }}
-      />
+      {userContext?.state.isAuthorized && (
+        <ProductSection
+          {...{
+            products: forYouProducts ?? [],
+            viewType: VIEW_TYPE_LISTVIEW,
+            columns: 2.5,
+            header: {
+              title: `${userContext?.state.nickname}님을 위해 준비한 상품`,
+            },
+            onLikeIconClick: toggleProductIsLikedDispatcher(forYouProductsDispatch),
+          }}
+        />
+      )}
       <SectionDivider />
       <ProductSection
         {...{

@@ -24,7 +24,7 @@ export const Input = styled.input.attrs((props: InputProps) => ({
   font-size: 20px;
   color: var(--gray);
   border-bottom: 1px solid var(--gray);
-  padding-bottom: 14px;
+  padding-bottom: 10px;
 `;
 
 interface InputErrorProps {

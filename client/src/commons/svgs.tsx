@@ -6,8 +6,14 @@ export const DropIcon = () => (
   </svg>
 );
 
-export const Logo = () => (
-  <svg width="56" height="25" viewBox="0 0 56 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+export const Logo = (width: number = 56, height: number = 25) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox="0 0 56 25"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <ellipse cx="12.3304" cy="12.5" rx="12.3304" ry="12.5" fill="#2AC1BC" />
     <path
       d="M8.27434 6.41447H12.3304L9.08554 14.4737H10.5457L6.65192 19.7368L7.78761 15.2961H6.65192L8.27434 6.41447Z"
