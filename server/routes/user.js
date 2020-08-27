@@ -8,6 +8,7 @@ router.post('/', validateCreateUser, userController.create); // 회원가입
 router.post('/login', isAuthenticated, userController.login);
 
 router.use(isValidJwtToken);
+router.get('/', userController.findOne);
 router.put('/', userController.update);
 router.delete('/:id', userController.delete);
 router.get('/product/:productId', validateLikeProduct, userController.likeProduct);
