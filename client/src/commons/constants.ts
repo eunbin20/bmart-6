@@ -50,7 +50,6 @@ export const ERROR_STATUS = {
 export const SORTOPTIONS: {
   [key: string]: string | undefined;
 } = {
-  '기본 정렬순': undefined,
   '인기 상품순': SORT_BY.POPULAR,
   '높은 가격순': SORT_BY.PRICEUP,
   '낮은 가격순': SORT_BY.PRICEDOWN,
@@ -58,7 +57,7 @@ export const SORTOPTIONS: {
   '할인율 순': SORT_BY.DISCOUNTEDRATE,
 };
 
-export const DEFAULT_SORT_OPTION = '기본 정렬순';
+export const DEFAULT_SORT_OPTION = '인기 상품순';
 
 export const DEFAULT_HEADER_OFFSET_TOP = 1758;
 export const BANNER_SCROLL_INTERVAL = 3500;
