@@ -17,6 +17,33 @@ import './styles/reset.scss';
 import './styles/fonts.scss';
 import './styles/reactModal.scss';
 import './styles/globalstyle.scss';
+import { useAuthContext } from './contexts/user';
+
+interface RequireAuthRouteProps {
+  path: string;
+  component: any;
+  [index: string]: any;
+}
+
+function RequireAuthRoute({ path, component: Component, ...rest }: RequireAuthRouteProps) {
+  const userAuthContext = useAuthContext();
+  const isAuthenticated = userAuthContext?.state.isAuthorized || false;
+
+  return (
+    <Route
+      exact
+      path={path}
+      {...rest}
+      render={(props) =>
+        isAuthenticated === true ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={{ pathname: '/user/login', state: { from: props.location } }} />
+        )
+      }
+    />
+  );
+}
 
 function App() {
   return (
@@ -29,7 +56,7 @@ function App() {
           <Route exact path="/search/:title" component={SearchResultPage} />
           <Route exact path="/category/:categoryId" component={CategoryPage} />
           <Route exact path="/subcategory/:subcategoryId" component={SubcategoryPage} />
-          <Route exact path="/user/liked" component={UserLikedPage} />
+          <RequireAuthRoute path="/user/liked" component={UserLikedPage} />
           <Route exact path="/user/join" component={JoinPage} />
           <Route exact path="/user/login" component={LoginPage} />
           <Route exact path="/detail/:productId" component={ProductDetailPage} />
@@ -40,15 +67,5 @@ function App() {
     </div>
   );
 }
-
-// function PublicRoute({ ...rest }: any): React.ReactElement {
-//   const { setLoginCallback } = useContext(AfterLoginAction);
-
-//   useEffect(() => {
-//     setLoginCallback('/');
-//   }, [setLoginCallback]);
-
-//   return <Route {...rest} />;
-// }
 
 export default App;
