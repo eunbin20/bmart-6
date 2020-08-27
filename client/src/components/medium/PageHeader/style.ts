@@ -14,13 +14,13 @@ export const PageHeader = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-export const PageHeaderTrailing = styled.div`
-  display: flex;
-  justify-content: flex-end;
 
-  & > .f7-icons {
-    margin-left: 18px;
-  }
+export const IconContainer = styled.div`
+  display: flex;
+  width: 20px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const SearchBar = styled(Link)`
@@ -42,6 +42,6 @@ export const SearchBar = styled(Link)`
   }
 `;
 
-export const LogoContainer = styled.span.attrs((props) => ({
-  onClick: props.onClick,
-}))``;
+export const LogoContainer = styled.div`
+  padding-top: 4px;
+`;
