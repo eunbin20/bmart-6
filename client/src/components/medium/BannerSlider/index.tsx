@@ -3,6 +3,8 @@ import * as S from './style';
 import { Banner } from '../../../types/data';
 import { BANNER_SCROLL_INTERVAL } from '../../../commons/constants';
 import Indicator from '../../small/BannerIndicator';
+import { useLocation } from 'react-router-dom';
+import { setLink } from '../../../utils/functions';
 
 interface Props {
   banners: Banner[];
@@ -11,6 +13,7 @@ interface Props {
 const INTERVAL_ID_NONE = -1;
 
 function BannerSlider({ banners }: Props): React.ReactElement {
+  const location = useLocation();
   const listRef = useRef() as React.MutableRefObject<HTMLUListElement>;
   const intervalId = useRef<number>(INTERVAL_ID_NONE);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -95,7 +98,7 @@ function BannerSlider({ banners }: Props): React.ReactElement {
         {slides.map((banner, i) => {
           return (
             <S.BannerItem key={i}>
-              <S.BannerLink to={banner.redirectUrl}>
+              <S.BannerLink to={setLink(banner.redirectUrl, location)}>
                 <S.BannerImage src={banner.imageUrl} draggable="false" />
               </S.BannerLink>
             </S.BannerItem>

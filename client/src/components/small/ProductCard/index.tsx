@@ -3,6 +3,8 @@ import React from 'react';
 import { TwoColumnCard, ThreeColumnCard, TwoHalfColumnCard } from './style';
 import { Product, ProductGridColumns } from '../../../types/data';
 import { ProductLikeIcon } from '../..';
+import { useLocation } from 'react-router-dom';
+import { setLink } from '../../../utils/functions';
 
 interface Props extends Product {
   columns: ProductGridColumns;
@@ -45,9 +47,9 @@ function ProductCard({
   isLiked,
 }: Props): React.ReactElement {
   const S = selectStyle(columns);
-
+  const location = useLocation();
   return (
-    <S.LinkWrapper to={`/detail/${id}`}>
+    <S.LinkWrapper to={setLink(`/detail/${id}`, location)}>
       <S.ImgWrapper>
         <S.Image alt={'card'} src={imageUrl} />
         {onLikeIconClick && (

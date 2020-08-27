@@ -3,6 +3,7 @@ import * as S from './style';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Logo } from '../../../commons/svgs';
 import { Framework7Icon } from '../..';
+import { setLink } from '../../../utils/functions';
 
 interface Props {
   isHome: boolean;
@@ -12,19 +13,25 @@ function PageHeader({ isHome }: Props): React.ReactElement {
   const history = useHistory();
   const location = useLocation();
   const routePage = (url: string) => history.push(url, { from: location });
-
   return (
     <S.PageHeaderContainer>
       <S.PageHeader>
-        <Framework7Icon iconName={'bars'} onClick={() => routePage('/menu')} />
+        <S.IconContainer>
+          {!isHome && (
+            <Framework7Icon
+              iconName="arrow_left"
+              fontSize={'20px'}
+              onClick={() => (location.state ? history.goBack() : routePage('/home'))}
+            />
+          )}
+        </S.IconContainer>
         <S.LogoContainer onClick={() => routePage('/')}>{Logo()}</S.LogoContainer>
-        <Framework7Icon
-          iconName={'person_alt_circle_fill'}
-          onClick={() => routePage('/user/login')}
-        />
+        <S.IconContainer>
+          <Framework7Icon iconName={'bars'} onClick={() => routePage('/menu')} />
+        </S.IconContainer>
       </S.PageHeader>
       {isHome && (
-        <S.SearchBar to={'/search'}>
+        <S.SearchBar to={setLink('/search', location)}>
           <Framework7Icon iconName={'search'} fontSize={'16px'} />
           이곳에서 검색하세요!
         </S.SearchBar>

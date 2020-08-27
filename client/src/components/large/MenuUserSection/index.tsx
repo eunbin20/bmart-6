@@ -2,6 +2,8 @@ import React from 'react';
 import * as S from './style';
 import { Framework7Icon } from '../../../components';
 import { useAuthContext } from '../../../contexts/user/index';
+import { useLocation } from 'react-router-dom';
+import { setLink } from '../../../utils/functions';
 
 const getSuggestLink = (isAuthorized: boolean) => {
   return isAuthorized
@@ -25,12 +27,12 @@ function MenuUserSection(): React.ReactElement {
         <Framework7Icon iconName="chevron_right" fontSize={'12px'} />
       </S.SuggestLink>
       <S.UserMenuContainer>
-        <S.MenuLink to="/user/order">
+        <S.MenuLink to={setLink('/user/order', location)}>
           <Framework7Icon iconName="list_dash" fontSize={'16px'} />
           <S.UserMenuText>주문내역</S.UserMenuText>
         </S.MenuLink>
         <S.UserMenuBar />
-        <S.MenuLink to="/user/liked">
+        <S.MenuLink to={setLink('/user/liked', location)}>
           <Framework7Icon iconName="heart_fill" color="var(--red)" fontSize={'16px'} />
           <S.UserMenuText>찜한상품</S.UserMenuText>
         </S.MenuLink>

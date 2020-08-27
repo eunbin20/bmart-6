@@ -33,7 +33,9 @@ function SearchBar({
         isFromSearchPage ? history.goBack() : history.push('/search', { from: location });
       }}
     >
-      <S.IconContainer onClick={() => isSearchPage && history.goBack()}>
+      <S.IconContainer
+        onClick={() => (location.state ? history.goBack() : history.push('/', { from: location }))}
+      >
         <Framework7Icon iconName="arrow_left" fontSize={'20px'} />
       </S.IconContainer>
       <S.Input
