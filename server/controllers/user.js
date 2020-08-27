@@ -51,3 +51,9 @@ exports.unlikeProduct = async (req, res) => {
   await UserProductRelation.destroy({ where: { userId, productId } });
   res.status(HTTP_STATUS.CREATE_SUCCESS).send({ productId });
 };
+
+exports.findOne = async (req, res) => {
+  const userId = req.user.id;
+  const { name, nickname, id, email } = await User.findOne({ where: { id: userId } });
+  res.status(HTTP_STATUS.SUCCESS).send({ name, nickname, id, email });
+};

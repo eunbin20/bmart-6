@@ -8,6 +8,10 @@ export const SORT_BY = {
   DISCOUNTEDRATE: 'discountedRate',
 };
 
+export const KEYBOARD = {
+  ENTER: 'Enter',
+};
+
 export const STORAGE_KEY = {
   ACCESS_TOKEN: 'accessToken',
   CARTS: 'carts',
