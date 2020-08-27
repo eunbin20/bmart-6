@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as S from './style';
 import { ProductInCart } from '../../../types/data';
 import { QuantityCoutner } from '../../../components';

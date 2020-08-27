@@ -15,7 +15,9 @@ export default function OrderCompletePage({
       <S.ContentContainer>
         <S.FriendsImage src="/assets/woowa-friends.png" />
         <S.Title>고객님의 주문이 접수되었습니다.</S.Title>
-        <S.Description>조금만 기다려주세요! 금방 갈게요 ❤️</S.Description>
+        <S.Description>
+          조금만 기다려주세요! 금방 갈게요 <span>❤️</span>
+        </S.Description>
         <S.MenuButtonList>
           <S.MenuButton to={setLink('/', location)}>
             <Framework7Icon iconName="house" fontSize={'14px'} />
