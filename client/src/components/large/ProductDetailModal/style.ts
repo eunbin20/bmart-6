@@ -96,7 +96,6 @@ export const CartButtonContainer = styled.div`
   bottom: 0;
   width: 100%;
   background: var(--light-gray);
-  height: 120px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
