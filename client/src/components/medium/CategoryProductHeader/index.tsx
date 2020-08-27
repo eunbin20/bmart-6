@@ -29,10 +29,11 @@ function CategoryProductHeader({
     };
 
     const scrollHandler = function () {
-      const index = categoryRefs.current.findIndex(
+      let index = categoryRefs.current.findIndex(
         (tab) => tab && tab.offsetTop - 70 > window.pageYOffset,
       );
       if (index - 1 === selectedChipId) return;
+      if (index === -1) index = 10;
       headerRef.current.children[index - 2]?.scrollIntoView({
         inline: 'center',
       });
