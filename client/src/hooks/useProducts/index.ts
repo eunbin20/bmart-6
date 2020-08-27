@@ -1,5 +1,5 @@
 import React, { useReducer, useState, useEffect } from 'react';
-import { OK, NOT_FOUND, INTERNAL_SERVER_ERROR } from 'http-status';
+import { OK, NOT_FOUND, INTERNAL_SERVER_ERROR, UNAUTHORIZED } from 'http-status';
 
 import useApiRequest, { REQUEST, SUCCESS, FAILURE } from '../../hooks/useApiRequests';
 import { Product, ProductFilter } from '../../types/data';
@@ -50,15 +50,25 @@ export default function useProducts(
 
       case ACTION_LIKE_PRODUCT:
         if (!action.data.id) break;
-        apis.likeProduct(action.data.id).then(() =>
-          dispatch({
-            type: action.type,
-            value: {
-              productId: action.data.id,
-              status: OK,
-            },
-          }),
-        );
+        apis
+          .likeProduct(action.data.id)
+          .then(() =>
+            dispatch({
+              type: action.type,
+              value: {
+                productId: action.data.id,
+                status: OK,
+              },
+            }),
+          )
+          .catch(() =>
+            dispatch({
+              type: ACTION_ERROR,
+              value: {
+                status: UNAUTHORIZED,
+              },
+            }),
+          );
         break;
 
       case ACTION_UNLIKE_PRODUCT:

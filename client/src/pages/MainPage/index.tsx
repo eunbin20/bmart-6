@@ -18,11 +18,13 @@ import { storage } from '../../utils/storage';
 
 function MainPage(): React.ReactElement {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [{ products: hotDealProducts }] = useProducts({
+  const [{ products: hotDealProducts, status: hotDealStatus }] = useProducts({
     limit: 4,
     sortBy: SORT_BY.DISCOUNTEDRATE,
   });
-  const [{ products: eatNowProducts }, eatNowProductsDispatch] = useProducts({ limit: 6 });
+  const [{ products: eatNowProducts, status }, eatNowProductsDispatch] = useProducts({
+    limit: 6,
+  });
   const [{ products: forYouProducts }, forYouProductsDispatch] = useProducts({ limit: 5 });
   const [{ products: bestSellerProducts }, bestSellerProductsDispatch] = useProducts({ limit: 5 });
   const [cartCount] = useState(storage.getProductTotalCount()); // 장바구니에 렌더할 Product Count 개수
@@ -41,6 +43,10 @@ function MainPage(): React.ReactElement {
       setCategories(categories);
     });
   }, []);
+
+  useEffect(() => {
+    console.log(status);
+  }, [status]);
 
   return (
     <DefaultTemplate>
