@@ -68,7 +68,7 @@ export default function useProducts(
                 status: UNAUTHORIZED,
               },
             }),
-          );
+          ); // 401 에러 캐치하려고 추가
         break;
 
       case ACTION_UNLIKE_PRODUCT:

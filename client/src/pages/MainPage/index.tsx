@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import DefaultTemplate from '../Default';
 import {
   SectionDivider,
@@ -16,17 +17,22 @@ import { getCategories, getProducts } from '../../apis';
 import { Category, CategoryProducts } from '../../types/data';
 import { storage } from '../../utils/storage';
 
-function MainPage(): React.ReactElement {
+function MainPage({ history }: RouteComponentProps): React.ReactElement {
   const [categories, setCategories] = useState<Category[]>([]);
   const [{ products: hotDealProducts, status: hotDealStatus }] = useProducts({
     limit: 4,
     sortBy: SORT_BY.DISCOUNTEDRATE,
   });
-  const [{ products: eatNowProducts, status }, eatNowProductsDispatch] = useProducts({
+  const [{ products: eatNowProducts, status: eatNowStatus }, eatNowProductsDispatch] = useProducts({
     limit: 6,
   });
-  const [{ products: forYouProducts }, forYouProductsDispatch] = useProducts({ limit: 5 });
-  const [{ products: bestSellerProducts }, bestSellerProductsDispatch] = useProducts({ limit: 5 });
+  const [{ products: forYouProducts, status: forYouStatus }, forYouProductsDispatch] = useProducts({
+    limit: 5,
+  });
+  const [
+    { products: bestSellerProducts, status: besetSellerStatus },
+    bestSellerProductsDispatch,
+  ] = useProducts({ limit: 5 });
   const [cartCount] = useState(storage.getProductTotalCount()); // 장바구니에 렌더할 Product Count 개수
   const [categoryProducts, setCategoryProducts] = useState<CategoryProducts[]>([]);
 
@@ -45,8 +51,15 @@ function MainPage(): React.ReactElement {
   }, []);
 
   useEffect(() => {
-    console.log(status);
-  }, [status]);
+    if (
+      forYouStatus === 401 ||
+      hotDealStatus === 401 ||
+      eatNowStatus === 401 ||
+      besetSellerStatus === 401
+    ) {
+      history.push('/user/login');
+    }
+  }, [forYouStatus, hotDealStatus, eatNowStatus, besetSellerStatus]);
 
   return (
     <DefaultTemplate>
