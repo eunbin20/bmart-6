@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as S from './style';
+import { IData } from '../../../types/data';
+import { EMOJI_DATA } from '../../../commons/constants';
 
 /* 땡겨요 기능은 2조 명우님의 코드를 참고하였습니다. by 동욱*/
 /* 땡겨요 기능은 2조 명우님의 코드를 참고하였습니다. by 동욱*/
@@ -15,45 +17,6 @@ const rangeHalf = range / 2;
 const defaultTopHeight = 0;
 const minBoxSize = 70;
 
-interface IData {
-  emoji: string;
-  text: string;
-}
-const datas: IData[] = [
-  {
-    emoji: '🥯',
-    text: '동킨 도낫츠',
-  },
-  {
-    emoji: '🥞',
-    text: '건포도 팬 케이크',
-  },
-  {
-    emoji: '🍗',
-    text: '간장 칰힌',
-  },
-  {
-    emoji: '🍔',
-    text: '수제 햄바그',
-  },
-  {
-    emoji: '🌯',
-    text: '치킨 부리또',
-  },
-  {
-    emoji: '🍙',
-    text: '개등딱지 삼각김밥',
-  },
-  {
-    emoji: '🥘',
-    text: '매운 부대찌개',
-  },
-  {
-    emoji: '🥗',
-    text: '다이어트 샐러드',
-  },
-];
-
 let isFinishingState = false;
 let isBeforeEnd = false;
 let dataIdx = 0;
@@ -62,7 +25,7 @@ let lastDataIdx = 0;
 let lastText = '';
 
 const getRandomIdx = () => {
-  const randomIndex = Math.floor(Math.random() * datas.length);
+  const randomIndex = Math.floor(Math.random() * EMOJI_DATA.length);
   lastDataIdx = randomIndex;
   return randomIndex;
 };
@@ -92,14 +55,14 @@ const Slot = ({ boxHeight, isPulling }: IPull) => {
               dataIdx = -1;
               setImgTopHeight(0);
               isFinishingState = false;
-              lastText = datas[lastDataIdx].text;
-              console.log('2', lastText);
-              shuffle(datas);
+              lastText = EMOJI_DATA[lastDataIdx].text;
+              shuffle(EMOJI_DATA);
               isRealFinish = true;
               return;
             }
             setImgTopHeight(((maxTime - time) % range) - rangeHalf);
-            dataIdx = Math.round(Math.abs((maxTime - time + rangeHalf) / range)) % datas.length;
+            dataIdx =
+              Math.round(Math.abs((maxTime - time + rangeHalf) / range)) % EMOJI_DATA.length;
             time += timeDiff;
             changeTopHeight();
           }, timeDiff);
@@ -109,7 +72,7 @@ const Slot = ({ boxHeight, isPulling }: IPull) => {
       slotAnimation();
     } else {
       setImgTopHeight((boxHeight % range) - rangeHalf);
-      dataIdx = Math.round(Math.abs((boxHeight + rangeHalf) / range)) % datas.length;
+      dataIdx = Math.round(Math.abs((boxHeight + rangeHalf) / range)) % EMOJI_DATA.length;
     }
   }, [boxHeight, isPullingFinished]);
 
@@ -118,7 +81,7 @@ const Slot = ({ boxHeight, isPulling }: IPull) => {
     if (newHight <= 0 || newHight >= window.innerHeight) {
       return `translate(0px, 0px)`;
     }
-    return `translate(0px, ${newHight}px)`;
+    return `translateY(${newHight}px)`;
   };
 
   const renderText = (dataIdx: number) => {
@@ -126,9 +89,9 @@ const Slot = ({ boxHeight, isPulling }: IPull) => {
       return lastText;
     }
     if (dataIdx === -1) {
-      return datas[getRandomIdx()].text;
+      return EMOJI_DATA[getRandomIdx()].text;
     }
-    return datas[dataIdx].emoji;
+    return EMOJI_DATA[dataIdx].emoji;
   };
 
   return (

@@ -1,3 +1,5 @@
+import { IData } from '../types/data';
+
 export const DEVELOPMENT_PORT = '4000';
 
 export const SORT_BY = {
@@ -131,5 +133,40 @@ export const SUB_BANNERS = [
     redirectUrl: '/',
     imageUrl:
       'https://user-images.githubusercontent.com/14324748/91476988-b0804e00-e8d8-11ea-9982-eb442906de67.jpg',
+  },
+];
+
+export const EMOJI_DATA: IData[] = [
+  {
+    emoji: '🥯',
+    text: '동킨 도낫츠',
+  },
+  {
+    emoji: '🥞',
+    text: '건포도 팬 케이크',
+  },
+  {
+    emoji: '🍗',
+    text: '간장 칰힌',
+  },
+  {
+    emoji: '🍔',
+    text: '수제 햄바그',
+  },
+  {
+    emoji: '🌯',
+    text: '치킨 부리또',
+  },
+  {
+    emoji: '🍙',
+    text: '개등딱지 삼각김밥',
+  },
+  {
+    emoji: '🥘',
+    text: '매운 부대찌개',
+  },
+  {
+    emoji: '🥗',
+    text: '다이어트 샐러드',
   },
 ];

@@ -94,3 +94,8 @@ export interface CategoryProducts {
   category: Category;
   products: Product[];
 }
+
+export interface IData {
+  emoji: string;
+  text: string;
+}
