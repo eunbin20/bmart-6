@@ -53,7 +53,7 @@ function MainPage({ history, location }: RouteComponentProps): React.ReactElemen
     setCategoryProducts(categories.map((category) => ({ category, products: [] })));
 
     categories.forEach((category: Category) => {
-      getProducts({ limit: 4, categoryId: category.id }).then(({ data: products }) => {
+      getProducts({ limit: 8, categoryId: category.id }).then(({ data: products }) => {
         if (!isMounted.current) return;
         setCategoryProducts((categoryProducts) => {
           const updatedCategoryProducts = [...categoryProducts];
