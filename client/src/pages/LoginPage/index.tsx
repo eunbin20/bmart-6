@@ -10,13 +10,17 @@ import { LoginSection, UserHeader } from '../../components';
 import { ERROR_STATUS, ERROR_MESSAGE, STORAGE_KEY } from '../../commons/constants';
 import { storage } from '../../utils/storage';
 
-function getUrlByPrevPage(prevPage: string | null) {
-  switch (prevPage) {
-    case 'cart':
-      return '/cart';
-    default:
-      return '/';
-  }
+type PrevPage = {
+  query: string | null;
+  id: string | null;
+};
+
+function getUrlByPrevPage(prevPage: PrevPage) {
+  const { query, id } = prevPage;
+  let url = '/';
+  if (query) url += query;
+  if (id) url += `/${id}`;
+  return url;
 }
 
 function LoginPage({ history, location }: RouteComponentProps) {
@@ -25,8 +29,8 @@ function LoginPage({ history, location }: RouteComponentProps) {
 
   const prevPage = useMemo(() => {
     const query = queryString.parse(search)['?prevPage'] as string;
-    if (query) return query;
-    return null;
+    const id = queryString.parse(search)['id'] as string;
+    return { query, id };
   }, [search]); // 현재는 CartPage만
 
   const onSubmitLogin = async (values: UserLogin) => {

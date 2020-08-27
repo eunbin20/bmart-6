@@ -12,7 +12,13 @@ import {
   CartBadge,
 } from '../../components';
 import useProducts, { toggleProductIsLikedDispatcher } from '../../hooks/useProducts';
-import { BANNERS, SORT_BY, VIEW_TYPE_GRID, VIEW_TYPE_LISTVIEW } from '../../commons/constants';
+import {
+  BANNERS,
+  SORT_BY,
+  VIEW_TYPE_GRID,
+  VIEW_TYPE_LISTVIEW,
+  ERROR_STATUS,
+} from '../../commons/constants';
 import { getCategories, getProducts } from '../../apis';
 import { Category, CategoryProducts } from '../../types/data';
 import { storage } from '../../utils/storage';
@@ -52,10 +58,10 @@ function MainPage({ history }: RouteComponentProps): React.ReactElement {
 
   useEffect(() => {
     if (
-      forYouStatus === 401 ||
-      hotDealStatus === 401 ||
-      eatNowStatus === 401 ||
-      besetSellerStatus === 401
+      forYouStatus === ERROR_STATUS.UNAUTHORIZED ||
+      hotDealStatus === ERROR_STATUS.UNAUTHORIZED ||
+      eatNowStatus === ERROR_STATUS.UNAUTHORIZED ||
+      besetSellerStatus === ERROR_STATUS.UNAUTHORIZED
     ) {
       history.push('/user/login');
     }

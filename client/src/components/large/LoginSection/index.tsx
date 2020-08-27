@@ -8,16 +8,19 @@ import { Logo } from '../../../commons/svgs';
 
 interface Props {
   onSubmit: (values: UserLogin) => void;
-  prevPage: string | null;
+  prevPage: {
+    query: string | null;
+    id: string | null;
+  };
 }
 
 export default function LoginForm({ onSubmit, prevPage }: Props) {
   const getRouteUrl = () => {
-    let returnValue = '/user/join';
-    if (prevPage !== null) {
-      returnValue += `?prevPage=${prevPage}`;
-    }
-    return returnValue;
+    let url = '/user/join';
+    const { query, id } = prevPage;
+    if (query) url += `?prevPage=${query}`;
+    if (id) url += `&${id}`;
+    return url;
   };
 
   return (
