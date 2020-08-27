@@ -12,7 +12,7 @@ import { storage } from '../../utils/storage';
 function LoginPage({ history, location }: RouteComponentProps<{}, any, CustomLocationState | any>) {
   const userContext = useAuthContext();
   const prevPath = location.state?.from?.pathname || '/';
-  console.log(location.state);
+
   const onSubmitLogin = async (values: UserLogin) => {
     if (userContext === null) {
       return;

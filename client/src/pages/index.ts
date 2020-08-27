@@ -8,5 +8,6 @@ export { default as SubcategoryPage } from './SubcategoryPage';
 export { default as ProductDetailPage } from './ProductDetailPage';
 export { default as JoinPage } from './JoinPage';
 export { default as LoginPage } from './LoginPage';
+export { default as LogoutPage } from './LogoutPage';
 export { default as CartPage } from './CartPage';
 export { default as OrderListPage } from './OrderListPage';
