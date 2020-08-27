@@ -25,14 +25,13 @@ const customStyle = {
 
   content: {
     width: '100%',
-    height: '93.333vw',
     top: 'auto',
     right: 'auto',
     left: 'auto',
     bottom: 0,
     background: 'var(--white)',
     borderRadius: '4vw 4vw 0vw 0vw',
-    padding: 0,
+    padding: '0 0 2vw 0',
   },
 };
 
