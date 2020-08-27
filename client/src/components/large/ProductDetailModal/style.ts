@@ -4,6 +4,7 @@ export const ModalContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow: scroll;
 `;
 
 interface ImageProps {
@@ -22,7 +23,6 @@ export const Image = styled.img.attrs((props: ImageProps) => ({
 
 export const SectionContainer = styled.div`
   padding: 22px 14px;
-
   & > dl + dl {
     margin-top: 15px;
   }
@@ -92,7 +92,9 @@ export const DescriptionData = styled.dd`
 `;
 
 export const CartButtonContainer = styled.div`
-  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   background: var(--light-gray);
   height: 120px;
   display: flex;

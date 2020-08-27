@@ -67,7 +67,7 @@ const ProductDetailModal = (props: Props) => {
           </S.PriceWrapper>
         </S.SectionContainer>
         <SectionDivider />
-        <S.SectionContainer>
+        <S.SectionContainer style={{ minHeight: '300px' }}>
           {/* <S.DescriptionWrapper>
             <S.DescriptionTerm>판매단위</S.DescriptionTerm>
             <S.DescriptionData>3박스</S.DescriptionData>
