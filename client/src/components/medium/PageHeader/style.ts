@@ -4,13 +4,13 @@ export const PageHeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0 15px;
+  padding: 0 4vw;
 `;
 
 export const PageHeader = styled.div`
   display: flex;
   width: 100%;
-  height: 52px;
+  height: 13.867vw;
   color: #fff;
   justify-content: space-between;
   align-items: center;
@@ -18,8 +18,8 @@ export const PageHeader = styled.div`
 
 export const IconContainer = styled.div`
   display: flex;
-  width: 20px;
-  height: 20px;
+  width: 5.333vw;
+  height: 5.333vw;
   justify-content: center;
   align-items: center;
 `;
@@ -28,21 +28,21 @@ export const SearchBar = styled(Link)`
   display: flex;
   align-items: center;
   width: 100%;
-  height: 38px;
-  padding: 0 14px;
-  margin-bottom: 13px;
-  border: 1px solid var(--gray);
-  border-radius: 10px;
-  font-size: 12px;
-  line-height: 14px;
+  height: 10.133vw;
+  padding: 0 3.733vw;
+  margin-bottom: 3.467vw;
+  border: 0.267vw solid var(--gray);
+  border-radius: 2.667vw;
+  font-size: 3.2vw;
+  line-height: 3.733vw;
   color: var(--dark-gray);
   text-decoration: none;
 
   & > .f7-icons {
-    margin-right: 12px;
+    margin-right: 3.2vw;
   }
 `;
 
 export const LogoContainer = styled.div`
-  padding-top: 4px;
+  padding-top: 1.067vw;
 `;

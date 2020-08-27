@@ -11,24 +11,24 @@ export const RecentSearchCard = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 50px;
-  padding: 0 14px;
+  height: 13.333vw;
+  padding: 0 3.733vw;
   text-decoration: none;
   color: var(--black);
 `;
 export const SearchTitle = styled.div`
   font-weight: 600;
-  font-size: 16px;
+  font-size: 4.267vw;
 `;
 export const SearchTrailingContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 60px;
+  width: 16vw;
 `;
 export const SearchDateContainer = styled.div`
   color: var(--gray);
-  font-size: 13px;
-  margin-right: 10px;
+  font-size: 3.467vw;
+  margin-right: 2.667vw;
 `;
 export const DeleteIconContainer = styled.div`
   cursor: pointer;

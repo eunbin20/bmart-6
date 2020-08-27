@@ -7,9 +7,9 @@ interface Props {
 
 const Divider = styled.div`
   width: ${(props) => props?.style?.width ?? '100%'};
-  height: 3px;
+  height: 0.8vw;
   background: var(--light-gray);
-  border-top: 1px solid var(--border-gray);
+  border-top: 0.267vw solid var(--border-gray);
 `;
 
 function SectionDivider({ width }: Props): React.ReactElement {

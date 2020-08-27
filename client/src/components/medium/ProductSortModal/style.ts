@@ -4,16 +4,16 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  padding: 0 15px;
+  height: 10.667vw;
+  padding: 0 4vw;
 
-  border-bottom: 1px solid var(--light-gray);
+  border-bottom: 0.267vw solid var(--light-gray);
 `;
 export const Title = styled.div``;
 
 export const CloseButton = styled.div`
   position: fixed;
-  right: 15px;
+  right: 4vw;
   cursor: pointer;
 `;
 
@@ -24,11 +24,11 @@ export const SortCardList = styled.div`
 `;
 
 export const SortCard = styled.div`
-  height: 50px;
-  padding: 15px;
+  height: 13.333vw;
+  padding: 4vw;
   display: flex;
   align-items: center;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 3.733vw;
   font-weight: ${(props) => (props.theme.selected ? 'bold' : 'normal')};
 `;

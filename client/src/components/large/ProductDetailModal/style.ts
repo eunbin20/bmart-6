@@ -16,15 +16,15 @@ export const Image = styled.img.attrs((props: ImageProps) => ({
   src: props.src,
 }))`
   width: 100%;
-  height: 320px;
+  height: 85.333vw;
   background-color: var(--gray);
   object-fit: cover;
 `;
 
 export const SectionContainer = styled.div`
-  padding: 22px 14px;
+  padding: 5.867vw 3.733vw;
   & > dl + dl {
-    margin-top: 15px;
+    margin-top: 4vw;
   }
 `;
 
@@ -32,45 +32,45 @@ export const TitleWrapper = styled.div``;
 
 export const Title = styled.div`
   font-weight: bold;
-  font-size: 16px;
-  line-height: 16px;
+  font-size: 4.267vw;
+  line-height: 4.267vw;
   letter-spacing: -0.05em;
 `;
 
 export const TitleDescription = styled.div`
-  font-size: 12px;
-  line-height: 12px;
+  font-size: 3.2vw;
+  line-height: 3.2vw;
   letter-spacing: -0.05em;
-  margin-top: 8px;
+  margin-top: 2.133vw;
   color: var(--gray);
 `;
 
 export const PriceWrapper = styled.div`
-  margin-top: 21px;
+  margin-top: 5.6vw;
   letter-spacing: -0.1em;
   & > span + span {
-    margin-left: 5px;
+    margin-left: 1.333vw;
   }
 `;
 
 export const PriceRate = styled.span`
   color: var(--red);
-  font-size: 14ppx;
+  font-size: 3.733vw;
   font-weight: bold;
-  line-height: 14px;
+  line-height: 3.733vw;
 `;
 
 export const OriginalPrice = styled.s`
-  font-size: 13px;
-  line-height: 13px;
-  margin-left: 3px;
+  font-size: 3.467vw;
+  line-height: 3.467vw;
+  margin-left: 0.8vw;
 `;
 
 export const DiscountedPrice = styled.span`
   font-weight: bold;
-  font-size: 16px;
-  line-height: 16px;
-  margin-left: 3px;
+  font-size: 4.267vw;
+  line-height: 4.267vw;
+  margin-left: 0.8vw;
 `;
 
 export const DescriptionWrapper = styled.dl`
@@ -79,16 +79,16 @@ export const DescriptionWrapper = styled.dl`
 
 export const DescriptionTerm = styled.dt`
   color: var(--strong-gray);
-  font-size: 15px;
-  min-width: 100px;
+  font-size: 4vw;
+  min-width: 26.667vw;
   & > dd {
-    margin-right: 30px;
+    margin-right: 8vw;
   }
 `;
 
 export const DescriptionData = styled.dd`
   color: var(--black);
-  font-size: 15px;
+  font-size: 4vw;
 `;
 
 export const CartButtonContainer = styled.div`
@@ -96,14 +96,14 @@ export const CartButtonContainer = styled.div`
   bottom: 0;
   width: 100%;
   background: var(--light-gray);
-  height: 120px;
+  height: 32vw;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  padding: 14px;
+  padding: 3.733vw;
   color: var(--green);
-  font-size: 15px;
+  font-size: 4vw;
   font-weight: bold;
 `;
 
@@ -113,10 +113,10 @@ export const CartButton = styled.button.attrs((props) => ({
   border: none;
   outline: none;
   color: var(--white);
-  font-size: 18px;
+  font-size: 4.8vw;
   font-weight: bold;
   background: var(--green);
   width: 100%;
-  height: 46px;
-  margin-top: 14px;
+  height: 12.267vw;
+  margin-top: 3.733vw;
 `;

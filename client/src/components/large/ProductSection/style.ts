@@ -4,21 +4,21 @@ export const ProductSection = styled.div`
   display: grid;
   flex-direction: column;
   width: 100%;
-  margin: 16px 0;
+  margin: 4.267vw 0;
 `;
 
 export const HeaderContainer = styled.div`
   width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 4.267vw;
 `;
 
 export const ProductGridContainer = styled.div`
   width: 100%;
-  padding: 0 15px;
+  padding: 0 4vw;
 `;
 
 export const ProductListViewContainer = styled.div`
   width: 100%;
-  padding-left: 15px;
+  padding-left: 4vw;
   overflow-x: scroll;
 `;

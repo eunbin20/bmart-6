@@ -5,8 +5,8 @@ export const CategoryIconGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   width: 100%;
-  padding: 16px 0;
-  row-gap: 10px;
+  padding: 4.267vw 0;
+  row-gap: 2.667vw;
 `;
 
 export const CategoryIconWrapper = styled(Link)`
@@ -16,5 +16,5 @@ export const CategoryIconWrapper = styled(Link)`
 `;
 
 export const CategoryIcon = styled.img`
-  width: 70px;
+  width: 18.667vw;
 `;
