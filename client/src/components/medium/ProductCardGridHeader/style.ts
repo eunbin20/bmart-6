@@ -6,7 +6,6 @@ export const CardGridHeaderContainer = styled.div`
   justify-content: flex-end;
   padding: 0 20px;
   align-items: center;
-  border-bottom: 1px solid var(--light-gray);
 `;
 
 export const SortContainer = styled.div`
