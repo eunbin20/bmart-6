@@ -76,11 +76,6 @@ body {
   }
 }
 
-.ReactModal__Content--before-close {
-  transition: all 500ms ease-in-out;
-  transform: translateY(100%);
-}
-
 .strike {
   position: relative;
   display: inline-block;

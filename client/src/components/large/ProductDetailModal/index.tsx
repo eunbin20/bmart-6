@@ -18,6 +18,7 @@ const customStyle = {
     bottom: 0,
     right: 0,
     background: 'rgba(0,0,0,0.16)',
+    opacity: 1,
   },
 
   content: {
@@ -48,7 +49,7 @@ const ProductDetailModal = (props: Props) => {
   } = props;
 
   return (
-    <Modal isOpen={true} style={customStyle}>
+    <Modal isOpen={true} style={customStyle} className="detail-page-modal">
       <PageHeader isHome={false} />
       <S.ModalContentContainer>
         <S.Image src={imageUrl} />
@@ -66,7 +67,7 @@ const ProductDetailModal = (props: Props) => {
           </S.PriceWrapper>
         </S.SectionContainer>
         <SectionDivider />
-        <S.SectionContainer>
+        <S.SectionContainer style={{ minHeight: '300px' }}>
           {/* <S.DescriptionWrapper>
             <S.DescriptionTerm>판매단위</S.DescriptionTerm>
             <S.DescriptionData>3박스</S.DescriptionData>

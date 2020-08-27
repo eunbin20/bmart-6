@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import * as S from './style';
 import { Framework7Icon } from '../..';
 import { useLocation } from 'react-router-dom';
-
+import { isEmpty } from '../../../utils/validation';
+import { KEYBOARD } from '../../../commons/constants';
 interface Props {
   isSearchPage?: boolean;
   presetTitle?: string;
@@ -26,6 +27,14 @@ function SearchBar({
     history.push(`/search/${title}`, { from: location });
   }
 
+  function onKeyUp(event: React.KeyboardEvent<HTMLInputElement>) {
+    const $target = event.target as HTMLInputElement;
+    if (isEmpty($target.value) || event.key !== KEYBOARD.ENTER) {
+      return;
+    }
+    onSearchIconClick();
+  }
+
   return (
     <S.SearchBar
       onClick={() => {
@@ -41,6 +50,7 @@ function SearchBar({
       <S.Input
         value={title}
         onChange={(event) => setTitle(event.target.value)}
+        onKeyUp={onKeyUp}
         placeholder={'어떤 상품을 찾으시나요?'}
         autoFocus={isSearchPage}
       ></S.Input>

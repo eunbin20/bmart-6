@@ -15,7 +15,7 @@ const regEx = {
 
 type Value = string | number | undefined | null | '';
 
-const isEmpty = (value: Value) => value === undefined || value === null || value === '';
+export const isEmpty = (value: Value) => value === undefined || value === null || value === '';
 const checkEmail = (value: string) => !regEx.email.test(value);
 const checkPassword = (value: string) => !regEx.password.test(value);
 const checkName = (value: string) => !regEx.name.test(value);

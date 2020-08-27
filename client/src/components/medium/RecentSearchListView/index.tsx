@@ -15,7 +15,7 @@ function RecentSearchListView({ searches, deleteSearch }: Props): React.ReactEle
   return (
     <S.RecentSearchListView>
       {Object.entries(searches)
-        .sort((a, b) => (a[1] < b[1] ? 1 : -1))
+        .sort((a, b) => (new Date(a[1]) < new Date(b[1]) ? 1 : -1))
         .map((search, index) => {
           const [title, createdAt] = search;
           const dateObj = new Date(createdAt);

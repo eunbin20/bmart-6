@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from './style';
 import {
   SearchBar,
@@ -19,6 +19,7 @@ interface Params {
 function SearchResultPage({
   match: { params },
   history,
+  location,
 }: RouteComponentProps<Params>): React.ReactElement {
   const [{ products, status }, productDispatch] = useProducts({ title: params.title });
   const [sortBy, setSortBy] = useState(DEFAULT_SORT_OPTION);
@@ -32,6 +33,12 @@ function SearchResultPage({
     );
     setSortBy(sortBy);
   }
+
+  useEffect(() => {
+    if (status === ERROR_STATUS.UNAUTHORIZED) {
+      history.push('/user/login', { from: location });
+    }
+  }, [status]);
 
   return (
     <S.SearchResultPage>

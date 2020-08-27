@@ -4,7 +4,7 @@ import { TwoColumnCard, ThreeColumnCard, TwoHalfColumnCard } from './style';
 import { Product, ProductGridColumns } from '../../../types/data';
 import { ProductLikeIcon } from '../..';
 import { useLocation } from 'react-router-dom';
-import { setLink } from '../../../utils/functions';
+import { setLink, makeComma } from '../../../utils/functions';
 
 interface Props extends Product {
   columns: ProductGridColumns;
@@ -64,10 +64,10 @@ function ProductCard({
           {isDiscounted && (
             <>
               <S.DiscountedRate>{discountedRate}%</S.DiscountedRate>
-              <S.DiscountedPrice>{price}원</S.DiscountedPrice>
+              <S.DiscountedPrice>{makeComma(price)}원</S.DiscountedPrice>
             </>
           )}
-          <S.Price>{discountedPrice}원</S.Price>
+          <S.Price>{makeComma(discountedPrice)}원</S.Price>
         </S.PriceWrapper>
       </S.ContentContainer>
     </S.LinkWrapper>

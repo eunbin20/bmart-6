@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from './style';
 import { Product } from '../../../types/data';
+import { makeComma } from '../../../utils/functions';
 
 interface Props {
   product: Product;
@@ -21,10 +22,12 @@ function HotDealBigProductCard({ product }: Props): React.ReactElement {
         {product.isDiscounted && (
           <>
             <S.DiscountedRate>{product.discountedRate}%</S.DiscountedRate>
-            <S.DiscountedPrice>{product.price}원</S.DiscountedPrice>
+            <S.DiscountedPrice>{makeComma(product.price)}원</S.DiscountedPrice>
           </>
         )}
-        <S.Price>{product.isDiscounted ? product.discountedPrice : product.price}원</S.Price>
+        <S.Price>
+          {product.isDiscounted ? makeComma(product.discountedPrice) : makeComma(product.price)}원
+        </S.Price>
       </S.PriceWrapper>
     </>
   );

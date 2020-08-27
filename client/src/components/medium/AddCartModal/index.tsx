@@ -14,6 +14,7 @@ const customStyle = {
     right: 0,
     background: 'rgba(0,0,0,0.16)',
     zIndex: 100,
+    opacity: 1,
   },
 
   content: {

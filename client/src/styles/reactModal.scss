@@ -7,15 +7,20 @@
   }
 }
 
-.ReactModal__Overlay {
+.ReactModal__Overlay:not(.detail-page-modal) {
   opacity: 0;
   transition: opacity 500ms ease-in-out;
 }
 
-.ReactModal__Content {
+.ReactModal__Content:not(.detail-page-modal) {
   animation: up 500ms ease-in-out;
 }
 
 .ReactModal__Overlay--after-open {
   opacity: 1;
+}
+
+.ReactModal__Content--before-close {
+  transition: all 500ms ease-in-out;
+  transform: translateY(100%);
 }
