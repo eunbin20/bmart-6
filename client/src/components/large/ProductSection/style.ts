@@ -5,6 +5,7 @@ export const ProductSection = styled.div`
   flex-direction: column;
   width: 100%;
   margin: 16px 0;
+  overflow-x: scroll;
 `;
 
 export const HeaderContainer = styled.div`

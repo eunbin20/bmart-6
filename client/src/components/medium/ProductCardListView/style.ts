@@ -4,4 +4,5 @@ export const CardListViewContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(${(props) => props.theme.length}, 134px);
   overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
 `;
