@@ -13,7 +13,8 @@ import {
 } from '../../components';
 import useProducts, { toggleProductIsLikedDispatcher, FILTER_TYPE } from '../../hooks/useProducts';
 import {
-  BANNERS,
+  MAIN_BANNERS,
+  MID_BANNERS,
   SORT_BY,
   VIEW_TYPE_GRID,
   VIEW_TYPE_LISTVIEW,
@@ -91,7 +92,7 @@ function MainPage({ history, location }: RouteComponentProps): React.ReactElemen
   return (
     <DefaultTemplate>
       <PageHeader isHome={true} />
-      <BannerSlider banners={BANNERS} />
+      <BannerSlider banners={MAIN_BANNERS} />
       <CategoryIconGrid categories={categories} />
       <SectionDivider />
       <ProductSection
@@ -140,7 +141,7 @@ function MainPage({ history, location }: RouteComponentProps): React.ReactElemen
         }}
       />
       <SectionDivider />
-      <BannerSlider banners={BANNERS} />
+      <BannerSlider banners={MID_BANNERS} />
       <CategoryProductSection categoryProducts={categoryProducts} />
       <CartBadge count={cartCount} />
     </DefaultTemplate>
