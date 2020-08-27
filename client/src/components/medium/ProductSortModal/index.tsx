@@ -25,6 +25,7 @@ const customStyle = {
 
   content: {
     width: '100%',
+    height: '80%',
     top: 'auto',
     right: 'auto',
     left: 'auto',
