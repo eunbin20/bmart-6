@@ -19,14 +19,14 @@ const customStyle = {
 
   content: {
     width: '100%',
-    height: '240px',
+    height: '64vw',
     top: 'auto',
     right: 'auto',
     left: 'auto',
     bottom: 0,
     background: 'var(--white)',
     padding: 0,
-    borderRadius: '15px 15px 0px 0px',
+    borderRadius: '4vw 4vw 0vw 0vw',
   },
 };
 

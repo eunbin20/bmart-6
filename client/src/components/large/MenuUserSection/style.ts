@@ -3,22 +3,22 @@ import { Link } from 'react-router-dom';
 
 export const SectionContainer = styled.div`
   width: 100%;
-  padding: 0 14px;
-  margin: 16px 0;
+  padding: 0 3.733vw;
+  margin: 4.267vw 0;
 `;
 
 export const SuggestLink = styled(Link)`
   display: block;
   color: var(--black);
   text-decoration: none;
-  margin-bottom: 12px;
+  margin-bottom: 3.2vw;
 `;
 
 export const UserMenuContainer = styled.div`
   display: flex;
-  height: 50px;
-  border: 1px solid var(--gray);
-  border-radius: 4px;
+  height: 13.333vw;
+  border: 0.267vw solid var(--gray);
+  border-radius: 1.067vw;
 `;
 
 export const MenuLink = styled(Link)`
@@ -34,13 +34,13 @@ export const MenuLink = styled(Link)`
 
 export const UserMenuBar = styled.div`
   display: block;
-  width: 1px;
+  width: 0.267vw;
   height: 100%;
-  flex-basis: 1px;
+  flex-basis: 0.267vw;
   flex-shrink: 0;
   background: var(--gray);
 `;
 
 export const UserMenuText = styled.div`
-  margin-top: 4px;
+  margin-top: 1.067vw;
 `;

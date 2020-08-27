@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const InputContainer = styled.section`
   width: 100%;
-  padding: 45px 28px;
+  padding: 12vw 7.467vw;
   > .input-wrapper + .input-wrapper {
-    margin-top: 32px;
+    margin-top: 8.533vw;
   }
 `;
 
@@ -19,12 +19,12 @@ export const PushButton = styled.button.attrs((props: PushButtonProps) => ({
   onSubmit: props.onSubmit,
 }))`
   background: var(--green);
-  margin-top: 20px;
+  margin-top: 5.333vw;
   border: none;
   width: 100%;
-  height: 45px;
-  border-radius: 7px;
+  height: 12vw;
+  border-radius: 1.867vw;
   color: #ffffffff;
-  font-size: 18px;
+  font-size: 4.8vw;
   font-weight: 700;
 `;

@@ -22,7 +22,7 @@ export default function LoginForm({ onSubmit, prevPath }: Props) {
   return (
     <>
       <S.LogoContainer>
-        <BmartLogo width={'140px'} />
+        <BmartLogo width={'37.333vw'} />
       </S.LogoContainer>
       <S.InputContainer>
         <Form

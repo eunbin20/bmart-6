@@ -17,17 +17,17 @@ export const ModalWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   background: var(--white);
-  width: 300px;
-  border-radius: 5px;
+  width: 80vw;
+  border-radius: 1.333vw;
 `;
 
 export const Title = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 15px;
+  font-size: 4vw;
   color: var(--gray);
-  height: 100px;
+  height: 26.667vw;
 `;
 
 interface ButtonProps {
@@ -42,7 +42,7 @@ export const Button = styled.button.attrs((props) => ({
   border: none;
   background: var(--white);
   width: 50%;
-  height: 50px;
-  border-top: 1px solid var(--gray);
-  border-right: ${(props: ButtonProps) => (props.hasBorder ? '1px' : '0px')} solid var(--gray);
+  height: 13.333vw;
+  border-top: 0.267vw solid var(--gray);
+  border-right: ${(props: ButtonProps) => (props.hasBorder ? '0.267vw' : '0vw')} solid var(--gray);
 `;

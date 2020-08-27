@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 export const InputContainer = styled.section`
   width: 100%;
-  padding: 45px 28px;
+  padding: 12vw 7.467vw;
   > .input-wrapper + .input-wrapper {
-    margin-top: 32px;
+    margin-top: 8.533vw;
   }
 `;
 
@@ -14,7 +14,7 @@ export const LogoContainer = styled.div``;
 export const NeedLogin = styled.div`
   color: var(--gray);
   width: 100%;
-  padding-bottom: 15px;
+  padding-bottom: 4vw;
 `;
 
 interface PushButtonProps {
@@ -26,25 +26,25 @@ export const PushButton = styled.button.attrs((props: PushButtonProps) => ({
   onSubmit: props.onSubmit,
 }))`
   background: var(--green);
-  margin-top: 10px;
+  margin-top: 2.667vw;
   border: none;
   width: 100%;
-  height: 45px;
-  border-radius: 7px;
+  height: 12vw;
+  border-radius: 1.867vw;
   color: #ffffffff;
-  font-size: 18px;
+  font-size: 4.8vw;
   font-weight: 700;
 `;
 
 export const Text = styled.div`
-  padding-top: 20px;
+  padding-top: 5.333vw;
   text-align: right;
-  font-size: 14px;
+  font-size: 3.733vw;
   color: var(--gray);
 `;
 
 export const JoinButton = styled(Link)`
   color: var(--gray);
   /* text-decoration: none; */
-  font-size: 14px;
+  font-size: 3.733vw;
 `;

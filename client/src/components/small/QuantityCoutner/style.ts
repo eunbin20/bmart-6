@@ -6,12 +6,12 @@ export const CounterContainer = styled.div.attrs({
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50px;
-  width: 100px;
-  height: 40px;
-  border: 1px solid var(--gray);
+  border-radius: 13.333vw;
+  width: 26.667vw;
+  height: 10.667vw;
+  border: 0.267vw solid var(--gray);
   & > div + div {
-    margin-left: 12px;
+    margin-left: 3.2vw;
   }
   & > .f7-icons {
     font-weight: 700;
@@ -19,5 +19,5 @@ export const CounterContainer = styled.div.attrs({
 `;
 
 export const Count = styled.div`
-  font-size: 18px;
+  font-size: 4.8vw;
 `;

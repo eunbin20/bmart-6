@@ -4,7 +4,7 @@ export const InputWrapper = styled.div.attrs({
   className: 'input-wrapper',
 })`
   width: 100%;
-  min-height: 54px;
+  min-height: 14.4vw;
 `;
 
 interface InputProps {
@@ -21,10 +21,10 @@ export const Input = styled.input.attrs((props: InputProps) => ({
   width: 100%;
   outline: none;
   border: none;
-  font-size: 20px;
+  font-size: 5.333vw;
   color: var(--gray);
-  border-bottom: 1px solid var(--gray);
-  padding-bottom: 10px;
+  border-bottom: 0.267vw solid var(--gray);
+  padding-bottom: 2.667vw;
 `;
 
 interface InputErrorProps {
@@ -33,8 +33,8 @@ interface InputErrorProps {
 
 export const InputError = styled.div`
   width: 100%;
-  height: 15px;
-  padding-top: 5px;
+  height: 4vw;
+  padding-top: 1.333vw;
   color: red;
   display: ${(props: InputErrorProps) => (props.visible ? 'block' : 'none')};
 `;

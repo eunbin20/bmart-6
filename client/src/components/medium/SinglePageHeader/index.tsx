@@ -4,7 +4,7 @@ import { BackButton } from '../../../components';
 
 export const HeaderContainer = styled.div`
   width: 100%;
-  padding: 16px 14px;
+  padding: 4.267vw 3.733vw;
   display: flex;
   align-items: center;
   background: var(--white);
