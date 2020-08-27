@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import * as Pages from './pages';
 import './styles/reset.scss';
-import './styles/fonts.scss';
 import './styles/reactModal.scss';
 import './styles/globalstyle.scss';
 import { useAuthContext } from './contexts/user';
