@@ -83,11 +83,9 @@ class Product extends Model {
           await UserProductRelation.findAll({
             attributes: ['productId'],
             where: { userId: data.userId },
-            limit: data.limit,
-            offset: data.offset,
           })
         ).map((relation) => relation.productId);
-        return this.filter({ ...data, ids: likedProductIds });
+        return this.filter({ ...data, limit: likedProductIds.length, ids: likedProductIds });
       case 'recommend':
         return this.filter({ ...data, ids: [10, 20, 30, 40, 50] });
       case 'bestseller':
