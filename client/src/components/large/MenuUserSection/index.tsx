@@ -5,14 +5,25 @@ import { useAuthContext } from '../../../contexts/user/index';
 import { useLocation } from 'react-router-dom';
 import { setLink } from '../../../utils/functions';
 
+const getSuggestLink = (isAuthorized: boolean) => {
+  return isAuthorized
+    ? {
+        url: '/user/logout',
+        text: '로그아웃 하기',
+      }
+    : {
+        url: '/user/login',
+        text: '로그인 하기',
+      };
+};
+
 function MenuUserSection(): React.ReactElement {
   const authContext = useAuthContext();
-  const location = useLocation();
-
+  const suggestLink = getSuggestLink(authContext?.state.isAuthorized || false);
   return (
     <S.SectionContainer>
-      <S.SuggestLink to={setLink('/user/login', location)}>
-        {authContext?.state.isAuthorized ? '로그아웃 하기' : '로그인 하기'}
+      <S.SuggestLink to={suggestLink.url}>
+        {suggestLink.text}
         <Framework7Icon iconName="chevron_right" fontSize={'12px'} />
       </S.SuggestLink>
       <S.UserMenuContainer>
