@@ -7,6 +7,7 @@ export const HeaderContainer = styled.div`
   padding: 16px 14px;
   display: flex;
   align-items: center;
+  background: var(--white);
 `;
 
 function SinglePageHeader(): React.ReactElement {

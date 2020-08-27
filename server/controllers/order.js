@@ -20,8 +20,10 @@ exports.create = async (req, res) => {
 };
 
 exports.findAll = async (req, res) => {
-  const { user } = req;
-  const orders = await Order.findAll({ where: { userId: user.id } });
+  const orders = await Order.findAll({
+    where: { userId: req.user.id },
+    include: { model: Product, as: 'products' },
+  });
   res.status(HTTP_STATUS.SUCCESS).send(orders);
 };
 
