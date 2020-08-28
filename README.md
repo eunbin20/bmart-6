@@ -57,8 +57,15 @@
 >* medium: small 혹은 medium 컴포넌트를 조합한 컴포넌트
 >* large: small, medium을 조합해서 만든 컴포넌트
 
-각 페이지에 필요한 데이터와 상태 관리는 page에서 이루어지고 컴포넌트는 받은 데이터를 렌더링하는 역할을 수행합니다.
 
+## 페이지 단위 상태 관리 및 상품 관리 CustomHook
+
+각 페이지에 필요한 데이터와 상태 관리는 page에서 이루어지고 컴포넌트는 받은 데이터를 렌더링하는 역할을 수행합니다.
+특히 페이지마다 다른 종류의 상품 리스트가 필요하기 때문에 이를 요청하고 관리할 수 있는 `useProducts` customHook을 구현하여 각 페이지에서 사용했습니다.
+
+```js
+  const [{ products, status }, productDispatch] = useProducts({ categoryId: params.categoryId });
+```
 
 ## 설치 가이드
 
