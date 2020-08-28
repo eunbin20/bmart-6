@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const Header = styled.div`
-  z-index: 1;
-  position: fixed;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,9 +21,15 @@ export const CloseButton = styled.div`
 `;
 
 export const SortCardList = styled.div`
+  position: relative;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  overflow-y: scroll;
+
+  @media only screen and (min-width: 768px) {
+    max-height: 20vw;
+  }
 `;
 
 export const SortCard = styled.div`

@@ -64,6 +64,7 @@ export const OriginalPrice = styled.s`
   font-size: 3.467vw;
   line-height: 3.467vw;
   margin-left: 0.8vw;
+  color: var(--gray);
 `;
 
 export const DiscountedPrice = styled.span`
@@ -96,7 +97,6 @@ export const CartButtonContainer = styled.div`
   bottom: 0;
   width: 100%;
   background: var(--light-gray);
-  height: 32vw;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -116,6 +116,7 @@ export const CartButton = styled.button.attrs((props) => ({
   font-size: 4.8vw;
   font-weight: bold;
   background: var(--green);
+  cursor: pointer;
   width: 100%;
   height: 12.267vw;
   margin-top: 3.733vw;
