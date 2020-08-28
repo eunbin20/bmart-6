@@ -8,6 +8,8 @@
 ## 배포
 [배포 링크](http://3.35.66.51)
 
+<br/>
+
 ## 프로젝트 구조
 ```bash
 |-- github
@@ -48,6 +50,8 @@
  
 ```
 
+<br/>
+
 ## 재사용성 높은 UI 컴포넌트
 ![UI 컴포넌트 구조](https://user-images.githubusercontent.com/36878344/91496983-15976c00-e8f8-11ea-8551-e5a1bcc2d067.png)
 
@@ -57,6 +61,7 @@
 >* medium: small 혹은 medium 컴포넌트를 조합한 컴포넌트
 >* large: small, medium을 조합해서 만든 컴포넌트
 
+<br/>
 
 ## 페이지 단위 상태 관리 및 상품 관리 CustomHook
 
@@ -66,6 +71,8 @@
 ```js
   const [{ products, status }, productDispatch] = useProducts({ categoryId: params.categoryId });
 ```
+
+<br/>
 
 ## 설치 가이드
 
@@ -102,6 +109,8 @@ npm start
 
 서버가 실행됐다면 http://localhost:3000 에서 확인하실 수 있습니다.
 
+<br/>
+
 ## 협업 내용
 
 > 다음과 같은 규칙과 디자인에 따라 협업을 진행했습니다.
@@ -114,6 +123,7 @@ npm start
 - [Component Name](https://github.com/woowa-techcamp-2020/bmart-6/wiki/Component-Name)
 - [Design](https://www.figma.com/file/8PheL4eBFXz8IEEgtjZsR2/%EC%9A%B0%EC%95%84%ED%95%9C%ED%85%8C%ED%81%AC%EC%BA%A0%ED%94%843%EA%B8%B0-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?node-id=171%3A78)
 
+<br/>
 
 ## 팀원
 
