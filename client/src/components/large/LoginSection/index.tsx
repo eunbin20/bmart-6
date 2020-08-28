@@ -30,7 +30,9 @@ export default function LoginForm({ onSubmit, prevPath }: Props) {
           validate={loginValidation}
           render={({ handleSubmit, submitError }) => (
             <>
-              {prevPath && <S.NeedLogin>로그인이 필요한 서비스에요!</S.NeedLogin>}
+              {prevPath && prevPath !== '/' && (
+                <S.NeedLogin>로그인이 필요한 서비스에요!</S.NeedLogin>
+              )}
               <Field name="email">
                 {({ input, meta }) => (
                   <UserPageInput input={input} meta={meta} type="email" placeholder="이메일" />
