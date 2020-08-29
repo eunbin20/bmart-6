@@ -146,8 +146,8 @@ function MainPage({ history, location }: RouteComponentProps): React.ReactElemen
         />
         <SectionDivider />
         <BannerSlider banners={MID_BANNERS} />
-        <CategoryProductSection categoryProducts={categoryProducts} />
       </BindPullEvent>
+      <CategoryProductSection categoryProducts={categoryProducts} />
       <CartBadge count={cartCount} />
     </DefaultTemplate>
   );
